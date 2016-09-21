@@ -25,11 +25,3 @@ testem.log
 # e2e
 /e2e/*.js
 /e2e/*.map
-
-#System Files
-.DS_Store
-Thumbs.db
-
-    Contact GitHub API Training Shop Blog About 
-
-    © 2016 GitHub, Inc. Terms Priva
