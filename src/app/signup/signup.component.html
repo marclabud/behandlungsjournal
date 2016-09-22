@@ -1,3 +1,24 @@
-<p>
-  signup works!
-</p>
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Erstellen Sie ihr Behandlungsjournal-Konto </h1>
+
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-Mail-Adresse</label>
+        <input type="text" class="form-control" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Passwort</label>
+        <input type="text" class="form-control" id="password" required>
+      </div>
+
+      <button type="submit" class="btn btn-success">Neues Konto erstellen</button>
+    </form>
+  </div>
+</div>
