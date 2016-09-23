@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {FormGroup,FormControl, FormBuilder, Validators} from "@angular/forms";
+import {IUser} from "../shared/user";
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public LoginForm: FormGroup;
+  public submitted: boolean;
 
-  constructor() { }
+  constructor(private _formbuilder: FormBuilder) {
+  }
 
   ngOnInit() {
+    this.LoginForm = this._formbuilder.group({
+      email: ['',[<any>Validators.required]],
+      password: ['',[<any>Validators.required]]
+    })
   }
+
+  save(model: IUser, isValid: Boolean) {
+    this.submitted = true; // set form submit to true
+    console.log(model,isValid)
+  }
+
 
 }
