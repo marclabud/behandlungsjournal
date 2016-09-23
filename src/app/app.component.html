@@ -1,11 +1,14 @@
-<h1>
-  {{title}}
-</h1>
-<p>
-  Mit dem Behandlungsjournal können Sie die Behandlung ihres kranken Tieres dokumentieren. Damit behalten Sie jederzeit die Übersicht.
-</p>
-<nav>
-  <a routerLink="/signup" routerLinkActive="active">Jetzt registieren</a>
-  <a routerLink="/login" routerLinkActive="active">Anmelden</a>
-</nav>
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="jumbotron">
+    <h2>{{title}}</h2>
+    <p>
+      Mit dem Behandlungsjournal können Sie die Behandlung ihres kranken Tieres dokumentieren. Damit behalten Sie
+      jederzeit
+      die Übersicht.
+    </p>
+
+    <a routerLink="/login" routerLinkActive="nav-link active">Anmelden</a>
+    <a routerLink="/signup" routerLinkActive="nav-link active">Registrieren</a>
+  </div>
+  <router-outlet></router-outlet>
+</div>
