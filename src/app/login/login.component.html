@@ -2,19 +2,17 @@
   <div [hidden]="submitted">
     <h1>Bei dem Behandlungsjournal anmelden </h1>
 
-    <form [formGroup]="LoginForm" novalidate (ngSubmit)="save(LoginForm.value,LoginForm.valid)">
+    <form [formGroup]="LoginForm" (ngSubmit)="save(LoginForm.value,LoginForm.valid)">
       <div class="form-group">
         <label for="email">E-Mail-Adresse</label>
         <input type="email" class="form-control" id="email" placeholder="z.B. martina.rogenmoser@tierarztpraxis.ch"
                required formControlName="email">
-        <div [hidden]="LoginForm.controls.email.valid || (LoginForm.controls.email.pristine && !submitted)"></div>
       </div>
 
       <div class="form-group">
         <label for="password">Passwort</label>
         <input type="password" class="form-control" id="password" placeholder="z. B. Xtp49a#y" required
-               formControlName="password">
-        <div [hidden]="LoginForm.controls.password.valid ||(LoginForm.controls.password.pristine && !submitted)"></div>
+               formControlName="password" >
       </div>
 
       <button type="submit" class="btn btn-success btn-block">Anmelden</button>

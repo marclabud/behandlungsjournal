@@ -2,20 +2,21 @@
   <div [hidden]="submitted">
     <h1>Erstellen Sie ihr Behandlungsjournal-Konto </h1>
 
-    <form [formGroup]="SignupForm" novalidate (ngSubmit)="save(SignupForm.value,SignupForm.valid)">>
+    <form [formGroup]="SignupForm" (ngSubmit)="save(SignupForm.value,SignupForm.valid)">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="z.B. martina.rogenmoser" required FormControlName="name">
+        <input type="text" class="form-control" id="name" placeholder="z.B. martina.rogenmoser" required formControlName="name">
       </div>
 
       <div class="form-group">
         <label for="email">E-Mail-Adresse</label>
-        <input type="email" class="form-control" id="email" placeholder="z.B. martina.rogenmoser@tierarztpraxis.ch" required FormControlName="email">
+        <input type="email" class="form-control" id="email" placeholder="z.B. martina.rogenmoser@tierarztpraxis.ch" required formControlName="email">
+
       </div>
 
       <div class="form-group">
         <label for="password">Passwort</label>
-        <input type="password" class="form-control" id="password" placeholder="z. B. Xtp49a#y" required FormControlName="password">
+        <input type="password" class="form-control" id="password" placeholder="z. B. Xtp49a#y" required formControlName="password">
       </div>
 
       <button type="submit" class="btn btn-success btn-block">Neues Konto erstellen</button>
