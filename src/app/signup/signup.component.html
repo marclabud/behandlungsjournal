@@ -2,7 +2,7 @@
   <div [hidden]="submitted">
     <h1>Erstellen Sie ihr Behandlungsjournal-Konto </h1>
 
-    <form [formGroup]="SignupForm" (ngSubmit)="save(SignupForm.value,SignupForm.valid)">
+    <form [formGroup]="SignupForm" (ngSubmit)="onSubmit(SignupForm.value,SignupForm.valid)">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" placeholder="z.B. martina.rogenmoser" required formControlName="name">

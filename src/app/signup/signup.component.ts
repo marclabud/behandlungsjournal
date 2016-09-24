@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
       password: ['',[<any>Validators.required]]
     })
   }
-  save(model: IUser, isValid: Boolean) {
+  onSubmit(model: IUser, isValid: Boolean) {
     this.submitted = true; // set form submit to true
     console.log(model,isValid)
   }

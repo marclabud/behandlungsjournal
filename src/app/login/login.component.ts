@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  save(model: IUser, isValid: Boolean) {
+  onSubmit(model: IUser, isValid: Boolean) {
     this.submitted = true; // set form submit to true
     console.log(model,isValid)
   }

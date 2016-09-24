@@ -2,7 +2,7 @@
   <div [hidden]="submitted">
     <h1>Bei dem Behandlungsjournal anmelden </h1>
 
-    <form [formGroup]="LoginForm" (ngSubmit)="save(LoginForm.value,LoginForm.valid)">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit(LoginForm.value,LoginForm.valid)">
       <div class="form-group">
         <label for="email">E-Mail-Adresse</label>
         <input type="email" class="form-control" id="email" placeholder="z.B. martina.rogenmoser@tierarztpraxis.ch"
