@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
     })
   }
   onSubmit(model: IUser, isValid: Boolean) {
+    // ToDo: CheckValidators
     this.submitted = true; // set form submit to true
     console.log(model,isValid)
   }
