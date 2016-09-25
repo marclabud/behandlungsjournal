@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup,FormControl, FormBuilder, Validators} from "@angular/forms";
-import {IUser} from "../shared/user";
+import { IUser} from "../shared/authorisation/user";
 
 @Component({
   selector: 'app-login',
@@ -15,12 +15,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.LoginForm = this._formbuilder.group({
-      email: ['',[<any>Validators.required]],
+      email:['',[<any>Validators.required]],
       password: ['',[<any>Validators.required]]
     })
   }
 
   onSubmit(model: IUser, isValid: Boolean) {
+    //checkmodel
+
     // ToDo: CheckValidators
     this.submitted = true; // set form submit to true
     console.log(model,isValid)

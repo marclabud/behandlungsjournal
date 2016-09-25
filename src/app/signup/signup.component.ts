@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, FormBuilder, Validators} from "@angular/forms";
-import {IUser} from "../shared/user";
+import {IUser} from "../shared/authorisation/user";
 
 @Component({
   selector: 'app-signup',

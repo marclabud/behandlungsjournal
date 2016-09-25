@@ -15,6 +15,10 @@ const appRoutes:Routes = [
     component: UserComponent
   },
   {
+    path: '',
+    component: SignupComponent
+  },
+  {
     path: 'signup',
     component: SignupComponent
   },
