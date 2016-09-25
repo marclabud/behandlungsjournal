@@ -21,7 +21,8 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
-1. Command window 1: `mongod`: run MongoDB
+1. Command window 1: Windows: `mongod`: run MongoDB
+                     Mac OS X: `mongod --config /usr/local/etc/mongod.conf`: run MongoDB (homebrew) 
 2. Command window 2: `ng build -w`: build the project and keep watching the files for changes
 3. Command window 3: `npm start`: run Express server
 4. Go to [localhost:3000](http://localhost:3000)
