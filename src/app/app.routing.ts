@@ -6,6 +6,10 @@ import {LoginComponent}      from './login/login.component';
 
 const appRoutes: Routes = [
   {
+    path: '',
+    component: SignupComponent
+  },
+  {
     path: 'signup',
     component: SignupComponent
   },

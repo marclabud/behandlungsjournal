@@ -2,6 +2,9 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { routing } from './app.routing';
+import {RouterTestingModule
+} from '@angular/router/testing';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
@@ -9,6 +12,7 @@ describe('App: Behandlungsjournal', () => {
       declarations: [
         AppComponent
       ],
+      imports: [ RouterTestingModule ]
     });
   });
 
@@ -18,7 +22,7 @@ describe('App: Behandlungsjournal', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`should have as title 'app works!'`, async(() => {
+  it(`should have as title 'Behandlungsjournal'`, async(() => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Behandlungsjournal');
