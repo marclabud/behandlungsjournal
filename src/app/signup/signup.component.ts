@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import { Http } from '@angular/http';
 import { DataService } from '../services/data.service';
 import {User} from "../shared/authorisation/user";
 
@@ -9,10 +8,9 @@ import {User} from "../shared/authorisation/user";
   templateUrl: './signup.component.html'
 })
 export class SignupComponent implements OnInit {
-  public SignupForm: FormGroup;
+  private SignupForm: FormGroup;
   public submitted: boolean;
-  constructor( private http: Http,
-               private dataService: DataService,
+  constructor( private dataService: DataService,
                private formbuilder: FormBuilder) { }
 
   ngOnInit() {
