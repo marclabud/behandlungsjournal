@@ -1,5 +1,5 @@
-export interface IUser {
-  name: string;
+export class User {
+  name?: string;
   email: string;
   password: string;
 }

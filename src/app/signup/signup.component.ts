@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl, FormBuilder, Validators} from "@angular/forms";
-import {IUser} from "../shared/authorisation/user";
+import {Component, OnInit} from "@angular/core";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import { Http } from '@angular/http';
+import { DataService } from '../services/data.service';
+import {User} from "../shared/authorisation/user";
 
 @Component({
   selector: 'app-signup',
@@ -9,18 +11,35 @@ import {IUser} from "../shared/authorisation/user";
 export class SignupComponent implements OnInit {
   public SignupForm: FormGroup;
   public submitted: boolean;
-  constructor(private _formbuilder: FormBuilder) { }
+  constructor( private http: Http,
+               private dataService: DataService,
+               private formbuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.SignupForm = this._formbuilder.group({
+    this.SignupForm = this.formbuilder.group({
       name: ['',[<any>Validators.required]],
       email: ['',[<any>Validators.required]],
       password: ['',[<any>Validators.required]]
     })
   }
-  onSubmit(model: IUser, isValid: Boolean) {
-    // ToDo: CheckValidators
-    this.submitted = true; // set form submit to true
-    console.log(model,isValid)
+
+  onSubmit(model: User, isValid: Boolean) {
+    if (typeof(model.name) === 'string' &&
+      typeof(model.email) === 'string' &&
+      typeof(model.password) === 'string' &&
+      isValid) {
+
+      this.dataService.addUser(model).subscribe(
+        res => {
+          var newUser = res.json();
+          this.submitted = true; // set form submit to true
+        },
+        error => console.log(error)
+      );
+
+
+    }
+    // error
+    console.log(model, isValid)
   }
 }
