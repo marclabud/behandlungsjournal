@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import { DataService } from '../services/data.service';
-import {User} from "../shared/authorisation/user";
+import {User} from "../shared/auth/user";
 
 @Component({
   selector: 'app-signup',

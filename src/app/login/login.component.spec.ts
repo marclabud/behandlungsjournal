@@ -3,7 +3,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { FormBuilder, Validators } from '@angular/forms'
-import { IUser} from "../shared/authorisation/user";
+import { User} from "../shared/auth/user";
 
 describe('Component: Login', () => {
   it('should create an instance', () => {

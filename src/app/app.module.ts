@@ -9,6 +9,8 @@ import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
 import {DataService} from './services/data.service';
+import {AuthService } from './shared/auth/auth.service';
+import {GuardService} from './shared/guard/guard.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import {DataService} from './services/data.service';
     routing,
   ],
   providers: [
-    DataService
+    DataService,AuthService,GuardService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
