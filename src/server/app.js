@@ -54,9 +54,9 @@ db.once('open', function() {
 
   // find by id
   app.get('/user/:id', function(req, res) {
-    User.findOne({_id: req.params.id}, function(err, obj) {
+    User.findOne({_id: req.params.id}, function(err, docs) {
       if(err) return console.error(err);
-      res.json(obj);
+      res.json(docs);
     })
   });
 
@@ -76,8 +76,20 @@ db.once('open', function() {
     });
   });
 
+  // find by email
+  app.get('/user/:email/:password', function(req, res) {
+    var email=req.params.email;
+    console.log('email',email);
+    var password=req.params.password;
+    console.log('password',password);
+    User.find({email:email,password: password}, function(err, docs) {
+      if(err) return console.error(err);
+      res.json(docs);
+      console.log(docs);
+    })
+  });
 
-  // all other routes are handled by Angular
+  // // all other routes are handled by Angular
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname,'/../../dist/index.html'));
   });
