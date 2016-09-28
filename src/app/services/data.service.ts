@@ -12,8 +12,13 @@ export class DataService {
   constructor(private http: Http) { }
 
   getUsers() {
+    console.log (this.http.get('/users').map(res => res.json()));
     return this.http.get('/users').map(res => res.json());
   }
+  // getUser(user) {
+  //   return this.http.get(`/user/${user._id}`).map(res => res.json());
+  // }
+
 
   addUser(user) {
     return this.http.post("/user", JSON.stringify(user), this.options);
@@ -26,5 +31,11 @@ export class DataService {
   deleteUser(user) {
     return this.http.delete(`/user/${user._id}`, this.options);
   }
-  
+
+  getUserbyEmail(user) {
+    console.log(this.http.get(`/user/${user.email}/${user.password}`));
+    console.log (this.http.get(`/user/${user.email}/${user.password}`));
+    return this.http.get(`/user/${user.email}/${user.password}`).map(res => res.json());
+  }
+
 }

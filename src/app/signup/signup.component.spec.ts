@@ -3,7 +3,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, FormBuilder, Validators} from "@angular/forms";
-import {IUser} from "../shared/authorisation/user";
+import {IUser} from "../shared/auth/user";
 import { SignupComponent } from './signup.component';
 
 

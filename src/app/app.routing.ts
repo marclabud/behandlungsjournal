@@ -1,5 +1,6 @@
 import {ModuleWithProviders}    from '@angular/core';
 import {Routes, RouterModule}   from '@angular/router';
+import {GuardService} from './shared/guard/guard.service';
 
 import {SignupComponent}        from './signup/signup.component';
 import {LoginComponent}         from './login/login.component';
@@ -12,11 +13,8 @@ const appRoutes:Routes = [
   },
   {
     path: 'user',
-    component: UserComponent
-  },
-  {
-    path: '',
-    component: SignupComponent
+    component: UserComponent,
+    canActivate: [GuardService]
   },
   {
     path: 'signup',

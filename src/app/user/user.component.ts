@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
 import { DataService } from '../services/data.service';
@@ -24,8 +23,7 @@ export class UserComponent implements OnInit {
 
   private infoMsg = { body: "", type: "info"};
 
-  constructor(private http: Http,
-              private dataService: DataService,
+  constructor(private dataService: DataService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {

@@ -1,16 +1,21 @@
 import {Component, OnInit} from "@angular/core";
-import {FormGroup,FormControl, FormBuilder, Validators} from "@angular/forms";
-import { IUser} from "../shared/authorisation/user";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {User} from "../shared/auth/user";
+import { AuthService } from '../shared/auth/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  public LoginForm: FormGroup;
+  private LoginForm: FormGroup;
+  private LoginStatus: boolean;
   public submitted: boolean;
 
-  constructor(private _formbuilder: FormBuilder) {
+  constructor( private authService:AuthService,
+               private router: Router,
+    private _formbuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -20,11 +25,20 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSubmit(model: IUser, isValid: Boolean) {
-    //checkmodel
+  onSubmit(model: User, isValid: Boolean) {
+    if (typeof(model.email) === 'string' && typeof(model.password) === 'string') {
+      this.submitted = true; // set form submit to true
+      this.LoginStatus= this.authService.login(model);
+      if (this.LoginStatus){
 
-    // ToDo: CheckValidators
-    this.submitted = true; // set form submit to true
+        this.router.navigate(['/user']);
+        //redirect to main
+      }
+      else {
+        //redirect to login
+        this.router.navigate(['/login'])
+      }
+    }
     console.log(model,isValid)
   }
 
