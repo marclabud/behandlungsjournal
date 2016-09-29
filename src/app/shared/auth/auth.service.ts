@@ -51,7 +51,7 @@ export class AuthService {
 
   checkCredentials(user:User):boolean {
     let UserConfirmed:boolean=false;
-     this.dataService.getUserbyEmail(user).subscribe(
+     this.dataService.loginUser(user).subscribe(
        data => this.users = data,
        error => console.log(error)
      );
