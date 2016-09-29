@@ -3,12 +3,31 @@
 import { TestBed, async } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { FormBuilder, Validators } from '@angular/forms'
+import { AuthService } from '../shared/auth/auth.service';
+import {Router} from "@angular/router";
+import {RouterTestingModule
+} from '@angular/router/testing';
 import { User} from "../shared/auth/user";
 
+
+
 describe('Component: Login', () => {
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          LoginComponent
+        ],
+        imports: [ RouterTestingModule,AuthService]
+      });
+
+
+    });
   it('should create an instance', () => {
-    let formbuilder= new FormBuilder() ;
-    let component = new LoginComponent(formbuilder);
+    let formbuilder= new FormBuilder();
+    let router = new Router();
+    let authService = new AuthService();
+    let component = new LoginComponent(authService,router,formbuilder);
     expect(component).toBeTruthy();
   });
   describe('ngOnInit', () => {

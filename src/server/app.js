@@ -82,7 +82,8 @@ db.once('open', function() {
     console.log('email',email);
     var password=req.params.password;
     console.log('password',password);
-    User.find({email:email,password: password}, function(err, docs) {
+    var searchquery={email:email,password: password};
+    User.find(searchquery, function(err, docs) {
       if(err) return console.error(err);
       res.json(docs);
       console.log(docs);
