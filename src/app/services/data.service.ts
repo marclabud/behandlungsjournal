@@ -32,10 +32,9 @@ export class DataService {
     return this.http.delete(`/user/${user._id}`, this.options);
   }
 
-  getUserbyEmail(user) {
-    console.log(this.http.get(`/user/${user.email}/${user.password}`));
-    console.log (this.http.get(`/user/${user.email}/${user.password}`));
-    return this.http.get(`/user/${user.email}/${user.password}`).map(res => res.json());
+  loginUser(user) {
+    let creds = JSON.stringify({ email: user.email, password: user.password });
+    return this.http.post(`/user/login`,creds,this.options).map(res => res.json());
   }
 
 }

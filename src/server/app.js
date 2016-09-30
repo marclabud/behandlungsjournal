@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var _    = require('lodash');
 var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
 
@@ -104,15 +105,15 @@ db.once('open', function() {
     User.find({email:email,password: password}, function(err,docs) {
       if(err) return console.error(err);
       console.log ('4', docs);
-      if (!docs===[]) {
+      if (!(_.isEmpty(docs))) {
         //1 User wurde gefunden; Token wird zurückgesendet
-        // var token='123';
-        console.log('5','if, obj nicht leer');
+        var token='123';
+        res.status(201).send({id_token: token});
+        console.log('5','if, docs nicht leer');
       }
       else {    //keinen User mit diesem Passwort gefunden
         return res.status(401).send({message:"The username or password don't match", email: email});
       }
-      res.json(docs);
     })
   });
 
