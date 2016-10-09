@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var _    = require('lodash');
 var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
 
@@ -76,17 +77,43 @@ db.once('open', function() {
     });
   });
 
-  // find by email
-  app.get('/user/:email/:password', function(req, res) {
-    var email=req.params.email;
-    console.log('email',email);
-    var password=req.params.password;
-    console.log('password',password);
-    var searchquery={email:email,password: password};
-    User.find(searchquery, function(err, docs) {
+  // // find by email
+  // app.get('/user/:email/:password', function(req, res) {
+  //   var email=req.params.email;
+  //   console.log('email',email);
+  //   var password=req.params.password;
+  //   console.log('password',password);
+  //   User.find({email:email,password: password}, function(err, docs) {
+  //     if(err) return console.error(err);
+  //     res.json(docs);
+  //     console.log(docs);
+  //   })
+  // });
+
+  // loginUser
+  app.post('/user/login', function(req, res) {
+    console.log ('1', 'req.body',req.body);
+    var email=req.body.email;
+    console.log('2','email',email);
+    var password=req.body.password;
+    console.log('3','password',password);
+
+    if (email==="" || !password==="") {
+      return res.status(400).send("You must send the username and the password");
+    }
+    //mongodbquery
+    User.find({email:email,password: password}, function(err,docs) {
       if(err) return console.error(err);
-      res.json(docs);
-      console.log(docs);
+      console.log ('4', docs);
+      if (!(_.isEmpty(docs))) {
+        //1 User wurde gefunden; Token wird zurückgesendet
+        var token='123';
+        res.status(201).send({id_token: token});
+        console.log('5','if, docs nicht leer');
+      }
+      else {    //keinen User mit diesem Passwort gefunden
+        return res.status(401).send({message:"The username or password don't match", email: email});
+      }
     })
   });
 
