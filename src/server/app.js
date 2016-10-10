@@ -1,8 +1,11 @@
+"use strict";
+
 var express = require('express');
 var path = require('path');
 var _    = require('lodash');
 var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
+var mongodb = require ('./services/mongodbservice');
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
@@ -21,7 +24,7 @@ var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
 // Models
-var User = require('./user.model.js');
+var User = require('./model/user.model.js');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
