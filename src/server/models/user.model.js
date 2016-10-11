@@ -1,11 +1,13 @@
-var mongoose = require('mongoose');
+'use strict';
 
-var userSchema = mongoose.Schema({
+const mongoose = require('mongoose');
+
+const userSchema = mongoose.Schema({
     name: String,
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true}
 });
 
-var User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
