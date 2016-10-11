@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const mongodb = require ('./services/mongodbservice');
 
 const app = express();
+const router = express.Router();
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -26,6 +27,7 @@ mongoose.Promise = global.Promise;
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will have no prefix
 app.use(require('./routes/userRoutes.js'));
+app.use(require('./routes/staticRoutes.js'));
 
 connect()
   .on('error', console.error.bind(console, 'connection error:'))
@@ -41,5 +43,4 @@ function connect () {
   var options = { server: { socketOptions: { keepAlive: 1 } } };
   return mongoose.connect('mongodb://localhost:27017/test', options).connection;
 }
-
 

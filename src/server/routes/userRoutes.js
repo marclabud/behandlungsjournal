@@ -1,15 +1,16 @@
 'use strict';
-var express = require('express');
-const path = require('path');
-var router = express.Router();
-var _    = require('lodash');
+const express = require('express');
+// const path = require('path');
+const _    = require('lodash');
+
+const userRouter = express.Router();
 
 // Models
 const User = require('../models/user.model.js');
 
 // APIs
 // select all users
-router.get('/users', function (req, res) {
+userRouter.get('/users', function (req, res) {
   User.find({}, function (err, docs) {
     if (err) return console.error(err);
     res.json(docs);
@@ -17,7 +18,7 @@ router.get('/users', function (req, res) {
 });
 
 // count all users
-router.get('/users/count', function (req, res) {
+userRouter.get('/users/count', function (req, res) {
   User.count(function (err, count) {
     if (err) return console.error(err);
     res.json(count);
@@ -25,8 +26,8 @@ router.get('/users/count', function (req, res) {
 });
 
 // create new user
-router.post('/user', function (req, res) {
-  var obj = new User(req.body);
+userRouter.post('/user', function (req, res) {
+  let obj = new User(req.body);
   obj.save(function (err, obj) {
     if (err) return console.error(err);
     res.status(200).json(obj);
@@ -34,7 +35,7 @@ router.post('/user', function (req, res) {
 });
 
 // find user by id
-router.get('/user/:id', function (req, res) {
+userRouter.get('/user/:id', function (req, res) {
   User.findOne({_id: req.params.id}, function (err, docs) {
     if (err) return console.error(err);
     res.json(docs);
@@ -42,7 +43,7 @@ router.get('/user/:id', function (req, res) {
 });
 
 // update user by id
-router.put('/user/:id', function (req, res) {
+userRouter.put('/user/:id', function (req, res) {
   User.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
     if (err) return console.error(err);
     res.sendStatus(200);
@@ -50,7 +51,7 @@ router.put('/user/:id', function (req, res) {
 });
 
 // delete user by id
-router.delete('/user/:id', function (req, res) {
+userRouter.delete('/user/:id', function (req, res) {
   User.findOneAndRemove({_id: req.params.id}, function (err) {
     if (err) return console.error(err);
     res.sendStatus(200);
@@ -58,7 +59,7 @@ router.delete('/user/:id', function (req, res) {
 });
 
 // user login
-router.post('/user/login', function (req, res) {
+userRouter.post('/user/login', function (req, res) {
   let email = req.body.email;
   let password = req.body.password;
 
@@ -80,10 +81,4 @@ router.post('/user/login', function (req, res) {
     }
   })
 });
-
-// // all other routes are handled by Angular
-router.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../../../dist/index.html'));
-});
-
-module.exports = router;
+module.exports=userRouter;
