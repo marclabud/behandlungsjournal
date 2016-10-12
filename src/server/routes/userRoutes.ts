@@ -1,12 +1,12 @@
 'use strict';
 const express = require('express');
 const _    = require('lodash');
-const users = require ('../controller/usersController.js');
+const users = require ('../controller/usersController.ts');
 
 const userRouter = express.Router();
 
 // Models
-const User = require('../models/user.model.js');
+const User = require('../models/user.model.ts');
 
 // APIs
 // select all users

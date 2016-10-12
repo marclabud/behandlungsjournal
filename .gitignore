@@ -13,6 +13,12 @@
 *.launch
 .settings/
 
+# Express-Server
+/src/server/*.js
+/src/server/*.map
+/src/server/**/*.js
+/src/server/**/*.map
+
 # misc
 /.sass-cache
 /connect.lock

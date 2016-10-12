@@ -1,22 +1,23 @@
 "use strict";
 
-const express = require('express');
+import * as express from "express";
+import { json, urlencoded } from "body-parser";
+
 const path = require('path');
 const morgan = require('morgan'); // logger
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const mongodb = require ('./services/mongodbservice');
 
-const app = express();
-const router = express.Router();
+const mongoose = require('mongoose');
+
+const app: express.Application = express();
+const router: express.Router = express.Router();
 
 app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(__dirname + '/../../dist'));
 
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// body-parser
+app.use(json());
+app.use(urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
 
@@ -26,6 +27,7 @@ mongoose.Promise = global.Promise;
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will have no prefix
+// ToDo: Improvement Path Variable to use ts in ts and js in js.
 app.use(require('./routes/userRoutes.js'));
 app.use(require('./routes/staticRoutes.js'));
 
@@ -40,7 +42,7 @@ function listen () {
 }
 
 function connect () {
-  var options = { server: { socketOptions: { keepAlive: 1 } } };
+  let options = { server: { socketOptions: { keepAlive: 1 } } };
   return mongoose.connect('mongodb://localhost:27017/test', options).connection;
 }
 

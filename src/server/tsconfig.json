@@ -10,6 +10,9 @@
     ]
   },
   "files": [
-    "server.js"
+    "./server.ts",
+    "./routes/staticRoutes.ts",
+    "./routes/userRoutes.ts",
+    "./models/user.model.ts"
   ]
 }
