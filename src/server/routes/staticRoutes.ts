@@ -1,5 +1,5 @@
 'use strict';
-const express = require('express');
+import * as express from "express";
 const path = require('path');
 const staticRouter = express.Router();
 

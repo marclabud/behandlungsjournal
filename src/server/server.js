@@ -1,16 +1,17 @@
 "use strict";
-const express = require('express');
+const express = require("express");
+const body_parser_1 = require("body-parser");
 const path = require('path');
 const morgan = require('morgan'); // logger
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const mongodb = require('./services/mongodbservice');
 const app = express();
 const router = express.Router();
 app.set('port', (process.env.PORT || 3000));
 app.use('/', express.static(__dirname + '/../../dist'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// body-parser
+app.use(body_parser_1.json());
+app.use(body_parser_1.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 // mongoose
 // Use native promises

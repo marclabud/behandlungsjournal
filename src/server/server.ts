@@ -1,22 +1,24 @@
 "use strict";
 
-const express = require('express');
+import * as express from "express";
+import { json, urlencoded } from "body-parser";
+
 const path = require('path');
 const morgan = require('morgan'); // logger
-const bodyParser = require('body-parser');
+
 const mongoose = require('mongoose');
 const mongodb = require ('./services/mongodbservice');
 
-const app = express();
-const router = express.Router();
+const app: express.Application = express();
+const router: express.Router = express.Router();
 
 app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(__dirname + '/../../dist'));
 
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// body-parser
+app.use(json());
+app.use(urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
 

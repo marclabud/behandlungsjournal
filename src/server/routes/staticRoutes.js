@@ -1,5 +1,5 @@
 'use strict';
-const express = require('express');
+const express = require("express");
 const path = require('path');
 const staticRouter = express.Router();
 // // all other routes are handled by Angular

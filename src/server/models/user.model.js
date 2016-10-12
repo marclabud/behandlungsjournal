@@ -9,6 +9,6 @@ const userSchema = mongoose.Schema({
  * Statics
  */
 userSchema.statics = {};
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
 module.exports = User;
 //# sourceMappingURL=D:/Dev/git/behandlungsjournal/src/server/models/user.model.js.map
