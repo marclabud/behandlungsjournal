@@ -7,7 +7,6 @@ const path = require('path');
 const morgan = require('morgan'); // logger
 
 const mongoose = require('mongoose');
-const mongodb = require ('./services/mongodbservice');
 
 const app: express.Application = express();
 const router: express.Router = express.Router();
