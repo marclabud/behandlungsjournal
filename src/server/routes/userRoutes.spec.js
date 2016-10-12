@@ -1,20 +1,20 @@
 const request = require('supertest');
 const express = require('express');
 
+// Pure Supertest without testframework
 
 const app = express();
 app.use(require('./userRoutes.js'));
 
 app.get('/users/count', function(req, res){
-  res.send(200, { name: 'tobi' });
+  res.send(200);
 });
 
-describe('GET /users/count', function(){
-  it('respond with json', function(done){
-    request(app)
-      .get('/users')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200, done.fail);
-  })
-});
+request(app)
+  .get('/users/count')
+  .expect('Content-Type', /json/)
+  .expect('Content-Length', '15')
+  .expect(200)
+  .end(function(err, res) {
+    if (err) throw err;
+  });
