@@ -13,7 +13,7 @@ const User = require('../models/user.model.js');
 userRouter.get('/users', function (req, res) {
   User.find({}, function (err, docs) {
     if (err) return console.error(err);
-    res.json(docs);
+    res.status(200).json(docs);
   });
 });
 
@@ -21,7 +21,7 @@ userRouter.get('/users', function (req, res) {
 userRouter.get('/users/count', function (req, res) {
   User.count(function (err, count) {
     if (err) return console.error(err);
-    res.json(count);
+    res.status(200).json(count);
   });
 });
 
@@ -38,7 +38,7 @@ userRouter.post('/user', function (req, res) {
 userRouter.get('/user/:id', function (req, res) {
   User.findOne({_id: req.params.id}, function (err, docs) {
     if (err) return console.error(err);
-    res.json(docs);
+    res.status(200).json(docs);
   })
 });
 
