@@ -60,10 +60,11 @@ userRouter.delete('/user/:id', function (req, res) {
 
 // user login
 userRouter.post('/user/login', function (req, res) {
-  let email = req.body.email;
-  let password = req.body.password;
+  // ToDo: Fehlerbehandlung, falls im Body ein Array zurückkommt und kein String.
+  let email: string = req.body.email;
+  let password: string = req.body.password;
 
-  if (email === "" || !password === "") {
+  if (email === "" || password === "") {
     return res.status(400).send("You must send the username and the password");
   }
   //mongodbquery
