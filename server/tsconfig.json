@@ -12,9 +12,10 @@
   },
   "files": [
     "src/server.ts",
-    "src/staticRoutes.ts",
+    "src/routes/staticRoutes.ts",
     "src/routes/userRoutes.ts",
-    "src/models/user.model.ts"
+    "src/models/user.model.ts",
+    "src/controller/usersController.ts"
   ],
   "exclude": [
     "node_modules"
