@@ -6,7 +6,7 @@
   "description": "Behandlungsjournal | Angular 2 full stack project.",
   "angular-cli": {},
   "scripts": {
-    "start": "nodemon server/src/server.js",
+    "start": "nodemon dist_server/server.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",

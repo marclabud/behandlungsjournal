@@ -4,7 +4,7 @@ import * as _ from "lodash";
 const userRouter = express.Router();
 
 // Models
-const User = require('../models/user.model.ts');
+const User = require('../models/user.model.js');
 
 // APIs
 // select all users
