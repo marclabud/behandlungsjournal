@@ -1,5 +1,5 @@
 'use strict';
-const express = require("express");
+import * as express from "express";
 import * as _ from "lodash";
 const userRouter = express.Router();
 
@@ -66,7 +66,7 @@ userRouter.post('/user/login', function (req, res) {
     return res.status(400).send("You must send the username and the password");
   }
   //mongodbquery
-  User.find({email: email, password: password}, function (err, docs) {
+  User.find({email: email, password: password}, function (err: any, docs:any):any {
     if (err) return console.error(err);
     if (!(_.isEmpty(docs))) {
       //1 User wurde gefunden; Token wird zurückgesendet
@@ -80,4 +80,4 @@ userRouter.post('/user/login', function (req, res) {
     }
   })
 });
-module.exports=userRouter;
+export=userRouter;

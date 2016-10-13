@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": false,
+    "typeRoots": [
+      "../node_modules/@types"
+    ]
+  },
+  "files": [
+    "./src/server/server.ts",
+    "./src/server/routes/staticRoutes.ts",
+    "./src/server/routes/userRoutes.ts",
+    "./src/server/models/user.model.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
