@@ -1,6 +1,6 @@
 'use strict';
 
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     name: String,
@@ -33,4 +33,4 @@ userSchema.statics = {
 
 const User = mongoose.model('user', userSchema);
 
-export = User; //export is ES6 Modul-Syntax
+module.exports = User;

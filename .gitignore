@@ -14,10 +14,8 @@
 .settings/
 
 # Express-Server
-/src/server/*.js
-/src/server/*.map
-/src/server/**/*.js
-/src/server/**/*.map
+/server/src/**/*.js
+/server/src/**/*.map
 
 # misc
 /.sass-cache
