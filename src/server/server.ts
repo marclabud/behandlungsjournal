@@ -5,7 +5,6 @@ import { json, urlencoded } from "body-parser";
 
 const path = require('path');
 const morgan = require('morgan'); // logger
-
 const mongoose = require('mongoose');
 
 const app: express.Application = express();
@@ -23,7 +22,7 @@ app.use(morgan('dev'));
 
 // mongoose
 // Use native promises
-mongoose.Promise = global.Promise;
+(<any>mongoose).Promise = global.Promise;
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will have no prefix

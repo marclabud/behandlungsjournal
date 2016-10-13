@@ -1,8 +1,6 @@
 'use strict';
-const express = require('express');
-const _    = require('lodash');
-const users = require ('../controller/usersController.ts');
-
+const express = require("express");
+import * as _ from "lodash";
 const userRouter = express.Router();
 
 // Models
