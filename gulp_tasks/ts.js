@@ -12,6 +12,6 @@ function tsc() {
     tsProject.src()
         .on('error', gutil.log)
         .pipe(tsProject())
-        .pipe(gulp.dest("dist_server/"));
+        .pipe(gulp.dest("dist/"));
 }
 tsc.description=`ExpressServer: JS-Generierung mit Typescript (tsconfig.json)`;

@@ -11,8 +11,9 @@ const app: express.Application = express();
 const router: express.Router = express.Router();
 
 app.set('port', (process.env.PORT || 3000));
-
-app.use('/', express.static(__dirname + '/../../dist'));
+// Check dir ToDo
+console.log ('server express static', __dirname );
+app.use('/', express.static(__dirname + '/../dist/public'));
 
 // body-parser
 app.use(json());
