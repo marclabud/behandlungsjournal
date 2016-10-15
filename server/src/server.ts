@@ -1,23 +1,25 @@
 "use strict";
 
 import * as express from "express";
-import { json, urlencoded } from "body-parser";
+import {json, urlencoded} from "body-parser";
 
 const path = require('path');
 const morgan = require('morgan'); // logger
 const mongoose = require('mongoose');
+// configuration
+import {connection,paths} from "./app.conf";
 
 const app: express.Application = express();
 const router: express.Router = express.Router();
 
 app.set('port', (process.env.PORT || 3000));
 // Check dir ToDo
-console.log ('server express static', __dirname );
-app.use('/', express.static(__dirname + '/../dist/public'));
+console.log(__dirname + '/' +paths.dist_client);
+app.use('/', express.static(__dirname + '/'+paths.dist_client));
 
 // body-parser
 app.use(json());
-app.use(urlencoded({ extended: false }));
+app.use(urlencoded({extended: false}));
 
 app.use(morgan('dev'));
 
@@ -36,13 +38,16 @@ connect()
   .on('disconnected', connect)
   .once('open', listen);
 
-function listen () {
+function listen() {
   app.listen(app.get('port'));
-  console.log('Behandlungsjournal listening on port ' +app.get('port'));
+  console.log('Behandlungsjournal listening on port ' + app.get('port'));
 }
 
-function connect () {
-  let options = { server: { socketOptions: { keepAlive: 1 } } };
-  return mongoose.connect('mongodb://localhost:27017/test', options).connection;
+function connect() {
+
+  let dbconnection: string = connection.dbsystem + connection.dburl + '/' + connection.dbname;
+  console.log('dbc', dbconnection);
+  let options = {server: {socketOptions: {keepAlive: 1}}};
+  return mongoose.connect(dbconnection, options).connection;
 }
 

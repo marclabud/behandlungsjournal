@@ -4,7 +4,7 @@ const gulp = require('gulp');
 
 //serve Server with nodedemon
 // ToDo: nodemon serve
-gulp.task('serve',['clean:dist_server','ts'], serve);
+gulp.task('serve',['clean','ts'], serve);
 
 function serve() {
 
