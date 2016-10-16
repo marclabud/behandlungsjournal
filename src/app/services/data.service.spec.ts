@@ -8,7 +8,7 @@ import { DataService } from './data.service';
 describe('Service: Data', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DataService,]
+      providers: [DataService]
     });
   });
 

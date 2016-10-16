@@ -26,7 +26,7 @@ userSchema.statics = {
   //   return this.find(options.criteria)
   //     .select(options.select)
   //     .exec(cb);
-  //}
+  // }
 };
 
 

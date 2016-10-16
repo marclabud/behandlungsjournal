@@ -7,6 +7,7 @@
  */
 exports.paths= {
   src: 'src',
+  srcServer: 'server',
   dist: 'dist',
   tmp: '.tmp',
   tasks: 'gulp_tasks',

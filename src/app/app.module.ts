@@ -27,7 +27,7 @@ import {GuardService} from './shared/guard/guard.service';
     routing,
   ],
   providers: [
-    DataService,AuthService,GuardService
+    DataService, AuthService, GuardService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

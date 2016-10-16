@@ -17,11 +17,11 @@ export class UserComponent implements OnInit {
   private isEditing = false;
 
   private addUserForm: FormGroup;
-  private name = new FormControl("", Validators.required);
-  private email = new FormControl("", Validators.required);
-  private password = new FormControl("", Validators.required);
+  private name = new FormControl('', Validators.required);
+  private email = new FormControl('', Validators.required);
+  private password = new FormControl('', Validators.required);
 
-  private infoMsg = { body: "", type: "info"};
+  private infoMsg = { body: '', type: 'info'};
 
   constructor(private dataService: DataService,
               private formBuilder: FormBuilder) { }
@@ -47,10 +47,10 @@ export class UserComponent implements OnInit {
   addUser() {
     this.dataService.addUser(this.addUserForm.value).subscribe(
       res => {
-        var newUser = res.json();
+        let newUser = res.json();
         this.users.push(newUser);
         this.addUserForm.reset();
-        this.sendInfoMsg("Benutzer erfolgreich hinzugefügt.", "success");
+        this.sendInfoMsg('Benutzer erfolgreich hinzugefügt.', 'success');
       },
       error => console.log(error)
     );
@@ -64,7 +64,7 @@ export class UserComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.user = {};
-    this.sendInfoMsg("Benutzer-Bearbeitung abgebrochen.", "warning");
+    this.sendInfoMsg('Benutzer-Bearbeitung abgebrochen.', 'warning');
     // reload the users to reset the editing
     this.getUsers();
   }
@@ -74,19 +74,19 @@ export class UserComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.user = user;
-        this.sendInfoMsg("Benutzer erfolgreich bearbeitet.", "success");
+        this.sendInfoMsg('Benutzer erfolgreich bearbeitet.', 'success');
       },
       error => console.log(error)
     );
   }
 
   deleteUser(user) {
-    if(window.confirm("Wollen Sie sicher diesen Benutzer permanent löschen?")) {
+    if ( window.confirm('Wollen Sie sicher diesen Benutzer permanent löschen?')) {
       this.dataService.deleteUser(user).subscribe(
         res => {
-          var pos = this.users.map(user => { return user._id }).indexOf(user._id);
+          let pos = this.users.map( user => { return user._id; } ).indexOf(user._id);
           this.users.splice(pos, 1);
-          this.sendInfoMsg("Benutzer erfolgreich gelöscht.", "success");
+          this.sendInfoMsg('Benutzer erfolgreich gelöscht.', 'success');
         },
         error => console.log(error)
       );
@@ -96,7 +96,7 @@ export class UserComponent implements OnInit {
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;
-    window.setTimeout(() => this.infoMsg.body = "", time);
+    window.setTimeout(() => this.infoMsg.body = '', time);
   }
 
 }

@@ -4,9 +4,9 @@ import {GuardService} from './shared/guard/guard.service';
 
 import {SignupComponent}        from './signup/signup.component';
 import {LoginComponent}         from './login/login.component';
-import {UserComponent}          from "./user/user.component";
+import {UserComponent}          from './user/user.component';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   {
     path: '',
     component: LoginComponent
@@ -25,4 +25,4 @@ const appRoutes:Routes = [
     component: LoginComponent
   }
 ];
-export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

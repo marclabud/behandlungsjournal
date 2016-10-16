@@ -2,12 +2,12 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { FormBuilder, Validators } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth/auth.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import {RouterTestingModule
 } from '@angular/router/testing';
-import { User} from "../shared/auth/user";
+import { User} from '../shared/auth/user';
 
 
 
@@ -18,16 +18,16 @@ describe('Component: Login', () => {
         declarations: [
           LoginComponent
         ],
-        imports: [ RouterTestingModule,AuthService]
+        imports: [ RouterTestingModule, AuthService]
       });
 
 
     });
   it('should create an instance', () => {
-    let formbuilder= new FormBuilder();
+    let formbuilder = new FormBuilder();
     let router = new Router();
     let authService = new AuthService();
-    let component = new LoginComponent(authService,router,formbuilder);
+    let component = new LoginComponent(authService, router, formbuilder);
     expect(component).toBeTruthy();
   });
   describe('ngOnInit', () => {
@@ -54,7 +54,7 @@ describe('Component: Login', () => {
 
       component.onSubmit(user, isValid);
 
-      //expect()
+      // expect()
     });
     it('should do nothing if isValid is false', () => {
       let formbuilder = new FormBuilder();
@@ -64,7 +64,7 @@ describe('Component: Login', () => {
 
       component.onSubmit(user, isValid);
 
-      //expect()
+      // expect()
     });
   });
 });

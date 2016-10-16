@@ -21,7 +21,7 @@ export class DataService {
 
 
   addUser(user) {
-    return this.http.post("/user", JSON.stringify(user), this.options);
+    return this.http.post('/user', JSON.stringify(user), this.options);
   }
 
   editUser(user) {
@@ -34,7 +34,7 @@ export class DataService {
 
   loginUser(user) {
     let creds = JSON.stringify({ email: user.email, password: user.password });
-    return this.http.post(`/user/login`,creds,this.options).map(res => res.json());
+    return this.http.post(`/user/login`, creds, this.options).map(res => res.json());
   }
 
 }

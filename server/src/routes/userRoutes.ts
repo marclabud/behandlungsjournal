@@ -1,6 +1,6 @@
 'use strict';
-import * as express from "express";
-import * as _ from "lodash";
+import * as express from 'express';
+import * as _ from 'lodash';
 const userRouter = express.Router();
 
 // Models
@@ -35,9 +35,11 @@ userRouter.post('/user', function (req, res) {
 // find user by id
 userRouter.get('/user/:id', function (req, res) {
   User.findOne({_id: req.params.id}, function (err, docs) {
-    if (err) return console.error(err);
+    if (err) {
+      return console.error(err);
+    }
     res.status(200).json(docs);
-  })
+  });
 });
 
 // update user by id
@@ -62,22 +64,22 @@ userRouter.post('/user/login', function (req, res) {
   let email: string = req.body.email;
   let password: string = req.body.password;
 
-  if (email === "" || password === "") {
-    return res.status(400).send("You must send the username and the password");
+  if (email === '' || password === '') {
+    return res.status(400).send('You must send the username and the password');
   }
-  //mongodbquery
-  User.find({email: email, password: password}, function (err: any, docs:any):any {
+  // mongodbquery
+  User.find({email: email, password: password}, function (err: any, docs: any): any {
     if (err) return console.error(err);
     if (!(_.isEmpty(docs))) {
-      //1 User wurde gefunden; Token wird zurückgesendet
+      // 1 User wurde gefunden; Token wird zurückgesendet
       // ToDo: Check mit count, ob es mehr als einen User gibt.
       let token = '123';
       res.status(201).send({id_token: token});
       console.log('Token', 'Token to response ok');
     }
-    else {    //keinen User mit diesem Passwort gefunden
-      return res.status(401).send({message: "The username or password don't match", email: email});
+    else {    // keinen User mit diesem Passwort gefunden
+      return res.status(401).send({message: 'The username or password dont match', email: email});
     }
-  })
+  });
 });
-export=userRouter;
+export= userRouter;

@@ -1,21 +1,18 @@
-"use strict";
+'use strict';
 
-import * as express from "express";
-import {json, urlencoded} from "body-parser";
-
-const path = require('path');
+import * as express from 'express';
+import {json, urlencoded} from 'body-parser';
 const morgan = require('morgan'); // logger
 const mongoose = require('mongoose');
 // configuration
-import {connection,paths} from "./app.conf";
+import {connection, paths} from './server.conf';
 
 const app: express.Application = express();
-const router: express.Router = express.Router();
 
 app.set('port', (process.env.PORT || 3000));
 // Check dir ToDo
-console.log(__dirname + '/' +paths.dist_client);
-app.use('/', express.static(__dirname + '/'+paths.dist_client));
+console.log(__dirname + '/' + paths.dist_client);
+app.use('/', express.static(__dirname + '/' + paths.dist_client));
 
 // body-parser
 app.use(json());
@@ -44,7 +41,6 @@ function listen() {
 }
 
 function connect() {
-
   let dbconnection: string = connection.dbsystem + connection.dburl + '/' + connection.dbname;
   console.log('dbc', dbconnection);
   let options = {server: {socketOptions: {keepAlive: 1}}};

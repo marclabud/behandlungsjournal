@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { DataService } from '../services/data.service';
-import {User} from "../shared/auth/user";
+import {User} from '../shared/auth/user';
 
 @Component({
   selector: 'app-signup',
@@ -15,10 +15,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.SignupForm = this.formbuilder.group({
-      name: ['',[<any>Validators.required]],
-      email: ['',[<any>Validators.required]],
-      password: ['',[<any>Validators.required]]
-    })
+      name: ['', [<any>Validators.required]],
+      email: ['', [<any>Validators.required]],
+      password: ['', [<any>Validators.required]]
+    });
   }
 
   onSubmit(model: User, isValid: Boolean) {
@@ -29,7 +29,6 @@ export class SignupComponent implements OnInit {
 
       this.dataService.addUser(model).subscribe(
         res => {
-          var newUser = res.json();
           this.submitted = true; // set form submit to true
         },
         error => console.log(error)
@@ -38,6 +37,6 @@ export class SignupComponent implements OnInit {
 
     }
     // error
-    console.log(model, isValid)
+    console.log(model, isValid);
   }
 }

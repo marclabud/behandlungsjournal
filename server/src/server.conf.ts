@@ -4,7 +4,7 @@ export const paths: any = {
   dist_client: 'public'
 };
 export const connection: any = {
-  dbsystem: "mongodb://",
+  dbsystem: 'mongodb://',
   dburl: 'localhost:27017',
   dbname: 'test'
 };
