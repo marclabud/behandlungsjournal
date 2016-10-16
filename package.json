@@ -6,7 +6,7 @@
   "description": "Behandlungsjournal | Angular 2 full stack project.",
   "angular-cli": {},
   "scripts": {
-    "start": "nodemon dist/server.js",
+    "start": "nodemon --watch dist/src dist/server.js",
     "lint": "tslint --project src/tsconfig.json --force",
     "lintserver": "tslint --project server/src/tsconfig.json --force",
     "buildserver": "gulp build",
