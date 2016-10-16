@@ -19,8 +19,7 @@ export class AuthService {
       // Write Token
       this.setToken();
       this.isLoggedIn = true;
-    }
-    else {
+    } else {
       console.log('isOK', isOK );
     }
     return this.isLoggedIn;
@@ -34,8 +33,7 @@ export class AuthService {
 
     if ( '' === requestedToken) {
       return false;
-    }
-    else {
+    } else {
       return true;
     };
 

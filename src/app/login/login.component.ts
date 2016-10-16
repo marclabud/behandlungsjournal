@@ -32,8 +32,7 @@ export class LoginComponent implements OnInit {
       if (this.LoginStatus) {
         this.router.navigate(['/user']);
         // redirect to main
-      }
-      else {
+      } else {
         // redirect to login
         this.router.navigate(['/login']);
       }
