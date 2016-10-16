@@ -7,7 +7,8 @@
   "angular-cli": {},
   "scripts": {
     "start": "nodemon dist/server.js",
-    "lint": "tslint \"src/**/*.ts\"",
+    "lint": "tslint --project src/tsconfig.json --force",
+    "lintserver": "tslint --project server/src/tsconfig.json --force",
     "buildserver": "gulp build",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
