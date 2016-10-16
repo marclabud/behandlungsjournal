@@ -10,7 +10,6 @@ import {connection, paths} from './server.conf';
 const app: express.Application = express();
 
 app.set('port', (process.env.PORT || 3000));
-// Check dir ToDo
 console.log(__dirname + '/' + paths.dist_client);
 app.use('/', express.static(__dirname + '/' + paths.dist_client));
 
