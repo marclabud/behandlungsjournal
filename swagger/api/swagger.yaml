@@ -58,7 +58,54 @@ paths:
        description: 'Unexpected error'
        schema:
         $ref: '#/definitions/Error'
-
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "updateUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "path"
+        description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated UserObject"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "User updated"
+        400:
+          description: "Invalid user supplied"
+        404:
+          description: "User not found"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "Delete User by Id."
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "path"
+        description: "User _id to be deleted"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "User is deleted"
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
  /user/count:
      get:
       operationId: 'countUsers'
