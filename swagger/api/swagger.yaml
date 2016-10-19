@@ -77,32 +77,51 @@ paths:
         schema:
          $ref: '#/definitions/Error'
 
+ /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "Create User."
+      operationId: "addUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+
 definitions:
   User:
     type: "object"
     properties:
-        _id:
-          type: "string"
-        name:
-          type: "string"
-        email:
-          type: "string"
-        password:
-          type: "string"
+       _id:
+         type: "string"
+       name:
+         type: "string"
+       email:
+         type: "string"
+       password:
+         type: "string"
   Error:
     type: object
     properties:
       code:
-        type: integer
-        format: int32
+       type: integer
+       format: int32
       message:
-        type: string
+       type: string
       fields:
-        type: string
+       type: string
   Count:
     type: object
     properties:
       count:
        type: integer
        format: int64
-
