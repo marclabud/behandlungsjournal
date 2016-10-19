@@ -59,6 +59,24 @@ paths:
        schema:
         $ref: '#/definitions/Error'
 
+ /user/count:
+     get:
+      operationId: 'countUsers'
+      description: 'Returns quantity of Users'
+      produces:
+         - "application/json"
+      tags:
+         - "user"
+      responses:
+       "200":
+        description: 'Returns quantity of Users'
+        schema:
+         $ref: '#/definitions/Count'
+       default:
+        description: 'Unexpected error'
+        schema:
+         $ref: '#/definitions/Error'
+
 definitions:
   User:
     type: "object"
@@ -81,3 +99,10 @@ definitions:
         type: string
       fields:
         type: string
+  Count:
+    type: object
+    properties:
+      count:
+       type: integer
+       format: int64
+
