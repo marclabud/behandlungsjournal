@@ -33,14 +33,14 @@ paths:
        description: 'Unexpected error'
        schema:
          $ref: '#/definitions/Error'
- /user/{name}:
+ /user/{_id}:
     get:
      operationId: 'getUserbyID'
      description: 'Returns user by ID (ObjectID)'
      produces:
         - "application/json"
      parameters:
-       - name: name
+       - name: _id
          in: path
          required: true
          type: string
