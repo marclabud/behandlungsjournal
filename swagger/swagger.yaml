@@ -72,8 +72,8 @@ paths:
          $ref: '#/definitions/Error'
  /user/{_id}:
     get:
-     operationId: 'getUserbyID'
-     description: 'Returns user by ID (ObjectID)'
+     operationId: 'getUserbyId'
+     description: 'Returns user by Id (ObjectID)'
      produces:
         - "application/json"
      parameters:
