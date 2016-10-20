@@ -1,19 +1,13 @@
 'use strict';
 import * as express from 'express';
 import * as _ from 'lodash';
+const UserController = require ('../controller/usercontroller');
 const userRouter = express.Router();
 
-// Models
-const User = require('../models/user.model');
 
 // APIs
 // select all users
-userRouter.get('/users', function (req, res) {
-  User.find({}, function (err, docs) {
-    if (err) return console.error(err);
-    res.status(200).json(docs);
-  });
-});
+userRouter.get('/users', UserController.getAllUsers);
 
 // count all users
 userRouter.get('/users/count', function (req, res) {
