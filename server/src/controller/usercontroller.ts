@@ -58,26 +58,26 @@ module.exports.deleteUser = (req, res) => {
   });
 };
 
-module.exports.loginUser = (res, req) => {
-  let email: string = req.body.email;
-  let password: string = req.body.password;
-
-  if (email === '' || password === '') {
-    return res.status(400).send('You must send the username and the password');
-  }
-  // mongodbquery
-  User.find({email: email, password: password}, (err: any, docs: any): any => {
-    if (err) {
-      return console.error(err);
-    }
-    if (!(_.isEmpty(docs))) {
-      // 1 User wurde gefunden; Token wird zurückgesendet
-      // ToDo: Check mit count, ob es mehr als einen User gibt.
-      let token = '123';
-      res.status(201).send({id_token: token});
-      console.log('Token', 'Token to response ok');
-    } else {    // keinen User mit diesem Passwort gefunden
-      return res.status(401).send({message: 'The username or password dont match', email: email});
-    }
-  });
-};
+// module.exports.loginUser = (res, req) => {
+//   let email: string = req.body.email;
+//   let password: string = req.body.password;
+//
+//   if (email === '' || password === '') {
+//     return res.status(400).send('You must send the username and the password');
+//   }
+//   // mongodbquery
+//   User.find({email: email, password: password}, (err: any, docs: any): any => {
+//     if (err) {
+//       return console.error(err);
+//     }
+//     if (!(_.isEmpty(docs))) {
+//       // 1 User wurde gefunden; Token wird zurückgesendet
+//       // ToDo: Check mit count, ob es mehr als einen User gibt.
+//       let token = '123';
+//       res.status(201).send({id_token: token});
+//       console.log('Token', 'Token to response ok');
+//     } else {    // keinen User mit diesem Passwort gefunden
+//       return res.status(401).send({message: 'The username or password dont match', email: email});
+//     }
+//   });
+// };
