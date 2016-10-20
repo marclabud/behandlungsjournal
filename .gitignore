@@ -17,6 +17,10 @@
 /server/src/**/*.js
 /server/src/**/*.map
 
+# Swagger
+/swagger/server/**/*
+/swagger/client/**/*
+
 # misc
 /.sass-cache
 /connect.lock
