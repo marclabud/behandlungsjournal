@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {User} from '../shared/auth/user';
+import {User} from '../user/model/user';
 import { AuthService } from '../shared/auth/auth.service';
 import {Router} from '@angular/router';
 
