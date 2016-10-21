@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
-import { DataService } from '../services/data.service';
+import { UserService } from './service/user.service';
 
 @Component({
   selector: 'app-user',
@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
 
   private infoMsg = { body: '', type: 'info'};
 
-  constructor(private dataService: DataService,
+  constructor(private userService: UserService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
   }
 
   getUsers() {
-    this.dataService.getUsers().subscribe(
+    this.userService.getUsers().subscribe(
       data => this.users = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
   }
 
   addUser() {
-    this.dataService.addUser(this.addUserForm.value).subscribe(
+    this.userService.addUser(this.addUserForm.value).subscribe(
       res => {
         let newUser = res.json();
         this.users.push(newUser);
@@ -70,7 +70,7 @@ export class UserComponent implements OnInit {
   }
 
   editUser(user) {
-    this.dataService.editUser(user).subscribe(
+    this.userService.editUser(user).subscribe(
       res => {
         this.isEditing = false;
         this.user = user;
@@ -82,7 +82,7 @@ export class UserComponent implements OnInit {
 
   deleteUser(user) {
     if ( window.confirm('Wollen Sie sicher diesen Benutzer permanent löschen?')) {
-      this.dataService.deleteUser(user).subscribe(
+      this.userService.deleteUser(user).subscribe(
         res => {
           let pos = this.users.map( user => { return user._id; } ).indexOf(user._id);
           this.users.splice(pos, 1);

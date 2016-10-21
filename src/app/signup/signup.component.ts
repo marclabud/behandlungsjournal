@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { DataService } from '../services/data.service';
+import { UserService } from '../user/service/user.service';
 import {User} from '../shared/auth/user';
 
 @Component({
@@ -10,7 +10,7 @@ import {User} from '../shared/auth/user';
 export class SignupComponent implements OnInit {
   private SignupForm: FormGroup;
   public submitted: boolean;
-  constructor( private dataService: DataService,
+  constructor( private userService: UserService,
                private formbuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
       typeof(model.password) === 'string' &&
       isValid) {
 
-      this.dataService.addUser(model).subscribe(
+      this.userService.addUser(model).subscribe(
         res => {
           this.submitted = true; // set form submit to true
         },

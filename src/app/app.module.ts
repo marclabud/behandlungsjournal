@@ -8,7 +8,7 @@ import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
-import {DataService} from './services/data.service';
+import {UserService} from './user/service/user.service';
 import {AuthService } from './shared/auth/auth.service';
 import {GuardService} from './shared/guard/guard.service';
 
@@ -27,7 +27,7 @@ import {GuardService} from './shared/guard/guard.service';
     routing,
   ],
   providers: [
-    DataService, AuthService, GuardService
+    UserService, AuthService, GuardService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
