@@ -1,6 +1,6 @@
 # Behandlungsjournal
 
-Ein online-Behandlungsjournal für kranke Tiere.
+Ein [online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki) für kranke Tiere.
 
 ## Technology stack
 Behandlungsjournal is generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.15.
@@ -11,7 +11,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [**A**ngular 2](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
 * [Angular CLI](https://cli.angular.io): to generate the project
-* [Bootstrap](http://www.getbootstrap.com): layout and styles
+* [Bootstrap](https://v4-alpha.getbootstrap.com/getting-started/introduction/): layout and styles
 * [Font Awesome](http://fontawesome.io): icons
 
 
