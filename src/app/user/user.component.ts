@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl, Validators, FormBuilder}  from '@angular/forms';
 
-import { UserService } from './service/user.service';
+import {UserService} from './service/user.service';
+import {User} from "./model/user";
 
 @Component({
   selector: 'app-user',
@@ -10,24 +11,25 @@ import { UserService } from './service/user.service';
 })
 export class UserComponent implements OnInit {
 
-  private users = [];
+  private users:Array<User> = [];
   private isLoading = true;
 
-  private user = {};
+  private user:User = null;
   private isEditing = false;
 
-  private addUserForm: FormGroup;
+  private addUserForm:FormGroup;
   private name = new FormControl('', Validators.required);
   private email = new FormControl('', Validators.required);
   private password = new FormControl('', Validators.required);
 
-  private infoMsg = { body: '', type: 'info'};
+  private infoMsg = {body: '', type: 'info'};
 
-  constructor(private userService: UserService,
-              private formBuilder: FormBuilder) { }
+  constructor(private userService:UserService,
+              private formBuilder:FormBuilder) {
+  }
 
   ngOnInit() {
-    this.getUsers();
+    this.getUsers(true);
 
     this.addUserForm = this.formBuilder.group({
       name: this.name,
@@ -36,8 +38,8 @@ export class UserComponent implements OnInit {
     });
   }
 
-  getUsers() {
-    this.userService.getUsers().subscribe(
+  getUsers(forceReload:boolean = false) {
+    this.userService.getAll(forceReload).subscribe(
       data => this.users = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -49,6 +51,7 @@ export class UserComponent implements OnInit {
       res => {
         let newUser = res.json();
         this.users.push(newUser);
+        this.actualizeCache();
         this.addUserForm.reset();
         this.sendInfoMsg('Benutzer erfolgreich hinzugefügt.', 'success');
       },
@@ -63,7 +66,7 @@ export class UserComponent implements OnInit {
 
   cancelEditing() {
     this.isEditing = false;
-    this.user = {};
+    this.user = null;
     this.sendInfoMsg('Benutzer-Bearbeitung abgebrochen.', 'warning');
     // reload the users to reset the editing
     this.getUsers();
@@ -74,6 +77,7 @@ export class UserComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.user = user;
+        this.actualizeCache();
         this.sendInfoMsg('Benutzer erfolgreich bearbeitet.', 'success');
       },
       error => console.log(error)
@@ -81,11 +85,14 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser(user) {
-    if ( window.confirm('Wollen Sie sicher diesen Benutzer permanent löschen?')) {
+    if (window.confirm('Wollen Sie sicher diesen Benutzer permanent löschen?')) {
       this.userService.deleteUser(user).subscribe(
         res => {
-          let pos = this.users.map( user => { return user._id; } ).indexOf(user._id);
+          let pos = this.users.map(user => {
+            return user._id;
+          }).indexOf(user._id);
           this.users.splice(pos, 1);
+          this.actualizeCache();
           this.sendInfoMsg('Benutzer erfolgreich gelöscht.', 'success');
         },
         error => console.log(error)
@@ -97,6 +104,10 @@ export class UserComponent implements OnInit {
     this.infoMsg.body = body;
     this.infoMsg.type = type;
     window.setTimeout(() => this.infoMsg.body = '', time);
+  }
+  
+  private actualizeCache() {
+    this.userService.getCache().writeCache(this.users);
   }
 
 }
