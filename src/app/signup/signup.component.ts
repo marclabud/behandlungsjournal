@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { UserService } from '../user/service/user.service';
+import {UserService} from '../user/service/user.service';
 import {User} from '../user/model/user';
 
 @Component({
@@ -8,10 +8,13 @@ import {User} from '../user/model/user';
   templateUrl: './signup.component.html'
 })
 export class SignupComponent implements OnInit {
-  private SignupForm: FormGroup;
-  public submitted: boolean;
-  constructor( private userService: UserService,
-               private formbuilder: FormBuilder) { }
+
+  private SignupForm:FormGroup;
+  public submitted:boolean;
+
+  constructor(private userService:UserService,
+              private formbuilder:FormBuilder) {
+  }
 
   ngOnInit() {
     this.SignupForm = this.formbuilder.group({
@@ -21,22 +24,28 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit(model: User, isValid: Boolean) {
+  onSubmit(model:User, isValid:Boolean) {
     if (typeof(model.name) === 'string' &&
       typeof(model.email) === 'string' &&
-      typeof(model.password) === 'string' &&
-      isValid) {
-
+      typeof(model.password) === 'string' && isValid) {
       this.userService.addUser(model).subscribe(
         res => {
           this.submitted = true; // set form submit to true
         },
         error => console.log(error)
       );
-
-
+      this.actualizeCache();
     }
     // error
     console.log(model, isValid);
+  }
+
+  private actualizeCache() {
+    let users:Array<User> = [];
+    this.userService.getAll(true).subscribe(
+      data => users = data,
+      error => console.log(error)
+    );
+    this.userService.getCache().writeCache(users);
   }
 }
