@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import {User} from './user';
+import { UserService } from '../../user/service/user.service';
+import {User} from '../../user/model/user';
 
 @Injectable()
 export class AuthService {
@@ -9,7 +9,7 @@ export class AuthService {
   private users = [];
   redirectUrl: string;
 
-  constructor (private dataService: DataService) {}
+  constructor (private userService: UserService) {}
 
   login(user: User): boolean {
    let isOK = false;
@@ -50,7 +50,7 @@ export class AuthService {
 
   checkCredentials(user: User): boolean {
     let UserConfirmed = false;
-     this.dataService.loginUser(user).subscribe(
+     this.userService.loginUser(user).subscribe(
        data => this.users = data,
        error => console.log(error)
      );

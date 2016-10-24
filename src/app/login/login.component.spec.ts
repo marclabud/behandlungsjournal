@@ -7,7 +7,7 @@ import { AuthService } from '../shared/auth/auth.service';
 import {Router} from '@angular/router';
 import {RouterTestingModule
 } from '@angular/router/testing';
-import { User} from '../shared/auth/user';
+import { User} from '../user/model/user';
 
 
 
