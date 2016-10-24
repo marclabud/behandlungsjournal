@@ -1,30 +1,29 @@
 'use strict';
 import {Router} from 'express';
 const UserController = require ('../controller/usercontroller');
-
+import { paths} from './../server.conf';
 
 const userRouter = Router();
-
 // APIs
 // select all users
-userRouter.get('/users', UserController.getAllUsers);
+userRouter.get(paths.base_path + '/users', UserController.getAllUsers);
 
 // count all users
-userRouter.get('/users/count', UserController.countUsers);
+userRouter.get(paths.base_path + '/users/count', UserController.countUsers);
 
 // create new user
-userRouter.post('/user', UserController.addUser);
+userRouter.post(paths.base_path + '/user', UserController.addUser);
 
 // find user by id
-userRouter.get('/user/:id', UserController.findUserbyId);
+userRouter.get(paths.base_path + '/user/:id', UserController.findUserbyId);
 
 // update user by id
-userRouter.put('/user/:id', UserController.updateUser);
+userRouter.put(paths.base_path + '/user/:id', UserController.updateUser);
 
 // delete user by id
-userRouter.delete('/user/:id', UserController.deleteUser);
+userRouter.delete(paths.base_path + '/user/:id', UserController.deleteUser);
 
 // user login
-userRouter.post('/user/login', UserController.loginUser);
+userRouter.post(paths.base_path + '/user/login', UserController.loginUser);
 
 export= userRouter;
