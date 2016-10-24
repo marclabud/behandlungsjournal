@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/map';
-import {ServiceBase} from "../../shared/service.base";
-import {User} from "../model/user";
+import {ServiceBase} from '../../shared/service.base';
+import {User} from '../model/user';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
@@ -11,7 +11,7 @@ export class UserService extends ServiceBase<User> {
   private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
   private options = new RequestOptions({headers: this.headers});
 
-  constructor(http:Http) {
+  constructor(http: Http) {
     super(http, 'UserService:Users');
   }
 
@@ -42,7 +42,7 @@ export class UserService extends ServiceBase<User> {
     return this.http.post(`/user/login`, creds, this.options).map(res => res.json());
   }
 
-  protected getServiceUrl():string {
+  protected getServiceUrl(): string {
     return '/users';
   }
 
