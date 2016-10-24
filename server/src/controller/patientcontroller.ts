@@ -4,6 +4,7 @@ const Patient = require ('../models/patient.model');
 
 module.exports.getAllPatients = (request, response) => {
   Patient.find({}, (err, docs) => {
+    console.log ('getAllPatients: docs', docs);
     if (err) {
       return console.error(err);
     }

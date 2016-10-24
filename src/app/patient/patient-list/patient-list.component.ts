@@ -10,13 +10,13 @@ export class PatientListComponent implements OnInit {
   private patients = [];
   private isLoading = true;
 
-  constructor(private dataService: DataService) { }
+  constructor(private patientService: PatientService) { }
 
   ngOnInit() {
     this.getPatients();
   }
   getPatients() {
-    this.dataService.getPatients().subscribe(
+    this.patientService.getPatients().subscribe(
       data => this.patients = data,
       error => console.log(error),
       () => this.isLoading = false

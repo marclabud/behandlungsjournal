@@ -4,6 +4,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
+import { paths} from './../../../../server/src/server.conf';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
@@ -16,7 +17,7 @@ export class UserService extends ServiceBase<User> {
   }
 
   getUsers() {
-    console.log(this.http.get('/users').map(res => res.json()));
+    console.log(this.http.get(paths.base_path + '/users').map(res => res.json()));
     return this.http.get('/users').map(res => res.json());
   }
 
@@ -26,20 +27,20 @@ export class UserService extends ServiceBase<User> {
 
 
   addUser(user) {
-    return this.http.post('/user', JSON.stringify(user), this.options);
+    return this.http.post(paths.base_path + '/user', JSON.stringify(user), this.options);
   }
 
   editUser(user) {
-    return this.http.put(`/user/${user._id}`, JSON.stringify(user), this.options);
+    return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.options);
   }
 
   deleteUser(user) {
-    return this.http.delete(`/user/${user._id}`, this.options);
+    return this.http.delete(`${paths.base_path}/user/${user._id}`, this.options);
   }
 
   loginUser(user) {
     let creds = JSON.stringify({email: user.email, password: user.password});
-    return this.http.post(`/user/login`, creds, this.options).map(res => res.json());
+    return this.http.post(`${paths.base_path}/user/login`, creds, this.options).map(res => res.json());
   }
 
   protected getServiceUrl(): string {

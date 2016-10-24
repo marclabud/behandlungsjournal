@@ -11,13 +11,18 @@ import {LoginComponent} from './login/login.component';
 import {UserService} from './user/service/user.service';
 import {AuthService } from './shared/auth/auth.service';
 import {GuardService} from './shared/guard/guard.service';
+import { PatientListComponent } from './patient/patient-list/patient-list.component';
+import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
+import {PatientService} from './patient/patient.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    PatientListComponent,
+    PatientDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,11 @@ import {GuardService} from './shared/guard/guard.service';
     routing,
   ],
   providers: [
-    UserService, AuthService, GuardService
+    UserService,
+    PatientService,
+    AuthService,
+    GuardService,
+    PatientService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

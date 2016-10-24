@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder}  from '@angular/forms';
 
 import {UserService} from './service/user.service';
-import {User} from "./model/user";
+import {User} from './model/user';
 
 @Component({
   selector: 'app-user',
@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
     });
   }
 
-  getUsers(forceReload:boolean = false) {
+  getUsers(forceReload: boolean = false) {
     this.userService.getAll(forceReload).subscribe(
       data => this.users = data,
       error => console.log(error),
@@ -105,7 +105,7 @@ export class UserComponent implements OnInit {
     this.infoMsg.type = type;
     window.setTimeout(() => this.infoMsg.body = '', time);
   }
-  
+
   private actualizeCache() {
     this.userService.getCache().writeCache(this.users);
   }

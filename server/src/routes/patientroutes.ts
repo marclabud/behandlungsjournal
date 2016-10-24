@@ -1,7 +1,7 @@
 
 'use strict';
 import {Router} from 'express';
-const PatientController = require ('../controller/usercontroller');
+const PatientController = require ('../controller/patientcontroller');
 import { paths} from './../server.conf';
 
 const PatientRouter = Router();
