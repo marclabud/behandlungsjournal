@@ -14,6 +14,7 @@ import {GuardService} from './shared/guard/guard.service';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
 import {PatientService} from './patient/patient.service';
+import { BhjournalComponent } from './bhjournal/bhjournal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {PatientService} from './patient/patient.service';
     SignupComponent,
     LoginComponent,
     PatientListComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    BhjournalComponent
   ],
   imports: [
     BrowserModule,

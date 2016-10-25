@@ -1,3 +1,27 @@
-<p>
-  patient-detail works!
-</p>
+<div *ngIf="patient">
+  <h2>{{patient.name}}</h2>
+  <div>
+    <label>Name des Patienten: </label>
+    <input [(ngModel)]="patient.name" placeholder="Name"/>
+  </div>
+  <div>
+    <label>Tierart: </label>
+    <input [(ngModel)]="patient.tierart" placeholder="Tierart"/>
+  </div>
+  <div>
+    <label>Rasse: </label>
+    <input [(ngModel)]="patient.rasse" placeholder="Tierrasse"/>
+  </div>
+  <div>
+    <label>Diagnose: </label>
+    <input [(ngModel)]="patient.diagnose" placeholder="Diagnose"/>
+  </div>
+  <div>
+    <label>Vorname des Eigentümers: </label>
+    <input [(ngModel)]="patient.eigentuemerVorname" placeholder="Vorname"/>
+  </div>
+  <div>
+    <label>Nachname des Eigentümers: </label>
+    <input [(ngModel)]="patient.eigentuemerNachname" placeholder="Nachname"/>
+  </div>
+</div>

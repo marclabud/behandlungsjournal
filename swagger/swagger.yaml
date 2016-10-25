@@ -239,7 +239,11 @@ definitions:
           type: "string"
         name:
           type: "string"
+        tierart:
+          type: "string"
         rasse:
+          type: "string"
+        diagnose:
           type: "string"
         eigentuemer_vorname:
           type: "string"

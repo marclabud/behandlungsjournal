@@ -5,6 +5,7 @@ import {GuardService} from './shared/guard/guard.service';
 import {SignupComponent}        from './signup/signup.component';
 import {LoginComponent}         from './login/login.component';
 import {UserComponent}          from './user/user.component';
+import {BhjournalComponent} from './bhjournal/bhjournal.component';
 
 const appRoutes: Routes = [
   {
@@ -14,6 +15,11 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserComponent,
+    canActivate: [GuardService]
+  },
+  {
+    path: 'bhjournal',
+    component: BhjournalComponent,
     canActivate: [GuardService]
   },
   {
