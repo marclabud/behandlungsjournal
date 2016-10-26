@@ -27,7 +27,7 @@ export class UserService extends ServiceBase<User> {
 
 
   addUser(user) {
-    return this.http.post(`${paths.base_path}/user`, JSON.stringify(user), this.options);
+    return this.http.post(paths.base_path + '/user', JSON.stringify(user), this.options);
   }
 
   editUser(user) {
