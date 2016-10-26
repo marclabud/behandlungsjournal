@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from './../patient.service';
+import {Patient} from '../model/patient';
 
 @Component({
   selector: 'app-patient-list',
@@ -9,7 +10,8 @@ import { PatientService } from './../patient.service';
 export class PatientListComponent implements OnInit {
   private patients = [];
   private isLoading = true;
-
+  selectedPatient: Patient;
+// ToDo: @Output definieren: Output ist der ausgewählte Patient
   constructor(private patientService: PatientService) { }
 
   ngOnInit() {
@@ -23,4 +25,9 @@ export class PatientListComponent implements OnInit {
     );
   };
 
+  onSelect(patient: Patient): void {
+    console.log ('onselect patient', patient);
+    this.selectedPatient = patient;
+    console.log ('onselect selectedPatient', this.selectedPatient);
+  }
 }

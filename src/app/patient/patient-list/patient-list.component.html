@@ -6,10 +6,12 @@
 </div>
 <div class="card" *ngIf="!isLoading">
   <h2>Meine Patienten</h2>
-  <ul class="patient">
-    <li *ngFor="let patient of patients">
+  <div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action" *ngFor="let patient of patients"
+            (click)="onSelect(patient)">
       {{patient.name}}
-    </li>
-  </ul>
-
+    </button>
+  </div>
+  <button type="button">Neuer Patient</button>
+  <app-patient-detail [patient]="selectedPatient"></app-patient-detail>
 </div>
