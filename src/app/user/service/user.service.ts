@@ -18,7 +18,7 @@ export class UserService extends ServiceBase<User> {
 
   getUsers() {
     console.log(this.http.get(paths.base_path + '/users').map(res => res.json()));
-    return this.http.get('/users').map(res => res.json());
+    return this.http.get(paths.base_path + '/users').map(res => res.json());
   }
 
   // getUser(user) {
@@ -27,7 +27,7 @@ export class UserService extends ServiceBase<User> {
 
 
   addUser(user) {
-    return this.http.post(paths.base_path + '/user', JSON.stringify(user), this.options);
+    return this.http.post(`${paths.base_path}/user`, JSON.stringify(user), this.options);
   }
 
   editUser(user) {
@@ -44,7 +44,7 @@ export class UserService extends ServiceBase<User> {
   }
 
   protected getServiceUrl(): string {
-    return '/users';
+    return paths.base_path + '/users';
   }
 
 }
