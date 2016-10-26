@@ -18,7 +18,7 @@ export class UserService extends ServiceBase<User> {
 
   getUsers() {
     console.log(this.http.get(paths.base_path + '/users').map(res => res.json()));
-    return this.http.get('/users').map(res => res.json());
+    return this.http.get(paths.base_path + '/users').map(res => res.json());
   }
 
   // getUser(user) {
