@@ -44,7 +44,7 @@ export class UserService extends ServiceBase<User> {
   }
 
   protected getServiceUrl(): string {
-    return '/users';
+    return paths.base_path +  '/users';
   }
 
 }
