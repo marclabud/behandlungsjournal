@@ -1,27 +1,38 @@
 <div *ngIf="patient">
- <h2>{{patient.name}}</h2>
-  <div>
-    <label>Name des Patienten: </label>
-    <input [(ngModel)]="patient.name" placeholder="Name"/>
+  <div class="form-group row">
+    <h2 class="col-xs-7">{{patient.name}}</h2>
   </div>
-  <div>
-    <label>Tierart: </label>
-    <input [(ngModel)]="patient.tierart" placeholder="Tierart"/>
+  <div class="form-group row">
+    <label class="col-xs-3 col-form-label">Name des Patienten: </label>
+    <input [(ngModel)]="patient.name" class="col-xs-7" type="text" placeholder="Name"/>
   </div>
-  <div>
-    <label>Rasse: </label>
-    <input [(ngModel)]="patient.rasse" placeholder="Tierrasse"/>
+  <div class="form-group row">
+    <label class="col-xs-3 col-form-label">Tierart: </label>
+    <input [(ngModel)]="patient.tierart" class="col-xs-7" type="text" placeholder="Tierart"/>
   </div>
-  <div>
-    <label>Diagnose: </label>
-    <input [(ngModel)]="patient.diagnose" placeholder="Diagnose"/>
+  <div class="form-group row">
+    <label class="col-xs-3 col-form-label">Rasse: </label>
+    <input [(ngModel)]="patient.rasse" class="col-xs-7" type="text" placeholder="Tierrasse"/>
   </div>
-  <div>
-    <label>Vorname des Eigentümers: </label>
-    <input [(ngModel)]="patient.eigentuemerVorname" placeholder="Vorname"/>
+  <div class="form-group row">
+    <label class="col-xs-3 col-form-label">Diagnose: </label>
+    <input [(ngModel)]="patient.diagnose" class="col-xs-7" type="text" placeholder="Diagnose"/>
   </div>
-  <div>
-    <label>Nachname des Eigentümers: </label>
-    <input [(ngModel)]="patient.eigentuemerNachname" placeholder="Nachname"/>
+  <div class="form-group row">
+    <label class="col-xs-3 col-form-label">Vorname des Eigentümers: </label>
+    <input [(ngModel)]="patient.eigentuemerVorname" class="col-xs-7" type="text" placeholder="Vorname"/>
+  </div>
+  <div class="form-group row">
+    <label class="col-xs-3 col-form-label">Nachname des Eigentümers: </label>
+    <input [(ngModel)]="patient.eigentuemerNachname" class="col-xs-7" type="text" placeholder="Nachname"/>
+  </div>
+  <div class="form-group row">
+    <button class="col-xs-3 col-form-label btn btn-sm btn-primary" type="submit" (click)="savePatient(patient)">
+      Speichern
+    </button>
+    <button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset">
+      Abbrechen
+    </button>
   </div>
 </div>
+

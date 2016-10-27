@@ -15,6 +15,7 @@ import { PatientListComponent } from './patient/patient-list/patient-list.compon
 import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
 import {PatientService} from './patient/patient.service';
 import { BhjournalComponent } from './bhjournal/bhjournal.component';
+import { TitelComponent } from './titel/titel.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BhjournalComponent } from './bhjournal/bhjournal.component';
     LoginComponent,
     PatientListComponent,
     PatientDetailComponent,
-    BhjournalComponent
+    BhjournalComponent,
+    TitelComponent
   ],
   imports: [
     BrowserModule,

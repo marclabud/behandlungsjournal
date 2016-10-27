@@ -5,8 +5,8 @@ const patientSchema = new mongoose.Schema({
   tierart: {type: String, required: true},
   rasse: String,
   diagnose: String,
-  eigentuemer_vorname: String,
-  eigentuemer_nachname: {type: String, required: true}
+  eigentuemerVorname: String,
+  eigentuemerNachname: {type: String, required: true}
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

@@ -10,7 +10,8 @@ import {BhjournalComponent} from './bhjournal/bhjournal.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    redirectTo: '/login',
+    pathMatch: 'full'
   },
   {
     path: 'user',

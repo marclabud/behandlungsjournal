@@ -30,4 +30,13 @@ export class PatientListComponent implements OnInit {
     this.selectedPatient = patient;
     console.log ('onselect selectedPatient', this.selectedPatient);
   }
+
+  onAddPatient(): Patient {
+    let patient = new Patient();
+    patient.name = 'Neuer Patient';
+    console.log ('onselect patient', patient);
+    this.selectedPatient = patient;
+    console.log ('onselect selectedPatient', this.selectedPatient);
+    return this.selectedPatient;
+  }
 }

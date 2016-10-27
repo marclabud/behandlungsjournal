@@ -12,6 +12,6 @@
       {{patient.name}}
     </button>
   </div>
-  <button type="button">Neuer Patient</button>
+  <button class="btn btn-sm btn-primary" type="button" (click)="onAddPatient(selectedPatient)">Neuer Patient</button>
   <app-patient-detail [patient]="selectedPatient"></app-patient-detail>
 </div>
