@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {PatientService} from "./../patient.service";
 import {Patient} from "./../model/patient";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-patient-detail',
@@ -41,6 +42,11 @@ export class PatientDetailComponent implements OnInit {
         error => console.log(error)
       );
     }
+  }
+
+  onCancel() {
+  console.log ('Dialog Abbrechen');
+  this.patient = undefined;
   }
 
   sendInfoMsg(body, type, time = 3000) {
