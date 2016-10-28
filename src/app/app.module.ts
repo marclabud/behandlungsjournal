@@ -9,11 +9,11 @@ import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
 import {UserService} from './user/service/user.service';
-import {AuthService } from './shared/auth/auth.service';
-import {GuardService} from './shared/guard/guard.service';
+import {AuthService } from './shared/service/auth/auth.service';
+import {GuardService} from './shared/service/guard/guard.service';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
-import {PatientService} from './patient/patient.service';
+import {PatientService} from './patient/service/patient.service';
 import { BhjournalComponent } from './bhjournal/bhjournal.component';
 import { TitelComponent } from './titel/titel.component';
 

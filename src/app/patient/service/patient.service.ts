@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/map';
-import {ServiceBase} from './../shared/service.base';
-import {Patient} from './model/patient';
-import {paths} from './../../../server/src/server.conf';
+import {ServiceBase} from '../../shared/service.base';
+import {Patient} from '../model/patient';
+import {paths} from '../../../../server/src/server.conf';
 
 @Injectable()
 export class PatientService extends ServiceBase<Patient> {

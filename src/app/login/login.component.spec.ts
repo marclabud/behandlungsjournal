@@ -3,7 +3,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../shared/auth/auth.service';
+import { AuthService } from '../shared/service/auth/auth.service';
 import {Router} from '@angular/router';
 import {RouterTestingModule
 } from '@angular/router/testing';
