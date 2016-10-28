@@ -11,11 +11,14 @@ export class PatientListComponent implements OnInit {
   private patients = [];
   private isLoading = true;
   selectedPatient: Patient;
+  // DropdownListbox im Menü
+  PatientAnzeige: string = 'Patient';
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
   constructor(private patientService: PatientService) { }
 
   ngOnInit() {
     this.getPatients();
+
   }
   getPatients() {
     this.patientService.getPatients().subscribe(
@@ -29,6 +32,7 @@ export class PatientListComponent implements OnInit {
     console.log ('onselect patient', patient);
     this.selectedPatient = patient;
     console.log ('onselect selectedPatient', this.selectedPatient);
+    this.PatientAnzeige = this.selectedPatient.name;
   }
 
   onAddPatient(): Patient {
