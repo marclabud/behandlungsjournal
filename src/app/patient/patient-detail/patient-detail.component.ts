@@ -1,7 +1,6 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {PatientService} from "./../patient.service";
-import {Patient} from "./../model/patient";
-import {isUndefined} from "util";
+import {Component, OnInit, Input} from '@angular/core';
+import {PatientService} from '../service/patient.service';
+import {Patient} from './../model/patient';
 
 @Component({
   selector: 'app-patient-detail',

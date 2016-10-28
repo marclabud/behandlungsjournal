@@ -1,6 +1,6 @@
 import {ModuleWithProviders}    from '@angular/core';
 import {Routes, RouterModule}   from '@angular/router';
-import {GuardService} from './shared/guard/guard.service';
+import {GuardService} from './shared/service/guard/guard.service';
 
 import {SignupComponent}        from './signup/signup.component';
 import {LoginComponent}         from './login/login.component';
