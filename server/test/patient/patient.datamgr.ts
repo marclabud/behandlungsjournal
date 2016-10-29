@@ -8,8 +8,10 @@ export class PatientDataMgr extends DataManager {
     super(db, data);
   }
 
+  // some specific loader
+  // ...
+
   getCollectionName() {
     return 'Patient';
   }
-
 }

@@ -1,15 +1,15 @@
 'use strict';
 /*
- * This example uses the node MongoDB module to connect to the local
+ * This Test data load framework uses the node MongoDB module to connect to the local
  * mongodb database on this virtual machine
  *
  * More here: http://mongodb.github.io/node-mongodb-native/markdown-docs/insert.html
  */
-
-// require node modules (see package.json)
 import {MongoClient} from 'mongodb';
 import {PatientDataMgr} from './patient/patient.datamgr';
 import {PatientData} from './patient/patient.data';
+import {UserDataMgr} from './user/user.datamgr';
+import {UserData} from './user/user.data';
 
 // connect away
 MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
@@ -18,14 +18,24 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
   }
   console.log('Connected to Database');
 
-  // prepare patient data
-  new PatientDataMgr(db, new PatientData());
+  // prepare User data
+  new UserDataMgr(db, new UserData());
+
+  // prepare Patient data
+  sleep(100).then(() => {
+    new PatientDataMgr(db, new PatientData());
+  });
 
   // prepare other data
-  // ...
+  //sleep(100).then(() => {
+  //  ...
+  //});
 
   // close db
   db.close();
 });
 
 
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
