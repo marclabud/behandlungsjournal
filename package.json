@@ -14,7 +14,8 @@
     "buildserver": "gulp build_server",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "loadtestdata": "node server/test/testdata.mgr.js"
   },
   "private": true,
   "dependencies": {
