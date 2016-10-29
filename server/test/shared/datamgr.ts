@@ -5,7 +5,7 @@ export abstract class DataManager {
 
   private db: Db;
   private data: IData;
-  
+
   // constructor
   constructor(db: Db, data: IData) {
     this.db = db;
@@ -15,6 +15,7 @@ export abstract class DataManager {
 
   // main
   prepareData() {
+    console.log('\nPrepare collection ' + this.getCollectionName()+ ':');
     this.drop();
     this.insert(this.data.getData());
   }
@@ -22,7 +23,7 @@ export abstract class DataManager {
   // drop collection
   drop() {
     this.db.collection(this.getCollectionName()).drop(() => {
-      console.log('Drop collection ' + this.getCollectionName());
+      console.log('- Drop collection ' + this.getCollectionName());
     });
   }
 
@@ -30,7 +31,7 @@ export abstract class DataManager {
   insert(data) {
     this.db.collection(this.getCollectionName()).insert(data, () => {
       data.forEach((obj) => {
-        console.log(this.getCollectionName() + ' added as ' + obj.name);
+        console.log('+ ' + this.getCollectionName() + ' added as ' + obj.name);
       });
     });
   }
