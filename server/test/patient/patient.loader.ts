@@ -1,8 +1,8 @@
 import {Db} from 'mongodb';
 import {PatientData} from './patient.data';
-import {DataManager} from '../shared/datamgr';
+import {DataLoader} from '../shared/data.loader';
 
-export class PatientDataMgr extends DataManager {
+export class PatientLoader extends DataLoader {
 
   constructor(db: Db, data: PatientData) {
     super(db, data);

@@ -6,9 +6,9 @@
  * More here: http://mongodb.github.io/node-mongodb-native/markdown-docs/insert.html
  */
 import {MongoClient} from 'mongodb';
-import {PatientDataMgr} from './patient/patient.datamgr';
+import {PatientLoader} from './patient/patient.loader';
 import {PatientData} from './patient/patient.data';
-import {UserDataMgr} from './user/user.datamgr';
+import {UserLoader} from './user/user.loader';
 import {UserData} from './user/user.data';
 
 // connect away
@@ -19,17 +19,17 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
   console.log('Connected to Database');
 
   // prepare User data
-  new UserDataMgr(db, new UserData());
+  new UserLoader(db, new UserData());
 
   // prepare Patient data
   sleep(100).then(() => {
-    new PatientDataMgr(db, new PatientData());
+    new PatientLoader(db, new PatientData());
   });
 
   // prepare other data
-  //sleep(100).then(() => {
+  // sleep(100).then(() => {
   //  ...
-  //});
+  // });
 
   // close db
   db.close();

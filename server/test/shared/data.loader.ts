@@ -1,7 +1,7 @@
 import {IData} from './data';
 import {Db} from '@types/mongodb';
 
-export abstract class DataManager {
+export abstract class DataLoader {
 
   private db: Db;
   private data: IData;
