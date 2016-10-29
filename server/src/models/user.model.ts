@@ -1,36 +1,12 @@
 'use strict';
-
 import * as mongoose from 'mongoose';
 
+const model = 'User';
 const userSchema = new mongoose.Schema({
     name: String,
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true}
-});
-
-/**
- * Statics
- */
-
-userSchema.statics = {
-
-  /**
-   * Select all users
-   *   *
-   * @param {Function} cb
-   * @api private
-   */
-
-  // index: function (cb) {
-  //   options.select = options.select || 'name username';
-  //   return this.find(options.criteria)
-  //     .select(options.select)
-  //     .exec(cb);
-  // }
-};
-
-
-
-const User = mongoose.model('User', userSchema);
+}, {collection: model});
+const User = mongoose.model(model, userSchema);
 
 module.exports = User;
