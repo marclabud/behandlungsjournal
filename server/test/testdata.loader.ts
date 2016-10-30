@@ -22,9 +22,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
   new UserLoader(db, new UserData());
 
   // prepare Patient data
-  sleep(100).then(() => {
-    new PatientLoader(db, new PatientData());
-  });
+  new PatientLoader(db, new PatientData());
 
   // prepare other data
   // sleep(100).then(() => {
