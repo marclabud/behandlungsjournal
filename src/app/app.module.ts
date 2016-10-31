@@ -17,6 +17,7 @@ import {PatientService} from './patient/service/patient.service';
 import { BhjournalComponent } from './bhjournal/bhjournal.component';
 import { TitelComponent } from './titel/titel.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { MessageService } from './shared/message/message.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     PatientService,
     AuthService,
     GuardService,
-    PatientService
+    PatientService,
+    MessageService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

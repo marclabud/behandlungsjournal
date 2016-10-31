@@ -1,6 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {Patient} from './../model/patient';
+import {Subscription} from 'rxjs/Subscription';
+import {MessageService} from '../../shared/message/message.service';
 
 @Component({
   selector: 'app-patient-detail',
@@ -9,12 +11,16 @@ import {Patient} from './../model/patient';
 })
 export class PatientDetailComponent implements OnInit {
   private infoMsg = {body: '', type: 'info'};
+  subscription: Subscription;
 
   @Input()
   patient: Patient;
 
-
-  constructor(private patientService: PatientService) {
+  constructor(private patientService: PatientService, private messageService: MessageService) {
+    this.subscription = messageService.Patientselected$.subscribe(
+      patient => {
+        this.patient = patient;
+      });
   }
 
   ngOnInit() {
