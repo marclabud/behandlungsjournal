@@ -205,7 +205,7 @@ paths:
      tags:
      - "patient"
      summary: "Updated patient"
-     description: "This can onl."
+     description: ""
      operationId: "updatePatient"
      produces:
      - "application/json"
@@ -249,7 +249,6 @@ paths:
          description: "Invalid Patientname supplied"
        404:
          description: "Patient not found"
-
  /patient:
    post:
      tags:
@@ -270,6 +269,120 @@ paths:
        default:
          description: "successful operation"
 
+ /journals:
+   get:
+     operationId: 'getAllJournals'
+     description: 'Returns all Journals'
+     produces:
+        - application/json
+     tags:
+        - 'journal'
+     responses:
+      "200":
+       description: 'A list of all Journals.'
+       schema:
+        type: 'array'
+        items:
+         $ref: '#/definitions/Journal'
+      default:
+       description: 'Unexpected error'
+       schema:
+         $ref: '#/definitions/Error'
+
+ /journals/{patient.id}:
+   get:
+     tags:
+     - 'journal'
+     operationId: 'getAllJournalsbyPatient'
+     description: 'Returns all Journals for a Patient gy Patient._id'
+     produces:
+        - application/json
+     parameters:
+     - name: "patient.id"
+       in: "path"
+       description: "Patient _id Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       type: "string"
+       required: true
+     responses:
+      "200":
+       description: 'A list of all Journals for one Patient.'
+        schema:
+        type: 'array'
+        items:
+         $ref: '#/definitions/Journal'
+      default:
+       description: 'Unexpected error'
+       schema:
+         $ref: '#/definitions/Error'
+
+ /journal/{_id}:
+   get:
+     tags:
+     - "journal"
+     summary: "Update Journal"
+     description: "Updates a Journal by Journal _id "
+     operationId: "updateJournal"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       required: true
+       type: "string"
+     - in: "body"
+       name: "body"
+       description: "Journal transported in body"
+       required: true
+       schema:
+         $ref: "#/definitions/Journal"
+     responses:
+       200:
+         description: "Journal Updated"
+       400:
+         description: "Invalid Journal supplied"
+       404:
+         description: "Journal not found"
+   delete:
+     tags:
+     - "journal"
+     summary: "Delete Journal"
+     description: "Delete Journal by _id."
+     operationId: "deleteJournal"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Journal _id to be deleted"
+       required: true
+       type: "string"
+     responses:
+       200:
+         description: "Journal is deleted"
+       400:
+         description: "Invalid Journalname supplied"
+       404:
+         description: "Journal not found"
+ /journal:
+   post:
+     tags:
+     - 'journal'
+     summary: "Create Journal"
+     description: "Create a Journal."
+     operationId: "addJournal"
+     produces:
+     - "application/json"
+     parameters:
+     - in: "body"
+       name: "body"
+       description: "Created journal object"
+       required: true
+       schema:
+         $ref: "#/definitions/Journal"
+     responses:
+       default:
+         description: "successful operation"
 definitions:
   User:
     type: "object"
@@ -293,11 +406,24 @@ definitions:
           type: "string"
         rasse:
           type: "string"
-        diagnose:
-          type: "string"
         eigentuemer_vorname:
           type: "string"
         eigentuemer_nachname:
+          type: "string"
+  Journal:
+    type: "object"
+    properties:
+        _id:
+          type: "string"
+        name:
+          type: "string"
+        patient.id:
+          type: "string"
+        diagnose:
+          type: "string"
+        startdatum:
+          type: "string"
+        enddatum:
           type: "string"
   Error:
     type: object
