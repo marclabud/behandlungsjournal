@@ -301,15 +301,15 @@ paths:
      - name: "patient.id"
        in: "path"
        description: "Patient _id Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
-       type: "string"
        required: true
+       type: "string"
      responses:
       "200":
-       description: 'A list of all Journals for one Patient.'
-        schema:
-        type: 'array'
-        items:
-         $ref: '#/definitions/Journal'
+         description: 'A list of all Journals for one Patient.'
+         schema:
+          type: 'array'
+          items:
+           $ref: '#/definitions/Journal'
       default:
        description: 'Unexpected error'
        schema:
