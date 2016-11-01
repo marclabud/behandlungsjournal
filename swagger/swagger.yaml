@@ -160,7 +160,6 @@ paths:
         description: 'Unexpected error'
         schema:
          $ref: '#/definitions/Error'
-
  /user:
     post:
       tags:
@@ -200,25 +199,76 @@ paths:
        description: 'Unexpected error'
        schema:
          $ref: '#/definitions/Error'
+
+ /patient/{_id}:
+   put:
+     tags:
+     - "patient"
+     summary: "Updated patient"
+     description: "This can onl."
+     operationId: "updatePatient"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       required: true
+       type: "string"
+     - in: "body"
+       name: "body"
+       description: "Patient transported in body"
+       required: true
+       schema:
+         $ref: "#/definitions/Patient"
+     responses:
+       200:
+         description: "Patient updated"
+       400:
+         description: "Invalid Patient supplied"
+       404:
+         description: "Patient not found"
+   delete:
+     tags:
+     - "patient"
+     summary: "Delete Patient"
+     description: "Delete Patient by Id."
+     operationId: "deletePatient"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Patient _id to be deleted"
+       required: true
+       type: "string"
+     responses:
+       200:
+         description: "Paitent is deleted"
+       400:
+         description: "Invalid Patientname supplied"
+       404:
+         description: "Patient not found"
+
  /patient:
-     post:
-       tags:
-       - 'patient'
-       summary: "Create Patient"
-       description: "Create a Patient."
-       operationId: "addPatient"
-       produces:
-       - "application/json"
-       parameters:
-       - in: "body"
-         name: "body"
-         description: "Created patent object"
-         required: true
-         schema:
-           $ref: "#/definitions/Patient"
-       responses:
-         default:
-           description: "successful operation"
+   post:
+     tags:
+     - 'patient'
+     summary: "Create Patient"
+     description: "Create a Patient."
+     operationId: "addPatient"
+     produces:
+     - "application/json"
+     parameters:
+     - in: "body"
+       name: "body"
+       description: "Created patent object"
+       required: true
+       schema:
+         $ref: "#/definitions/Patient"
+     responses:
+       default:
+         description: "successful operation"
 
 definitions:
   User:
