@@ -9,9 +9,9 @@ const  Resource = swagger.Resource;
 const port = process.env.PORT || 5000;
 
 // Create a Swagger Server from the swagger.yaml file
-var server = new Server();
+const server = new Server();
 //
-server.parse('api/swagger/swagger.yaml');
+server.parse('./swagger/swagger.yaml');
 
 // Mockdaten für api /users laden
 server.dataStore.save(

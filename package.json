@@ -7,6 +7,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "nodemon --watch dist/src dist/server.js",
+    "testserver": "node server/src/testserver.js",
     "watch": "gulp watch",
     "lint": "tslint --project src/tsconfig.json --force",
     "lintserver": "tslint --project server/src/tsconfig.json --force",
@@ -73,6 +74,7 @@
     "protractor": "4.0.5",
     "require-dir": "^0.3.1",
     "supertest": "^2.0.0",
+    "swagger-server": "^1.0.0-alpha.18",
     "tslint": "3.15.1",
     "typescript": "2.0.3"
   }
