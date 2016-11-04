@@ -1,20 +1,26 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {Patient} from './../model/patient';
+import {Subscription} from 'rxjs/Subscription';
+import {MessageService} from '../../shared/message/message.service';
 
 @Component({
   selector: 'app-patient-detail',
   templateUrl: './patient-detail.component.html',
   styleUrls: ['./patient-detail.component.css']
 })
-export class PatientDetailComponent implements OnInit {
+export class PatientDetailComponent implements OnInit, OnDestroy {
   private infoMsg = {body: '', type: 'info'};
+  subscription: Subscription;
 
   @Input()
   patient: Patient;
 
-
-  constructor(private patientService: PatientService) {
+  constructor(private patientService: PatientService, private messageService: MessageService) {
+    this.subscription = messageService.Patientselected$.subscribe(
+      patient => {
+        this.patient = patient;
+      });
   }
 
   ngOnInit() {
@@ -58,4 +64,9 @@ export class PatientDetailComponent implements OnInit {
      // ToDo: Fehler von this.patient klären
     // this.patientService.getCache().writeCache(this.patient);
   }
+  ngOnDestroy() {
+    // prevent memory leak when component destroyed
+    this.subscription.unsubscribe();
+  }
 }
+
