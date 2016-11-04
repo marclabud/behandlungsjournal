@@ -419,6 +419,7 @@ definitions:
           type: "string"
         patient.id:
           type: "string"
+          description: "_id from definition Patient (mongodb objectid)"
         diagnose:
           type: "string"
         startdatum:
