@@ -18,8 +18,8 @@
 /server/src/**/*.map
 
 # Swagger
-/swagger/server/**/*
-/swagger/client/**/*
+/api/server/**/*
+/api/client/**/*
 
 # misc
 /.sass-cache

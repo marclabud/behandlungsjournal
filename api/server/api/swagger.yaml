@@ -1,0 +1,278 @@
+---
+swagger: "2.0"
+info:
+  description: "Ein Behandlungsjournal für kranke Tiere"
+  version: "0.1.0"
+  title: "Behandlungsjournal"
+  license:
+    name: "MIT"
+host: "localhost"
+basePath: "/api"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /patient:
+    post:
+      tags:
+      - "patient"
+      summary: "Create Patient"
+      description: "Create a Patient."
+      operationId: "addPatient"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created patent object"
+        required: true
+        schema:
+          $ref: "#/definitions/Patient"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "Patient"
+  /patients:
+    get:
+      tags:
+      - "patient"
+      description: "Returns all patients"
+      operationId: "getAllPatients"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of all patients."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Patient"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Patient"
+  /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "Create User."
+      operationId: "addUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/count:
+    get:
+      tags:
+      - "user"
+      description: "Returns quantity of Users"
+      operationId: "countUsers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Returns quantity of Users"
+          schema:
+            $ref: "#/definitions/Count"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "User"
+  /user/login:
+    get:
+      tags:
+      - "user"
+      summary: "Logs user into behandlungsjournal"
+      description: ""
+      operationId: "loginUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User transported in body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Token"
+        400:
+          description: "Invalid username/password supplied"
+      x-swagger-router-controller: "User"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Logs out current logged in user session"
+      description: ""
+      operationId: "logoutUser"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/{_id}:
+    get:
+      tags:
+      - "user"
+      description: "Returns user by Id (ObjectID)"
+      operationId: "getUserbyId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "path"
+        description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Returns user by ID"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "User"
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "updateUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "path"
+        description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "User transported in body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "User updated"
+        400:
+          description: "Invalid user supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "Delete User by Id."
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "path"
+        description: "User _id to be deleted"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "User is deleted"
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+  /users:
+    get:
+      tags:
+      - "user"
+      description: "Returns all users"
+      operationId: "getAllUsers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of all users."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "User"
+definitions:
+  User:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+  Patient:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      name:
+        type: "string"
+      rasse:
+        type: "string"
+      eigentuemer_vorname:
+        type: "string"
+      eigentuemer_nachname:
+        type: "string"
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
+  Count:
+    type: "object"
+    properties:
+      count:
+        type: "integer"
+        format: "int64"
+  Token:
+    type: "object"
+    properties:
+      token:
+        type: "string"
