@@ -8,10 +8,9 @@ const  Resource = swagger.Resource;
 
 const port = process.env.PORT || 5000;
 
-// Create a Swagger Server from the api.yaml file
+// Create a Swagger Server from the swagger.yaml file
 const server = new Server();
-server.parse('./api/api.yaml');
-
+server.parse('./api/swagger/swagger.yaml');
 
 // Mockdaten für api /users laden
 server.dataStore.save(
@@ -36,7 +35,6 @@ server.dataStore.save(
   new Resource('/api/journals/Minka', {name: 'Journal Minka', 'patient.id': 'Katze', diagnose: 'Bisswunde', startdatum: '01.11.2016', enddatum: '10.11.2016'}),
   new Resource('/api/journals/Blacky', {name: 'Journal Blacky', tierart: 'Pferd', rasse: 'Freiberger', diagnose: 'Stauchung', eigentuemerVorname: 'Peter', eigentuemerNachname: 'Jura'})
 );
-
 
 server.listen(port, () => {
     console.log('The Swagger Server is know running at  http://127.0.0.1:' + port);
