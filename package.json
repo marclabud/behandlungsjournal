@@ -71,6 +71,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
     "mockgoose": "^6.0.8",
+    "moment": "2.15.2",
     "nodemon": "^1.10.2",
     "protractor": "4.0.5",
     "require-dir": "^0.3.1",
