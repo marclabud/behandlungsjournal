@@ -8,7 +8,7 @@
 
 export const paths: any = {
   dist_client: 'public',
-  base_path: '/api'
+  base_path: 'http://127.0.0.1:5000/api'
 };
 export const connection: any = {
   dbsystem: 'mongodb://',

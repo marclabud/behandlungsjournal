@@ -28,6 +28,7 @@ app.use(morgan('dev'));
 // ToDo: Improvement Path Variable to use ts in ts and js in js.
 app.use(require('./routes/userRoutes.js'));
 app.use(require('./routes/patientRoutes.js'));
+app.use(require ('./routes/journalRoutes.js'));
 app.use(require('./routes/staticRoutes.js'));
 
 connect()

@@ -23,22 +23,25 @@ server.dataStore.save(
 
 // Mockdaten für api/patients laden
 server.dataStore.save(
-  new Resource('/api/patients/Strolch',
-    {name: 'Strolch',
+  new Resource('/api/patients/I1',
+    { _id: 'I1',
+      name: 'Strolch',
       tierart: 'Hund',
       rasse: 'Mischling',
       diagnose: 'Bisswunde',
       eigentuemerVorname: 'Hans',
       eigentuemerNachname: 'Iten'}),
-  new Resource('/api/patients/Minka',
-    {name: 'Minka',
+  new Resource('/api/patients/I2',
+    { _id: 'I2',
+      name: 'Minka',
       tierart: 'Katze',
       rasse: 'Siam',
       diagnose: 'Vergiftung',
       eigentuemerVorname: 'Maria',
       eigentuemerNachname: 'Rogenmoser'}),
-  new Resource('/api/patients/Blacky',
-    {name: 'Blacky',
+  new Resource('/api/patients/I3',
+    { _id: 'I3',
+      name: 'Blacky',
       tierart: 'Pferd',
       rasse: 'Freiberger',
       diagnose: 'Stauchung',
@@ -49,15 +52,15 @@ server.dataStore.save(
 // Mockdaten für api/journals laden
 
 server.dataStore.save(
-  new Resource('/api/journals/Strolch',
-    {name: 'Journal Strolch', 'patient.id': 'Hund',
+  new Resource('/api/journals/I1',
+    {patient_id: 'I1', name: 'Journal Strolch',
       diagnose: 'Bisswunde', startdatum: '01.11.2016', enddatum: '10.11.2016'}),
-  new Resource('/api/journals/Minka',
-    {name: 'Journal Minka', 'patient.id': 'Katze',
+  new Resource('/api/journals/I2',
+    {patient_id: 'I2', name: 'Journal Minka',
       diagnose: 'Bisswunde', startdatum: '01.11.2016', enddatum: '10.11.2016'}),
-  new Resource('/api/journals/Blacky',
-    {name: 'Journal Blacky', tierart: 'Pferd',
-      rasse: 'Freiberger', diagnose: 'Stauchung', eigentuemerVorname: 'Peter', eigentuemerNachname: 'Jura'})
+  new Resource('/api/journals/I3',
+    { patient_id: 'I3', name: 'Journal Blacky',  tierart: 'Pferd',
+      rasse: 'Freiberger', diagnose: 'Stauchung', startdatum: '10.11.2016', enddatum: '16.11.2016'})
 );
 
 server.listen(port, () => {
