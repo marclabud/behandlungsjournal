@@ -7,8 +7,8 @@ const journalSchema = new mongoose.Schema({
   name: { type: String, required: true},
   patient_id: {type: String, required: true},
   diagnose: String,
-  startdatum: {type: Date, required: true },
-  enddatum: {type: Date, required: true},
+  startdatum: {type: String, required: true },
+  enddatum: {type: String, required: true},
 }, {collection: model});
 
 const Journal = mongoose.model(model, journalSchema);
