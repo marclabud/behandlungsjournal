@@ -1,3 +1,4 @@
+'use strict';
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {Patient} from './../model/patient';
@@ -11,7 +12,7 @@ import {MessageService} from '../../shared/message/message.service';
 })
 export class PatientDetailComponent implements OnInit, OnDestroy {
   private infoMsg = {body: '', type: 'info'};
-  subscription: Subscription;
+  private subscription: Subscription;
 
   @Input()
   patient: Patient;

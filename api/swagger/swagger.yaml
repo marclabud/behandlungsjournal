@@ -289,18 +289,18 @@ paths:
        schema:
          $ref: '#/definitions/Error'
 
- /journals/{patient.id}:
+ /journals/{patient_id}:
    get:
      tags:
      - 'journal'
      operationId: 'getAllJournalsbyPatient'
-     description: 'Returns all Journals for a Patient gy Patient._id'
+     description: 'Returns all Journals for a Patient by Patient._id'
      produces:
         - application/json
      parameters:
-     - name: "patient.id"
+     - name: "patient_id"
        in: "path"
-       description: "Patient _id Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       description: "Patient._id Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
        required: true
        type: "string"
      responses:
@@ -316,7 +316,7 @@ paths:
          $ref: '#/definitions/Error'
 
  /journal/{_id}:
-   get:
+   put:
      tags:
      - "journal"
      summary: "Update Journal"

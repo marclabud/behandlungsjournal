@@ -20,6 +20,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { MessageService } from './shared/message/message.service';
 import { BhjournalDetailComponent } from './bhjournal/bhjournal-detail/bhjournal-detail.component';
 import { BhjournalListComponent } from './bhjournal/bhjournal-list/bhjournal-list.component';
+import {BhJournalService} from './bhjournal/service/bhjournal.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BhjournalListComponent } from './bhjournal/bhjournal-list/bhjournal-lis
   providers: [
     UserService,
     PatientService,
+    BhJournalService,
     AuthService,
     GuardService,
     PatientService,

@@ -1,4 +1,10 @@
 <div class="container-fluid">
-<h2>BHJournal-Component</h2>
-<app-patient-detail></app-patient-detail>
+  <div *ngIf="!isLoading">
+    <h2>BHJournal-Component</h2>
+    <ul>
+      <li *ngFor="let journal of journals" >
+         {{journal.name}} {{journal.diagnose}}
+      </li>
+    </ul>
+  </div>
 </div>
