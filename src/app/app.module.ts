@@ -14,10 +14,12 @@ import {GuardService} from './shared/service/guard/guard.service';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
 import {PatientService} from './patient/service/patient.service';
-import { BhjournalComponent } from './bhjournal/bhjournal.component';
+import { BhjournalComponent } from './bhjournal/bhjournal-view/bhjournal.component';
 import { TitelComponent } from './titel/titel.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MessageService } from './shared/message/message.service';
+import { BhjournalDetailComponent } from './bhjournal/bhjournal-detail/bhjournal-detail.component';
+import { BhjournalListComponent } from './bhjournal/bhjournal-list/bhjournal-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MessageService } from './shared/message/message.service';
     PatientDetailComponent,
     BhjournalComponent,
     TitelComponent,
-    MainNavComponent
+    MainNavComponent,
+    BhjournalDetailComponent,
+    BhjournalListComponent
   ],
   imports: [
     BrowserModule,

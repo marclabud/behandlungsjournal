@@ -417,7 +417,7 @@ definitions:
           type: "string"
         name:
           type: "string"
-        patient.id:
+        patient_id:
           type: "string"
           description: "_id from definition Patient (mongodb objectid)"
         diagnose:

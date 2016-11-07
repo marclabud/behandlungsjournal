@@ -7,7 +7,6 @@ export class PatientData implements IData {
       name: 'Strolch',
       tierart: 'Hund',
       rasse: 'Mischling',
-      diagnose: 'Bisswunde',
       eigentuemerVorname: 'Hans',
       eigentuemerNachname: 'Iten'
     },
@@ -15,7 +14,6 @@ export class PatientData implements IData {
       name: 'Minka',
       tierart: 'Katze',
       rasse: 'Siam',
-      diagnose: 'Vergiftung',
       eigentuemerVorname: 'Maria',
       eigentuemerNachname: 'Rogenmoser'
     },
@@ -23,7 +21,6 @@ export class PatientData implements IData {
       name: 'Blacky',
       tierart: 'Pferd',
       rasse: 'Freiberger',
-      diagnose: 'Stauchung',
       eigentuemerVorname: 'Peter',
       eigentuemerNachname: 'Jura'
     }
