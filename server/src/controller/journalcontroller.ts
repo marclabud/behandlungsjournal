@@ -13,7 +13,9 @@ module.exports.getAllJournals = (request, response) => {
 };
 
 module.exports.getAllJournalsbyPatientId = (request, response) => {
-  Journal.find({patient_id: request.params.id}, (err, docs) => {
+  let patient_id: string = request.params.patient_id;
+  console.log ('parameter patient_id', patient_id);
+  Journal.find({patient_id: patient_id}, (err, docs) => {
     console.log ('getAllJournalsbyPatientId: docs', docs);
     if (err) {
       return console.error(err);

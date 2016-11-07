@@ -26,6 +26,5 @@ JournalRouter.put(paths.base_path + '/journal/:id', JournalController.updateJour
 // delete journal by id
 JournalRouter.delete(paths.base_path + '/journal/:id', JournalController.deleteJournal);
 
-
 export= JournalRouter;
 

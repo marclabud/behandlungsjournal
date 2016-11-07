@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 const model = 'Patient';
 
 const patientSchema = new mongoose.Schema({
+  _id: String,
   name: { type: String, required: true},
   tierart: {type: String, required: true},
   rasse: String,
