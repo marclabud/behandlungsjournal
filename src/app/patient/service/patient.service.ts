@@ -12,7 +12,7 @@ export class PatientService extends ServiceBase<Patient> {
   private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
   private options = new RequestOptions({headers: this.headers});
 
-  constructor(http:Http) {
+  constructor(http: Http) {
     super(http, 'PatientService:Patient');
   }
 

@@ -14,7 +14,7 @@ import {GuardService} from './shared/service/guard/guard.service';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
 import {PatientService} from './patient/service/patient.service';
-import { BhjournalComponent } from './bhjournal/bhjournal-view/bhjournal.component';
+import { BhjournalComponent } from './bhjournal/bhjournal-view/bhjournal-view.component';
 import { TitelComponent } from './titel/titel.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MessageService } from './shared/message/message.service';
