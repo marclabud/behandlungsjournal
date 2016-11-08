@@ -3,7 +3,7 @@ import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {Patient} from './../model/patient';
 import {Subscription} from 'rxjs/Subscription';
-import {MessageService} from '../../shared/message/message.service';
+import {MessageService} from '../../shared/service/message/message.service';
 
 @Component({
   selector: 'app-patient-detail',

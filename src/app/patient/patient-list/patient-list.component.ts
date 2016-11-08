@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../service/patient.service';
 import {Patient} from '../model/patient';
-import {MessageService} from '../../shared/message/message.service';
+import {MessageService} from '../../shared/service/message/message.service';
 
 @Component({
   selector: 'app-patient-list',

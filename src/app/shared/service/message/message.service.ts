@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-import {Patient} from './../../patient/model/patient';
+import {Patient} from './../../../patient/model/patient';
 
 @Injectable()
 export class MessageService {

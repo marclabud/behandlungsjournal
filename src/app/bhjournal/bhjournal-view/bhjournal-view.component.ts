@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';
 import {Subscription} from 'rxjs/Subscription';
-import {MessageService} from '../../shared/message/message.service';
+import {MessageService} from '../../shared/service/message/message.service';
 import {BhJournal} from '../model/bhjournal';
 
 @Component({
