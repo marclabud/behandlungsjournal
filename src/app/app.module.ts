@@ -21,6 +21,8 @@ import { MessageService } from './shared/service/message/message.service';
 import { BhjournalDetailComponent } from './bhjournal/bhjournal-detail/bhjournal-detail.component';
 import { BhjournalListComponent } from './bhjournal/bhjournal-list/bhjournal-list.component';
 import {BhJournalService} from './bhjournal/service/bhjournal.service';
+import { BhjDatepickerComponent } from './shared/component/bhj-datepicker/bhj-datepicker.component';
+import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import {BhJournalService} from './bhjournal/service/bhjournal.service';
     TitelComponent,
     MainNavComponent,
     BhjournalDetailComponent,
-    BhjournalListComponent
+    BhjournalListComponent,
+    BhjDatepickerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    DatepickerModule,
     routing,
   ],
   providers: [
