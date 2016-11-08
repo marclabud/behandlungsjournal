@@ -10,6 +10,7 @@
 
   <!-- Nav Content -->
   <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+
     <ul class="nav navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="login">{{brandName}} <span class="sr-only">(current)</span></a>
@@ -18,16 +19,15 @@
         <a class="nav-link" href="user">Benutzer</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="test"
-           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="bhandlunglsjournal"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Behandlungsjournal</a>
         <div class="dropdown-menu" aria-labelledby="test">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Medikation</a>
+          <a class="dropdown-item" href="#">Indikatoren</a>
         </div>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline navbar-form pull-lg-right">
       <app-patient-list></app-patient-list>
       <input class="form-control" type="text" placeholder="Suchen">
       <button class="btn btn-outline-success" type="submit">Suchen</button>
