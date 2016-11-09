@@ -11,6 +11,8 @@ export class MessageService {
 
 // Service message commands
   selectPatient(patient: Patient) {
+    sessionStorage.setItem('patient', JSON.stringify(patient));
+    console.log('patient', JSON.stringify(patient));
     this.selectedPatientSource.next(patient);
   }
 

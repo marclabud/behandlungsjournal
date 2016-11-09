@@ -19,6 +19,7 @@ export class PatientListComponent implements OnInit {
 
   ngOnInit() {
     this.getPatients();
+    this.getSelectedPatient();
 
   }
   getPatients() {
@@ -28,6 +29,14 @@ export class PatientListComponent implements OnInit {
       () => this.isLoading = false
     );
   };
+
+  getSelectedPatient() {
+    let patient: Patient;
+    patient = JSON.parse(sessionStorage.getItem('patient'));
+    if (patient != null) {
+      this.onSelect(patient);
+    }
+  }
 
   onSelect(patient: Patient): void {
     this.selectedPatient = patient;
