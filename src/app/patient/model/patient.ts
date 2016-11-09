@@ -3,7 +3,6 @@ export class Patient {
   name: string;
   tierart: string;
   rasse: string;
-  diagnose: string;
   eigentuemerVorname: string;
   eigentuemerNachname: string;
 }

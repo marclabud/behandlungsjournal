@@ -12,7 +12,7 @@ export class PatientService extends ServiceBase<Patient> {
   private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
   private options = new RequestOptions({headers: this.headers});
 
-  constructor(http:Http) {
+  constructor(http: Http) {
     super(http, 'PatientService:Patient');
   }
 
@@ -21,19 +21,19 @@ export class PatientService extends ServiceBase<Patient> {
     return this.http.get(paths.base_path + '/patients').map(res => res.json());
   }
 
-  addPatient(patient) {
+  addPatient(patient: Patient) {
     return this.http.post(paths.base_path + '/patient', JSON.stringify(patient), this.options);
   }
 
-  editPatient(patient) {
+  editPatient(patient: Patient) {
     return this.http.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), this.options);
   }
 
-  deletePatient(patient) {
+  deletePatient(patient: Patient) {
     return this.http.delete(`${paths.base_path}/patient/${patient._id}`, this.options);
   }
 
-  protected getServiceUrl():string {
+  protected getServiceUrl(): string {
     return paths.base_path + '/patient';
   }
 }

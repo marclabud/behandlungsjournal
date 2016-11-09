@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div *ngIf="!isLoading">
+    <div class="card card-block card-outline-primary">
+      <div class="card-text" *ngFor="let journal of journals" >
+         <h2 class="card-title">{{journal.name}}</h2>
+        <p class ="card-title">Diagnose: {{journal.diagnose}} </p>
+        <p class ="card-text">  Beginn:  {{journal.startdatum}}  Ende: {{journal.enddatum}}</p>
+      </div>
+    </div>
+    <!--<app-bhj-datepicker [dateModel]="endDate" [label]="MeinLabel" ></app-bhj-datepicker>-->
+  </div>
+</div>

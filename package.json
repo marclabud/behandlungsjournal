@@ -38,6 +38,8 @@
     "lodash": "^4.16.4",
     "mongoose": "^4.6.1",
     "morgan": "^1.7.0",
+    "ng2-bootstrap": "^1.1.16",
+    "moment": "2.15.2",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.25"
   },
@@ -48,6 +50,7 @@
     "@types/jasmine": "^2.2.30",
     "@types/jsonwebtoken": "^7.1.32",
     "@types/lodash": "^4.14.37",
+    "@types/moment": "^2.13.0",
     "@types/mongodb": "2.1.32",
     "@types/mongoose": "^4.5.34",
     "@types/morgan": "^1.7.31",

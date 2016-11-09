@@ -14,8 +14,8 @@
 .settings/
 
 # Express-Server
-/server/**/*.js
-/server/**/*.map
+/server/src/**/*.js
+/server/src/**/*.map
 
 # Swagger
 /api/server/**/*
