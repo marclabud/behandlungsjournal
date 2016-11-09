@@ -17,6 +17,7 @@ export class BhjournalComponent implements OnInit {
   private isLoading = true;
   private subscription: Subscription;
   private selectedPatient: Patient;
+  private patient_id: string;
   constructor(private bhjournalService: BhJournalService, private messageService: MessageService) {
     this.subscription = messageService.Patientselected$.subscribe(
       patient => {
@@ -27,12 +28,14 @@ export class BhjournalComponent implements OnInit {
 
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
-      let patient_id = this.selectedPatient._id;
-      this.getJournalsbyPatient(patient_id);
+      this.patient_id = this.selectedPatient._id;
     } else {
+      // Component called by path
+      this.selectedPatient = JSON.parse(sessionStorage.getItem('patient'));
+      this.patient_id = this.selectedPatient._id;
       console.log('Bhjournal-Component ngOnInit selected Patient is undefined');
     }
-
+    this.getJournalsbyPatient(this.patient_id);
 
   }
   private getJournalsbyPatient(patient_id: string) {
