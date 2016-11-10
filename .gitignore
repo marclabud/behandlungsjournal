@@ -21,6 +21,10 @@
 /api/server/**/*
 /api/client/**/*
 
+# Test data
+/server/test/**/*.js
+/server/test/**/*.map
+
 # misc
 /.sass-cache
 /connect.lock
