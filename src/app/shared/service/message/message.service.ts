@@ -1,19 +1,31 @@
 import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import {Subject} from 'rxjs/Subject';
-import {Patient} from './../../../patient/model/patient';
+import {ServiceBase} from '../../service.base';
 
 @Injectable()
-export class MessageService {
+export class MessageService<TItem> extends ServiceBase<TItem> {
   // Observable string sources
-  private selectedPatientSource = new Subject<Patient>();
+  private selectedItemSource = new Subject<TItem>();
   // Observable string streams
-  Patientselected$ = this.selectedPatientSource.asObservable();
-
-// Service message commands
-  selectPatient(patient: Patient) {
-    sessionStorage.setItem('patient', JSON.stringify(patient));
-    console.log('patient', JSON.stringify(patient));
-    this.selectedPatientSource.next(patient);
+  Itemselected$ = this.selectedItemSource.asObservable();
+  constructor(protected http: Http, protected service: ServiceBase<TItem>) {
+    super(http, service.getCacheKey(false));
   }
 
+// Service message commands
+  selectItem(item: TItem) {
+   this.updateCache(item);
+   //localStorage.setItem(this.getCacheKey(), JSON.stringify(item));
+   console.log('patient', JSON.stringify(item));
+    this.selectedItemSource.next(item);
+  }
+
+  getServiceUrl(): string {
+    return this.service.getServiceUrl(false);
+  }
+
+  getCacheKey(): string {
+    return this.service.getCacheKey(false);
+  }
 }

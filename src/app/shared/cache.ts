@@ -3,25 +3,21 @@ export class Cache<T> {
   constructor(private key: string) {
   }
 
-  writeCache(value: T): boolean {
+  writeCache(value: T, isList: boolean = false): boolean {
     let stringifiedValue = JSON.stringify(value);
-    localStorage.setItem(this.key, stringifiedValue);
+    localStorage.setItem(this.getKey(isList), stringifiedValue);
     return true;
   }
 
-  readCache(): T {
-    return JSON.parse(localStorage.getItem(this.key));
+  readCache(isList: boolean = false): T {
+    return JSON.parse(localStorage.getItem(this.getKey(isList)));
   }
 
-  hasCache(): boolean {
-    return !(localStorage.getItem(this.key) === null);
+  hasCache(isList: boolean = false): boolean {
+    return !(localStorage.getItem(this.getKey(isList)) === null);
   }
 
-  /*
-   appendCache(value:T):boolean {
-   let items:Array<T> = this.readCache();
-   items.push(value);
-   return this.writeCache(items);
-   }
-   */
+  private getKey(isList: boolean) {
+    return isList ? this.key + 's' : this.key;
+  }
 }

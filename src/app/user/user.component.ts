@@ -29,8 +29,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsers(true);
-
+    this.getUsers();
     this.addUserForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
@@ -39,7 +38,7 @@ export class UserComponent implements OnInit {
   }
 
   getUsers(forceReload: boolean = false) {
-    this.userService.getAll(forceReload).subscribe(
+    this.userService.getAllItems(forceReload).subscribe(
       data => this.users = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -107,7 +106,7 @@ export class UserComponent implements OnInit {
   }
 
   private actualizeCache() {
-    this.userService.getCache().writeCache(this.users);
+    this.userService.updateCacheList(this.users);
   }
 
 }

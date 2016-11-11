@@ -42,10 +42,10 @@ export class SignupComponent implements OnInit {
 
   private actualizeCache() {
     let users:Array<User> = [];
-    this.userService.getAll(true).subscribe(
+    this.userService.getAllItems(true).subscribe(
       data => users = data,
       error => console.log(error)
     );
-    this.userService.getCache().writeCache(users);
+    this.userService.getCacheList().writeCache(users);
   }
 }

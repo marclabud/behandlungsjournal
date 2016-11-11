@@ -37,8 +37,11 @@ export class BhJournalService extends ServiceBase<BhJournal> {
     return this.http.delete(`${paths.base_path}/journal/${journal._id}`, this.options);
   }
 
-  protected getServiceUrl(): string {
+  getServiceUrl(): string {
     return paths.base_path + '/journal';
   }
 
+  getCacheKey(): string {
+    return 'BhJournalService:BhJournal';
+  }
 }
