@@ -13,13 +13,13 @@ export class PatientListComponent implements OnInit {
 
   private patients: Array<Patient> = [];
   private isLoading = true;
-  selectedPatient:Patient;
+  selectedPatient: Patient;
   // DropdownListbox im Menü
   PatientAnzeige: string = 'Patient';
   private messageService: MessageService<Patient>;
 
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
-  constructor(http:Http, private patientService:PatientService) {
+  constructor(http: Http, private patientService: PatientService) {
     this.messageService = new MessageService<Patient>(http, patientService);
   }
 
@@ -44,7 +44,7 @@ export class PatientListComponent implements OnInit {
     }
   }
 
-  onSelect(patient:Patient): void {
+  onSelect(patient: Patient): void {
     this.selectedPatient = patient;
     console.log('Component list view onSelect', patient);
     this.PatientAnzeige = this.selectedPatient.name;

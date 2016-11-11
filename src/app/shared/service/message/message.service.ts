@@ -9,15 +9,14 @@ export class MessageService<TItem> extends ServiceBase<TItem> {
   private selectedItemSource = new Subject<TItem>();
   // Observable string streams
   Itemselected$ = this.selectedItemSource.asObservable();
-  constructor(protected http: Http, protected service: ServiceBase<TItem>) {
+  constructor(http: Http, protected service: ServiceBase<TItem>) {
     super(http, service.getCacheKey(false));
   }
 
 // Service message commands
   selectItem(item: TItem) {
-   this.updateCache(item);
-   //localStorage.setItem(this.getCacheKey(), JSON.stringify(item));
-   console.log('patient', JSON.stringify(item));
+    this.updateCache(item);
+    console.log(this.getCacheKey(), JSON.stringify(item));
     this.selectedItemSource.next(item);
   }
 
