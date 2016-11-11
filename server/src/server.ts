@@ -2,10 +2,10 @@
 
 import * as express from 'express';
 import {json, urlencoded} from 'body-parser';
+import {connection, paths} from './server.conf';
 const morgan = require('morgan'); // logger
 const mongoose = require('mongoose');
 // configuration
-import {connection, paths} from './server.conf';
 
 const app: express.Application = express();
 
@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 // ToDo: Improvement Path Variable to use ts in ts and js in js.
 app.use(require('./routes/userRoutes.js'));
 app.use(require('./routes/patientRoutes.js'));
-app.use(require ('./routes/journalRoutes.js'));
+app.use(require('./routes/journalRoutes.js'));
 app.use(require('./routes/staticRoutes.js'));
 
 connect()
