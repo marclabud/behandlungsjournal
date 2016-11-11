@@ -28,9 +28,9 @@ export class PatientListComponent implements OnInit {
     this.getSelectedPatient();
   }
 
-  getPatients(forceReload: boolean = false) {
+  getPatients(forceReload = false) {
     this.patientService.getAllItems(forceReload).subscribe(
-     data => this.patients = data,
+      data => this.patients = data,
       error => console.log(error),
       () => this.isLoading = false
     );

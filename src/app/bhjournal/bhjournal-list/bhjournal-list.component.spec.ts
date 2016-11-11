@@ -11,9 +11,9 @@ describe('BhjournalListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BhjournalListComponent ]
+      declarations: [BhjournalListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

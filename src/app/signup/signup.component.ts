@@ -9,11 +9,11 @@ import {User} from '../user/model/user';
 })
 export class SignupComponent implements OnInit {
 
-  private SignupForm:FormGroup;
-  public submitted:boolean;
+  private SignupForm: FormGroup;
+  public submitted: boolean;
 
-  constructor(private userService:UserService,
-              private formbuilder:FormBuilder) {
+  constructor(private userService: UserService,
+              private formbuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit(model:User, isValid:Boolean) {
+  onSubmit(model: User, isValid: Boolean) {
     if (typeof(model.name) === 'string' &&
       typeof(model.email) === 'string' &&
       typeof(model.password) === 'string' && isValid) {
@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   }
 
   private actualizeCache() {
-    let users:Array<User> = [];
+    let users: Array<User> = [];
     this.userService.getAllItems(true).subscribe(
       data => users = data,
       error => console.log(error)

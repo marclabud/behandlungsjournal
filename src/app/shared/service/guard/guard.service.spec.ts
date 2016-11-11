@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { GuardService } from './guard.service';
+import {TestBed, inject} from '@angular/core/testing';
+import {GuardService} from './guard.service';
 
 describe('Service: Guard', () => {
   beforeEach(() => {

@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import { SignupComponent } from './signup.component';
+import {TestBed, async} from '@angular/core/testing';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {SignupComponent} from './signup.component';
 
 
 describe('Component: Signup', () => {

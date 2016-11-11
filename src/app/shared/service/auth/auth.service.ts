@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { UserService } from '../../../user/service/user.service';
+import {Injectable} from '@angular/core';
+import {UserService} from '../../../user/service/user.service';
 import {User} from '../../../user/model/user';
 
 @Injectable()
@@ -9,10 +9,11 @@ export class AuthService {
   private users = [];
   redirectUrl: string;
 
-  constructor (private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   login(user: User): boolean {
-   let isOK = false;
+    let isOK = false;
     // check User
     isOK = this.checkCredentials(user);
     if (isOK) {
@@ -20,28 +21,33 @@ export class AuthService {
       this.setToken();
       this.isLoggedIn = true;
     } else {
-      console.log('isOK', isOK );
+      console.log('isOK', isOK);
     }
     return this.isLoggedIn;
   }
+
   logout(): void {
     this.isLoggedIn = false;
   }
+
   checklogin(): boolean {
     let requestedToken = '';
     requestedToken = this.getToken();
 
-    if ( '' === requestedToken) {
+    if ('' === requestedToken) {
       return false;
     } else {
       return true;
-    };
+    }
+    ;
 
   }
+
   setToken(): void {
     sessionStorage.setItem('token', this.validToken);
     return;
   }
+
   getToken(): string {
     let token = '';
     token = sessionStorage.getItem('token');
@@ -50,13 +56,13 @@ export class AuthService {
 
   checkCredentials(user: User): boolean {
     let UserConfirmed = false;
-     this.userService.loginUser(user).subscribe(
-       data => this.users = data,
-       error => console.log(error)
-     );
+    this.userService.loginUser(user).subscribe(
+      data => this.users = data,
+      error => console.log(error)
+    );
     // ToDo: No Replay from getUserbyEmail; bugfixing needed
     UserConfirmed = true;
-    console.log ('checkCred', this.users);
+    console.log('checkCred', this.users);
     return UserConfirmed;
   }
 }

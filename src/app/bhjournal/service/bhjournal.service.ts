@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {ServiceBase} from '../../shared/service.base';
 import {BhJournal} from '../model/bhjournal';

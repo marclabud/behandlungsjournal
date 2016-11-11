@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {RequestOptions, Headers, Http} from '@angular/http';
+import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {Cache} from "./cache";
+import {Cache} from './cache';
 
 
 @Injectable()
@@ -23,7 +23,7 @@ export abstract class ServiceBase<TItem> {
     return this.cache;
   }
 
-  public getItem(forceReload: boolean = false): Observable<TItem> {
+  public getItem(forceReload = false): Observable<TItem> {
     console.log('Call ServiceBase.getItem()');
     if (this.cache.hasCache() && !forceReload) {
       return Observable.create((observer) => {
@@ -32,7 +32,7 @@ export abstract class ServiceBase<TItem> {
         observer.complete();
       });
     }
-    
+
     return this.http.get(this.getServiceUrl(false), {withCredentials: true}).map(res => {
       this.log('DB');
       let orderStatus = res.json();
@@ -41,9 +41,9 @@ export abstract class ServiceBase<TItem> {
     });
   }
 
-  public getAllItems(forceReload: boolean = false): Observable<TItem[]> {
+  public getAllItems(forceReload = false): Observable<TItem[]> {
     console.log('Call ServiceBase.getAllItems()');
-    let isList:boolean = true;
+    let isList = true;
 
     if (this.cacheList.hasCache(isList) && !forceReload) {
       return Observable.create((observer) => {
@@ -62,7 +62,7 @@ export abstract class ServiceBase<TItem> {
   }
 
   public updateCacheList(items: TItem[]) {
-    let isList: boolean = true;
+    let isList = true;
     this.getCacheList().writeCache(items, isList);
     console.log('Udpate Cache with ' + this.getKey(isList), JSON.stringify(items));
   }
@@ -72,15 +72,15 @@ export abstract class ServiceBase<TItem> {
     console.log('Udpate Cache with ' + this.getKey(), JSON.stringify(item));
   }
 
-  private log(source: string, isList: boolean = false) {
+  private log(source: string, isList = false) {
     console.log('Load [' + this.getKey(isList) + '] from ' + source);
   }
 
-  protected getKey(isList: boolean = false) {
+  protected getKey(isList = false) {
     return isList ? this.cacheKey + 's' : this.getCacheKey(isList);
   }
 
-  public abstract getServiceUrl(isList: boolean): string;
+  public abstract getServiceUrl(isList): string;
 
-  public abstract getCacheKey(isList: boolean):string;
+  public abstract getCacheKey(isList): string;
 }

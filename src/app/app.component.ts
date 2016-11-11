@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    sessionStorage.removeItem('token') ;
+    sessionStorage.removeItem('token');
   }
 
 }

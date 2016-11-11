@@ -3,7 +3,6 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import {HttpModule} from '@angular/http';
-
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
@@ -23,7 +22,6 @@ import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.
 import {BhJournalService} from './bhjournal/service/bhjournal.service';
 import {BhjDatepickerComponent} from './shared/component/bhj-datepicker/bhj-datepicker.component';
 import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
-import {ServiceBase} from "./shared/service.base";
 
 @NgModule({
   declarations: [

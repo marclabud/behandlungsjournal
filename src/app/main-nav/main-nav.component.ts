@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-main-nav',
@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class MainNavComponent implements OnInit {
   brandName = 'Behandlungsjournal';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

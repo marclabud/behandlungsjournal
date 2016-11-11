@@ -1,10 +1,9 @@
-import {ModuleWithProviders}    from '@angular/core';
-import {Routes, RouterModule}   from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {GuardService} from './shared/service/guard/guard.service';
-
-import {SignupComponent}        from './signup/signup.component';
-import {LoginComponent}         from './login/login.component';
-import {UserComponent}          from './user/user.component';
+import {SignupComponent} from './signup/signup.component';
+import {LoginComponent} from './login/login.component';
+import {UserComponent} from './user/user.component';
 import {BhjournalComponent} from './bhjournal/bhjournal-view/bhjournal-view.component';
 
 const appRoutes: Routes = [

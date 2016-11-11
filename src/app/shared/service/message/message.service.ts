@@ -9,6 +9,7 @@ export class MessageService<TItem> extends ServiceBase<TItem> {
   private selectedItemSource = new Subject<TItem>();
   // Observable string streams
   Itemselected$ = this.selectedItemSource.asObservable();
+
   constructor(http: Http, protected service: ServiceBase<TItem>) {
     super(http, service.getCacheKey(false));
   }

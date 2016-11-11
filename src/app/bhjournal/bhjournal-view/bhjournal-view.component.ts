@@ -1,5 +1,5 @@
 'use strict';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Http} from '@angular/http';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';
@@ -12,7 +12,7 @@ import {PatientService} from '../../patient/service/patient.service';
   templateUrl: 'bhjournal-view.component.html',
   styleUrls: ['bhjournal-view.component.css']
 })
-export class BhjournalComponent implements OnInit {
+export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
   private journals = [];
   private isLoading = true;
@@ -42,7 +42,7 @@ export class BhjournalComponent implements OnInit {
     this.getJournalsbyPatient(this.patient_id);
   }
 
-  private getJournalsbyPatient(patient_id:string) {
+  private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.journals = journal,
       error => console.log(error),
