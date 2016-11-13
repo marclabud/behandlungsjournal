@@ -38,7 +38,7 @@ export class PatientListComponent implements OnInit {
 
   getSelectedPatient() {
     let patient: Patient;
-    patient = this.patientService.getCache().readCache();
+    patient = this.patientService.readCache();
     if (patient != null) {
       this.onSelect(patient);
     }

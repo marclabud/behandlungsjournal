@@ -65,7 +65,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   }
 
   private actualizeCache() {
-    this.patientService.updateCache(this.patient);
+    this.patientService.writeCache(this.patient);
   }
 
   ngOnDestroy() {

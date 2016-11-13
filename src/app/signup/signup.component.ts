@@ -41,11 +41,7 @@ export class SignupComponent implements OnInit {
   }
 
   private actualizeCache() {
-    let users: Array<User> = [];
-    this.userService.getAllItems(true).subscribe(
-      data => users = data,
-      error => console.log(error)
-    );
-    this.userService.getCacheList().writeCache(users);
+    // read all from DB and actualize cache
+    this.userService.getAllItems(true);
   }
 }

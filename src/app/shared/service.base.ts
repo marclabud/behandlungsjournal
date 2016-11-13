@@ -15,16 +15,16 @@ export abstract class ServiceBase<TItem> {
     this.cache = new Cache<TItem>(cacheKey);
   }
 
-  public getCacheList(): Cache<Array<TItem>> {
-    return this.cacheList;
+  public readCacheList(): Array<TItem> {
+    return this.cacheList.readCache(true);
   }
 
-  public getCache(): Cache<TItem> {
-    return this.cache;
+  public readCache(): TItem {
+    return this.cache.readCache();
   }
 
   public getItem(forceReload = false): Observable<TItem> {
-    console.log('Call ServiceBase.getItem()');
+    console.log('Call ServiceBase.getItem');
     if (this.cache.hasCache() && !forceReload) {
       return Observable.create((observer) => {
         this.log('Cache');
@@ -42,7 +42,7 @@ export abstract class ServiceBase<TItem> {
   }
 
   public getAllItems(forceReload = false): Observable<TItem[]> {
-    console.log('Call ServiceBase.getAllItems()');
+    console.log('Call ServiceBase.getAllItems');
     let isList = true;
 
     if (this.cacheList.hasCache(isList) && !forceReload) {
@@ -61,15 +61,15 @@ export abstract class ServiceBase<TItem> {
     });
   }
 
-  public updateCacheList(items: TItem[]) {
+  public writeCacheList(items: TItem[]) {
     let isList = true;
-    this.getCacheList().writeCache(items, isList);
-    console.log('Update Cache with ' + this.getKey(isList), JSON.stringify(items));
+    this.cacheList.writeCache(items, isList);
+    console.log('Write Cache with ' + this.getKey(isList), JSON.stringify(items));
   }
 
-  public updateCache(item: TItem) {
-    this.getCache().writeCache(item);
-    console.log('Update Cache with ' + this.getKey(), JSON.stringify(item));
+  public writeCache(item: TItem) {
+    this.cache.writeCache(item);
+    console.log('Write Cache with ' + this.getKey(), JSON.stringify(item));
   }
 
   private log(source: string, isList = false) {
