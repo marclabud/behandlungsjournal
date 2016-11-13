@@ -64,12 +64,12 @@ export abstract class ServiceBase<TItem> {
   public updateCacheList(items: TItem[]) {
     let isList = true;
     this.getCacheList().writeCache(items, isList);
-    console.log('Udpate Cache with ' + this.getKey(isList), JSON.stringify(items));
+    console.log('Update Cache with ' + this.getKey(isList), JSON.stringify(items));
   }
 
   public updateCache(item: TItem) {
     this.getCache().writeCache(item);
-    console.log('Udpate Cache with ' + this.getKey(), JSON.stringify(item));
+    console.log('Update Cache with ' + this.getKey(), JSON.stringify(item));
   }
 
   private log(source: string, isList = false) {
