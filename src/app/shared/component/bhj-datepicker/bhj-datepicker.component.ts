@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-bhj-datepicker',
   templateUrl: './bhj-datepicker.component.html',
   styleUrls: ['./bhj-datepicker.component.css']
 })
-export class BhjDatepickerComponent  {
+export class BhjDatepickerComponent {
   @Input()
   dateModel: Date;
   @Input()

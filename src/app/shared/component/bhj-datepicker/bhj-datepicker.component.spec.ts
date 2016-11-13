@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { BhjDatepickerComponent } from './bhj-datepicker.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {BhjDatepickerComponent} from './bhj-datepicker.component';
 
 describe('BhjDatepickerComponent', () => {
   let component: BhjDatepickerComponent;
@@ -11,9 +8,9 @@ describe('BhjDatepickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BhjDatepickerComponent ]
+      declarations: [BhjDatepickerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

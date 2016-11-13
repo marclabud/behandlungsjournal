@@ -1,25 +1,29 @@
 'use strict';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Http} from '@angular/http';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';
 import {Subscription} from 'rxjs/Subscription';
 import {MessageService} from '../../shared/service/message/message.service';
-import {BhJournal} from '../model/bhjournal';
+import {PatientService} from '../../patient/service/patient.service';
 
 @Component({
   selector: 'app-bhjournal',
   templateUrl: 'bhjournal-view.component.html',
   styleUrls: ['bhjournal-view.component.css']
 })
-export class BhjournalComponent implements OnInit {
+export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
   private journals = [];
   private isLoading = true;
   private subscription: Subscription;
   private selectedPatient: Patient;
   private patient_id: string;
-  constructor(private bhjournalService: BhJournalService, private messageService: MessageService) {
-    this.subscription = messageService.Patientselected$.subscribe(
+  private messageService: MessageService<Patient>;
+
+  constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
+    this.messageService = new MessageService<Patient>(http, patientService);
+    this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {
         this.selectedPatient = patient;
         this.getJournalsbyPatient(this.selectedPatient._id);
@@ -31,13 +35,13 @@ export class BhjournalComponent implements OnInit {
       this.patient_id = this.selectedPatient._id;
     } else {
       // Component called by path
-      this.selectedPatient = JSON.parse(sessionStorage.getItem('patient'));
+      this.selectedPatient = this.patientService.getCache().readCache();
       this.patient_id = this.selectedPatient._id;
       console.log('Bhjournal-Component ngOnInit selected Patient is undefined');
     }
     this.getJournalsbyPatient(this.patient_id);
-
   }
+
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.journals = journal,

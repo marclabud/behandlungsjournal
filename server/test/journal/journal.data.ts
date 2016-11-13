@@ -8,7 +8,7 @@ export class JournalData implements IData {
       patient_id: '1',
       diagnose: 'Bisswunde',
       startdatum: '2016-11-07T08:00:00',
-      enddatum:   '2016-11-16T18:00:00'
+      enddatum: '2016-11-16T18:00:00'
 
     },
     {
@@ -23,9 +23,10 @@ export class JournalData implements IData {
       patient_id: '3',
       diagnose: 'Stauchung',
       startdatum: '2016-11-09T08:00:00',
-      enddatum:  '2016-11-18T18:00:00'
+      enddatum: '2016-11-18T18:00:00'
     }
   ];
+
   getData() {
     return this.journale;
   }

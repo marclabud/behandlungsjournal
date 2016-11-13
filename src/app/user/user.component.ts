@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder}  from '@angular/forms';
-
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from './service/user.service';
 import {User} from './model/user';
 
@@ -11,26 +10,25 @@ import {User} from './model/user';
 })
 export class UserComponent implements OnInit {
 
-  private users:Array<User> = [];
+  private users: Array<User> = [];
   private isLoading = true;
 
-  private user:User = null;
+  private user: User = null;
   private isEditing = false;
 
-  private addUserForm:FormGroup;
+  private addUserForm: FormGroup;
   private name = new FormControl('', Validators.required);
   private email = new FormControl('', Validators.required);
   private password = new FormControl('', Validators.required);
 
   private infoMsg = {body: '', type: 'info'};
 
-  constructor(private userService:UserService,
-              private formBuilder:FormBuilder) {
+  constructor(private userService: UserService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.getUsers(true);
-
+    this.getUsers();
     this.addUserForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
@@ -38,8 +36,8 @@ export class UserComponent implements OnInit {
     });
   }
 
-  getUsers(forceReload: boolean = false) {
-    this.userService.getAll(forceReload).subscribe(
+  getUsers(forceReload = false) {
+    this.userService.getAllItems(forceReload).subscribe(
       data => this.users = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -88,8 +86,8 @@ export class UserComponent implements OnInit {
     if (window.confirm('Wollen Sie sicher diesen Benutzer permanent löschen?')) {
       this.userService.deleteUser(user).subscribe(
         res => {
-          let pos = this.users.map(user => {
-            return user._id;
+          let pos = this.users.map(obj => {
+            return obj._id;
           }).indexOf(user._id);
           this.users.splice(pos, 1);
           this.actualizeCache();
@@ -107,7 +105,7 @@ export class UserComponent implements OnInit {
   }
 
   private actualizeCache() {
-    this.userService.getCache().writeCache(this.users);
+    this.userService.updateCacheList(this.users);
   }
 
 }

@@ -38,6 +38,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
 });
 
 
-function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
+// function sleep(time) {
+//   return new Promise((resolve) => setTimeout(resolve, time));
+// }
