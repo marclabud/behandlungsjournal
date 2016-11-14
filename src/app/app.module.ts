@@ -54,7 +54,6 @@ import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.c
     BhJournalService,
     AuthService,
     GuardService,
-    PatientService,
     MessageService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
