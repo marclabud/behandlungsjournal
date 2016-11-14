@@ -23,6 +23,8 @@ import {BhJournalService} from './bhjournal/service/bhjournal.service';
 import {BhjDatepickerComponent} from './shared/component/bhj-datepicker/bhj-datepicker.component';
 import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
 import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.component';
+import {MedicamentDetailComponent} from './medicament/medicament-detail/medicament-detail.component';
+import {MedicamentListComponent} from './medicament/medicament-list/medicament-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.c
     BhjournalDetailComponent,
     BhjournalListComponent,
     BhjDatepickerComponent,
-    HaeufigkeitComponent
+    HaeufigkeitComponent,
+    MedicamentDetailComponent,
+    MedicamentDetailComponent,
+    MedicamentListComponent
   ],
   imports: [
     BrowserModule,
