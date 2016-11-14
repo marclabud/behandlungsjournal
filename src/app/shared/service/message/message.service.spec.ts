@@ -3,24 +3,17 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {MessageService} from './message.service';
 import {Patient} from '../../../patient/model/patient';
-import {Http, BaseRequestOptions} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
-
+import {HttpModule} from '@angular/http';
+import {ServiceBase} from '../../service.base';
 
 // describe('Service: Message', () => {
 //   beforeEach(() => {
 //     TestBed.configureTestingModule({
-//       providers: [MessageService,
-//         MockBackend,
-//         BaseRequestOptions,
-//         {
-//           provide: Http,
-//           useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
-//             return new Http(backendInstance, defaultOptions);
-//           }}]
+//       providers: [
+//         MessageService],
+//       imports: [HttpModule, ServiceBase ]
 //     });
 //   });
-
 //   it('should ...', inject([MessageService], (service: MessageService<Patient>) => {
 //     expect(service).toBeTruthy();
 //   }));
