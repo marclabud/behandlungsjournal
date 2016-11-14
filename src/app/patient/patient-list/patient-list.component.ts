@@ -20,7 +20,7 @@ export class PatientListComponent implements OnInit {
 
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
   constructor(http: Http, private patientService: PatientService) {
-    this.messageService = new MessageService<Patient>(http, patientService);
+    this.messageService = patientService.messageService;
   }
 
   ngOnInit() {

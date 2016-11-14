@@ -22,7 +22,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private messageService: MessageService<Patient>;
 
   constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
-    this.messageService = new MessageService<Patient>(http, patientService);
+    this.messageService = patientService.messageService;
     this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {
         this.selectedPatient = patient;
