@@ -20,7 +20,7 @@ export class PatientListComponent implements OnInit {
 
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
   constructor(http: Http, private patientService: PatientService) {
-    this.messageService = new MessageService<Patient>(http, patientService);
+    this.messageService = patientService.messageService;
   }
 
   ngOnInit() {
@@ -28,8 +28,8 @@ export class PatientListComponent implements OnInit {
     this.getSelectedPatient();
   }
 
-  getPatients(forceReload = false) {
-    this.patientService.getAllItems(forceReload).subscribe(
+  getPatients() {
+    this.patientService.getAllItems().subscribe(
       data => this.patients = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -38,7 +38,7 @@ export class PatientListComponent implements OnInit {
 
   getSelectedPatient() {
     let patient: Patient;
-    patient = this.patientService.getCache().readCache();
+    patient = this.patientService.readCache();
     if (patient != null) {
       this.onSelect(patient);
     }

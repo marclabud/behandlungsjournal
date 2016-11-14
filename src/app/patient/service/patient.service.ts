@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {Patient} from '../model/patient';
 import {paths} from '../../../../server/src/server.conf';
+import {MessageService} from '../../shared/service/message/message.service';
 
 @Injectable()
 export class PatientService extends ServiceBase<Patient> {
@@ -11,10 +12,12 @@ export class PatientService extends ServiceBase<Patient> {
   private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
   private options = new RequestOptions({headers: this.headers});
   private serviceUrl: string;
+  public messageService;
 
   constructor(http: Http) {
     super(http, 'PatientService:Patient');
     this.serviceUrl = '/patient';
+    this.messageService = new MessageService<Patient>(http, this);
   }
 
   getPatients() {

@@ -9,7 +9,6 @@ export class JournalData implements IData {
       diagnose: 'Bisswunde',
       startdatum: '2016-11-07T08:00:00',
       enddatum: '2016-11-16T18:00:00'
-
     },
     {
       name: 'Journal Minka',

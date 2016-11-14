@@ -2,11 +2,13 @@
 
 import {TestBed, inject} from '@angular/core/testing';
 import {BhJournalService} from './bhjournal.service';
+import {HttpModule} from '@angular/http';
 
 describe('Service: Bhjournal', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BhJournalService]
+      providers: [BhJournalService],
+      imports: [HttpModule]
     });
   });
 

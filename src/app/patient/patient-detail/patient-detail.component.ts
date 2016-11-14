@@ -20,7 +20,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   patient: Patient;
 
   constructor(http: Http, private patientService: PatientService) {
-    this.messageService = new MessageService<Patient>(http, patientService);
+    this.messageService = patientService.messageService;
     this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {
         this.patient = patient;
@@ -65,7 +65,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   }
 
   private actualizeCache() {
-    this.patientService.updateCache(this.patient);
+    this.patientService.writeCache(this.patient);
   }
 
   ngOnDestroy() {

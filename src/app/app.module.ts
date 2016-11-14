@@ -22,6 +22,7 @@ import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.
 import {BhJournalService} from './bhjournal/service/bhjournal.service';
 import {BhjDatepickerComponent} from './shared/component/bhj-datepicker/bhj-datepicker.component';
 import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
+import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
     MainNavComponent,
     BhjournalDetailComponent,
     BhjournalListComponent,
-    BhjDatepickerComponent
+    BhjDatepickerComponent,
+    HaeufigkeitComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,6 @@ import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
     BhJournalService,
     AuthService,
     GuardService,
-    PatientService,
     MessageService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

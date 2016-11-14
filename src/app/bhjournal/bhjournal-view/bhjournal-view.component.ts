@@ -22,7 +22,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private messageService: MessageService<Patient>;
 
   constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
-    this.messageService = new MessageService<Patient>(http, patientService);
+    this.messageService = patientService.messageService;
     this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {
         this.selectedPatient = patient;
@@ -35,7 +35,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.patient_id = this.selectedPatient._id;
     } else {
       // Component called by path
-      this.selectedPatient = this.patientService.getCache().readCache();
+      this.selectedPatient = this.patientService.readCache();
       this.patient_id = this.selectedPatient._id;
       console.log('Bhjournal-Component ngOnInit selected Patient is undefined');
     }
