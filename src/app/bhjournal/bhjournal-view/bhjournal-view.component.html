@@ -4,7 +4,14 @@
       <div class="card-text" *ngFor="let journal of journals" >
          <h2 class="card-title">{{journal.name}}</h2>
         <p class ="card-title">Diagnose: {{journal.diagnose}} </p>
-        <p class ="card-text">  Beginn:  {{journal.startdatum}}  Ende: {{journal.enddatum}}</p>
+        <div class="form-group row">
+          <label class="col-xs-3 col-form-label">Beginn der Therapie: </label>
+          <input [(ngModel)]="journal.startdatum" name="Therapiebeginn"  #Therapiebeginn="ngModel" class="col-xs-5" type="date" placeholder="tt.mm.yyyy"/>
+        </div>
+        <div class="form-group row">
+          <label class="col-xs-3 col-form-label">Ende der Therapie: </label>
+          <input [(ngModel)]="journal.enddatum"  name="Therapieende"  #Therapieende="ngModel" class="col-xs-5" type="date" placeholder="tt.mm.yyyy"/>
+        </div>
       </div>
     </div>
     <!--<app-bhj-datepicker [dateModel]="endDate" [label]="MeinLabel" ></app-bhj-datepicker>-->
