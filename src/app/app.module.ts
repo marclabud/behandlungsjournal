@@ -52,7 +52,6 @@ import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
     BhJournalService,
     AuthService,
     GuardService,
-    PatientService,
     MessageService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
