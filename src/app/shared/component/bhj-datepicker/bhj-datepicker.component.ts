@@ -11,7 +11,7 @@ export class BhjDatepickerComponent {
   @Input()
   label: string;
   @Output()
-  dateModelChange: EventEmitter<string> = new EventEmitter();
+  dateModelChange: EventEmitter<string> = new EventEmitter<string>();
   private showDatepicker: boolean = false;
 
   showPopup() {
