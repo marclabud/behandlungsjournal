@@ -10,6 +10,10 @@ import {PatientLoader} from './patient/patient.loader';
 import {PatientData} from './patient/patient.data';
 import {UserLoader} from './user/user.loader';
 import {UserData} from './user/user.data';
+import {JournalLoader} from './journal/journal.loader';
+import {JournalData} from './journal/journal.data';
+import {HaeufigkeitLoader} from './haeufigkeit/haeufigkeit.loader';
+import {HaeufigkeitData} from './haeufigkeit/haeufigkeit.data';
 
 // connect away
 MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
@@ -24,6 +28,12 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
   // prepare Patient data
   new PatientLoader(db, new PatientData());
 
+  // prepare Journal data
+  new JournalLoader(db, new JournalData());
+
+  // prepare Journal data
+  new HaeufigkeitLoader(db, new HaeufigkeitData());
+
   // prepare other data
   // sleep(100).then(() => {
   //  ...
@@ -34,6 +44,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
 });
 
 
-function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
+// function sleep(time) {
+//   return new Promise((resolve) => setTimeout(resolve, time));
+// }

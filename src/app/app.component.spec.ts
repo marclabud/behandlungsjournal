@@ -1,18 +1,24 @@
 /* tslint:disable:no-unused-variable */
-
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { routing } from './app.routing';
-import {RouterTestingModule
-} from '@angular/router/testing';
+import {} from 'jasmine';
+import {TestBed, async} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {MainNavComponent} from './main-nav/main-nav.component';
+import {PatientListComponent} from './patient/patient-list/patient-list.component';
+import {HttpModule} from '@angular/http';
+import {PatientService} from './patient/service/patient.service';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        MainNavComponent,
+        PatientListComponent,
       ],
-      imports: [ RouterTestingModule ]
+      imports: [RouterTestingModule, HttpModule, ],
+      providers:
+      [PatientService]
     });
   });
 
@@ -20,18 +26,5 @@ describe('App: Behandlungsjournal', () => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  }));
-
-  it(`should have as title 'Behandlungsjournal'`, async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Behandlungsjournal');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Behandlungsjournal');
   }));
 });

@@ -11,7 +11,7 @@ export class UserLoader extends DataLoader {
   getCollectionName() {
     return 'User';
   }
-  
+
   // some specific loader
   // ...
 

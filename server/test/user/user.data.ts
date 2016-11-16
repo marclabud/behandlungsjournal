@@ -4,19 +4,19 @@ export class UserData implements IData {
 
   private users = [
     {
-      'name' : 'Tim',
-      'email' : 'tim@gmail.com',
-      'password' : 'tim'
+      'name': 'Tim',
+      'email': 'tim@gmail.com',
+      'password': 'tim'
     },
     {
-      'name' : 'Peter',
-      'email' : 'peter@gmail.com',
-      'password' : 'peter'
+      'name': 'Peter',
+      'email': 'peter@gmail.com',
+      'password': 'peter'
     },
     {
-      'name' : 'Paul',
-      'email' : 'paul@gmail.com',
-      'password' : 'paul'
+      'name': 'Paul',
+      'email': 'paul@gmail.com',
+      'password': 'paul'
     }
   ];
 

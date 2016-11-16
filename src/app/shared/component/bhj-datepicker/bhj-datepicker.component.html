@@ -1,0 +1,5 @@
+<label>{{label}}</label>
+<input [(ngModel)]="dateModel" class="form-control"     (focus)="showPopup()" />
+<datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" [showWeeks]="true" (ngModelChange)="hidePopup($event)" ></datepicker>
+
+

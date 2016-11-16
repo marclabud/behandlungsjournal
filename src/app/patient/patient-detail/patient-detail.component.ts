@@ -1,8 +1,10 @@
+'use strict';
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Http} from '@angular/http';
 import {PatientService} from '../service/patient.service';
 import {Patient} from './../model/patient';
 import {Subscription} from 'rxjs/Subscription';
-import {MessageService} from '../../shared/message/message.service';
+import {MessageService} from '../../shared/service/message/message.service';
 
 @Component({
   selector: 'app-patient-detail',
@@ -11,13 +13,15 @@ import {MessageService} from '../../shared/message/message.service';
 })
 export class PatientDetailComponent implements OnInit, OnDestroy {
   private infoMsg = {body: '', type: 'info'};
-  subscription: Subscription;
+  private subscription: Subscription;
+  private messageService: MessageService<Patient>;
 
   @Input()
   patient: Patient;
 
-  constructor(private patientService: PatientService, private messageService: MessageService) {
-    this.subscription = messageService.Patientselected$.subscribe(
+  constructor(http: Http, private patientService: PatientService) {
+    this.messageService = patientService.messageService;
+    this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {
         this.patient = patient;
       });
@@ -28,7 +32,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
 
   savePatient(patient) {
     console.log('Patient wird gespeichert', patient);
-    if (typeof(patient._id) === 'undefined' ) {
+    if (typeof(patient._id) === 'undefined') {
       // Neuen Patienten anlegen
       this.patientService.addPatient(patient).subscribe(
         res => {
@@ -50,8 +54,8 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-  console.log ('Dialog Abbrechen');
-  this.patient = undefined;
+    console.log('Dialog Abbrechen');
+    this.patient = undefined;
   }
 
   sendInfoMsg(body, type, time = 3000) {
@@ -61,9 +65,9 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   }
 
   private actualizeCache() {
-     // ToDo: Fehler von this.patient klären
-    // this.patientService.getCache().writeCache(this.patient);
+    this.patientService.writeCache(this.patient);
   }
+
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscription.unsubscribe();

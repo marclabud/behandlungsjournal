@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {User} from '../user/model/user';
-import { AuthService } from '../shared/service/auth/auth.service';
+import {AuthService} from '../shared/service/auth/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
   private LoginStatus: boolean;
   public submitted: boolean;
 
-  constructor( private authService: AuthService,
-               private router: Router,
-    private _formbuilder: FormBuilder) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private _formbuilder: FormBuilder) {
   }
 
   ngOnInit() {

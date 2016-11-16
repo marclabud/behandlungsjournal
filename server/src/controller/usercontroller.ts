@@ -1,7 +1,7 @@
 'use strict';
 import * as _ from 'lodash';
 
-const User = require ('../models/user.model');
+const User = require('../models/user.model');
 
 module.exports.getAllUsers = (request, response) => {
   User.find({}, (err, docs) => {

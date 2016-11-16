@@ -15,7 +15,7 @@ export abstract class DataLoader {
 
   // main
   prepareData() {
-    console.log('\nPrepare collection ' + this.getCollectionName()+ ':');
+    console.log('\nPrepare collection ' + this.getCollectionName() + ':');
     this.drop();
     this.insert(this.data.getData());
   }

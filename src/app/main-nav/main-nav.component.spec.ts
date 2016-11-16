@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { MainNavComponent } from './main-nav.component';
+import {PatientListComponent} from '../patient/patient-list/patient-list.component';
+import {HttpModule} from '@angular/http';
+import {PatientService} from '../patient/service/patient.service';
 
 describe('MainNavComponent', () => {
   let component: MainNavComponent;
@@ -11,9 +14,14 @@ describe('MainNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainNavComponent ]
+      declarations: [
+        MainNavComponent,
+        PatientListComponent
+      ],
+      imports: [HttpModule],
+      providers: [PatientService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

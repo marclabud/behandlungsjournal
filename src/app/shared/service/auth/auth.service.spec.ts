@@ -1,12 +1,19 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { AuthService } from './auth.service';
+import {TestBed, inject} from '@angular/core/testing';
+import {AuthService} from './auth.service';
+import {UserService} from '../../../user/service/user.service';
+import {HttpModule} from '@angular/http';
 
 describe('Service: Authenticate', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: [
+        AuthService,
+        UserService],
+      imports: [
+        HttpModule
+      ]
     });
   });
 

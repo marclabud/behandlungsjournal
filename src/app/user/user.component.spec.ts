@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
-import { UserComponent } from './user.component';
+import {TestBed, async} from '@angular/core/testing';
+import {UserComponent} from './user.component';
 
 /*describe('Component: Home', () => {
   it('should create an instance', () => {
