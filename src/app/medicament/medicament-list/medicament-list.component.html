@@ -1,3 +1,7 @@
 <p>
   medicament-list works!
 </p>
+
+<div *ngIf="!isloading" >
+<p>Medikamente für das {{this.behandlungsjournal.name}}</p>
+</div>

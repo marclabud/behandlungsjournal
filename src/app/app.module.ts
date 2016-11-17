@@ -25,6 +25,8 @@ import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
 import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.component';
 import {MedicamentDetailComponent} from './medicament/medicament-detail/medicament-detail.component';
 import {MedicamentListComponent} from './medicament/medicament-list/medicament-list.component';
+import { IndikatorListComponent } from './indikator/indikator-list/indikator-list.component';
+import { IndikatorDetailComponent } from './indikator/indikator-detail/indikator-detail.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import {MedicamentListComponent} from './medicament/medicament-list/medicament-l
     HaeufigkeitComponent,
     MedicamentDetailComponent,
     MedicamentDetailComponent,
-    MedicamentListComponent
+    MedicamentListComponent,
+    IndikatorListComponent,
+    IndikatorDetailComponent
   ],
   imports: [
     BrowserModule,

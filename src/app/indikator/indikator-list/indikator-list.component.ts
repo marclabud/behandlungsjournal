@@ -6,15 +6,15 @@ import {BhJournal} from '../../bhjournal/model/bhjournal';
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-medicament-list',
-  templateUrl: './medicament-list.component.html',
-  styleUrls: ['./medicament-list.component.css']
+  selector: 'app-indikator-list',
+  templateUrl: './indikator-list.component.html',
+  styleUrls: ['./indikator-list.component.css']
 })
-export class MedicamentListComponent implements OnInit, OnDestroy {
-  private messageService: MessageService<BhJournal>;
-  private subscription: Subscription;
-  private behandlungsjournal: BhJournal;
-  private isLoading = true;
+export class IndikatorListComponent implements OnInit, OnDestroy {
+private messageService: MessageService<BhJournal>;
+private subscription: Subscription;
+private behandlungsjournal: BhJournal;
+private isLoading = true;
 
 
   constructor(http: Http, private bhjournalService: BhJournalService) {
@@ -28,8 +28,8 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (typeof(this.behandlungsjournal) !== 'undefined') {
     } else {
-    this.behandlungsjournal  = this.bhjournalService.readCache();
-    this.isLoading = false;
+      this.behandlungsjournal  = this.bhjournalService.readCache();
+      this.isLoading = false;
     }
   }
   ngOnDestroy() {
@@ -38,3 +38,5 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   }
 
 }
+
+
