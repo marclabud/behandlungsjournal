@@ -55,14 +55,17 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     );
   };
 
-  private getJournals (journals: Array<BhJournal> ) {
+  private getJournals(journals: Array<BhJournal>) {
     this.journals = journals;
-    // ToDo: mapping von selectedBhJournal auf this.journals
-    this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
-  }
+    if (!(0 === journals.length)) {
+      this.selectedBhJournal = this.journals[0];
+      this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
+    }
+  };
 
   ngOnDestroy() {
     // prevent memory leak when component destroyed
-    this.subscriptionPatient.unsubscribe();
+    this. subscriptionPatient.unsubscribe();
   }
 }
+

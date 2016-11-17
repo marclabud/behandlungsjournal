@@ -14,6 +14,7 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   private messageService: MessageService<BhJournal>;
   private subscription: Subscription;
   private behandlungsjournal: BhJournal;
+  private isLoading = true;
 
 
   constructor(http: Http, private bhjournalService: BhJournalService) {
@@ -21,9 +22,15 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
     this.subscription = this.messageService.Itemselected$.subscribe(
       behandlungsjournal => {
         this.behandlungsjournal = behandlungsjournal;
+        this.isLoading = true;
       });
   }
   ngOnInit() {
+    if (typeof(this.behandlungsjournal) !== 'undefined') {
+    } else {
+    this.behandlungsjournal  = this.bhjournalService.readCache();
+    this.isLoading = false;
+    }
   }
   ngOnDestroy() {
     // prevent memory leak when component destroyed
