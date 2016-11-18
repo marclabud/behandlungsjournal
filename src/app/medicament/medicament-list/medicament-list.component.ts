@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Http} from '@angular/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import {Subscription} from 'rxjs';
+import {MedikationService} from '../service/medikation.service';
+import {Medikation} from '../model/medikation';
 
 @Component({
   selector: 'app-medicament-list',
@@ -11,27 +12,43 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./medicament-list.component.css']
 })
 export class MedicamentListComponent implements OnInit, OnDestroy {
-  private messageService: MessageService<BhJournal>;
+  private messageServiceBhJournal: MessageService<BhJournal>;
+  private messageServiceMedication: MessageService<Medikation>;
   private subscription: Subscription;
-  private behandlungsjournal: BhJournal;
+  private bhJournal: BhJournal;
+  private medications: Array<Medikation> = [];
   private isLoading = true;
 
-
-  constructor(http: Http, private bhjournalService: BhJournalService) {
-    this.messageService = bhjournalService.messageService;
-    this.subscription = this.messageService.Itemselected$.subscribe(
+  constructor(private bhjournalService: BhJournalService, private medikationService: MedikationService) {
+    this.messageServiceBhJournal = bhjournalService.messageService;
+    this.messageServiceMedication = medikationService.messageService;
+    this.subscription = this.messageServiceBhJournal.Itemselected$.subscribe(
       behandlungsjournal => {
-        this.behandlungsjournal = behandlungsjournal;
+        this.bhJournal = behandlungsjournal;
         this.isLoading = true;
       });
   }
+
   ngOnInit() {
-    if (typeof(this.behandlungsjournal) !== 'undefined') {
+    if (typeof(this.bhJournal) !== 'undefined') {
     } else {
-    this.behandlungsjournal  = this.bhjournalService.readCache();
-    this.isLoading = false;
+      this.bhJournal = this.bhjournalService.readCache();
+      this.isLoading = false;
     }
+    this.getMedicationsByJournalId(this.bhJournal._id);
   }
+
+  getMedicationsByJournalId(bhJournal_id: string) {
+    this.medikationService.getMedicationsByJournalId(bhJournal_id).subscribe(
+      data => this.medications = data,
+      error => console.log(error),
+      () => this.isLoading = false
+    );
+    // if (this.medications.length !== 0) {
+    //   this.messageServiceMedication.selectItem(this.medications);
+    // }
+  }
+
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscription.unsubscribe();
