@@ -4,6 +4,7 @@ export class JournalData implements IData {
 
   private journale = [
     {
+      _id: '1',
       name: 'Journal Strolch',
       patient_id: '1',
       diagnose: 'Bisswunde',
@@ -11,6 +12,7 @@ export class JournalData implements IData {
       enddatum: '2016-11-16'
     },
     {
+      _id: '2',
       name: 'Journal Minka',
       patient_id: '2',
       diagnose: 'Vergiftung',
@@ -18,6 +20,7 @@ export class JournalData implements IData {
       enddatum: '2016-11-17'
     },
     {
+      _id: '3',
       name: 'Journal Blacky',
       patient_id: '3',
       diagnose: 'Stauchung',
