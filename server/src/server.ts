@@ -29,6 +29,7 @@ app.use(morgan('dev'));
 app.use(require('./routes/userRoutes.js'));
 app.use(require('./routes/patientRoutes.js'));
 app.use(require('./routes/journalRoutes.js'));
+app.use(require('./routes/medikation.routes.js'));
 app.use(require('./routes/staticRoutes.js'));
 
 connect()
