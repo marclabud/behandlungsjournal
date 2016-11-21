@@ -17,8 +17,6 @@ import * as moment from 'moment';
 export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
   private journalsUTC: Array<BhJournal> = [];
-  private TherapieStartDatumHTML5Datepicker: String;
-  private TherapieEndeDatumHTML5Datepicker: String;
   private TherapieStartDatum: moment.Moment;
   private TherapieEndeDatum: moment.Moment;
   private isLoading = true;
@@ -68,9 +66,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.selectedBhJournal = this.journalsUTC[0];
       // select item schreibt auch den cache, daher erst ab hier transformation auf lokale Zeit möglich.
       this.TherapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
-      this.TherapieStartDatumHTML5Datepicker = this.TherapieStartDatum.format('YYYY-MM-DD');
       this.TherapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
-      this.TherapieEndeDatumHTML5Datepicker = this.TherapieEndeDatum.format('YYYY-MM-DD');
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };

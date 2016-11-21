@@ -26,6 +26,7 @@ import {MedicamentDetailComponent} from './medicament/medicament-detail/medicame
 import {MedicamentListComponent} from './medicament/medicament-list/medicament-list.component';
 import { IndikatorListComponent } from './indikator/indikator-list/indikator-list.component';
 import { IndikatorDetailComponent } from './indikator/indikator-detail/indikator-detail.component';
+import { DauerComponent } from './shared/component/dauer/dauer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { IndikatorDetailComponent } from './indikator/indikator-detail/indikator
     MedicamentDetailComponent,
     MedicamentListComponent,
     IndikatorListComponent,
-    IndikatorDetailComponent
+    IndikatorDetailComponent,
+    DauerComponent
   ],
   imports: [
     BrowserModule,
