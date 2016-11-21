@@ -28,6 +28,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private messageServiceBhJournal: MessageService<BhJournal>;
   public labelTherapieStart = 'Beginn der Therapie';
   public labelTherapieEnde = 'Ende der Therapie';
+  // ToDo: move label to const
 
   constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
