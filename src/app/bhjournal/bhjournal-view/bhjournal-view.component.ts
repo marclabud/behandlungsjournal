@@ -57,7 +57,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
 
   private getJournals(journals: Array<BhJournal>) {
     this.journals = journals;
-    if (!(0 === journals.length)) {
+    if (0 !== journals.length) {
       this.selectedBhJournal = this.journals[0];
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }

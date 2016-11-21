@@ -25,6 +25,7 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
     this.subscription = this.messageServiceBhJournal.Itemselected$.subscribe(
       behandlungsjournal => {
         this.bhJournal = behandlungsjournal;
+        this.getMedicationsByJournalId(this.bhJournal._id);
         this.isLoading = true;
       });
   }
