@@ -8,16 +8,8 @@
           <p class="col-sm-2">Diagnose:</p>
           <p class="col-sm-10">{{journal.diagnose}}</p>
         </div>
-        <app-dauer>[(StartDatum)]="TherapieStartDatum"
-          [labelStartDatum]="labelTherapieStart"
-          [(EndeDatum)]="TherapieEndeDatum"
-          [labelEndeDatum]="labelTherapieEnde"
-        </app-dauer>
+        <app-dauer [(StartDatum)]="TherapieStartDatum" [(EndeDatum)]="TherapieEndeDatum" [labelStartDatum]="labelTherapieStart"  [labelEndeDatum]="labelTherapieEnde"></app-dauer>
 
-<!--
-        <app-datepicker [(defaultDate)]="TherapieStartDatum" [labeltext]="labelTherapieStart"></app-datepicker>
-        <app-datepicker [(defaultDate)]="TherapieEndeDatum" [labeltext]="labelTherapieEnde"></app-datepicker>
--->
 
       </div>
 
