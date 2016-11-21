@@ -4,7 +4,7 @@
       <div class="card-text" *ngFor="let journal of journalsUTC">
         <h2 class="card-title">{{journal.name}}</h2>
         <p class="card-title">Diagnose: {{journal.diagnose}} </p>
-        <app-datepicker></app-datepicker>
+        <app-datepicker [(defaultDate)]="TherapieStartDatum"></app-datepicker>
         <div class="form-group row">
           <label class="col-form-label">Beginn der Therapie:</label>
           <div class="input-group">
