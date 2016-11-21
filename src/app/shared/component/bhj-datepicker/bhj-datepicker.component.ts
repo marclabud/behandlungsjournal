@@ -13,7 +13,6 @@ export class BhjDatepickerComponent implements OnInit {
   labeltext: string;
   @Output()
   dateModelChange: EventEmitter<string> = new EventEmitter<string>();
-  private showDatepicker: boolean = false;
   private HTML5_inputtype_date_Supported = false;
   private HTML5Date: String;
 
@@ -31,16 +30,6 @@ export class BhjDatepickerComponent implements OnInit {
     } else {
       // HTML5 type=date nicht supported
     }
-  }
-
-  showPopup() {
-    this.showDatepicker = true;
-  }
-
-  hidePopup(event) {
-    this.showDatepicker = false;
-    // this.dateModel = event;
-    // this.dateModelChange.emit(event);
   }
 }
 
