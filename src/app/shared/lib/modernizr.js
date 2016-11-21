@@ -1,3 +1,4 @@
+'use strict';
 /*!
  * modernizr v3.3.1
  * Build https://modernizr.com/download?-flexbox-inputtypes-dontmin
@@ -24,7 +25,7 @@
 
 ;(function(window, document, undefined){
   var tests = [];
-  
+
 
   /**
    *
@@ -73,7 +74,7 @@
     }
   };
 
-  
+
 
   // Fake some of Object.create so we can force non test results to be non "own" properties.
   var Modernizr = function() {};
@@ -83,10 +84,10 @@
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
 
-  
+
 
   var classes = [];
-  
+
 
   /**
    * is returns a boolean if the typeof an obj is exactly type.
@@ -182,7 +183,7 @@
    */
 
   var docElement = document.documentElement;
-  
+
 
   /**
    * A convenience helper to check if the document we are running in is an SVG document
@@ -192,7 +193,7 @@
    */
 
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
-  
+
 
   /**
    * createElement is a convenience wrapper around document.createElement. Since we
@@ -228,7 +229,7 @@
    * @returns {HTMLInputElement}
    */
   var inputElem = createElement('input');
-  
+
 /*!
 {
   "name": "Form input types",
@@ -355,11 +356,11 @@ Modernizr.inputtypes.week
    */
 
   var omPrefixes = 'Moz O ms Webkit';
-  
+
 
   var cssomPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.split(' ') : []);
   ModernizrProto._cssomPrefixes = cssomPrefixes;
-  
+
 
   /**
    * List of JavaScript DOM values used for tests
@@ -381,7 +382,7 @@ Modernizr.inputtypes.week
 
   var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
   ModernizrProto._domPrefixes = domPrefixes;
-  
+
 
 
   /**
@@ -488,7 +489,7 @@ Modernizr.inputtypes.week
     delete modElem.elem;
   });
 
-  
+
 
   var mStyle = {
     style: modElem.elem.style
@@ -500,7 +501,7 @@ Modernizr.inputtypes.week
     delete mStyle.style;
   });
 
-  
+
 
   /**
    * domToCSS takes a camelCase string and converts it to kebab-case
@@ -790,7 +791,7 @@ Modernizr.inputtypes.week
   // Modernizr.testAllProps('boxSizing')
   ModernizrProto.testAllProps = testPropsAll;
 
-  
+
 
   /**
    * testAllProps determines whether a given CSS property is supported in the browser
@@ -833,7 +834,7 @@ Modernizr.inputtypes.week
     return testPropsAll(prop, undefined, undefined, value, skipValueTest);
   }
   ModernizrProto.testAllProps = testAllProps;
-  
+
 /*!
 {
   "name": "Flexbox",

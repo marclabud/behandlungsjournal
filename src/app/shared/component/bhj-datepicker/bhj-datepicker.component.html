@@ -1,5 +1,15 @@
-<label>{{label}}</label>
-<input [(ngModel)]="dateModel" class="form-control"     (focus)="showPopup()" />
-<datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" [showWeeks]="true" (ngModelChange)="hidePopup($event)" ></datepicker>
+<div *ngIf="!HTML5_inputtype_date_Supported">
+<p>Date-type  nicht wird unterstützt</p>
+  <!--<label>{{label}}</label>-->
+  <!--<input [(ngModel)]="dateModel" class="form-control" (focus)="showPopup()"/>-->
+  <!--<datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" [showWeeks]="true"-->
+              <!--(ngModelChange)="hidePopup($event)"></datepicker>-->
+</div>
 
+<div *ngIf="HTML5_inputtype_date_Supported">
+  <p>Date-type wird unterstützt</p>
+  <!--<div class="input-group">-->
+    <!--<input [(ngModel)]="dateModel" name="label" #Therapiebeginn="dateModel"-->
+           <!--type="date" class="form-control" placeholder="tt.mm.yyyy"/>-->
+</div>
 
