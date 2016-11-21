@@ -7,6 +7,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {MessageService} from '../../shared/service/message/message.service';
 import {PatientService} from '../../patient/service/patient.service';
 import {BhJournal} from '../model/bhjournal';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bhjournal',
@@ -15,7 +16,11 @@ import {BhJournal} from '../model/bhjournal';
 })
 export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
-  private journals: Array<BhJournal> = [];
+  private journalsUTC: Array<BhJournal> = [];
+  private TherapieStartDatumHTML5Datepicker: String;
+  private TherapieEndeDatumHTML5Datepicker: String;
+  private TherapieStartDatum: moment.Moment;
+  private TherapieEndeDatum: moment.Moment;
   private isLoading = true;
   private subscriptionPatient: Subscription;
   private selectedPatient: Patient;
@@ -23,6 +28,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private patient_id: string;
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
+  private label = 'MeinLabel';
 
   constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
@@ -56,9 +62,14 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   };
 
   private getJournals(journals: Array<BhJournal>) {
-    this.journals = journals;
+    this.journalsUTC = journals;
     if (!(0 === journals.length)) {
-      this.selectedBhJournal = this.journals[0];
+      this.selectedBhJournal = this.journalsUTC[0];
+      // select item schreibt auch den cache, daher erst ab hier transformation auf lokale Zeit möglich.
+      this.TherapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
+      this.TherapieStartDatumHTML5Datepicker = this.TherapieStartDatum.format('YYYY-MM-DD');
+      this.TherapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
+      this.TherapieEndeDatumHTML5Datepicker = this.TherapieEndeDatum.format('YYYY-MM-DD');
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };

@@ -8,8 +8,9 @@
 
 <div *ngIf="HTML5_inputtype_date_Supported">
   <p>Date-type wird unterstützt</p>
-  <!--<div class="input-group">-->
-    <!--<input [(ngModel)]="dateModel" name="label" #Therapiebeginn="dateModel"-->
-           <!--type="date" class="form-control" placeholder="tt.mm.yyyy"/>-->
+  <div class="input-group">
+    <input [(ngModel)]="HTML5Date" name="datum"  #datum="ngModel"
+           type="date" class="form-control" placeholder="tt.mm.yyyy"/>
+  </div>
 </div>
 

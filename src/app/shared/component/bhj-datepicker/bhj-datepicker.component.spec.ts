@@ -1,8 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
 import {BhjDatepickerComponent} from './bhj-datepicker.component';
-import {DatepickerModule} from 'ng2-bootstrap';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 describe('BhjDatepickerComponent', () => {
   let component: BhjDatepickerComponent;
@@ -11,8 +10,7 @@ describe('BhjDatepickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BhjDatepickerComponent],
-      imports: [DatepickerModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [FormsModule]
     })
       .compileComponents();
   }));
