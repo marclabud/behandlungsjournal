@@ -7,31 +7,35 @@
           <thead class="thead-default">
           <tr>
             <th>Name</th>
-            <th colspan="2">Dauer</th>
+            <th>Morgens</th>
+            <th>Mittags</th>
+            <th>Abends</th>
             <th>Aktionen</th>
           </tr>
           </thead>
           <tbody *ngIf="medications.length === 0">
           <tr>
-            <td colspan="4">Es hat keine Medikamente zurzeit für dieses Journal. Bitte Medikation erfassen.</td>
+            <td colspan="5">Es hat keine Medikamente zurzeit für dieses Journal. Bitte Medikation erfassen.</td>
           </tr>
           </tbody>
           <tbody *ngIf="!isEditing">
           <tr *ngFor="let medication of medications">
             <td>{{medication.name}}</td>
-            <td>{{medication.dauer.startdatum}}</td>
-            <td>{{medication.dauer.enddatum}}</td>
+            <td>{{medication.haeufigkeit.morgens? "ja": "nein"}}</td>
+            <td>{{medication.haeufigkeit.mittags? "ja": "nein"}}</td>
+            <td>{{medication.haeufigkeit.abends? "ja": "nein"}}</td>
             <td>
-              <button class="btn btn-sm btn-warning" (click)="enableEditing(medication)"><i class="fa fa-pencil"></i>
+              <button class="btn btn-sm btn-warning" (click)="enableEditing(medication)"><i
+                class="fa fa-pencil"></i>
                 Bearbeiten
               </button>
-              <button class="btn btn-sm btn-danger" (click)="deleteMedication(medication)"><i class="fa fa-trash"></i>
+              <button class="btn btn-sm btn-danger" (click)="deleteMedication(medication)"><i
+                class="fa fa-trash"></i>
                 Löschen
               </button>
             </td>
           </tr>
           </tbody>
-
         </table>
       </div>
     </div>
