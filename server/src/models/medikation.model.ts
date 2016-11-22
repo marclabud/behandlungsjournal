@@ -3,14 +3,13 @@ import * as mongoose from 'mongoose';
 
 const model = 'Medikation';
 const medikationSchema = new mongoose.Schema({
-  _id: String,
   name: {type: String, required: true},
   journal_id: {type: String, required: true},
   dosierung: {type: Number, required: true},
-  hauefigkeit: {
-    morgens: {type: Boolean},
-    mittags: {type: Boolean},
-    abends: {type: Boolean},
+  haeufigkeit: {
+    morgens: {type: Boolean, required: true},
+    mittags: {type: Boolean, required: true},
+    abends: {type: Boolean, required: true},
   },
   dauer: {
     startdatum: {type: String, required: true},

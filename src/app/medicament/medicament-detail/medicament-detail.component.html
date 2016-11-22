@@ -1,3 +1,57 @@
-<p>
-  medicament-detail works!
-</p>
+<div *ngIf="medikation">
+  <div class="container-fluid">
+    <h4 class="card-header">Neue Medikation hinzufügen</h4>
+
+    <div class="card-block">
+
+      <div class="row">Name des Medikamentes:</div>
+      <div class="form-group row">
+        <input [(ngModel)]="medikation.name" class="form-control" type="text" placeholder="Name"/>
+      </div>
+
+      <div class="row">Wie oft?</div>
+      <div class="form-group row">
+        <label class="btn btn-secondary">
+          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="buttons"
+                 [checked]="medikation.haeufigkeit.morgens"
+                 (click)="medikation.haeufigkeit.morgens = !medikation.haeufigkeit.morgens"/>morgens
+        </label>
+        <label class="btn btn-secondary">
+          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="buttons"
+                 [checked]="medikation.haeufigkeit.mittags"
+                 (click)="medikation.haeufigkeit.mittags = !medikation.haeufigkeit.mittags"/>mittags
+        </label>
+        <label class="btn btn-secondary">
+          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="buttons"
+                 [checked]="medikation.haeufigkeit.abends"
+                 (click)="medikation.haeufigkeit.abends = !medikation.haeufigkeit.abends"/>abends
+        </label>
+      </div>
+
+      <div class="row">Dosierung:</div>
+      <div class="form-group row">
+        <input [(ngModel)]="medikation.dosierung"
+               name="stueckanzahl" #stueckanzahl="ngModel"
+               type="number" class="form-control" placeholder="Anzahl Tabletten"/>
+      </div>
+
+
+      <!-- TODO: call Dauer component <app-dauer></app-dauer>  -->
+
+      <div class="form-group row">
+        <button class="btn btn-primary" type="submit" (click)="addMedication(medikation)"><i
+          class="fa fa-floppy-o"></i>
+          Hinzufügen
+        </button>
+      </div>
+      <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Meldung:</strong> {{infoMsg.body}}
+      </div>
+
+
+    </div>
+  </div>
+</div>
