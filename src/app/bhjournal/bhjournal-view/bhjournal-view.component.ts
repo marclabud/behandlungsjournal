@@ -17,8 +17,8 @@ import * as moment from 'moment';
 export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
   private journalsUTC: Array<BhJournal> = [];
-  private TherapieStartDatum: moment.Moment;
-  private TherapieEndeDatum: moment.Moment;
+  private therapieStartDatum: moment.Moment;
+  private therapieEndeDatum: moment.Moment;
   private isLoading = true;
   private subscriptionPatient: Subscription;
   private selectedPatient: Patient;
@@ -63,11 +63,11 @@ export class BhjournalComponent implements OnInit, OnDestroy {
 
   private getJournals(journals: Array<BhJournal>) {
     this.journalsUTC = journals;
-    if (!(0 === journals.length)) {
+    if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
       // select item schreibt auch den cache, daher erst ab hier transformation auf lokale Zeit möglich.
-      this.TherapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
-      this.TherapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
+      this.therapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
+      this.therapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };

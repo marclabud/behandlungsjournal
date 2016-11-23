@@ -1,8 +1,8 @@
 <div *ngIf="!isloading">
   <div class="form-group row">
-    <app-datepicker [(defaultDate)]="StartDatum" [labeltext]="labelStartDatum"></app-datepicker>
-    <app-datepicker [(defaultDate)]="EndeDatum" [labeltext]="labelEndeDatum"></app-datepicker>
+    <app-datepicker [(defaultDate)]="startDatum" [labeltext]="labelStartDatum"></app-datepicker>
+    <app-datepicker [(defaultDate)]="endeDatum" [labeltext]="labelEndeDatum"></app-datepicker>
   </div>
-
+  <p>{{startDatum}}</p>
 </div>
 

@@ -36,9 +36,16 @@ export class BhjDatepickerComponent implements OnInit {
       }
     }
   }
-  dateChange($event) {
+  /* tslint:disable:no-unused-variable */
+  private dateChange($event) {
+    let dateReturned: moment.Moment;
     console.log ('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);
-    // ToDo: Ausgewähltes Datum zurückgeben
+    if (this.HTML5_inputtype_date_Supported) {
+      dateReturned = moment.utc(this.HTML5Date);
+    }  else {
+      dateReturned = this.defaultDate;
+    }
+    this.defaultDateChange.emit(dateReturned);
   }
 }
 
