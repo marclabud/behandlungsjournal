@@ -1,7 +1,7 @@
 'use strict';
 import {Router} from 'express';
 import {paths} from './../server.conf';
-const JournalController = require('../controller/journalcontroller');
+const JournalController = require('../controller/journal.controller');
 
 const JournalRouter = Router();
 // APIs
