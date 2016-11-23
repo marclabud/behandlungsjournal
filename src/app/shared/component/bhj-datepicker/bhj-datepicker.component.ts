@@ -12,7 +12,7 @@ export class BhjDatepickerComponent implements OnInit {
   @Input()
   labeltext: string;
   @Output()
-  dateModelChange: EventEmitter<string> = new EventEmitter<string>();
+  defaultDateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
   private HTML5_inputtype_date_Supported = false;
   private HTML5Date: String;
   private NG2Date: Date;
@@ -35,6 +35,10 @@ export class BhjDatepickerComponent implements OnInit {
         this.NG2Date = moment().toDate();
       }
     }
+  }
+  dateChange($event) {
+    console.log ('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);
+    // ToDo: Ausgewähltes Datum zurückgeben
   }
 }
 
