@@ -26,9 +26,10 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private patient_id: string;
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
-  public labelTherapieStart = 'Beginn der Therapie';
-  public labelTherapieEnde = 'Ende der Therapie';
-  // ToDo: move label to const
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelTherapieStart = 'Beginn der Therapie';
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelTherapieEnde = 'Ende der Therapie';
 
   constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
@@ -40,7 +41,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       });
 
   }
-
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
       this.patient_id = this.selectedPatient._id;
@@ -52,7 +52,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     }
     this.getJournalsbyPatient(this.patient_id);
   }
-
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -74,7 +73,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // prevent memory leak when component destroyed
-    this. subscriptionPatient.unsubscribe();
+    this.subscriptionPatient.unsubscribe();
   }
 }
 

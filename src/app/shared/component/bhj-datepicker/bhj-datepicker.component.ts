@@ -12,7 +12,7 @@ export class BhjDatepickerComponent implements OnInit {
   @Input()
   labeltext: string;
   @Output()
-  defaultDateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
+  onDateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
   private HTML5_inputtype_date_Supported = false;
   private HTML5Date: String;
   private NG2Date: Date;
@@ -36,7 +36,7 @@ export class BhjDatepickerComponent implements OnInit {
       }
     }
   }
-  /* tslint:disable:no-unused-variable */
+  /* tslint:disable-next-line:no-unused-variable */
   private dateChange($event) {
     let dateReturned: moment.Moment;
     console.log ('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);
@@ -45,7 +45,7 @@ export class BhjDatepickerComponent implements OnInit {
     }  else {
       dateReturned = this.defaultDate;
     }
-    this.defaultDateChange.emit(dateReturned);
+    this.onDateChange.emit(dateReturned);
   }
 }
 

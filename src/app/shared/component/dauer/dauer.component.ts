@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, OnInit,  Output } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -15,9 +15,16 @@ export class DauerComponent implements OnInit {
   labelStartDatum: string;
   @Input()
   labelEndeDatum: string;
+  @Output()
+  onStartDatumChange: EventEmitter<moment.Moment>= new EventEmitter<moment.Moment>();
+  @Output()
+  onEndeDatumChange: EventEmitter<moment.Moment>= new EventEmitter<moment.Moment>();
 
-  ngOnInit() {
-
+  ngOnInit() {}
+  private onStartDatumChanged(startDatum: moment.Moment) {
+    this.onStartDatumChange.emit(startDatum);
   }
-
+  private onEndeDatumChanged(endeDatum: moment.Moment) {
+    this.onEndeDatumChange.emit(endeDatum);
+  }
 }
