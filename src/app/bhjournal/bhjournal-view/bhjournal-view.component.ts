@@ -1,6 +1,5 @@
 'use strict';
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Http} from '@angular/http';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';
 import {Subscription} from 'rxjs/Subscription';
@@ -26,11 +25,12 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private patient_id: string;
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
+
   /* tslint:disable-next-line:no-unused-variable */
   private labelTherapieStart = 'Beginn der Therapie';
   /* tslint:disable-next-line:no-unused-variable */
   private labelTherapieEnde = 'Ende der Therapie';
-  constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
+  constructor(private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
     this.messageServicePatient = patientService.messageService;
     this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
@@ -63,7 +63,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     this.journalsUTC = journals;
     if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
-      // select item schreibt auch den cache, daher erst ab hier transformation auf lokale Zeit möglich.
+      // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
       this.therapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
       this.therapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
