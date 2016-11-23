@@ -6,6 +6,7 @@ import { DebugElement } from '@angular/core';
 import { MedicamentListComponent } from './medicament-list.component';
 import {HttpModule} from '@angular/http';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
+import {MedikationService} from '../service/medikation.service';
 
 describe('MedicamentListComponent', () => {
   let component: MedicamentListComponent;
@@ -15,7 +16,7 @@ describe('MedicamentListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MedicamentListComponent ],
       imports: [ HttpModule ],
-      providers: [ BhJournalService ]
+      providers: [ BhJournalService, MedikationService ]
     })
     .compileComponents();
   }));
