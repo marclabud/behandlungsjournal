@@ -6,6 +6,9 @@ import {Medikation} from '../model/medikation';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 
+
+enum Haeufigkeit {MORGENS, MITTAGS, ABENDS}
+
 @Component({
   selector: 'app-medicament-detail',
   templateUrl: './medicament-detail.component.html',
@@ -15,6 +18,7 @@ export class MedicamentDetailComponent implements OnInit {
 
   private messageServiceMedication: MessageService<Medikation>;
   private subscription: Subscription;
+  public haeufigkeit = Haeufigkeit;
 
   @Input()
   medikation: Medikation = new Medikation();
@@ -86,12 +90,28 @@ export class MedicamentDetailComponent implements OnInit {
     );
   }
 
-
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;
     window.setTimeout(() => this.infoMsg.body = '', time);
   }
+
+  switchHaeufigkeit(type: Haeufigkeit) {
+    switch (type) {
+      case Haeufigkeit.MORGENS:
+        this.medikation.haeufigkeit.morgens = !this.medikation.haeufigkeit.morgens;
+        break;
+      case Haeufigkeit.MITTAGS:
+        this.medikation.haeufigkeit.mittags = !this.medikation.haeufigkeit.mittags;
+        break;
+      case Haeufigkeit.ABENDS:
+        this.medikation.haeufigkeit.abends = !this.medikation.haeufigkeit.abends;
+        break;
+      default:
+        break;
+    }
+ }
+
 
   private actualizeCache() {
     this.medikationService.writeCache(this.medikation);

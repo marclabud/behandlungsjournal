@@ -1,9 +1,13 @@
 <div *ngIf="medikation">
   <div class="container-fluid">
-    <h4 class="card-header">Neue Medikation hinzufügen</h4>
+    <div *ngIf="!isEditMode">
+      <h4 class="card-header">Neue Medikation hinzufügen</h4>
+    </div>
+    <div *ngIf="isEditMode">
+      <h4 class="card-header">Medikation mutieren</h4>
+    </div>
 
     <div class="card-block">
-
       <div class="row">Name des Medikamentes:</div>
       <div class="form-group row">
         <input [(ngModel)]="medikation.name" class="form-control" type="text" placeholder="Name"/>
@@ -11,20 +15,20 @@
 
       <div class="row">Wie oft?</div>
       <div class="form-group row">
-        <label class="btn btn-secondary">
-          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="buttons"
-                 [checked]="medikation.haeufigkeit.morgens"
-                 (click)="medikation.haeufigkeit.morgens = !medikation.haeufigkeit.morgens"/>morgens
+        <label class="btn btn-secondary {{medikation.haeufigkeit.morgens ? 'active': ''}}">
+          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="toggle"
+                 [(ngModel)]="medikation.haeufigkeit.morgens"
+                 (click)="switchHaeufigkeit(haeufigkeit.MORGENS)"/>morgens
         </label>
-        <label class="btn btn-secondary">
-          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="buttons"
-                 [checked]="medikation.haeufigkeit.mittags"
-                 (click)="medikation.haeufigkeit.mittags = !medikation.haeufigkeit.mittags"/>mittags
+        <label class="btn btn-secondary {{medikation.haeufigkeit.mittags ? 'active': ''}}">
+          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="toggle"
+                 [(ngModel)]="medikation.haeufigkeit.mittags"
+                 (click)="switchHaeufigkeit(haeufigkeit.MITTAGS)"/>mittags
         </label>
-        <label class="btn btn-secondary">
-          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="buttons"
-                 [checked]="medikation.haeufigkeit.abends"
-                 (click)="medikation.haeufigkeit.abends = !medikation.haeufigkeit.abends"/>abends
+        <label class="btn btn-secondary {{medikation.haeufigkeit.abends ? 'active': ''}}">
+          <input class="checkbox-haeufigkeit" type="checkbox" data-toggle="toggle"
+                 [(ngModel)]="medikation.haeufigkeit.abends"
+                 (click)="switchHaeufigkeit(haeufigkeit.ABENDS)"/>abends
         </label>
       </div>
 
