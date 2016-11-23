@@ -36,13 +36,26 @@
       </div>
 
 
-      <!-- TODO: call Dauer component <app-dauer></app-dauer>  -->
+      <!-- TODO: call component Dauer -->
+      <!-- <app-dauer></app-dauer>  -->
+      <div class="row">Dauer:</div>
+      <div class="row">...</div>
 
-      <div class="form-group row">
-        <button class="btn btn-primary" type="submit" (click)="addMedication(medikation)"><i
-          class="fa fa-floppy-o"></i>
-          Hinzufügen
-        </button>
+      <div *ngIf="!isEditMode">
+        <div class="form-group row">
+          <button class="btn btn-primary" type="submit" (click)="addMedication(medikation)"><i
+            class="fa fa-floppy-o"></i>
+            Hinzufügen
+          </button>
+        </div>
+      </div>
+      <div *ngIf="isEditMode">
+        <div class="form-group row">
+          <button class="btn btn-primary" type="submit" (click)="editMedication(medikation)"><i
+            class="fa fa-floppy-o"></i>
+            Speichern
+          </button>
+        </div>
       </div>
       <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -50,7 +63,6 @@
         </button>
         <strong>Meldung:</strong> {{infoMsg.body}}
       </div>
-
 
     </div>
   </div>

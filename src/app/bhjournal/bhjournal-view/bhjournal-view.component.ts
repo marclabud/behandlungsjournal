@@ -24,7 +24,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
 
-  constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
+  constructor(private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
     this.messageServicePatient = patientService.messageService;
     this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
@@ -58,6 +58,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private getJournals(journals: Array<BhJournal>) {
     this.journals = journals;
     if (0 !== journals.length) {
+      // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
       this.selectedBhJournal = this.journals[0];
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }

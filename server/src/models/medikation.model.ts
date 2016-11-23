@@ -1,8 +1,10 @@
 'use strict';
 import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Schema.Types.ObjectId;
 
 const model = 'Medikation';
 const medikationSchema = new mongoose.Schema({
+  _id: {type: ObjectId, auto: true}, // auto generate new ObjectId
   name: {type: String, required: true},
   journal_id: {type: String, required: true},
   dosierung: {type: Number, required: true},

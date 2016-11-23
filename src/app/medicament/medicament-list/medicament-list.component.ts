@@ -29,6 +29,10 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   constructor(private bhjournalService: BhJournalService, private medikationService: MedikationService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
     this.messageServiceMedication = medikationService.messageService;
+    this.subscribeBhJournal();
+  }
+
+  private subscribeBhJournal() {
     this.subscription = this.messageServiceBhJournal.Itemselected$.subscribe(
       behandlungsjournal => {
         this.bhJournal = behandlungsjournal;
@@ -47,17 +51,14 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   }
 
   getMedicationsByJournalId(bhJournal_id: string) {
-    // if (this.messageServiceMedication.hasCache(true)) {
-    //   this.medications = this.messageServiceMedication.readCacheList();
-    //   let journal = this.medications.find(medi => medi.journal_id = this.bhJournal._id);
-    //   alert("journal aus medi cache: " + journal);
-    // } else {
     this.medikationService.getMedicationsByJournalId(bhJournal_id).subscribe(
-      data => this.medications = data,
+      data => {
+        this.medications = data;
+        this.messageServiceMedication.writeCacheList(this.medications);
+      },
       error => console.log(error),
       () => this.isLoading = false
     );
-    // }
   }
 
   deleteMedication(medication: Medikation) {
@@ -80,11 +81,13 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
     this.isEditing = true;
     this.isAdding = false;
     this.medication = medication;
+    this.messageServiceMedication.selectItem(this.medication);
   }
 
   enableAdding() {
     this.isAdding = true;
     this.isEditing = false;
+    this.messageServiceMedication.selectItem(null);
   }
 
   sendInfoMsg(body, type, time = 3000) {
@@ -98,8 +101,6 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // prevent memory leak when component destroyed
     this.subscription.unsubscribe();
   }
-
 }

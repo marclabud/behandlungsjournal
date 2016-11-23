@@ -6,7 +6,6 @@ export class Medikation {
   name: string;
   journal_id: string;
   dosierung: number;
-  selected: boolean = false;
   haeufigkeit: Haeufigkeit;
   dauer: Dauer;
 

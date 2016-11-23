@@ -2,11 +2,11 @@
   <div class="jumbotron">
     <div class="card" *ngIf="!isLoading">
 
-      <div *ngIf="isAdding">
+      <div *ngIf="isAdding || isEditing">
         <app-medicament-detail></app-medicament-detail>
       </div>
 
-      <div *ngIf="!isAdding">
+      <div *ngIf="!(isAdding || isEditing)">
         <h4 class="card-header">Medikamente für das {{bhJournal.name}}
           <button class="btn btn-sm btn-primary" (click)="enableAdding()"><i
             class="fa fa-floppy-o"></i>Hinzufügen
@@ -47,6 +47,12 @@
             </tr>
             </tbody>
           </table>
+          <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Meldung:</strong> {{infoMsg.body}}
+          </div>
         </div>
       </div>
     </div>
