@@ -30,7 +30,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private labelTherapieStart = 'Beginn der Therapie';
   /* tslint:disable-next-line:no-unused-variable */
   private labelTherapieEnde = 'Ende der Therapie';
-
   constructor(http: Http, private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
     this.messageServicePatient = patientService.messageService;
