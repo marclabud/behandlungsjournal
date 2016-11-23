@@ -28,6 +28,7 @@ import {IndikatorListComponent} from './indikator/indikator-list/indikator-list.
 import {IndikatorDetailComponent} from './indikator/indikator-detail/indikator-detail.component';
 import {MedikationService} from './medicament/service/medikation.service';
 import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index';
+import {DauerComponent} from './shared/component/dauer/dauer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index'
     MedicamentDetailComponent,
     MedicamentListComponent,
     IndikatorListComponent,
-    IndikatorDetailComponent
+    IndikatorDetailComponent,
+    DauerComponent
   ],
   imports: [
     BrowserModule,
