@@ -21,9 +21,11 @@ export class DauerComponent implements OnInit {
   onEndeDatumChange: EventEmitter<moment.Moment>= new EventEmitter<moment.Moment>();
 
   ngOnInit() {}
+  /* tslint:disable-next-line:no-unused-variable */
   private onStartDatumChanged(startDatum: moment.Moment) {
     this.onStartDatumChange.emit(startDatum);
   }
+  /* tslint:disable-next-line:no-unused-variable */
   private onEndeDatumChanged(endeDatum: moment.Moment) {
     this.onEndeDatumChange.emit(endeDatum);
   }
