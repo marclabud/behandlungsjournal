@@ -26,10 +26,11 @@ app.use(morgan('dev'));
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will have no prefix
 // ToDo: Improvement Path Variable to use ts in ts and js in js.
-app.use(require('./routes/userRoutes.js'));
-app.use(require('./routes/patientRoutes.js'));
-app.use(require('./routes/journalRoutes.js'));
-app.use(require('./routes/staticRoutes.js'));
+app.use(require('./routes/user.routes.js'));
+app.use(require('./routes/patient.routes.js'));
+app.use(require('./routes/journal.routes.js'));
+app.use(require('./routes/medikation.routes.js'));
+app.use(require('./routes/static.routes.js'));
 
 connect()
   .on('error', console.error.bind(console, 'connection error:'))

@@ -3,15 +3,20 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {ServiceBase} from '../../shared/service.base';
 import {BhJournal} from '../model/bhjournal';
 import {paths} from '../../../../server/src/server.conf';
+import {MessageService} from '../../shared/service/message/message.service';
 
 @Injectable()
 export class BhJournalService extends ServiceBase<BhJournal> {
 
   private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
   private options = new RequestOptions({headers: this.headers});
+  private serviceUrl: string;
+  public messageService;
 
   constructor(http: Http) {
     super(http, 'BhJournalService:BhJournal');
+    this.serviceUrl = '/journal';
+    this.messageService = new MessageService<BhJournal>(http, this);
   }
 
   getJournals() {
@@ -37,10 +42,9 @@ export class BhJournalService extends ServiceBase<BhJournal> {
     return this.http.delete(`${paths.base_path}/journal/${journal._id}`, this.options);
   }
 
-  getServiceUrl(): string {
-    return paths.base_path + '/journal';
+  getServiceUrl(isList: boolean): string {
+    return paths.base_path + (isList ? this.serviceUrl + 's' : this.serviceUrl);
   }
-
   getCacheKey(): string {
     return 'BhJournalService:BhJournal';
   }

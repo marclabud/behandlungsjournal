@@ -180,6 +180,120 @@ paths:
         default:
           description: "successful operation"
 
+ /medications:
+   get:
+     operationId: 'getAllMedications'
+     description: 'Returns all medications'
+     produces:
+        - application/json
+     tags:
+        - 'medication'
+     responses:
+      "200":
+       description: 'A list of all medications.'
+       schema:
+        type: 'array'
+        items:
+         $ref: '#/definitions/Medication'
+      default:
+       description: 'Unexpected error'
+       schema:
+         $ref: '#/definitions/Error'
+ /medications/{journal_id}:
+   get:
+     tags:
+     - 'medication'
+     operationId: 'getMedicationsByJournalId'
+     description: 'Returns all Medications for a Journal by Journal._id'
+     produces:
+        - application/json
+     parameters:
+     - name: "journal_id"
+       in: "path"
+       description: "Journal._id Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       required: true
+       type: "string"
+     responses:
+      "200":
+         description: 'A list of Medications for one Journal.'
+         schema:
+          type: 'array'
+          items:
+           $ref: '#/definitions/Medication'
+      default:
+       description: 'Unexpected error'
+       schema:
+         $ref: '#/definitions/Error'
+ /medication/{_id}:
+   put:
+     tags:
+     - "medication"
+     summary: "Updated medication"
+     description: ""
+     operationId: "updateMedication"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       required: true
+       type: "string"
+     - in: "body"
+       name: "body"
+       description: "Medication transported in body"
+       required: true
+       schema:
+         $ref: "#/definitions/Medication"
+     responses:
+       200:
+         description: "Medication updated"
+       400:
+         description: "Invalid Medication supplied"
+       404:
+         description: "Medication not found"
+   delete:
+     tags:
+     - "medication"
+     summary: "Delete Medication"
+     description: "Delete Medication by Id."
+     operationId: "deleteMedication"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Medication _id to be deleted"
+       required: true
+       type: "string"
+     responses:
+       200:
+         description: "Medication is deleted"
+       400:
+         description: "Invalid Medication name supplied"
+       404:
+         description: "Medication not found"
+ /medication:
+   post:
+     tags:
+     - 'medication'
+     summary: "Create Medication"
+     description: "Create a Medication."
+     operationId: "addMedication"
+     produces:
+     - "application/json"
+     parameters:
+     - in: "body"
+       name: "body"
+       description: "Created medication object"
+       required: true
+       schema:
+         $ref: "#/definitions/Medication"
+     responses:
+       default:
+         description: "successful operation"
+
+
  /patients:
    get:
      operationId: 'getAllPatients'
@@ -410,6 +524,37 @@ definitions:
           type: "string"
         eigentuemer_nachname:
           type: "string"
+  Haeufigkeit:
+    type: "object"
+    properties:
+        morgens:
+          type: "boolean"
+        mittags:
+          type: "boolean"
+        abends:
+          type: "boolean"
+  Dauer:
+    type: "object"
+    properties:
+        startdatum:
+          type: "string"
+        enddatum:
+          type: "string"
+  Medication:
+    type: "object"
+    properties:
+        _id:
+          type: "string"
+        name:
+          type: "string"
+        journal_id:
+          type: "string"
+        dosierung:
+          type: "string"
+        haeufigkeit:
+          "$ref": "#/definitions/Haeufigkeit"
+        dauer:
+          "$ref": "#/definitions/Dauer"
   Journal:
     type: "object"
     properties:

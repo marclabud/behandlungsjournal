@@ -21,7 +21,13 @@ import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-d
 import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.component';
 import {BhJournalService} from './bhjournal/service/bhjournal.service';
 import {BhjDatepickerComponent} from './shared/component/bhj-datepicker/bhj-datepicker.component';
-import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
+import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.component';
+import {MedicamentDetailComponent} from './medicament/medicament-detail/medicament-detail.component';
+import {MedicamentListComponent} from './medicament/medicament-list/medicament-list.component';
+import {IndikatorListComponent} from './indikator/indikator-list/indikator-list.component';
+import {IndikatorDetailComponent} from './indikator/indikator-detail/indikator-detail.component';
+import {MedikationService} from './medicament/service/medikation.service';
+import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index';
 
 @NgModule({
   declarations: [
@@ -35,21 +41,28 @@ import {DatepickerModule} from 'ng2-bootstrap/components/datepicker';
     TitelComponent,
     MainNavComponent,
     BhjournalDetailComponent,
+    BhjDatepickerComponent,
     BhjournalListComponent,
-    BhjDatepickerComponent
+    HaeufigkeitComponent,
+    MedicamentDetailComponent,
+    MedicamentDetailComponent,
+    MedicamentListComponent,
+    IndikatorListComponent,
+    IndikatorDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    DatepickerModule,
-    routing,
+    Ng2DatetimePickerModule,
+    routing
   ],
   providers: [
     UserService,
     PatientService,
     BhJournalService,
+    MedikationService,
     AuthService,
     GuardService,
     MessageService
