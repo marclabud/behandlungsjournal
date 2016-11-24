@@ -8,24 +8,24 @@ export class JournalData implements IData {
       name: 'Journal Strolch',
       patient_id: '1',
       diagnose: 'Bisswunde',
-      startdatum: '2016-11-07',
-      enddatum: '2016-11-16'
+      startdatum:  new Date('2016-10-08T00:00:00'),
+      enddatum: new Date('2016-10-16T00:00:00'),
     },
     {
       _id: '2',
       name: 'Journal Minka',
       patient_id: '2',
       diagnose: 'Vergiftung',
-      startdatum: '2016-11-08',
-      enddatum: '2016-11-17'
+      startdatum: new Date('2016-11-08T00:00:00'),
+      enddatum: new Date('2016-11-17T00:00:00'),
     },
     {
       _id: '3',
       name: 'Journal Blacky',
       patient_id: '3',
       diagnose: 'Stauchung',
-      startdatum: '2016-11-09',
-      enddatum: '2016-11-18'
+      startdatum: new Date('2016-11-21T00:00:00'),
+      enddatum: new Date('2016-11-30T00:00:00'),
     }
   ];
 

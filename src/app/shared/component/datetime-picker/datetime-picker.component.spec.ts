@@ -1,22 +1,22 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {DateTimePickerComponent} from './datetime-picker.component';
 import {FormsModule} from '@angular/forms';
-import {BhjDatepickerComponent} from './bhj-datepicker.component';
 
-describe('BhjDatepickerComponent', () => {
-  let component: BhjDatepickerComponent;
-  let fixture: ComponentFixture<BhjDatepickerComponent>;
+describe('DateTimePickerComponent', () => {
+  let component: DateTimePickerComponent;
+  let fixture: ComponentFixture<DateTimePickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BhjDatepickerComponent],
+      declarations: [DateTimePickerComponent],
       imports: [FormsModule]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BhjDatepickerComponent);
+    fixture = TestBed.createComponent(DateTimePickerComponent);
     component = fixture.componentInstance;
     // fixture.detectChanges();
   });

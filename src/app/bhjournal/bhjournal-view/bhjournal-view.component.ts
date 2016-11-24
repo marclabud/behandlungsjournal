@@ -1,12 +1,12 @@
 'use strict';
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Http} from '@angular/http';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';
 import {Subscription} from 'rxjs/Subscription';
 import {MessageService} from '../../shared/service/message/message.service';
 import {PatientService} from '../../patient/service/patient.service';
 import {BhJournal} from '../model/bhjournal';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bhjournal',
@@ -15,7 +15,9 @@ import {BhJournal} from '../model/bhjournal';
 })
 export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
-  private journals: Array<BhJournal> = [];
+  private journalsUTC: Array<BhJournal> = [];
+  private therapieStartDatum: moment.Moment;
+  private therapieEndeDatum: moment.Moment;
   private isLoading = true;
   private subscriptionPatient: Subscription;
   private selectedPatient: Patient;
@@ -24,6 +26,10 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
 
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelTherapieStart = 'Beginn der Therapie';
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelTherapieEnde = 'Ende der Therapie';
   constructor(private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
     this.messageServicePatient = patientService.messageService;
@@ -34,7 +40,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       });
 
   }
-
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
       this.patient_id = this.selectedPatient._id;
@@ -46,7 +51,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     }
     this.getJournalsbyPatient(this.patient_id);
   }
-
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -56,17 +60,19 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   };
 
   private getJournals(journals: Array<BhJournal>) {
-    this.journals = journals;
+    this.journalsUTC = journals;
     if (0 !== journals.length) {
+      this.selectedBhJournal = this.journalsUTC[0];
       // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
-      this.selectedBhJournal = this.journals[0];
+      this.therapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
+      this.therapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };
 
   ngOnDestroy() {
     // prevent memory leak when component destroyed
-    this. subscriptionPatient.unsubscribe();
+    this.subscriptionPatient.unsubscribe();
   }
 }
 
