@@ -22,19 +22,19 @@ export class UserService extends ServiceBase<User> {
     return this.http.get(paths.base_path + '/users').map(res => res.json());
   }
 
-  addUser(user) {
+  addUser(user: User) {
     return this.http.post(paths.base_path + '/user', JSON.stringify(user), this.options);
   }
 
-  editUser(user) {
+  editUser(user: User) {
     return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.options);
   }
 
-  deleteUser(user) {
+  deleteUser(user: User) {
     return this.http.delete(`${paths.base_path}/user/${user._id}`, this.options);
   }
 
-  loginUser(user) {
+  loginUser(user: User) {
     let creds = JSON.stringify({email: user.email, password: user.password});
     return this.http.post(`${paths.base_path}/user/login`, creds, this.options).map(res => res.json());
   }

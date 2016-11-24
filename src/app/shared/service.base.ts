@@ -15,15 +15,19 @@ export abstract class ServiceBase<TItem> {
     this.cache = new Cache<TItem>(cacheKey);
   }
 
-  public readCacheList(): Array<TItem> {
+  readCacheList(): Array<TItem> {
     return this.cacheList.readCache(true);
   }
 
-  public readCache(): TItem {
+  readCache(): TItem {
     return this.cache.readCache();
   }
 
-  public getItem(forceReload = false): Observable<TItem> {
+  hasCache(isList = false): boolean {
+    return this.cache.hasCache(isList);
+  }
+
+  getItem(forceReload = false): Observable<TItem> {
     console.log('Call ServiceBase.getItem');
     if (this.cache.hasCache() && !forceReload) {
       return Observable.create((observer) => {
@@ -41,7 +45,7 @@ export abstract class ServiceBase<TItem> {
     });
   }
 
-  public getAllItems(forceReload = false): Observable<TItem[]> {
+  getAllItems(forceReload = false): Observable<TItem[]> {
     console.log('Call ServiceBase.getAllItems');
     let isList = true;
 
@@ -61,13 +65,13 @@ export abstract class ServiceBase<TItem> {
     });
   }
 
-  public writeCacheList(items: TItem[]) {
+  writeCacheList(items: TItem[]) {
     let isList = true;
     this.cacheList.writeCache(items, isList);
     console.log('Write Cache with ' + this.getKey(isList), JSON.stringify(items));
   }
 
-  public writeCache(item: TItem) {
+  writeCache(item: TItem) {
     this.cache.writeCache(item);
     console.log('Write Cache with ' + this.getKey(), JSON.stringify(item));
   }
@@ -80,7 +84,7 @@ export abstract class ServiceBase<TItem> {
     return isList ? this.cacheKey + 's' : this.getCacheKey(isList);
   }
 
-  public abstract getServiceUrl(isList): string;
+  abstract getServiceUrl(isList): string;
 
-  public abstract getCacheKey(isList): string;
+  abstract getCacheKey(isList): string;
 }
