@@ -4,9 +4,12 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { MedicamentListComponent } from './medicament-list.component';
+import {MedicamentDetailComponent} from '../medicament-detail/medicament-detail.component';
 import {HttpModule} from '@angular/http';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MedikationService} from '../service/medikation.service';
+
+import {FormsModule} from '@angular/forms';
 
 describe('MedicamentListComponent', () => {
   let component: MedicamentListComponent;
@@ -14,8 +17,8 @@ describe('MedicamentListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MedicamentListComponent ],
-      imports: [ HttpModule ],
+      declarations: [ MedicamentListComponent , MedicamentDetailComponent],
+      imports: [ HttpModule, FormsModule ],
       providers: [ BhJournalService, MedikationService ]
     })
     .compileComponents();
