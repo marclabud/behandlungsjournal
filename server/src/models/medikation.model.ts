@@ -1,16 +1,17 @@
 'use strict';
 import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Schema.Types.ObjectId;
 
 const model = 'Medikation';
 const medikationSchema = new mongoose.Schema({
-  _id: String,
+  _id: {type: ObjectId, auto: true}, // auto generate new ObjectId
   name: {type: String, required: true},
   journal_id: {type: String, required: true},
   dosierung: {type: Number, required: true},
-  hauefigkeit: {
-    morgens: {type: Boolean},
-    mittags: {type: Boolean},
-    abends: {type: Boolean},
+  haeufigkeit: {
+    morgens: {type: Boolean, required: true},
+    mittags: {type: Boolean, required: true},
+    abends: {type: Boolean, required: true},
   },
   dauer: {
     startdatum: {type: String, required: true},

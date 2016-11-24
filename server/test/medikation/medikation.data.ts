@@ -1,10 +1,13 @@
+'use strict';
 import {IData} from '../shared/data';
+import * as mongoose from 'mongoose';
+const ObjectId = mongoose.Types.ObjectId;
 
 export class MedikationData implements IData {
 
   private medikationen = [
     {
-      _id: '1',
+      _id: new ObjectId('5835ec3cf47d103118bbd8ca'),
       name: 'Dolorsitamet',
       // patient_id: '1', /* ist bereits im Journal enthalten */
       journal_id: '1',
@@ -20,7 +23,7 @@ export class MedikationData implements IData {
       }
     },
     {
-      _id: '2',
+      _id: new ObjectId('5835ee70f47d103118bbd8cc'),
       name: 'Consectetuer',
       journal_id: '2',
       dosierung: 2,
@@ -35,7 +38,7 @@ export class MedikationData implements IData {
       }
     },
     {
-      _id: '3',
+      _id: new ObjectId('5835eefdf47d103118bbd8ce'),
       name: 'Aeneancommodo',
       journal_id: '1',
       dosierung: 1,
