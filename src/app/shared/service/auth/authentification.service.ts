@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserService} from '../../../user/service/user.service';
 import {User} from '../../../user/model/user';
+import {Observable} from 'rxjs';
 
 const JWT_STORAGE_KEY = 'token';
 
@@ -14,8 +15,19 @@ export class AuthentificationService {
   constructor(private userService: UserService) {
   }
 
-  login(user: User): boolean {
-    return this.checkCredentials(user);
+  login(user: User): Observable<boolean> {
+    this.userService.loginUser(user).subscribe(
+      response => {
+        let status: number = response[0].status;
+        if (201 === status) {
+          this.validToken = response[0].body.id_token;
+          this.setToken(this.validToken);
+          return true;
+        } else {
+          return false;
+        }
+      }
+    );
   }
 
   logout(): void {
@@ -38,28 +50,4 @@ export class AuthentificationService {
     token = sessionStorage.getItem(JWT_STORAGE_KEY);
     return token;
   }
-
-  checkCredentials(user: User): boolean {
-    let UserConfirmed = false;
-    this.userService.loginUser(user).subscribe(
-      response => UserConfirmed = this.processResponse(response),
-      error => console.log(error)
-    );
-    return UserConfirmed;
-  }
-
-  private processResponse(response): boolean {
-    console.log ('checkResponse', response);
-    let status: number = response[0].status;
-    if (201 === status) {
-      this.validToken = response[0].body.id_token;
-      this.setToken(this.validToken);
-      return true;
-    } else {
-      return false;
-    }
-
-
-  }
-
 }

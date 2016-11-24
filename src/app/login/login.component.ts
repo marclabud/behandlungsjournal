@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private LoginForm: FormGroup;
-  private LoginStatus: boolean;
+  private isLoading = false;
   public submitted: boolean;
 
   constructor(private authService: AuthentificationService,
@@ -28,17 +28,18 @@ export class LoginComponent implements OnInit {
   onSubmit(user: User, isValid: Boolean) {
     if (typeof(user.email) === 'string' && typeof(user.password) === 'string') {
       this.submitted = true; // set form submit to true
-      this.LoginStatus = this.authService.login(user);
-      if (this.LoginStatus) {
-        this.router.navigate(['/user']);
-        // redirect to main
-      } else {
-        // redirect to login
-        this.router.navigate(['/login']);
-      }
+      this.authService.login(user).subscribe(userIsLoggedIn => {
+          if (userIsLoggedIn) {
+            this.isLoading = true;
+            this.router.navigate(['/user']);
+            // redirect to main
+          } else {
+            // redirect to login
+            this.isLoading = false;
+            this.router.navigate(['/login']);
+          }
+        }
+      );
     }
-    console.log(user, isValid);
   }
-
-
 }
