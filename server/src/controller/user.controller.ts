@@ -1,5 +1,7 @@
 'use strict';
-import * as _ from 'lodash';
+import {JwtUserService} from '../service/userJwtService';
+import {JwtKeyProvider} from '../service/keyProviderService';
+import {DbUser} from '../service/model/user';
 
 const User = require('../models/user.model');
 
@@ -68,14 +70,19 @@ module.exports.loginUser = (request, response) => {
     return response.status(400).send('You must send the username and the password');
   }
   // mongodbquery
-  User.find({email: email, password: password}, (err: any, docs: any): any => {
+  User.find({email: email, password: password}, {
+    name: 1,
+    email: 1,
+    password: 1,
+    _id: 0
+  }, (err: any, docs: DbUser[]): any => {
     if (err) {
       return console.error(err);
     }
-    if (!(_.isEmpty(docs))) {
-      // 1 User wurde gefunden; Token wird zurückgesendet
-      // ToDo: Check mit count, ob es mehr als einen User gibt.
-      let token = '123';
+    if (1 === (docs.length)) {
+      // genau 1 User wurde gefunden; Token wird zurückgesendet
+      let user: DbUser = docs[0];
+      let token = getjwtToken(user);
       response.status(201).send({id_token: token});
       console.log('Token', 'Token to response ok');
     } else {    // keinen User mit diesem Passwort gefunden
@@ -83,3 +90,9 @@ module.exports.loginUser = (request, response) => {
     }
   });
 };
+
+function getjwtToken (user: DbUser): string {
+  let keyProvider = new JwtKeyProvider();
+  let jwtUserservice = new JwtUserService(keyProvider);
+  return jwtUserservice.createJWT(user);
+}
