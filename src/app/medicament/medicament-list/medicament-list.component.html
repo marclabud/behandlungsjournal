@@ -1,57 +1,72 @@
-<div class="container">
-  <div class="jumbotron">
-    <div class="card" *ngIf="!isLoading">
+<div *ngIf="!isLoading">
 
-      <div *ngIf="isAdding || isEditing">
-        <app-medicament-detail></app-medicament-detail>
-      </div>
+  <div *ngIf="isAdding || isEditing">
+    <app-medicament-detail></app-medicament-detail>
+  </div>
 
-      <div *ngIf="!(isAdding || isEditing)">
-        <h4 class="card-header">Medikamente für das {{bhJournal.name}}
-          <button class="btn btn-sm btn-primary" (click)="enableAdding()"><i
-            class="fa fa-floppy-o"></i>Hinzufügen
-          </button>
-        </h4>
-        <div class="card-block">
-          <table class="table table-bordered table-striped">
-            <thead class="thead-default">
-            <tr>
-              <th>Name</th>
-              <th>Morgens</th>
-              <th>Mittags</th>
-              <th>Abends</th>
-              <th>Aktionen</th>
-            </tr>
-            </thead>
-            <tbody *ngIf="medications.length === 0">
-            <tr>
-              <td colspan="5">Es hat keine Medikamente zurzeit für dieses Journal. Bitte Medikation erfassen.</td>
-            </tr>
-            </tbody>
-            <tbody *ngIf="!isEditing">
-            <tr *ngFor="let medication of medications">
-              <td>{{medication.name}}</td>
-              <td>{{medication.haeufigkeit.morgens? "ja": "nein"}}</td>
-              <td>{{medication.haeufigkeit.mittags? "ja": "nein"}}</td>
-              <td>{{medication.haeufigkeit.abends? "ja": "nein"}}</td>
-              <td>
-                <button class="btn btn-sm btn-warning btn-block" (click)="enableEditing(medication)"><i
-                  class="fa fa-pencil"></i>
-                  Bearbeiten
-                </button>
-                <button class="btn btn-sm btn-danger btn-block" (click)="deleteMedication(medication)"><i
-                  class="fa fa-trash"></i>
-                  Löschen
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+  <div *ngIf="!(isAdding || isEditing)">
+    <div class="container">
+      <div class="jumbotron">
+        <div class="card">
+          <h4 class="card-header">Medikamente für das {{bhJournal.name}}
+            <button class="btn btn-sm btn-success bhj-btn-right" (click)="enableAdding()"><i
+              class="fa fa-floppy-o"></i>Hinzufügen
             </button>
-            <strong>Meldung:</strong> {{infoMsg.body}}
+          </h4>
+          <div class="card-block">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-default">
+              <tr>
+                <th>Name</th>
+                <th colspan="3">Wann einnehmen?</th>
+                <th>Aktionen</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="medications.length === 0">
+              <tr>
+                <td colspan="5">Es hat keine Medikamente zurzeit für dieses Journal. Bitte Medikation erfassen.</td>
+              </tr>
+              </tbody>
+              <tbody *ngIf="!isEditing">
+              <tr *ngFor="let medication of medications">
+                <td>{{medication.name}}</td>
+                <td>
+                  <label
+                    class="btn btn-sm btn-block btn-outline-info {{medication.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
+                    <input type="checkbox" class="bhj-hidden">morgens
+                  </label>
+                </td>
+                <td>
+                  <label
+                    class="btn btn-sm btn-block btn-outline-info {{medication.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
+                    <input type="checkbox" class="bhj-hidden">mittags
+                  </label>
+                </td>
+                <td>
+                  <label
+                    class="btn btn-sm btn-block btn-outline-info  {{medication.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
+                    <input type="checkbox" class="bhj-hidden">abends
+                  </label>
+                </td>
+                <td>
+                  <button class="btn btn-sm btn-warning btn-block" (click)="enableEditing(medication)"><i
+                    class="fa fa-pencil"></i>
+                    Bearbeiten
+                  </button>
+                  <button class="btn btn-sm btn-danger btn-block" (click)="deleteMedication(medication)"><i
+                    class="fa fa-trash"></i>
+                    Löschen
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>Meldung:</strong> {{infoMsg.body}}
+            </div>
           </div>
         </div>
       </div>

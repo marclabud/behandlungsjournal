@@ -1,3 +1,7 @@
-.checkbox-haeufigkeit {
+.bhj-hidden {
   display: none;
+}
+
+.bhj-btn-right {
+  float: right;
 }

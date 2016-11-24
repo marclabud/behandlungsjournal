@@ -27,6 +27,7 @@ export class MedicamentDetailComponent implements OnInit {
   private medications: Array<Medikation> = [];
   private infoMsg = {body: '', type: 'info'};
   private isEditMode = false;
+  private goBack = false;
 
   constructor(private medikationService: MedikationService, private bhjournalService: BhJournalService) {
     this.messageServiceMedication = medikationService.messageService;
@@ -38,6 +39,10 @@ export class MedicamentDetailComponent implements OnInit {
       medication => {
         this.medikation = medication;
       });
+  }
+
+  back() {
+    this.goBack = true;
   }
 
   ngOnInit() {
@@ -110,7 +115,7 @@ export class MedicamentDetailComponent implements OnInit {
       default:
         break;
     }
- }
+  }
 
 
   private actualizeCache() {
