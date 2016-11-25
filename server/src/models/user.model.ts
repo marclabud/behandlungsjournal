@@ -1,7 +1,7 @@
 'use strict';
 import * as mongoose from 'mongoose';
 
-const model = 'User';
+const model = 'UserCollection';
 const userSchema = new mongoose.Schema({
   name: String,
   email: {type: String, required: true, unique: true},

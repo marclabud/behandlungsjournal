@@ -13,7 +13,7 @@ export class UserService extends ServiceBase<User> {
   private serviceUrl: string;
 
   constructor(http: Http) {
-    super(http, 'UserService:User');
+    super(http, 'UserService:UserCollection');
     this.serviceUrl = '/user';
   }
 
@@ -38,16 +38,16 @@ export class UserService extends ServiceBase<User> {
     let creds = JSON.stringify({email: user.email, password: user.password});
     return this.http.post(`${paths.base_path}/user/login`, creds, this.options)
       .map((res: Response) => {
-          if (res) {
+          if (res.ok) {
             if (201 === res.status) {
               return [{status: res.status, body: res.json()}];
-            } else if ((200 === res.status)) {
+            } else if (200 === res.status) {
               return [{status: res.status, body: res.json()}];
             }
           }
         },
-        (err) => console.log('Error: ', err));
-    // ).catch((error: any) => {
+        (error: any ) => console.log('Error: ', error ));
+    // ).catch( (error: any) => {
     //   if (error.status < 400 || error.status === 500) {
     //     return Observable.throw(new Error(error.status));
     //   }
