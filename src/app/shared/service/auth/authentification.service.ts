@@ -16,18 +16,15 @@ export class AuthentificationService {
   }
 
   login(user: User): Observable<boolean> {
-    this.userService.loginUser(user).subscribe(
-      response => {
-        let status: number = response[0].status;
-        if (201 === status) {
-          this.validToken = response[0].body.id_token;
-          this.setToken(this.validToken);
-          return true;
-        } else {
-          return false;
-        }
+     return this.userService.loginUser(user).map(result => {
+      let status: number = result[0].status;
+      if (201 === status) {
+        // status 201: Token wurde erstellt.
+        this.validToken = result[0].body.id_token;
+        this.setToken(this.validToken);
       }
-    );
+      return (201 === status);
+    });
   }
 
   logout(): void {

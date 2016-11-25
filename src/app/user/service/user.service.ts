@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
 import {paths} from './../../../../server/src/server.conf';
-import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
@@ -34,22 +33,25 @@ export class UserService extends ServiceBase<User> {
   deleteUser(user) {
     return this.http.delete(`${paths.base_path}/user/${user._id}`, this.options);
   }
+
   loginUser(user) {
     let creds = JSON.stringify({email: user.email, password: user.password});
     return this.http.post(`${paths.base_path}/user/login`, creds, this.options)
       .map((res: Response) => {
-        if (res) {
-          if (201 === res.status) {
-            return [{status: res.status, body: res.json()}];
-          } else if ((200 === res.status)) {
-            return [{status: res.status, body: res.json()}];
+          if (res) {
+            if (201 === res.status) {
+              return [{status: res.status, body: res.json()}];
+            } else if ((200 === res.status)) {
+              return [{status: res.status, body: res.json()}];
+            }
           }
-        }
-      }).catch((error: any) => {
-        if (error.status < 400 || error.status === 500) {
-          return Observable.throw(new Error(error.status));
-        }
-      });
+        },
+        (err) => console.log('Error: ', err));
+    // ).catch((error: any) => {
+    //   if (error.status < 400 || error.status === 500) {
+    //     return Observable.throw(new Error(error.status));
+    //   }
+    // });
   }
 
   getServiceUrl(isList: boolean): string {
