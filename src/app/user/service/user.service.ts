@@ -38,7 +38,7 @@ export class UserService extends ServiceBase<User> {
     let creds = JSON.stringify({email: user.email, password: user.password});
     return this.http.post(`${paths.base_path}/user/login`, creds, this.options)
       .map((res: Response) => {
-          if (res.ok) {
+          if (res) {
             if (201 === res.status) {
               return [{status: res.status, body: res.json()}];
             } else if (200 === res.status) {

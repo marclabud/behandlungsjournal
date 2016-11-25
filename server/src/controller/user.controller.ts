@@ -1,6 +1,7 @@
 'use strict';
 import {JwtUserService} from '../service/userJwtService';
 import {JwtKeyProvider} from '../service/keyProviderService';
+// Namensconflict mit dem Collection Name
 import {User} from '../service/model/user';
 
 const UserCollection = require('../models/user.model');
@@ -70,17 +71,13 @@ module.exports.loginUser = (request, response) => {
     return response.status(400).send('You must send the username and the password');
   }
   // mongodbquery
-  UserCollection.find({email: email, password: password}, {
-    name: 1,
-    email: 1,
-    password: 1,
-    _id: 0
-  }, (err: any, docs: User[]): any => {
+  UserCollection.find({email: email, password: password}, { name: 1, email: 1, password: 1, _id: 0}, (err: any, docs: User[]): any => {
     if (err) {
       return console.error(err);
     }
+    console.log('loginUser docs', docs);
     if (1 === (docs.length)) {
-      // genau 1 UserCollection wurde gefunden; Token wird zurückgesendet
+      // genau 1 User wurde gefunden; Token wird zurückgesendet
       let user: User = docs[0];
       let token = getjwtToken(user);
       response.status(201).send({id_token: token});
@@ -91,7 +88,7 @@ module.exports.loginUser = (request, response) => {
   });
 };
 
-function getjwtToken (user: User): string {
+function getjwtToken(user: User): string {
   let keyProvider = new JwtKeyProvider();
   let jwtUserservice = new JwtUserService(keyProvider);
   return jwtUserservice.createJWT(user);
