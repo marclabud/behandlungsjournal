@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {User} from '../user/model/user';
-import {AuthService} from '../shared/service/auth/auth.service';
+import {AuthentificationService} from '../shared/service/auth/authentification.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,10 +10,10 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private LoginForm: FormGroup;
-  private LoginStatus: boolean;
+  private isLoading = false;
   public submitted: boolean;
 
-  constructor(private authService: AuthService,
+  constructor(private authService: AuthentificationService,
               private router: Router,
               private _formbuilder: FormBuilder) {
   }
@@ -25,20 +25,21 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(model: User, isValid: Boolean) {
-    if (typeof(model.email) === 'string' && typeof(model.password) === 'string') {
+  onSubmit(user: User, isValid: Boolean) {
+    if (typeof(user.email) === 'string' && typeof(user.password) === 'string') {
       this.submitted = true; // set form submit to true
-      this.LoginStatus = this.authService.login(model);
-      if (this.LoginStatus) {
-        this.router.navigate(['/user']);
-        // redirect to main
-      } else {
-        // redirect to login
-        this.router.navigate(['/login']);
-      }
+      this.authService.login(user).subscribe(userIsLoggedIn => {
+          if (userIsLoggedIn) {
+            this.isLoading = true;
+            this.router.navigate(['/user']);
+            // redirect to main
+          } else {
+            // redirect to login
+            this.isLoading = false;
+            this.router.navigate(['/login']);
+          }
+        }
+      );
     }
-    console.log(model, isValid);
   }
-
-
 }

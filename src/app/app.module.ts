@@ -8,7 +8,7 @@ import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
 import {UserService} from './user/service/user.service';
-import {AuthService} from './shared/service/auth/auth.service';
+import {AuthentificationService} from './shared/service/auth/authentification.service';
 import {GuardService} from './shared/service/guard/guard.service';
 import {PatientListComponent} from './patient/patient-list/patient-list.component';
 import {PatientDetailComponent} from './patient/patient-detail/patient-detail.component';
@@ -66,7 +66,6 @@ import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufig
     PatientService,
     BhJournalService,
     MedikationService,
-    HaeufigkeitService,
     AuthService,
     GuardService,
     MessageService

@@ -2,7 +2,7 @@
 
 import {TestBed, inject} from '@angular/core/testing';
 import {GuardService} from './guard.service';
-import {AuthService} from '../auth/auth.service';
+import {AuthentificationService} from '../auth/authentification.service';
 import {UserService} from '../../../user/service/user.service';
 import {HttpModule} from '@angular/http';
 import {routing} from '../../../app.routing';
@@ -16,7 +16,7 @@ import {LoginComponent} from '../../../login/login.component';
 //     TestBed.configureTestingModule({
 //       declarations: [UserComponent, BhjournalComponent, SignupComponent, LoginComponent ],
 //       providers: [GuardService,
-//       AuthService,
+//       AuthentificationService,
 //       UserService,
 //       ],
 //       imports: [HttpModule, routing]
