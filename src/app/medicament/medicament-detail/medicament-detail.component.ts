@@ -5,9 +5,8 @@ import {MessageService} from '../../shared/service/message/message.service';
 import {Medikation} from '../model/medikation';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
-
-
-enum Haeufigkeit {MORGENS, MITTAGS, ABENDS}
+import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
+import {Haeufigkeit} from '../../shared/model/haeufigkeit';
 
 @Component({
   selector: 'app-medicament-detail',
@@ -17,25 +16,27 @@ enum Haeufigkeit {MORGENS, MITTAGS, ABENDS}
 export class MedicamentDetailComponent implements OnInit, OnDestroy {
 
   private messageServiceMedication: MessageService<Medikation>;
-  private subscription: Subscription;
-  protected haeufigkeit = Haeufigkeit;
+  private messageHaeufigkeitService: MessageService<Haeufigkeit>;
+  private subscriptionMedication: Subscription;
 
   // TODO: form controls, validation
   private medications: Array<Medikation> = [];
   private infoMsg = {body: '', type: 'info'};
-  private isEditMode = false;
   private goBack = false;
 
   @Input()
-  medikation: Medikation;
+  private isEditing;
+  @Input()
+  private medikation: Medikation;
 
-  constructor(private medikationService: MedikationService, private bhjournalService: BhJournalService) {
-    this.messageServiceMedication = medikationService.messageService;
+  constructor(private haeufigkeitService: HaeufigkeitService, private medikationService: MedikationService, private bhjournalService: BhJournalService) {
+    this.messageServiceMedication = this.medikationService.messageService;
+    this.messageHaeufigkeitService = this.haeufigkeitService.messageService;
     this.subscribeMedication();
   }
 
   private subscribeMedication() {
-    this.subscription = this.messageServiceMedication.Itemselected$.subscribe(
+    this.subscriptionMedication = this.messageServiceMedication.Itemselected$.subscribe(
       obj => {
         this.medikation = obj;
       });
@@ -48,8 +49,8 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
 
   private getMedication() {
     this.medikation = this.medikationService.readCache();
-    if ('undefined' !== typeof(this.medikation._id)) {
-      this.isEditMode = true;
+    if (this.isEditing) {
+      this.messageHaeufigkeitService.selectItem(this.medikation.haeufigkeit);
     }
   }
 
@@ -93,16 +94,13 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
     window.setTimeout(() => this.infoMsg.body = '', time);
   }
 
-  publish() {
-    this.messageServiceMedication.selectItem(this.medikation);
-  }
-
   // receive change from HaeufigkeitComponent
-  onHaeufigkeitChange(medikation: Medikation) {
-    this.medikation = medikation;
+  onHaeufigkeitChange(haeufigkeit: Haeufigkeit) {
+    this.medikation.haeufigkeit = haeufigkeit;
   }
 
   back() {
+    this.messageHaeufigkeitService.clearCache();
     this.goBack = true;
   }
 
@@ -112,6 +110,6 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionMedication.unsubscribe();
   }
 }

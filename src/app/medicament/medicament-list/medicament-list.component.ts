@@ -17,7 +17,6 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private bhJournal: BhJournal;
   private medications: Array<Medikation> = [];
-
   private medikation: Medikation = new Medikation();
   private isEditing = false;
   private isAdding = false;

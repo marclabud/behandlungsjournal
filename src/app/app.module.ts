@@ -29,6 +29,7 @@ import {IndikatorDetailComponent} from './indikator/indikator-detail/indikator-d
 import {MedikationService} from './medicament/service/medikation.service';
 import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index';
 import {DauerComponent} from './shared/component/dauer/dauer.component';
+import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufigkeit.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {DauerComponent} from './shared/component/dauer/dauer.component';
     PatientService,
     BhJournalService,
     MedikationService,
+    HaeufigkeitService,
     AuthService,
     GuardService,
     MessageService

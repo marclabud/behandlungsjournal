@@ -1,7 +1,7 @@
 <div *ngIf="!isLoading">
 
   <div *ngIf="isAdding || isEditing">
-    <app-medicament-detail></app-medicament-detail>
+    <app-medicament-detail [isEditing]="isEditing"></app-medicament-detail>
   </div>
 
   <div *ngIf="!(isAdding || isEditing)">

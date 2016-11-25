@@ -14,7 +14,7 @@ export class MessageService<TItem> extends ServiceBase<TItem> {
     super(http, service.getCacheKey(false));
   }
 
-// Service message commands
+  // Service message commands
   selectItem(item: TItem) {
     this.writeCache(item);
     console.log(this.getCacheKey(), JSON.stringify(item));

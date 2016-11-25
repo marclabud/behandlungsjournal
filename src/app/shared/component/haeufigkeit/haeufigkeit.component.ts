@@ -1,9 +1,8 @@
 import {Component, Input, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {MessageService} from '../../service/message/message.service';
-import {MedikationService} from '../../../medicament/service/medikation.service';
-import {Medikation} from '../../../medicament/model/medikation';
 import {Haeufigkeit} from '../../model/haeufigkeit';
+import {HaeufigkeitService} from './service/haeufigkeit.service';
 
 enum HAEUFIGKEIT {MORGENS, MITTAGS, ABENDS}
 
@@ -14,35 +13,37 @@ enum HAEUFIGKEIT {MORGENS, MITTAGS, ABENDS}
 })
 export class HaeufigkeitComponent implements OnInit, OnDestroy {
 
-  private messageServiceMedication: MessageService<Medikation>;
+  private messageService: MessageService<Haeufigkeit>;
   private subscription: Subscription;
   /* tslint:disable-next-line:no-unused-variable */
-
-  private medikation: Medikation = null;
   private isLoading = true;
 
   @Input()
-  haeufigkeit: Haeufigkeit;
-
+  private isEditing;
+  @Input()
+  private haeufigkeit: Haeufigkeit = null;
   @Output()
-  notifyHaufigkeitChanged: EventEmitter<Medikation> = new EventEmitter<Medikation>();
+  private notifyHaufigkeitChanged: EventEmitter<Haeufigkeit> = new EventEmitter<Haeufigkeit>();
 
-  constructor(private medikationService: MedikationService) {
-    this.messageServiceMedication = this.medikationService.messageService;
-    this.subscribeMedication();
+  constructor(private haeufigkeitService: HaeufigkeitService) {
+    this.messageService = this.haeufigkeitService.messageService;
+    this.subscribeHaeufigkeit();
   }
 
-  private subscribeMedication() {
-    this.subscription = this.messageServiceMedication.Itemselected$.subscribe(
+  private subscribeHaeufigkeit() {
+    this.subscription = this.messageService.Itemselected$.subscribe(
       obj => {
-        this.medikation = obj;
+        this.haeufigkeit = obj;
       });
   }
 
   ngOnInit() {
-    if (null === this.medikation) {
-      this.medikation = this.medikationService.readCache();
-      this.haeufigkeit = this.medikation.haeufigkeit;
+    if (null === this.haeufigkeit) {
+      if (this.isEditing) {
+        this.haeufigkeit = this.haeufigkeitService.readCache();
+      } else { // Adding Mode
+        this.haeufigkeit = new Haeufigkeit();
+      }
       this.isLoading = false;
     }
   }
@@ -62,10 +63,8 @@ export class HaeufigkeitComponent implements OnInit, OnDestroy {
         break;
     }
     // notify MedicamentDetailComponent
-    this.medikation.haeufigkeit = this.haeufigkeit;
-    this.notifyHaufigkeitChanged.emit(this.medikation);
+    this.notifyHaufigkeitChanged.emit(this.haeufigkeit);
   }
-
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
