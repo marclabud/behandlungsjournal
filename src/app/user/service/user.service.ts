@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
 import {paths} from './../../../../server/src/server.conf';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
@@ -13,30 +14,46 @@ export class UserService extends ServiceBase<User> {
   private serviceUrl: string;
 
   constructor(http: Http) {
-    super(http, 'UserService:User');
+    super(http, 'UserService:UserCollection');
     this.serviceUrl = '/user';
   }
 
   getUsers() {
-    console.log(this.http.get(paths.base_path + '/users').map(res => res.json()));
-    return this.http.get(paths.base_path + '/users').map(res => res.json());
+    console.log(this.http.get(paths.base_path + '/users').map((res: Response) => res.json()));
+    return this.http.get(paths.base_path + '/users').map((res: Response) => res.json());
   }
 
-  addUser(user: User) {
+  addUser(user) {
     return this.http.post(paths.base_path + '/user', JSON.stringify(user), this.options);
   }
 
-  editUser(user: User) {
+  editUser(user) {
     return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.options);
   }
 
-  deleteUser(user: User) {
+  deleteUser(user) {
     return this.http.delete(`${paths.base_path}/user/${user._id}`, this.options);
   }
 
-  loginUser(user: User) {
+  loginUser(user) {
     let creds = JSON.stringify({email: user.email, password: user.password});
-    return this.http.post(`${paths.base_path}/user/login`, creds, this.options).map(res => res.json());
+    return this.http.post(`${paths.base_path}/user/login`, creds, this.options)
+      .map((res: Response) => {
+          if (res) {
+            if (201 === res.status) {
+              return [{status: res.status, body: res.json()}];
+            } else if (200 === res.status) {
+              return [{status: res.status, body: res.json()}];
+            }
+          }
+        },
+      )
+      .catch((error: any): any => {
+        if (error.status === 401) {
+          console.log('login User catch', error);
+          return Observable.empty();
+        }
+      });
   }
 
   getServiceUrl(isList: boolean): string {

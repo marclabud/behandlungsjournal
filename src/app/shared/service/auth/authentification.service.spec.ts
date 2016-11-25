@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import {TestBed, inject} from '@angular/core/testing';
-import {AuthService} from './auth.service';
+import {AuthentificationService} from './authentification.service';
 import {UserService} from '../../../user/service/user.service';
 import {HttpModule} from '@angular/http';
 
@@ -9,7 +9,7 @@ describe('Service: Authenticate', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        AuthService,
+        AuthentificationService,
         UserService],
       imports: [
         HttpModule
@@ -17,7 +17,7 @@ describe('Service: Authenticate', () => {
     });
   });
 
-  it('should ...', inject([AuthService], (service: AuthService) => {
+  it('should ...', inject([AuthentificationService], (service: AuthentificationService) => {
     expect(service).toBeTruthy();
   }));
 });

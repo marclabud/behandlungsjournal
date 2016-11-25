@@ -15,3 +15,5 @@ export const connection: any = {
   dburl: 'localhost:27017',
   dbname: 'test'
 };
+
+export const jwtKey = 'CASFrontendEngineering2016';
