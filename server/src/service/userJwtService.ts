@@ -4,14 +4,14 @@
  */
 
 import { sign } from 'jsonwebtoken';
-import {DbUser} from './model/user';
+import {User} from './model/user';
 import {JwtKeyProvider} from './keyProviderService';
 
 export class JwtUserService {
 
   constructor( private keyProvider: JwtKeyProvider) {}
 
-  public createJWT(user: DbUser ) {
+  public createJWT(user: User ) {
     let secret = this.keyProvider.getKey();
     let createdToken = sign (user, secret);
     console.log ('createJWT: ' , createdToken);
