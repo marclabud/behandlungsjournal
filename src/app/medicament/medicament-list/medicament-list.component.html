@@ -28,32 +28,32 @@
               </tr>
               </tbody>
               <tbody *ngIf="!isEditing">
-              <tr *ngFor="let medication of medications">
-                <td>{{medication.name}}</td>
+              <tr *ngFor="let medikation of medications">
+                <td>{{medikation.name}}</td>
                 <td>
                   <label
-                    class="btn btn-sm btn-block btn-outline-info {{medication.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
+                    class="btn btn-sm btn-block btn-outline-info {{medikation.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
                     <input type="checkbox" class="bhj-hidden">morgens
                   </label>
                 </td>
                 <td>
                   <label
-                    class="btn btn-sm btn-block btn-outline-info {{medication.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
+                    class="btn btn-sm btn-block btn-outline-info {{medikation.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
                     <input type="checkbox" class="bhj-hidden">mittags
                   </label>
                 </td>
                 <td>
                   <label
-                    class="btn btn-sm btn-block btn-outline-info  {{medication.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
+                    class="btn btn-sm btn-block btn-outline-info  {{medikation.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
                     <input type="checkbox" class="bhj-hidden">abends
                   </label>
                 </td>
                 <td>
-                  <button class="btn btn-sm btn-warning btn-block" (click)="enableEditing(medication)"><i
+                  <button class="btn btn-sm btn-warning btn-block" (click)="enableEditing(medikation)"><i
                     class="fa fa-pencil"></i>
                     Bearbeiten
                   </button>
-                  <button class="btn btn-sm btn-danger btn-block" (click)="deleteMedication(medication)"><i
+                  <button class="btn btn-sm btn-danger btn-block" (click)="deleteMedication(medikation)"><i
                     class="fa fa-trash"></i>
                     Löschen
                   </button>
