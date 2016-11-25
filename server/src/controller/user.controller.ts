@@ -71,11 +71,12 @@ module.exports.loginUser = (request, response) => {
     return response.status(400).send('You must send the username and the password');
   }
   // mongodbquery
-  UserCollection.find({email: email, password: password}, { name: 1, email: 1, password: 1, _id: 0}, (err: any, docs: User[]): any => {
-    if (err) {
-      return console.error(err);
-    }
-    console.log('loginUser docs', docs);
+  UserCollection.find({email: email, password: password}, {name: 1, email: 1, password: 1, _id: 0},
+    (err: any, docs: User[]): any => {
+      if (err) {
+        return console.error(err);
+      }
+
     if (1 === (docs.length)) {
       // genau 1 User wurde gefunden; Token wird zurückgesendet
       let user: User = docs[0];
