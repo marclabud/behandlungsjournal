@@ -23,6 +23,10 @@ export abstract class ServiceBase<TItem> {
     return this.cache.readCache();
   }
 
+  clearCache() {
+    this.cache.clearCache();
+  }
+
   hasCache(isList = false): boolean {
     return this.cache.hasCache(isList);
   }

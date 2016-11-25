@@ -9,7 +9,6 @@ export class MedikationData implements IData {
     {
       _id: new ObjectId('5835ec3cf47d103118bbd8ca'),
       name: 'Dolorsitamet',
-      // patient_id: '1', /* ist bereits im Journal enthalten */
       journal_id: '1',
       dosierung: 2,
       haeufigkeit: {
