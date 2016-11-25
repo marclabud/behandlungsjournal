@@ -1,7 +1,6 @@
 'use strict';
 import {JwtUserService} from '../service/userJwtService';
 import {JwtKeyProvider} from '../service/keyProviderService';
-// Namensconflict mit dem Collection Name
 import {User} from '../service/model/user';
 
 const UserCollection = require('../models/user.model');
@@ -42,7 +41,7 @@ module.exports.findUserbyId = (request, response) => {
     response.sendStatus(200).json(docs);
   });
 };
-// update UserCollection by Id
+// update User by Id
 module.exports.updateUser = (request, response) => {
   UserCollection.findOneAndUpdate({_id: request.params.id}, request.body, (err) => {
     if (err) {
@@ -83,7 +82,7 @@ module.exports.loginUser = (request, response) => {
       let token = getjwtToken(user);
       response.status(201).send({id_token: token});
       console.log('Token', 'Token to response ok');
-    } else {    // keinen UserCollection mit diesem Passwort gefunden
+    } else {    // keinen User mit diesem Passwort gefunden
       return response.status(401).send({message: 'The username or password dont match', email: email});
     }
   });
