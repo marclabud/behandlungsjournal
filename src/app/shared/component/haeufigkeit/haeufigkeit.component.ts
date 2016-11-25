@@ -1,10 +1,11 @@
-import {Component, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {MessageService} from '../../service/message/message.service';
 import {MedikationService} from '../../../medicament/service/medikation.service';
 import {Medikation} from '../../../medicament/model/medikation';
+import {Haeufigkeit} from '../../model/haeufigkeit';
 
-enum Haeufigkeit {MORGENS, MITTAGS, ABENDS}
+enum HAEUFIGKEIT {MORGENS, MITTAGS, ABENDS}
 
 @Component({
   selector: 'app-haeufigkeit',
@@ -16,10 +17,12 @@ export class HaeufigkeitComponent implements OnInit, OnDestroy {
   private messageServiceMedication: MessageService<Medikation>;
   private subscription: Subscription;
   /* tslint:disable-next-line:no-unused-variable */
-  private haeufigkeit = Haeufigkeit;
 
   private medikation: Medikation = null;
   private isLoading = true;
+
+  @Input()
+  haeufigkeit: Haeufigkeit;
 
   @Output()
   notifyHaufigkeitChanged: EventEmitter<Medikation> = new EventEmitter<Medikation>();
@@ -39,25 +42,27 @@ export class HaeufigkeitComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (null === this.medikation) {
       this.medikation = this.medikationService.readCache();
+      this.haeufigkeit = this.medikation.haeufigkeit;
       this.isLoading = false;
     }
   }
 
-  switchHaeufigkeit(type: Haeufigkeit) {
+  switchHaeufigkeit(type: HAEUFIGKEIT) {
     switch (type) {
-      case Haeufigkeit.MORGENS:
-        this.medikation.haeufigkeit.morgens = !this.medikation.haeufigkeit.morgens;
+      case HAEUFIGKEIT.MORGENS:
+        this.haeufigkeit.morgens = !this.haeufigkeit.morgens;
         break;
-      case Haeufigkeit.MITTAGS:
-        this.medikation.haeufigkeit.mittags = !this.medikation.haeufigkeit.mittags;
+      case HAEUFIGKEIT.MITTAGS:
+        this.haeufigkeit.mittags = !this.haeufigkeit.mittags;
         break;
-      case Haeufigkeit.ABENDS:
-        this.medikation.haeufigkeit.abends = !this.medikation.haeufigkeit.abends;
+      case HAEUFIGKEIT.ABENDS:
+        this.haeufigkeit.abends = !this.haeufigkeit.abends;
         break;
       default:
         break;
     }
     // notify MedicamentDetailComponent
+    this.medikation.haeufigkeit = this.haeufigkeit;
     this.notifyHaufigkeitChanged.emit(this.medikation);
   }
 

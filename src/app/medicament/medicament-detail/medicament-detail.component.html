@@ -1,10 +1,7 @@
 <div *ngIf="!isLoading">
-
-
   <div *ngIf="goBack">
     <app-medicament-list></app-medicament-list>
   </div>
-
   <div *ngIf="medikation && !goBack">
     <div class="container-fluid">
       <div class="jumbotron">
@@ -30,7 +27,6 @@
                      name="stueckanzahl" #stueckanzahl="ngModel"
                      type="number" class="form-control" placeholder="Anzahl Tabletten"/>
             </div>
-
 
             <!-- TODO: call component Dauer -->
             <!-- <app-dauer></app-dauer>  -->
