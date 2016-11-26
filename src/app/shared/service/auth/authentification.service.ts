@@ -16,7 +16,6 @@ export class AuthentificationService {
   }
 
   login(user: User): Observable<boolean> {
-    // ToDo: Catch 401-Error and return false
     return this.userService.loginUser(user)
       .map(result => {
       let status: number = result[0].status;

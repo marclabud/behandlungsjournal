@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(user).subscribe(userIsLoggedIn => {
           if (userIsLoggedIn) {
             this.isLoading = true;
-            this.router.navigate(['/user']);
+            this.router.navigate(['/bhjournal']);
             // redirect to main
           } else {
             // redirect to login
@@ -42,13 +42,15 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
-          console.log(error);
-          this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
+          if (401 === error.status) {
+            this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
+          } else {
+            console.log(error);
+          }
         }
       );
     }
   }
-
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;

@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
 import {paths} from './../../../../server/src/server.conf';
-import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
@@ -47,13 +46,7 @@ export class UserService extends ServiceBase<User> {
             }
           }
         },
-      )
-      .catch((error: any): any => {
-        if (error.status === 401) {
-          console.log('login User catch', error);
-          return Observable.empty();
-        }
-      });
+      );
   }
 
   getServiceUrl(isList: boolean): string {
