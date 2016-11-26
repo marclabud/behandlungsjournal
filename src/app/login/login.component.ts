@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   private LoginForm: FormGroup;
   private isLoading = false;
   public submitted: boolean;
+  private infoMsg = {body: '', type: 'info'};
 
   constructor(private authService: AuthentificationService,
               private router: Router,
@@ -36,10 +37,18 @@ export class LoginComponent implements OnInit {
           } else {
             // redirect to login
             this.isLoading = false;
+            this.sendInfoMsg('Ungültige Autorisierungsdaten', 'success');
             this.router.navigate(['/login']);
           }
         }
       );
     }
   }
+
+  sendInfoMsg(body, type, time = 3000) {
+    this.infoMsg.body = body;
+    this.infoMsg.type = type;
+    window.setTimeout(() => this.infoMsg.body = '', time);
+  }
 }
+

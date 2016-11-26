@@ -16,7 +16,8 @@ export class AuthentificationService {
   }
 
   login(user: User): Observable<boolean> {
-     return this.userService.loginUser(user).map(result => {
+    // ToDo: Catch 401-Error and return false
+    return this.userService.loginUser(user).map(result => {
       let status: number = result[0].status;
       if (201 === status) {
         // status 201: Token wurde erstellt.
