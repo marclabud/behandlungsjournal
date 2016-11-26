@@ -37,9 +37,13 @@ export class LoginComponent implements OnInit {
           } else {
             // redirect to login
             this.isLoading = false;
-            this.sendInfoMsg('Ungültige Autorisierungsdaten', 'success');
+            this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
             this.router.navigate(['/login']);
           }
+        },
+        error => {
+          console.log(error);
+          this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
         }
       );
     }

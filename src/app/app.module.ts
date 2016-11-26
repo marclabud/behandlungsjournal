@@ -66,9 +66,10 @@ import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufig
     PatientService,
     BhJournalService,
     MedikationService,
-    AuthService,
+    AuthentificationService,
     GuardService,
-    MessageService
+    MessageService,
+    HaeufigkeitService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

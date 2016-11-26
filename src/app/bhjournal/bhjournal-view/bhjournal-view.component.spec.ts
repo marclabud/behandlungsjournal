@@ -10,6 +10,7 @@ import {IndikatorListComponent} from '../../indikator/indikator-list/indikator-l
 import {PatientService} from '../../patient/service/patient.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {MedicamentDetailComponent} from '../../medicament/medicament-detail/medicament-detail.component';
+import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
 
 
 describe('Component: Bhjournal', () => {
@@ -23,7 +24,8 @@ describe('Component: Bhjournal', () => {
         MedicamentDetailComponent,
         IndikatorListComponent,
         BhjDatepickerComponent,
-        DauerComponent],
+        DauerComponent,
+        HaeufigkeitComponent],
       imports: [HttpModule, FormsModule],
       providers: [BhJournalService, PatientService]
     })

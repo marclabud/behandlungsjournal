@@ -9,6 +9,8 @@ import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MedikationService} from '../service/medikation.service';
 import {MedicamentListComponent} from '../medicament-list/medicament-list.component';
 import {HttpModule} from '@angular/http';
+import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
+import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
 
 describe('MedicamentDetailComponent', () => {
   let component: MedicamentDetailComponent;
@@ -16,9 +18,9 @@ describe('MedicamentDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MedicamentDetailComponent , MedicamentListComponent],
+      declarations: [ MedicamentDetailComponent , MedicamentListComponent, HaeufigkeitComponent],
       imports: [HttpModule, FormsModule],
-      providers: [ BhJournalService, MedikationService ]
+      providers: [ BhJournalService, MedikationService, HaeufigkeitService ]
     })
     .compileComponents();
   }));

@@ -2,8 +2,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { HaeufigkeitService } from './service/haeufigkeit.service';
 
 import { HaeufigkeitComponent } from './haeufigkeit.component';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 describe('HaeufigkeitComponent', () => {
   let component: HaeufigkeitComponent;
@@ -11,7 +14,9 @@ describe('HaeufigkeitComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HaeufigkeitComponent ]
+      declarations: [ HaeufigkeitComponent ],
+      imports: [HttpModule, FormsModule],
+      providers: [HaeufigkeitService]
     })
     .compileComponents();
   }));
