@@ -17,14 +17,11 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private bhJournal: BhJournal;
   private medications: Array<Medikation> = [];
-  private isLoading = true;
-
-  private medication: Medikation = null;
+  private medikation: Medikation = new Medikation();
   private isEditing = false;
   private isAdding = false;
-
+  private isLoading = true;
   private infoMsg = {body: '', type: 'info'};
-
 
   constructor(private bhjournalService: BhJournalService, private medikationService: MedikationService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
@@ -37,17 +34,15 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
       behandlungsjournal => {
         this.bhJournal = behandlungsjournal;
         this.getMedicationsByJournalId(this.bhJournal._id);
-        this.isLoading = true;
       });
   }
 
   ngOnInit() {
-    if (typeof(this.bhJournal) !== 'undefined') {
-    } else {
+    if (typeof(this.bhJournal) === 'undefined') {
       this.bhJournal = this.bhjournalService.readCache();
+      this.getMedicationsByJournalId(this.bhJournal._id);
       this.isLoading = false;
     }
-    this.getMedicationsByJournalId(this.bhJournal._id);
   }
 
   getMedicationsByJournalId(bhJournal_id: string) {
@@ -80,14 +75,14 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   enableEditing(medication: Medikation) {
     this.isEditing = true;
     this.isAdding = false;
-    this.medication = medication;
-    this.messageServiceMedication.selectItem(this.medication);
+    this.medikation = medication;
+    this.messageServiceMedication.selectItem(this.medikation);
   }
 
   enableAdding() {
     this.isAdding = true;
     this.isEditing = false;
-    this.messageServiceMedication.selectItem(null);
+    this.messageServiceMedication.selectItem(this.medikation);
   }
 
   sendInfoMsg(body, type, time = 3000) {
