@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {User} from '../user/model/user';
 import {AuthentificationService} from '../shared/service/auth/authentification.service';
 import {Router} from '@angular/router';
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'app-login',
@@ -42,13 +43,16 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
-          if (401 === error.status) {
-            this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
+          if ( error instanceof Response) {
+            if (401 === error.status) {
+              this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
+            } else {
+              this.sendInfoMsg('Status: ' + error.status + ' Text: ' + error.statusText, 'danger');
+            }
           } else {
-            console.log(error);
+            console.log (error);
           }
-        }
-      );
+      });
     }
   }
   sendInfoMsg(body, type, time = 3000) {
