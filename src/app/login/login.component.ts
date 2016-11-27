@@ -43,14 +43,14 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
-          if ( error instanceof Response) {
+          if (error instanceof Response) {
             if (401 === error.status) {
               this.sendInfoMsg('Ungültige Autorisierungsdaten', 'danger');
             } else {
               this.sendInfoMsg('Status: ' + error.status + ' Text: ' + error.statusText, 'danger');
             }
           } else {
-            console.log (error);
+            console.log(error);
           }
       });
     }
