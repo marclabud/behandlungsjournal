@@ -22,8 +22,8 @@ export class BhjDatepickerComponent implements OnInit {
   ngOnInit() {
     // Browser auf Unterstützung vom Inputtype date prüfen
     this.HTML5_inputtype_date_Supported = Modernizr.inputtypes.date;
-    this.defaultDate = moment(this.defaultDate); // must be cast
     if (this.HTML5_inputtype_date_Supported) {
+      this.defaultDate = moment(this.defaultDate); // must be cast
        if (typeof this.defaultDate !== 'undefined') {
          this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
       } else { // Fehlerbehandlung: nimm das aktuelle Datum
@@ -39,13 +39,14 @@ export class BhjDatepickerComponent implements OnInit {
       }
     }
   }
+
   /* tslint:disable-next-line:no-unused-variable */
   private dateChange($event) {
     let dateReturned: moment.Moment;
-    console.log ('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);
+    console.log('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);
     if (this.HTML5_inputtype_date_Supported) {
       dateReturned = moment.utc(this.HTML5Date);
-    }  else {
+    } else {
       dateReturned = this.defaultDate;
     }
     this.onDateChange.emit(dateReturned);
