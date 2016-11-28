@@ -3,6 +3,8 @@ import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from './service/user.service';
 import {User} from './model/user';
 
+// let rbac = require('mongoose-rbac');
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

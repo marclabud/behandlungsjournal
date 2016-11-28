@@ -7,6 +7,7 @@ import {BhJournal} from '../../bhjournal/model/bhjournal';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
 import {Haeufigkeit} from '../../shared/model/haeufigkeit';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-medicament-detail',
@@ -29,7 +30,14 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   @Input()
   private medikation: Medikation;
 
-  constructor(private haeufigkeitService: HaeufigkeitService, private medikationService: MedikationService, private bhjournalService: BhJournalService) {
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelStart: string = 'Beginn:';
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelEnde: string = 'Ende:';
+
+  constructor(private haeufigkeitService: HaeufigkeitService,
+              private medikationService: MedikationService,
+              private bhjournalService: BhJournalService) {
     this.messageServiceMedication = this.medikationService.messageService;
     this.messageHaeufigkeitService = this.haeufigkeitService.messageService;
     this.subscribeMedication();
@@ -48,9 +56,11 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   }
 
   private getMedication() {
-    this.medikation = this.medikationService.readCache();
     if (this.isEditing) {
+      this.medikation = this.medikationService.readCache();
       this.messageHaeufigkeitService.selectItem(this.medikation.haeufigkeit);
+    } else {
+      this.medikation = new Medikation();
     }
   }
 
@@ -97,6 +107,14 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   // receive change from HaeufigkeitComponent
   onHaeufigkeitChange(haeufigkeit: Haeufigkeit) {
     this.medikation.haeufigkeit = haeufigkeit;
+  }
+
+  onStartDatumChanged(startDatum: moment.Moment) {
+    this.medikation.dauer.startDatum = startDatum;
+  }
+
+  onEndeDatumChanged(endeDatum: moment.Moment) {
+    this.medikation.dauer.endeDatum = endeDatum;
   }
 
   back() {

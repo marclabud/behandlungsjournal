@@ -32,8 +32,8 @@ export class DauerComponent implements OnInit {
   private endeDatumShow: string;
 
   ngOnInit() {
-    this.startdatum = this.dauer.startDatum;
-    this.endedatum = this.dauer.endeDatum;
+    this.startdatum = moment(this.dauer.startDatum); // must be cast
+    this.endedatum = moment(this.dauer.endeDatum);  // must be cast
     this.startDatumShow = this.startdatum.format('DD.MM.YYYY');
     this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
   }

@@ -27,10 +27,8 @@
                      type="number" class="form-control" placeholder="Anzahl Tabletten"/>
             </div>
 
-            <!-- TODO: call component Dauer -->
-            <!-- <app-dauer></app-dauer>  -->
-            <div class="row">Dauer:</div>
-            <div class="row">...</div>
+             <app-dauer [dauer]="medikation.dauer"  [labelStartDatum]="labelStart"  [labelEndeDatum]="labelEnde"
+                       (onStartDatumChange)="onStartDatumChanged($event)" (onEndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
 
             <div class="form-group row">
               <button *ngIf="!isEditing" class="btn btn-success" type="submit" (click)="addMedication(medikation)"><i

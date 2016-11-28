@@ -23,6 +23,7 @@ export class BhjDatepickerComponent implements OnInit {
     // Browser auf Unterstützung vom Inputtype date prüfen
     this.HTML5_inputtype_date_Supported = Modernizr.inputtypes.date;
     if (this.HTML5_inputtype_date_Supported) {
+      this.defaultDate = moment(this.defaultDate); // must be cast
       if (typeof this.defaultDate !== 'undefined') {
         this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
       } else { // Fehlerbehandlung: nimm das aktuelle Datum

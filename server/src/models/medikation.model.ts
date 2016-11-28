@@ -14,9 +14,9 @@ const medikationSchema = new mongoose.Schema({
     abends: {type: Boolean, required: true},
   },
   dauer: {
-    startdatum: {type: String, required: true},
-    enddatum: {type: String, required: true},
-  },
+    startDatum: {type: Date, required: true},
+    endeDatum: {type: Date, required: true},
+  }
 }, {collection: model});
 
 const Medikation = mongoose.model(model, medikationSchema);
