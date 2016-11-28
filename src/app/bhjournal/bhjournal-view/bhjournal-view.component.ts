@@ -72,7 +72,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };
-
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();

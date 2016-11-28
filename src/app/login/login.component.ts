@@ -33,8 +33,15 @@ export class LoginComponent implements OnInit {
       this.authService.login(user).subscribe(userIsLoggedIn => {
           if (userIsLoggedIn) {
             this.isLoading = true;
-            this.router.navigate(['/user']);
-            // redirect to main
+            // Check redirect for succesful login
+            if (this.authService.isLoggedIn()) {
+            let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/bhjournal';
+            this.router.navigate([redirect]);
+            } else {
+              this.isLoading = false;
+              this.router.navigate(['/login']);
+            }
+
           } else {
             // redirect to login
             this.isLoading = false;

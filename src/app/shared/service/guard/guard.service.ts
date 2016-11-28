@@ -5,9 +5,19 @@ import {AuthentificationService} from '../auth/authentification.service';
 @Injectable()
 export class GuardService implements CanActivate {
 
-  constructor(private authService: AuthentificationService, private router: Router) {
+  constructor(private auth: AuthentificationService, private router: Router) {
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.authService.isLoggedIn();
+    let url = state.url;
+    return this.checkLogin(url) ;
+  }
+
+  private checkLogin(url: string): boolean {
+    if (this.auth.isLoggedIn()) { return true; }
+    // Store the attempted URL for redirecting
+    this.auth.redirectUrl = url;
+    // Navigate to the login page
+    this.router.navigate(['/login']);
+    return false;
   }
 }
