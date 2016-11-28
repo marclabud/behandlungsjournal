@@ -1,7 +1,19 @@
 <div *ngIf="!isloading">
-  <div class="form-group row">
-    <app-datepicker [defaultDate]="startDatum" [labeltext]="labelStartDatum" (onDateChange)="onStartDatumChanged($event)"></app-datepicker>
-    <app-datepicker [defaultDate]="endeDatum" [labeltext]="labelEndeDatum" (onDateChange)="onEndeDatumChanged($event)"></app-datepicker>
+  <div *ngIf="isEditing">
+    <div class="form-group row">
+      <app-datepicker [defaultDate]="startDatum" [labeltext]="labelStartDatum"
+                      (onDateChange)="onStartDatumChanged($event)"></app-datepicker>
+      <app-datepicker [defaultDate]="endeDatum" [labeltext]="labelEndeDatum"
+                      (onDateChange)="onEndeDatumChanged($event)"></app-datepicker>
+    </div>
+  </div>
+  <div *ngIf="!isEditing">
+    <div class="form-group row">
+      <p class="col-sm-2 col-lg-2">{{labelStartDatum}} </p>
+      <p class="col-sm-10 col-lg-4">{{startDatumShow}}</p>
+      <p class="col-sm-2 col-lg-2 col">{{labelEndeDatum}} </p>
+      <p class="col-sm-10 col-lg-4">{{endeDatumShow}}</p>
+    </div>
   </div>
 </div>
 

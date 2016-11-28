@@ -8,11 +8,13 @@ import * as moment from 'moment';
 })
 export class BhjDatepickerComponent implements OnInit {
   @Input()
-  defaultDate: moment.Moment;
+  private defaultDate: moment.Moment;
   @Input()
-  labeltext: string;
+  /* tslint:disable-next-line:no-unused-variable */
+  private labeltext: string;
   @Output()
-  onDateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
+  private onDateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
+
   private HTML5_inputtype_date_Supported = false;
   private HTML5Date: String;
   private NG2Date: Date;

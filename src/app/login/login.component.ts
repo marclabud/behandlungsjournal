@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(user).subscribe(userIsLoggedIn => {
           if (userIsLoggedIn) {
             this.isLoading = true;
-            this.router.navigate(['/bhjournal']);
+            this.router.navigate(['/user']);
             // redirect to main
           } else {
             // redirect to login

@@ -7,6 +7,7 @@ import {MessageService} from '../../shared/service/message/message.service';
 import {PatientService} from '../../patient/service/patient.service';
 import {BhJournal} from '../model/bhjournal';
 import * as moment from 'moment';
+import {Dauer} from '../../shared/model/dauer';
 
 @Component({
   selector: 'app-bhjournal',
@@ -16,8 +17,7 @@ import * as moment from 'moment';
 export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
   private journalsUTC: Array<BhJournal> = [];
-  private therapieStartDatum: moment.Moment;
-  private therapieEndeDatum: moment.Moment;
+  private therapiedauer: Dauer = new Dauer();
   private isLoading = true;
   private subscriptionPatient: Subscription;
   private selectedPatient: Patient;
@@ -38,7 +38,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
         this.selectedPatient = patient;
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
-
   }
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
@@ -55,18 +54,21 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
-      error => console.log(error),
+      error => console.log('getJournalsbyPatient', error),
       () => this.isLoading = false
     );
   };
 
   private getJournals(journals: Array<BhJournal>) {
+    console.log ('getJournals Parameter journals: ', journals);
     this.journalsUTC = journals;
     if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
       // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
-      this.therapieStartDatum = moment.utc(this.selectedBhJournal.startdatum);
-      this.therapieEndeDatum = moment.utc(this.selectedBhJournal.enddatum);
+      let datumMoment: moment.Moment;
+      datumMoment = moment.utc (this.selectedBhJournal.startdatum);
+      this.therapiedauer.startDatum = datumMoment;
+      this.therapiedauer.endeDatum = moment.utc(this.selectedBhJournal.enddatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };
