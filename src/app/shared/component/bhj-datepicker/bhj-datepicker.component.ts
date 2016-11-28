@@ -22,12 +22,12 @@ export class BhjDatepickerComponent implements OnInit {
   ngOnInit() {
     // Browser auf Unterstützung vom Inputtype date prüfen
     this.HTML5_inputtype_date_Supported = Modernizr.inputtypes.date;
+    this.defaultDate = moment(this.defaultDate); // must be cast
     if (this.HTML5_inputtype_date_Supported) {
-      this.defaultDate = moment(this.defaultDate); // must be cast
-      if (typeof this.defaultDate !== 'undefined') {
-        this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
+       if (typeof this.defaultDate !== 'undefined') {
+         this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
       } else { // Fehlerbehandlung: nimm das aktuelle Datum
-        this.HTML5Date = moment().format('YYYY-MM-DD');
+         this.HTML5Date = moment().format('YYYY-MM-DD');
         // Todo: Fehlerbenachrichtigung für @input defaultDate == 'undefined'
       }
     } else {
