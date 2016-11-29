@@ -33,10 +33,7 @@ export class DauerComponent implements OnInit, AfterViewChecked {
   private isLoading = true;
 
   ngOnInit() {
-    this.checkInput(this.dauer);
-    this.checkInput(this.dauer.startDatum);
     this.startdatum = moment(this.dauer.startDatum); // must be cast
-    this.checkInput(this.startdatum);
     this.endedatum = moment(this.dauer.endeDatum);  // must be cast
     this.startDatumShow = this.startdatum.format('DD.MM.YYYY');
     this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
@@ -45,7 +42,6 @@ export class DauerComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     this.startdatum = moment(this.dauer.startDatum); // must be cast
-    this.checkInput(this.startdatum);
     this.endedatum = moment(this.dauer.endeDatum);  // must be cast
     this.startDatumShow = this.startdatum.format('DD.MM.YYYY');
     this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
@@ -60,9 +56,5 @@ export class DauerComponent implements OnInit, AfterViewChecked {
   private onEndeDatumChanged(endeDatum: moment.Moment) {
     this.onEndeDatumChange.emit(endeDatum);
   }
-  private checkInput (input: any) {
-    console.log ('checkInputDate: type of input', typeof input);
-    console.log ('checkInputDate: instanceof input Dauer', input instanceof Dauer );
-    console.log ('checkInputDate: input isMoment', moment.isMoment(input) );
-  }
+
 }

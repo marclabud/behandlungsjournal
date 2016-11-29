@@ -65,9 +65,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
       // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
-      let datumMoment: moment.Moment;
-      datumMoment = moment.utc (this.selectedBhJournal.startdatum);
-      this.therapiedauer.startDatum = datumMoment;
+      this.therapiedauer.startDatum = moment.utc (this.selectedBhJournal.startdatum);
       this.therapiedauer.endeDatum = moment.utc(this.selectedBhJournal.enddatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
