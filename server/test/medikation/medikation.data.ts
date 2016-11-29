@@ -17,8 +17,8 @@ export class MedikationData implements IData {
         abends: true
       },
       dauer: {
-        startDatum: new Date('2016-11-07T08:00:00'),
-        endeDatum: new Date('2016-11-16T18:00:00')
+        startDatum: new Date('2016-11-07T07:00:00.000Z'),
+        endeDatum: new Date('2016-11-16T17:00:00.000Z')
       }
     },
     {
@@ -32,8 +32,8 @@ export class MedikationData implements IData {
         abends: true
       },
       dauer: {
-        startDatum: new Date('2016-10-10T08:00:00'),
-        endeDatum: new Date('2016-10-15T18:00:00')
+        startDatum: new Date('2016-10-10T07:00:00.000Z'),
+        endeDatum: new Date('2016-10-15T17:00:00.000Z')
       }
     },
     {
@@ -47,8 +47,8 @@ export class MedikationData implements IData {
         abends: false
       },
       dauer: {
-        startDatum: new Date('2016-09-10T08:00:00'),
-        endeDatum: new Date('2016-09-15T18:00:00')
+        startDatum: new Date('2016-09-10T07:00:00.000Z'),
+        endeDatum: new Date('2016-09-15T17:00:00.000Z')
       }
     }
   ];

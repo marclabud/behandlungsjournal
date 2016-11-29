@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, Input, EventEmitter, OnInit, Output, AfterViewChecked} from '@angular/core';
 import * as moment from 'moment';
 import {Dauer} from '../../model/dauer';
 
@@ -8,7 +8,7 @@ import {Dauer} from '../../model/dauer';
   templateUrl: './dauer.component.html',
   styleUrls: ['./dauer.component.css']
 })
-export class DauerComponent implements OnInit {
+export class DauerComponent implements OnInit, AfterViewChecked {
   @Input()
   /* tslint:disable-next-line:no-unused-variable */
   private isEditing: Boolean = true;
@@ -30,9 +30,22 @@ export class DauerComponent implements OnInit {
 
   private startDatumShow: string;
   private endeDatumShow: string;
+  private isLoading = true;
 
   ngOnInit() {
+    this.checkInput(this.dauer);
+    this.checkInput(this.dauer.startDatum);
     this.startdatum = moment(this.dauer.startDatum); // must be cast
+    this.checkInput(this.startdatum);
+    this.endedatum = moment(this.dauer.endeDatum);  // must be cast
+    this.startDatumShow = this.startdatum.format('DD.MM.YYYY');
+    this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
+    this.isLoading = false;
+  }
+
+  ngAfterViewChecked() {
+    this.startdatum = moment(this.dauer.startDatum); // must be cast
+    this.checkInput(this.startdatum);
     this.endedatum = moment(this.dauer.endeDatum);  // must be cast
     this.startDatumShow = this.startdatum.format('DD.MM.YYYY');
     this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
@@ -46,5 +59,10 @@ export class DauerComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */
   private onEndeDatumChanged(endeDatum: moment.Moment) {
     this.onEndeDatumChange.emit(endeDatum);
+  }
+  private checkInput (input: any) {
+    console.log ('checkInputDate: type of input', typeof input);
+    console.log ('checkInputDate: instanceof input Dauer', input instanceof Dauer );
+    console.log ('checkInputDate: input isMoment', moment.isMoment(input) );
   }
 }

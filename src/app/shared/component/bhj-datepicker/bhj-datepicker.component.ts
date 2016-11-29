@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, AfterViewChecked} from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -6,9 +6,9 @@ import * as moment from 'moment';
   templateUrl: './bhj-datepicker.component.html',
   styleUrls: ['./bhj-datepicker.component.css']
 })
-export class BhjDatepickerComponent implements OnInit {
+export class BhjDatepickerComponent implements OnInit, AfterViewChecked {
   @Input()
-  private defaultDate: moment.Moment;
+  private defaultDate: moment.Moment = moment();
   @Input()
   /* tslint:disable-next-line:no-unused-variable */
   private labeltext: string;
@@ -22,24 +22,24 @@ export class BhjDatepickerComponent implements OnInit {
   ngOnInit() {
     // Browser auf Unterstützung vom Inputtype date prüfen
     this.HTML5_inputtype_date_Supported = Modernizr.inputtypes.date;
-    if (this.HTML5_inputtype_date_Supported) {
-      this.defaultDate = moment(this.defaultDate); // must be cast
-       if (typeof this.defaultDate !== 'undefined') {
-         this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
-      } else { // Fehlerbehandlung: nimm das aktuelle Datum
-         this.HTML5Date = moment().format('YYYY-MM-DD');
-        // Todo: Fehlerbenachrichtigung für @input defaultDate == 'undefined'
-      }
-    } else {
-      // HTML5 type=date nicht supported ng2 datetimepcker init
-      if (typeof this.defaultDate !== 'undefined') {
-        this.NG2Date = this.defaultDate.toDate();
-      } else { // Fehlerbehandlung: nimm das aktuelle Datum
-        this.NG2Date = moment().toDate();
+  }
+
+  ngAfterViewChecked() {
+    this.checkInput(this.defaultDate);
+    console.log('ngAfterViewChecked', this.defaultDate);
+    if (moment.isMoment(this.defaultDate)) {
+      this.NG2Date = this.defaultDate.toDate();
+      this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
+    } else {     // @InputDefaultDate is not momentMoment
+      if (typeof this.defaultDate === 'string' ) {
+        this.NG2Date = new Date(this.defaultDate);
+        this.HTML5Date = this.defaultDate;
+        console.warn ('@Input Parameter should be Type Moment not string');
+      } else {
+        console.log ('@Input Parameter default Date Ungültiger Type', typeof this.defaultDate );
       }
     }
   }
-
   /* tslint:disable-next-line:no-unused-variable */
   private dateChange($event) {
     let dateReturned: moment.Moment;
@@ -47,9 +47,14 @@ export class BhjDatepickerComponent implements OnInit {
     if (this.HTML5_inputtype_date_Supported) {
       dateReturned = moment.utc(this.HTML5Date);
     } else {
-      dateReturned = this.defaultDate;
+      dateReturned = moment(this.NG2Date);
     }
     this.onDateChange.emit(dateReturned);
+  }
+
+  private checkInput(input: any) {
+    console.log('checkInputDate: isMoment', moment.isMoment(input));
+    console.log('checkInputDate: type of date', typeof input);
   }
 }
 
