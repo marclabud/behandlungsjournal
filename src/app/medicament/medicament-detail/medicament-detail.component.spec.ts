@@ -11,6 +11,8 @@ import {MedicamentListComponent} from '../medicament-list/medicament-list.compon
 import {HttpModule} from '@angular/http';
 import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
 import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
+import {DauerComponent} from '../../shared/component/dauer/dauer.component';
+import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
 
 describe('MedicamentDetailComponent', () => {
   let component: MedicamentDetailComponent;
@@ -18,7 +20,7 @@ describe('MedicamentDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MedicamentDetailComponent , MedicamentListComponent, HaeufigkeitComponent],
+      declarations: [ MedicamentDetailComponent , MedicamentListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
       imports: [HttpModule, FormsModule],
       providers: [ BhJournalService, MedikationService, HaeufigkeitService ]
     })
