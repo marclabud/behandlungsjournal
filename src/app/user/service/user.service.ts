@@ -13,7 +13,7 @@ export class UserService extends ServiceBase<User> {
   private serviceUrl: string;
 
   constructor(http: Http) {
-    super(http, 'UserService:UserCollection');
+    super(http, 'UserService:User');
     this.serviceUrl = '/user';
   }
 
