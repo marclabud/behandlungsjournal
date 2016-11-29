@@ -18,12 +18,9 @@ export class HaeufigkeitComponent implements OnInit, OnDestroy {
   /* tslint:disable-next-line:no-unused-variable */
   private isLoading = true;
 
-  @Input()
-  private isEditing;
-  @Input()
-  private haeufigkeit: Haeufigkeit = null;
-  @Output()
-  private notifyHaufigkeitChanged: EventEmitter<Haeufigkeit> = new EventEmitter<Haeufigkeit>();
+  @Input() private isEditing;
+  @Input() private haeufigkeit: Haeufigkeit = null;
+  @Output() private notifyHaufigkeitChanged: EventEmitter<Haeufigkeit> = new EventEmitter<Haeufigkeit>();
 
   constructor(private haeufigkeitService: HaeufigkeitService) {
     this.messageService = this.haeufigkeitService.messageService;

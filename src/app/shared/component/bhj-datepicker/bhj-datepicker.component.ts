@@ -7,20 +7,17 @@ import * as moment from 'moment';
   styleUrls: ['./bhj-datepicker.component.css']
 })
 export class BhjDatepickerComponent implements OnInit {
-  @Input()
-  private defaultDate: moment.Moment;
-  @Input()
+  @Input() private defaultDate: moment.Moment;
   /* tslint:disable-next-line:no-unused-variable */
-  private labeltext: string;
-  @Output()
-  private onDateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
+  @Input() private labeltext: string;
+  @Output() private DateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
 
   private HTML5_inputtype_date_Supported = false;
   private HTML5Date: String;
   private NG2Date: Date;
 
   constructor() {
-   // this.defaultDate = moment();
+    // this.defaultDate = moment();
   }
 
   ngOnInit() {
@@ -41,7 +38,7 @@ export class BhjDatepickerComponent implements OnInit {
   }
 
     /* tslint:disable-next-line:no-unused-variable */
-  private dateChange($event) {
+  private onDateChange($event) {
     let dateReturned: moment.Moment;
     console.log('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);
     if (this.HTML5_inputtype_date_Supported) {
@@ -49,7 +46,7 @@ export class BhjDatepickerComponent implements OnInit {
     } else {
       dateReturned = moment(this.NG2Date);
     }
-    this.onDateChange.emit(dateReturned);
+    this.DateChange.emit(dateReturned);
   }
 }
 

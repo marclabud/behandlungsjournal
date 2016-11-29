@@ -2,9 +2,9 @@
   <div *ngIf="isEditing">
     <div class="form-group row">
       <app-datepicker [(defaultDate)]="startdatum" [labeltext]="labelStartDatum"
-                      (onDateChange)="onStartDatumChanged($event)"></app-datepicker>
+                      (DateChange)="onStartDatumChanged($event)"></app-datepicker>
       <app-datepicker [(defaultDate)]="endedatum" [labeltext]="labelEndeDatum"
-                      (onDateChange)="onEndeDatumChanged($event)"></app-datepicker>
+                      (DateChange)="onEndeDatumChanged($event)"></app-datepicker>
     </div>
   </div>
   <div *ngIf="!isEditing">

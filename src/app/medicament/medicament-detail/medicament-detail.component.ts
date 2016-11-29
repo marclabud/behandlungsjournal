@@ -25,10 +25,8 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   private infoMsg = {body: '', type: 'info'};
   private goBack = false;
 
-  @Input()
-  private isEditing;
-  @Input()
-  private medikation: Medikation;
+  @Input() private isEditing;
+  @Input() private medikation: Medikation;
 
   /* tslint:disable-next-line:no-unused-variable */
   private labelStart: string = 'Beginn:';

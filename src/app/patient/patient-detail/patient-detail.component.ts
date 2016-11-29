@@ -16,8 +16,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private messageService: MessageService<Patient>;
 
-  @Input()
-  patient: Patient;
+  @Input() patient: Patient;
 
   constructor(http: Http, private patientService: PatientService) {
     this.messageService = patientService.messageService;

@@ -9,21 +9,16 @@ import {Dauer} from '../../model/dauer';
   styleUrls: ['./dauer.component.css']
 })
 export class DauerComponent implements OnInit, AfterViewChecked {
-  @Input()
   /* tslint:disable-next-line:no-unused-variable */
-  private isEditing: Boolean = true;
-  @Input()
-  private dauer: Dauer;
-  @Input()
+  @Input() private isEditing: Boolean = true;
+  @Input() private dauer: Dauer;
   /* tslint:disable-next-line:no-unused-variable */
-  private labelStartDatum: string;
-  @Input()
+  @Input() private labelStartDatum: string;
   /* tslint:disable-next-line:no-unused-variable */
-  private labelEndeDatum: string;
-  @Output()
-  private onStartDatumChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
-  @Output()
-  private onEndeDatumChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
+  @Input()private labelEndeDatum: string;
+
+  @Output() private StartDatumChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
+  @Output() private EndeDatumChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
 
   private startdatum: moment.Moment;
   private endedatum: moment.Moment;
@@ -49,12 +44,12 @@ export class DauerComponent implements OnInit, AfterViewChecked {
 
   /* tslint:disable-next-line:no-unused-variable */
   private onStartDatumChanged(startDatum: moment.Moment) {
-    this.onStartDatumChange.emit(startDatum);
+    this.StartDatumChange.emit(startDatum);
   }
 
   /* tslint:disable-next-line:no-unused-variable */
   private onEndeDatumChanged(endeDatum: moment.Moment) {
-    this.onEndeDatumChange.emit(endeDatum);
+    this.EndeDatumChange.emit(endeDatum);
   }
 
 }
