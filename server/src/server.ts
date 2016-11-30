@@ -30,6 +30,7 @@ app.use(require('./routes/user.routes.js'));
 app.use(require('./routes/patient.routes.js'));
 app.use(require('./routes/journal.routes.js'));
 app.use(require('./routes/medikation.routes.js'));
+app.use(require('./routes/indikator.routes.js'));
 app.use(require('./routes/static.routes.js'));
 
 connect()

@@ -293,6 +293,119 @@ paths:
        default:
          description: "successful operation"
 
+ /indicators:
+   get:
+     operationId: 'getAllIndicators'
+     description: 'Returns all indicators'
+     produces:
+        - application/json
+     tags:
+        - 'indikator'
+     responses:
+      "200":
+       description: 'A list of all indicators.'
+       schema:
+        type: 'array'
+        items:
+         $ref: '#/definitions/Indikator'
+      default:
+       description: 'Unexpected error'
+       schema:
+         $ref: '#/definitions/Error'
+ /indicators/{journal_id}:
+   get:
+     tags:
+     - 'indikator'
+     operationId: 'getIndicatorsByJournalId'
+     description: 'Returns all Indikators for a Journal by Journal._id'
+     produces:
+        - application/json
+     parameters:
+     - name: "journal_id"
+       in: "path"
+       description: "Journal._id Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       required: true
+       type: "string"
+     responses:
+      "200":
+         description: 'A list of Indikators for one Journal.'
+         schema:
+          type: 'array'
+          items:
+           $ref: '#/definitions/Indikator'
+      default:
+       description: 'Unexpected error'
+       schema:
+         $ref: '#/definitions/Error'
+ /indicator/{_id}:
+   put:
+     tags:
+     - "indikator"
+     summary: "Updated indikator"
+     description: ""
+     operationId: "updateIndicator"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Mongodb [ObjectID](https://docs.mongodb.com/v3.2/reference/method/ObjectId/)"
+       required: true
+       type: "string"
+     - in: "body"
+       name: "body"
+       description: "Indicator transported in body"
+       required: true
+       schema:
+         $ref: "#/definitions/Indikator"
+     responses:
+       200:
+         description: "Indicator updated"
+       400:
+         description: "Invalid Indicator supplied"
+       404:
+         description: "Indicator not found"
+   delete:
+     tags:
+     - "indikator"
+     summary: "Delete Indicator"
+     description: "Delete Indicator by Id."
+     operationId: "deleteIndicator"
+     produces:
+     - "application/json"
+     parameters:
+     - name: "_id"
+       in: "path"
+       description: "Indicator _id to be deleted"
+       required: true
+       type: "string"
+     responses:
+       200:
+         description: "Indicator is deleted"
+       400:
+         description: "Invalid Indicator name supplied"
+       404:
+         description: "Indicator not found"
+ /indicator:
+   post:
+     tags:
+     - 'indikator'
+     summary: "Create Indicator"
+     description: "Create a Indicator."
+     operationId: "addIndicator"
+     produces:
+     - "application/json"
+     parameters:
+     - in: "body"
+       name: "body"
+       description: "Created indicator object"
+       required: true
+       schema:
+         $ref: "#/definitions/Indikator"
+     responses:
+       default:
+         description: "successful operation"
+
 
  /patients:
    get:
@@ -555,6 +668,22 @@ definitions:
           "$ref": "#/definitions/Haeufigkeit"
         dauer:
           "$ref": "#/definitions/Dauer"
+
+  Indikator:
+     type: "object"
+     properties:
+         _id:
+           type: "string"
+         name:
+           type: "string"
+         journal_id:
+           type: "string"
+         rating_id:
+           type: "string"
+         haeufigkeit:
+           "$ref": "#/definitions/Haeufigkeit"
+         dauer:
+           "$ref": "#/definitions/Dauer"
   Journal:
     type: "object"
     properties:
@@ -592,3 +721,6 @@ definitions:
     properties:
       token:
        type: string
+
+
+
