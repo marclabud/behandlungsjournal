@@ -2,14 +2,14 @@
 <div *ngIf="!HTML5_inputtype_date_Supported">
   <div class="col-sm-10 col-lg-4">
     <input [(ngModel)]="NG2Date" ng2-datetime-picker date-format="DD.MM.YYYY" date-only="true" class="form-control"
-           placeholder="tt.mm.jjjj" (ngModelChange)="ondateChange($event)"/>
+           placeholder="tt.mm.jjjj" (ngModelChange)="onDateChange($event)"/>
   </div>
 </div>
 
 <div *ngIf="HTML5_inputtype_date_Supported">
   <div class="col-sm-10 col-lg-4">
     <input [(ngModel)]="HTML5Date" name="datum" #datum="ngModel"
-           type="date" class="form-control" placeholder="tt.mm.jjjj" (ngModelChange)="ondateChange($event)"/>
+           type="date" class="form-control" placeholder="tt.mm.jjjj" (ngModelChange)="onDateChange($event)"/>
   </div>
 </div>
 
