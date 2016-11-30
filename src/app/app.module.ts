@@ -30,6 +30,7 @@ import {MedikationService} from './medicament/service/medikation.service';
 import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index';
 import {DauerComponent} from './shared/component/dauer/dauer.component';
 import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufigkeit.service';
+import {IndikatorService} from './indikator/service/indikator.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufig
     AuthentificationService,
     GuardService,
     MessageService,
-    HaeufigkeitService
+    HaeufigkeitService,
+    IndikatorService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

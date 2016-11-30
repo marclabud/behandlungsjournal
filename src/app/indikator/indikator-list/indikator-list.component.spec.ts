@@ -6,6 +6,7 @@ import { DebugElement } from '@angular/core';
 import { IndikatorListComponent } from './indikator-list.component';
 import {HttpModule} from '@angular/http';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
+import {IndikatorService} from '../service/indikator.service';
 
 describe('IndikatorListComponent', () => {
   let component: IndikatorListComponent;
@@ -15,7 +16,7 @@ describe('IndikatorListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ IndikatorListComponent ],
       imports: [ HttpModule ],
-      providers: [ BhJournalService ]
+      providers: [ BhJournalService, IndikatorService ]
     })
     .compileComponents();
   }));
