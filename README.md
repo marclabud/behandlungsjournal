@@ -1,6 +1,6 @@
 # Behandlungsjournal
 
-Ein [online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki) für kranke Tiere.
+Ein [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki) für kranke Tiere.
 
 ## Technology stack
 Behandlungsjournal is generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.15.
@@ -34,6 +34,9 @@ Run `ng build --prod` to create a production ready bundle.
 
 [Build Details](/docs/build.md) 
 
+## Documentation
+1. [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki)
+2. [REST-API](server/lib/api-docs/index.html)
 
 ## Authors
 * [Marc Labud](https://github.com/marclabud)
