@@ -33,9 +33,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
   // prepare Journal data
   new JournalLoader(db, new JournalData());
 
-  // prepare Haeufigkeit data
-  // new HaeufigkeitLoader(db, new HaeufigkeitData());
-
   // prepare Mediaktion data
   new MedikationLoader(db, new MedikationData());
 
