@@ -7,6 +7,8 @@ import {MainNavComponent} from './main-nav/main-nav.component';
 import {PatientListComponent} from './patient/patient-list/patient-list.component';
 import {HttpModule} from '@angular/http';
 import {PatientService} from './patient/service/patient.service';
+import {AuthentificationService} from './shared/service/auth/authentification.service';
+import {UserService} from './user/service/user.service';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
@@ -18,7 +20,7 @@ describe('App: Behandlungsjournal', () => {
       ],
       imports: [RouterTestingModule, HttpModule, ],
       providers:
-      [PatientService]
+      [PatientService, AuthentificationService, UserService]
     });
   });
 

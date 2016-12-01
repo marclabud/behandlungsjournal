@@ -7,6 +7,8 @@ import { MainNavComponent } from './main-nav.component';
 import {PatientListComponent} from '../patient/patient-list/patient-list.component';
 import {HttpModule} from '@angular/http';
 import {PatientService} from '../patient/service/patient.service';
+import {AuthentificationService} from '../shared/service/auth/authentification.service';
+import {UserService} from '../user/service/user.service';
 
 describe('MainNavComponent', () => {
   let component: MainNavComponent;
@@ -19,7 +21,7 @@ describe('MainNavComponent', () => {
         PatientListComponent
       ],
       imports: [HttpModule],
-      providers: [PatientService]
+      providers: [PatientService, AuthentificationService, UserService]
     })
       .compileComponents();
   }));
@@ -27,7 +29,7 @@ describe('MainNavComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MainNavComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

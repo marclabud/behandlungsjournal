@@ -10,6 +10,7 @@ const JWT_STORAGE_KEY = 'token';
 export class AuthentificationService {
   private validToken: string;
   redirectUrl: string;
+  jwthelper: JwtHelper = new JwtHelper();
 
   constructor(private userService: UserService) {
   }
@@ -38,7 +39,8 @@ export class AuthentificationService {
     return;
   }
   private getToken(): string {
-    let token = sessionStorage.getItem(JWT_STORAGE_KEY);
+    let token: string = sessionStorage.getItem(JWT_STORAGE_KEY);
+    if (this.isEmpty(token)) {token = ''; }
     return token;
   }
   private deleteToken(): void {
@@ -46,11 +48,8 @@ export class AuthentificationService {
   }
   private checkTokenOK() {
     let token = this.getToken();
-    let jwthelper: JwtHelper = new JwtHelper();
     if ('' !== token) {
-      console.log('ExpirationDate: ', jwthelper.getTokenExpirationDate(token));
-      console.log('isTokenExpired ', jwthelper.isTokenExpired(token));
-      if (jwthelper.isTokenExpired(token)) {
+      if (this.jwthelper.isTokenExpired(token)) {
         return false;
       } else {
         return true;
@@ -59,4 +58,8 @@ export class AuthentificationService {
       return false;
     }
   }
+
+  private isEmpty(str: string) {
+  return (!str || 0 === str.length);
+}
 }
