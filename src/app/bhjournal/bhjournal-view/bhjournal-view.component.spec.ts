@@ -6,10 +6,13 @@ import {BhJournalService} from '../service/bhjournal.service';
 import {FormsModule} from '@angular/forms';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
 import {MedicamentListComponent} from '../../medicament/medicament-list/medicament-list.component';
+import {MedicamentDetailComponent} from '../../medicament/medicament-detail/medicament-detail.component';
 import {IndikatorListComponent} from '../../indikator/indikator-list/indikator-list.component';
+import {IndikatorDetailComponent} from '../../indikator/indikator-detail/indikator-detail.component';
+
 import {PatientService} from '../../patient/service/patient.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
-import {MedicamentDetailComponent} from '../../medicament/medicament-detail/medicament-detail.component';
+
 import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
 
 
@@ -23,6 +26,7 @@ describe('Component: Bhjournal', () => {
         MedicamentListComponent,
         MedicamentDetailComponent,
         IndikatorListComponent,
+        IndikatorDetailComponent,
         BhjDatepickerComponent,
         DauerComponent,
         HaeufigkeitComponent],
