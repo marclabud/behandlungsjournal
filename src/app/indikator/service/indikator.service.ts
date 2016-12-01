@@ -32,12 +32,12 @@ export class IndikatorService extends ServiceBase<Indikator> {
     return this.http.post(paths.base_path + '/indicator', JSON.stringify(medikation), this.options);
   }
 
-  editIndikator(medikation: Indikator) {
-    return this.http.put(`${paths.base_path}/indicator/${medikation._id}`, JSON.stringify(medikation), this.options);
+  editIndikator(indikator: Indikator) {
+    return this.http.put(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), this.options);
   }
 
-  deleteIndikator(medikation: Indikator) {
-    return this.http.delete(`${paths.base_path}/indicator/${medikation._id}`, this.options);
+  deleteIndikator(indikator: Indikator) {
+    return this.http.delete(`${paths.base_path}/indicator/${indikator._id}`, this.options);
   }
 
   getServiceUrl(isList: boolean): string {
