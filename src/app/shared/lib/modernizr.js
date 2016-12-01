@@ -21,9 +21,9 @@
  * a global `Modernizr` object, and as classes on the `<html>` element. This
  * information allows you to progressively enhance your pages with a granular level
  * of control over the experience.
-*/
+ */
 
-;(function(window, document, undefined){
+;(function (window, document, undefined) {
   var tests = [];
 
 
@@ -52,7 +52,7 @@
     _q: [],
 
     // Stub these for people who are listening
-    on: function(test, cb) {
+    on: function (test, cb) {
       // I don't really think people should do this, but we can
       // safe guard it a bit.
       // -- NOTE:: this gets WAY overridden in src/addTest for actual async tests.
@@ -60,30 +60,29 @@
       // but the code to *disallow* sync tests in the real version of this
       // function is actually larger than this.
       var self = this;
-      setTimeout(function() {
+      setTimeout(function () {
         cb(self[test]);
       }, 0);
     },
 
-    addTest: function(name, fn, options) {
+    addTest: function (name, fn, options) {
       tests.push({name: name, fn: fn, options: options});
     },
 
-    addAsyncTest: function(fn) {
+    addAsyncTest: function (fn) {
       tests.push({name: null, fn: fn});
     }
   };
 
 
-
   // Fake some of Object.create so we can force non test results to be non "own" properties.
-  var Modernizr = function() {};
+  var Modernizr = function () {
+  };
   Modernizr.prototype = ModernizrProto;
 
   // Leak modernizr globally when you `require` it rather than force it here.
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
-
 
 
   var classes = [];
@@ -230,48 +229,48 @@
    */
   var inputElem = createElement('input');
 
-/*!
-{
-  "name": "Form input types",
-  "property": "inputtypes",
-  "caniuse": "forms",
-  "tags": ["forms"],
-  "authors": ["Mike Taylor"],
-  "polyfills": [
-    "jquerytools",
-    "webshims",
-    "h5f",
-    "webforms2",
-    "nwxforms",
-    "fdslider",
-    "html5slider",
-    "galleryhtml5forms",
-    "jscolor",
-    "html5formshim",
-    "selectedoptionsjs",
-    "formvalidationjs"
-  ]
-}
-!*/
-/* DOC
-Detects support for HTML5 form input types and exposes Boolean subproperties with the results:
+  /*!
+   {
+   "name": "Form input types",
+   "property": "inputtypes",
+   "caniuse": "forms",
+   "tags": ["forms"],
+   "authors": ["Mike Taylor"],
+   "polyfills": [
+   "jquerytools",
+   "webshims",
+   "h5f",
+   "webforms2",
+   "nwxforms",
+   "fdslider",
+   "html5slider",
+   "galleryhtml5forms",
+   "jscolor",
+   "html5formshim",
+   "selectedoptionsjs",
+   "formvalidationjs"
+   ]
+   }
+   !*/
+  /* DOC
+   Detects support for HTML5 form input types and exposes Boolean subproperties with the results:
 
-```javascript
-Modernizr.inputtypes.color
-Modernizr.inputtypes.date
-Modernizr.inputtypes.datetime
-Modernizr.inputtypes['datetime-local']
-Modernizr.inputtypes.email
-Modernizr.inputtypes.month
-Modernizr.inputtypes.number
-Modernizr.inputtypes.range
-Modernizr.inputtypes.search
-Modernizr.inputtypes.tel
-Modernizr.inputtypes.time
-Modernizr.inputtypes.url
-Modernizr.inputtypes.week
-```
-*/
+   ```javascript
+   Modernizr.inputtypes.color
+   Modernizr.inputtypes.date
+   Modernizr.inputtypes.datetime
+   Modernizr.inputtypes['datetime-local']
+   Modernizr.inputtypes.email
+   Modernizr.inputtypes.month
+   Modernizr.inputtypes.number
+   Modernizr.inputtypes.range
+   Modernizr.inputtypes.search
+   Modernizr.inputtypes.tel
+   Modernizr.inputtypes.time
+   Modernizr.inputtypes.url
+   Modernizr.inputtypes.week
+   ```
+   */
 
   // Run through HTML5's new input types to see if the UA understands any.
   //   This is put behind the tests runloop because it doesn't return a
@@ -282,7 +281,7 @@ Modernizr.inputtypes.week
   var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
   var inputs = {};
 
-  Modernizr.inputtypes = (function(props) {
+  Modernizr.inputtypes = (function (props) {
     var len = props.length;
     var smile = '1)';
     var inputElemType;
@@ -299,7 +298,7 @@ Modernizr.inputtypes.week
       // If the value doesn't stick, we know there's input sanitization which infers a custom UI
       if (bool) {
 
-        inputElem.value         = smile;
+        inputElem.value = smile;
         inputElem.style.cssText = 'position:absolute;visibility:hidden;';
 
         if (/^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined) {
@@ -308,7 +307,7 @@ Modernizr.inputtypes.week
           defaultView = document.defaultView;
 
           // Safari 2-4 allows the smiley as a value, despite making a slider
-          bool =  defaultView.getComputedStyle &&
+          bool = defaultView.getComputedStyle &&
             defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' &&
             // Mobile android web browser has false positive, so must
             // check the height to see if the widget is actually there.
@@ -333,7 +332,7 @@ Modernizr.inputtypes.week
         }
       }
 
-      inputs[ props[i] ] = !!bool;
+      inputs[props[i]] = !!bool;
     }
     return inputs;
   })(inputtypes);
@@ -384,7 +383,6 @@ Modernizr.inputtypes.week
   ModernizrProto._domPrefixes = domPrefixes;
 
 
-
   /**
    * contains checks to see if a string contains another string
    *
@@ -412,7 +410,7 @@ Modernizr.inputtypes.week
    */
 
   function cssToDOM(name) {
-    return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+    return name.replace(/([a-z])-([a-z])/g, function (str, m1, m2) {
       return m1 + m2.toUpperCase();
     }).replace(/^-/, '');
   }
@@ -429,7 +427,7 @@ Modernizr.inputtypes.week
    */
 
   function fnBind(fn, that) {
-    return function() {
+    return function () {
       return fn.apply(that, arguments);
     };
   }
@@ -485,10 +483,9 @@ Modernizr.inputtypes.week
   };
 
   // Clean up this element
-  Modernizr._q.push(function() {
+  Modernizr._q.push(function () {
     delete modElem.elem;
   });
-
 
 
   var mStyle = {
@@ -497,10 +494,9 @@ Modernizr.inputtypes.week
 
   // kill ref for gc, must happen before mod.elem is removed, so we unshift on to
   // the front of the queue.
-  Modernizr._q.unshift(function() {
+  Modernizr._q.unshift(function () {
     delete mStyle.style;
   });
-
 
 
   /**
@@ -514,7 +510,7 @@ Modernizr.inputtypes.week
    */
 
   function domToCSS(name) {
-    return name.replace(/([A-Z])/g, function(str, m1) {
+    return name.replace(/([A-Z])/g, function (str, m1) {
       return '-' + m1.toLowerCase();
     }).replace(/^ms-/, '-ms-');
   }
@@ -652,7 +648,7 @@ Modernizr.inputtypes.week
         conditionText.push('(' + domToCSS(props[i]) + ':' + value + ')');
       }
       conditionText = conditionText.join(' or ');
-      return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function(node) {
+      return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function (node) {
         return getComputedStyle(node, null).position == 'absolute';
       });
     }
@@ -729,7 +725,8 @@ Modernizr.inputtypes.week
           // be avoided in most cases because `skipValueTest` will be used.
           try {
             mStyle.style[prop] = value;
-          } catch (e) {}
+          } catch (e) {
+          }
 
           // If the property value has changed, we assume the value used is
           // supported. If `value` is empty string, it'll fail here (because
@@ -771,7 +768,7 @@ Modernizr.inputtypes.week
   function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
 
     var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
-    props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+      props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
     // did they call .prefixed('boxSizing') or are we just testing a prop?
     if (is(prefixed, 'string') || is(prefixed, 'undefined')) {
@@ -790,7 +787,6 @@ Modernizr.inputtypes.week
   // Note that the property names must be provided in the camelCase variant.
   // Modernizr.testAllProps('boxSizing')
   ModernizrProto.testAllProps = testPropsAll;
-
 
 
   /**
@@ -833,26 +829,27 @@ Modernizr.inputtypes.week
   function testAllProps(prop, value, skipValueTest) {
     return testPropsAll(prop, undefined, undefined, value, skipValueTest);
   }
+
   ModernizrProto.testAllProps = testAllProps;
 
-/*!
-{
-  "name": "Flexbox",
-  "property": "flexbox",
-  "caniuse": "flexbox",
-  "tags": ["css"],
-  "notes": [{
-    "name": "The _new_ flexbox",
-    "href": "http://dev.w3.org/csswg/css3-flexbox"
-  }],
-  "warnings": [
-    "A `true` result for this detect does not imply that the `flex-wrap` property is supported; see the `flexwrap` detect."
-  ]
-}
-!*/
-/* DOC
-Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows easy manipulation of layout order and sizing within a container.
-*/
+  /*!
+   {
+   "name": "Flexbox",
+   "property": "flexbox",
+   "caniuse": "flexbox",
+   "tags": ["css"],
+   "notes": [{
+   "name": "The _new_ flexbox",
+   "href": "http://dev.w3.org/csswg/css3-flexbox"
+   }],
+   "warnings": [
+   "A `true` result for this detect does not imply that the `flex-wrap` property is supported; see the `flexwrap` detect."
+   ]
+   }
+   !*/
+  /* DOC
+   Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows easy manipulation of layout order and sizing within a container.
+   */
 
   Modernizr.addTest('flexbox', testAllProps('flexBasis', '1px', true));
 
@@ -872,6 +869,6 @@ Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows 
   window.Modernizr = Modernizr;
 
 
-;
+  ;
 
 })(window, document);

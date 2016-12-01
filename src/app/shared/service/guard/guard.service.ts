@@ -7,13 +7,16 @@ export class GuardService implements CanActivate {
 
   constructor(private auth: AuthentificationService, private router: Router) {
   }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url = state.url;
-    return this.checkLogin(url) ;
+    return this.checkLogin(url);
   }
 
   private checkLogin(url: string): boolean {
-    if (this.auth.isLoggedIn()) { return true; }
+    if (this.auth.isLoggedIn()) {
+      return true;
+    }
     // Store the attempted URL for redirecting
     this.auth.redirectUrl = url;
     // Navigate to the login page

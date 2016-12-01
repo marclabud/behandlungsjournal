@@ -5,7 +5,9 @@
   </button>
   <div class="dropdown-menu">
     <div class="list-group">
-      <button class="dropdown-item" type="button" *ngFor="let patient of patients" (click)="onSelect(patient)">{{patient.name}}</button>
+      <button class="dropdown-item" type="button" *ngFor="let patient of patients" (click)="onSelect(patient)">
+        {{patient.name}}
+      </button>
     </div>
   </div>
 </div>

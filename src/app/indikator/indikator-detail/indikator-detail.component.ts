@@ -51,6 +51,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
     this.getIndikator();
     this.setJournalId();
   }
+
   private getIndikator() {
     if (this.isEditing) {
       this.indikator = this.indikatorService.readCache();

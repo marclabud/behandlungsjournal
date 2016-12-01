@@ -1,5 +1,4 @@
 /* tslint:disable:no-unused-variable */
-
 import {TestBed, inject} from '@angular/core/testing';
 import {AuthentificationService} from './authentification.service';
 import {UserService} from '../../../user/service/user.service';

@@ -37,7 +37,7 @@ export class BhjDatepickerComponent implements OnInit {
     }
   }
 
-    /* tslint:disable-next-line:no-unused-variable */
+  /* tslint:disable-next-line:no-unused-variable */
   private onDateChange($event) {
     let dateReturned: moment.Moment;
     console.log('dateChange: ngModelChange', $event, this.HTML5Date, this.defaultDate);

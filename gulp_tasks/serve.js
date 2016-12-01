@@ -4,9 +4,9 @@ const gulp = require('gulp');
 
 //serve Server with nodedemon
 // ToDo: nodemon serve
-gulp.task('serve',['clean','ts'], serve);
+gulp.task('serve', ['clean', 'ts'], serve);
 
 function serve() {
 
 }
-serve.description='public-setup, nodemon and watch init';
+serve.description = 'public-setup, nodemon and watch init';

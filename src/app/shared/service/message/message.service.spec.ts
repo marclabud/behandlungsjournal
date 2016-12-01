@@ -1,11 +1,5 @@
 /* tslint:disable:no-unused-variable */
 
-import {TestBed, inject} from '@angular/core/testing';
-import {MessageService} from './message.service';
-import {Patient} from '../../../patient/model/patient';
-import {HttpModule} from '@angular/http';
-import {ServiceBase} from '../../service.base';
-
 // describe('Service: Message', () => {
 //   beforeEach(() => {
 //     TestBed.configureTestingModule({

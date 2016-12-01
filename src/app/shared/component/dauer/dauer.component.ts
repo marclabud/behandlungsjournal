@@ -15,7 +15,7 @@ export class DauerComponent implements OnInit, AfterViewChecked {
   /* tslint:disable-next-line:no-unused-variable */
   @Input() private labelStartDatum: string;
   /* tslint:disable-next-line:no-unused-variable */
-  @Input()private labelEndeDatum: string;
+  @Input() private labelEndeDatum: string;
 
   @Output() private StartDatumChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
   @Output() private EndeDatumChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();

@@ -1,7 +1,6 @@
 /* tslint:disable:no-unused-variable */
-
-import { TestBed, async, inject } from '@angular/core/testing';
-import { IndikatorService } from './indikator.service';
+import {TestBed, inject} from '@angular/core/testing';
+import {IndikatorService} from './indikator.service';
 import {HttpModule} from '@angular/http';
 
 describe('IndikatorService', () => {
