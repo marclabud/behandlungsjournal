@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ServiceBase} from '../../shared/service.base';
 import {paths} from '../../../../server/src/server.conf';
 import {Indikator} from '../model/indikator';

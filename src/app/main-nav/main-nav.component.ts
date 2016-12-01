@@ -14,8 +14,14 @@ export class MainNavComponent implements OnInit {
 
   ngOnInit() {
     this.userIsLoggedIn();
+    this.whoIsLoggedIn();
   }
+
   private userIsLoggedIn() {
     return this.auth.isLoggedIn();
+  }
+
+  private whoIsLoggedIn() {
+    this.auth.whoIsLoggedIn();
   }
 }

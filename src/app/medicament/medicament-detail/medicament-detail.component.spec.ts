@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { MedicamentDetailComponent } from './medicament-detail.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MedicamentDetailComponent} from './medicament-detail.component';
 import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MedikationService} from '../service/medikation.service';
@@ -20,11 +17,11 @@ describe('MedicamentDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MedicamentDetailComponent , MedicamentListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
+      declarations: [MedicamentDetailComponent, MedicamentListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
       imports: [HttpModule, FormsModule],
-      providers: [ BhJournalService, MedikationService, HaeufigkeitService ]
+      providers: [BhJournalService, MedikationService, HaeufigkeitService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

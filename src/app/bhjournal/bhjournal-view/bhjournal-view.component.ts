@@ -30,6 +30,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private labelTherapieStart = 'Beginn der Therapie';
   /* tslint:disable-next-line:no-unused-variable */
   private labelTherapieEnde = 'Ende der Therapie';
+
   constructor(private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServiceBhJournal = bhjournalService.messageService;
     this.messageServicePatient = patientService.messageService;
@@ -39,6 +40,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
+
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
       this.patient_id = this.selectedPatient._id;
@@ -51,6 +53,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     // TODO: ist dieser Call noch nötig?!
     this.getJournalsbyPatient(this.patient_id);
   }
+
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -60,16 +63,17 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   };
 
   private getJournals(journals: Array<BhJournal>) {
-    console.log ('getJournals Parameter journals: ', journals);
+    console.log('getJournals Parameter journals: ', journals);
     this.journalsUTC = journals;
     if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
       // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
-      this.therapiedauer.startDatum = moment.utc (this.selectedBhJournal.startdatum);
+      this.therapiedauer.startDatum = moment.utc(this.selectedBhJournal.startdatum);
       this.therapiedauer.endeDatum = moment.utc(this.selectedBhJournal.enddatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     }
   };
+
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();

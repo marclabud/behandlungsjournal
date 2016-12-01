@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
             this.isLoading = true;
             // Check redirect for succesful login
             if (this.authService.isLoggedIn()) {
-            let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/bhjournal';
-            this.router.navigate([redirect]);
+              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/bhjournal';
+              this.router.navigate([redirect]);
             } else {
               this.isLoading = false;
               this.router.navigate(['/login']);
@@ -59,9 +59,10 @@ export class LoginComponent implements OnInit {
           } else {
             console.log(error);
           }
-      });
+        });
     }
   }
+
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;

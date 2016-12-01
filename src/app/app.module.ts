@@ -31,6 +31,7 @@ import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index'
 import {DauerComponent} from './shared/component/dauer/dauer.component';
 import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufigkeit.service';
 import {IndikatorService} from './indikator/service/indikator.service';
+import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {IndikatorService} from './indikator/service/indikator.service';
     MedicamentListComponent,
     IndikatorListComponent,
     IndikatorDetailComponent,
-    DauerComponent
+    DauerComponent,
+    AuthButtonComponent
   ],
   imports: [
     BrowserModule,

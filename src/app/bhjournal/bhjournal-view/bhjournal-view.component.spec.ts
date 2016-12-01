@@ -9,10 +9,8 @@ import {MedicamentListComponent} from '../../medicament/medicament-list/medicame
 import {MedicamentDetailComponent} from '../../medicament/medicament-detail/medicament-detail.component';
 import {IndikatorListComponent} from '../../indikator/indikator-list/indikator-list.component';
 import {IndikatorDetailComponent} from '../../indikator/indikator-detail/indikator-detail.component';
-
 import {PatientService} from '../../patient/service/patient.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
-
 import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
 
 

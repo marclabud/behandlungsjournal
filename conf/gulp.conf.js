@@ -5,7 +5,7 @@
  *  in angular_cli.json out_dir with dist/public
  *
  */
-exports.paths= {
+exports.paths = {
   src: 'src',
   srcServer: 'server',
   dist: 'dist',

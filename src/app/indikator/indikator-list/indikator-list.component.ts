@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Http} from '@angular/http';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -13,10 +13,10 @@ import {IndikatorService} from '../service/indikator.service';
   styleUrls: ['./indikator-list.component.css']
 })
 export class IndikatorListComponent implements OnInit, OnDestroy {
-private messageService: MessageService<BhJournal>;
-private messageServiceIndikator: MessageService<Indikator>;
-private subscription: Subscription;
-private behandlungsjournal: BhJournal;
+  private messageService: MessageService<BhJournal>;
+  private messageServiceIndikator: MessageService<Indikator>;
+  private subscription: Subscription;
+  private behandlungsjournal: BhJournal;
   private indikatoren: Array<Indikator> = [];
   private indikator: Indikator = new Indikator();
   private isEditing = false;
@@ -33,10 +33,11 @@ private behandlungsjournal: BhJournal;
         this.getIndikatorenByJournalId(this.behandlungsjournal._id);
       });
   }
+
   ngOnInit() {
     if (typeof(this.behandlungsjournal) !== 'undefined') {
     } else {
-      this.behandlungsjournal  = this.bhjournalService.readCache();
+      this.behandlungsjournal = this.bhjournalService.readCache();
       this.getIndikatorenByJournalId(this.behandlungsjournal._id);
       this.isLoading = false;
     }
@@ -91,6 +92,7 @@ private behandlungsjournal: BhJournal;
   private actualizeCache() {
     this.indikatorService.writeCacheList(this.indikatoren);
   }
+
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscription.unsubscribe();

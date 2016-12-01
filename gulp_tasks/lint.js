@@ -8,15 +8,15 @@ const conf = require('../conf/gulp.conf');
 // "tslint --project src/tsconfig.json" for client
 // "tslint --project server/tsc/tsconfig.json" for server
 //
-console.log ();
+console.log();
 gulp.task('lint:server', lint);
 
 function lint() {
-return gulp.src('*.ts')
-  .pipe(tslint({
-    project: 'src/tsconfig.json',
-    formatter: 'verbose'
-  }))
+  return gulp.src('*.ts')
+    .pipe(tslint({
+      project: 'src/tsconfig.json',
+      formatter: 'verbose'
+    }))
 }
 
-lint.description='tslint:server sourcen';
+lint.description = 'tslint:server sourcen';

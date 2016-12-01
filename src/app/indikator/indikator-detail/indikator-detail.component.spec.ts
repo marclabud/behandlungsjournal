@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { IndikatorDetailComponent } from './indikator-detail.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {IndikatorDetailComponent} from './indikator-detail.component';
 import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
 import {IndikatorListComponent} from '../indikator-list/indikator-list.component';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
@@ -20,11 +17,11 @@ describe('IndikatorDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndikatorDetailComponent, IndikatorListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent] ,
+      declarations: [IndikatorDetailComponent, IndikatorListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
       imports: [HttpModule, FormsModule],
-      providers: [ BhJournalService, IndikatorService, HaeufigkeitService ]
+      providers: [BhJournalService, IndikatorService, HaeufigkeitService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

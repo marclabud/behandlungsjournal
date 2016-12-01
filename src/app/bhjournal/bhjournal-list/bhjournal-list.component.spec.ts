@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { BhjournalListComponent } from './bhjournal-list.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {BhjournalListComponent} from './bhjournal-list.component';
 
 describe('BhjournalListComponent', () => {
   let component: BhjournalListComponent;

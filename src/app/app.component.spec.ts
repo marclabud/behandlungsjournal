@@ -1,5 +1,3 @@
-/* tslint:disable:no-unused-variable */
-import {} from 'jasmine';
 import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -9,6 +7,7 @@ import {HttpModule} from '@angular/http';
 import {PatientService} from './patient/service/patient.service';
 import {AuthentificationService} from './shared/service/auth/authentification.service';
 import {UserService} from './user/service/user.service';
+import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
@@ -17,10 +16,10 @@ describe('App: Behandlungsjournal', () => {
         AppComponent,
         MainNavComponent,
         PatientListComponent,
+        AuthButtonComponent
       ],
-      imports: [RouterTestingModule, HttpModule, ],
-      providers:
-      [PatientService, AuthentificationService, UserService]
+      imports: [RouterTestingModule, HttpModule,],
+      providers: [PatientService, AuthentificationService, UserService]
     });
   });
 

@@ -45,6 +45,7 @@ export class BhJournalService extends ServiceBase<BhJournal> {
   getServiceUrl(isList: boolean): string {
     return paths.base_path + (isList ? this.serviceUrl + 's' : this.serviceUrl);
   }
+
   getCacheKey(): string {
     return 'BhJournalService:BhJournal';
   }

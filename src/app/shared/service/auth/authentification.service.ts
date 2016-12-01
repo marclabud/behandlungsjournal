@@ -28,24 +28,32 @@ export class AuthentificationService {
         return (201 === status);
       });
   }
+
   public logout(): void {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
   }
+
   public isLoggedIn(): boolean {
     return this.checkTokenOK();
   }
+
   private setToken(jwtToken: string): void {
     sessionStorage.setItem(JWT_STORAGE_KEY, jwtToken);
     return;
   }
+
   private getToken(): string {
     let token: string = sessionStorage.getItem(JWT_STORAGE_KEY);
-    if (this.isEmpty(token)) {token = ''; }
+    if (this.isEmpty(token)) {
+      token = '';
+    }
     return token;
   }
+
   private deleteToken(): void {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
   }
+
   private checkTokenOK() {
     let token = this.getToken();
     if ('' !== token) {
@@ -59,7 +67,21 @@ export class AuthentificationService {
     }
   }
 
+  whoIsLoggedIn(): User {
+    let user: User = new User();
+    let token: string = this.getToken();
+    if ('' !== token) {
+      console.log (this.jwthelper.decodeToken(token));
+      user.name = this.jwthelper.decodeToken(token)._doc.name;
+      user.email = this.jwthelper.decodeToken(token)._doc.email;
+      return user;
+    } else {
+      return null;
+    }
+
+  }
+
   private isEmpty(str: string) {
-  return (!str || 0 === str.length);
-}
+    return (!str || 0 === str.length);
+  }
 }
