@@ -1,14 +1,14 @@
 <div *ngIf="!isLoading">
 
-  <!--<div *ngIf="isAdding || isEditing">-->
-    <!--<app-indikator-detail [isEditing]="isEditing"></app-indikator-detail>-->
-  <!--</div>-->
+  <div *ngIf="isAdding || isEditing">
+    <app-indikator-detail [isEditing]="isEditing"></app-indikator-detail>
+  </div>
 
   <div *ngIf="!(isAdding || isEditing)">
     <div class="container">
       <div class="jumbotron">
         <div class="card">
-          <h4 class="card-header">Indikatoren für das {{bhJournal.name}}
+          <h4 class="card-header">Indikatoren für das {{behandlungsjournal.name}}
             <button class="btn btn-sm btn-success bhj-btn-right" (click)="enableAdding()"><i
               class="fa fa-floppy-o"></i>Hinzufügen
             </button>
@@ -28,23 +28,23 @@
               </tr>
               </tbody>
               <tbody *ngIf="!isEditing">
-              <tr *ngFor="let indikatorhtml of indikatoren">
-                <td>{{indikatorhtml.name}}</td>
+              <tr *ngFor="let indikator of indikatoren">
+                <td>{{indikator.name}}</td>
                 <td>
                   <label
-                    class="btn btn-sm btn-block btn-outline-info {{indikatorhtml.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
+                    class="btn btn-sm btn-block btn-outline-info {{indikator.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
                     <input type="checkbox" class="bhj-hidden">morgens
                   </label>
                 </td>
                 <td>
                   <label
-                    class="btn btn-sm btn-block btn-outline-info {{indikatorhtml.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
+                    class="btn btn-sm btn-block btn-outline-info {{indikator.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
                     <input type="checkbox" class="bhj-hidden">mittags
                   </label>
                 </td>
                 <td>
                   <label
-                    class="btn btn-sm btn-block btn-outline-info  {{indikatorhtml.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
+                    class="btn btn-sm btn-block btn-outline-info  {{indikator.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
                     <input type="checkbox" class="bhj-hidden">abends
                   </label>
                 </td>
