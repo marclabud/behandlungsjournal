@@ -5,7 +5,15 @@ import { DebugElement } from '@angular/core';
 
 import { IndikatorListComponent } from './indikator-list.component';
 import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
+import {IndikatorService} from '../service/indikator.service';
+import {IndikatorDetailComponent} from '../indikator-detail/indikator-detail.component';
+import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
+import {DauerComponent} from '../../shared/component/dauer/dauer.component';
+import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
+import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
+
 
 describe('IndikatorListComponent', () => {
   let component: IndikatorListComponent;
@@ -13,9 +21,9 @@ describe('IndikatorListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndikatorListComponent ],
-      imports: [ HttpModule ],
-      providers: [ BhJournalService ]
+      declarations: [ IndikatorListComponent, IndikatorDetailComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent ],
+      imports: [ HttpModule, FormsModule ],
+      providers: [ BhJournalService, IndikatorService, HaeufigkeitService ]
     })
     .compileComponents();
   }));
