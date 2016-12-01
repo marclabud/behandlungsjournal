@@ -12,7 +12,7 @@
       </li>
       <div *ngIf="userIsLoggedIn()">
         <li class="nav-item">
-          <a class="nav-link" href="user">Benutzer</a>
+
         </li>
         <li class="nav-item dropdown pull-lg-right">
           <a class="nav-link dropdown-toggle" href="link auf die nav" id="journal"
@@ -35,7 +35,8 @@
             <app-auth-button></app-auth-button>
           </a>
           <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="user">Benutzerverwaltung</a>
+            <a class="dropdown-item" href="logout">Logout</a>
 
           </div>
         </li>
