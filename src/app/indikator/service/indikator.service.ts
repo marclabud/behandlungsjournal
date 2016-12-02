@@ -28,8 +28,8 @@ export class IndikatorService extends ServiceBase<Indikator> {
     return this.http.get(`${paths.base_path}/indicators/${journal_id}`).map(res => res.json());
   }
 
-  addIndikator(medikation: Indikator) {
-    return this.http.post(paths.base_path + '/indicator', JSON.stringify(medikation), this.options);
+  addIndikator(indikator: Indikator) {
+    return this.http.post(paths.base_path + '/indicator', JSON.stringify(indikator), this.options);
   }
 
   editIndikator(indikator: Indikator) {
