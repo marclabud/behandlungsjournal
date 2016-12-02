@@ -36,7 +36,7 @@ Run `ng build --prod` to create a production ready bundle.
 
 ## Documentation
 1. [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki)
-2. [REST-API](http://localhost:63342/behandlungsjournal/server/lib/api-docs/index.html?_ijt=jo99f0c1emicrpu451182har6e)
+2. [REST-API](https://github.com/marclabud/marclabud.github.io)
 
 ## Authors
 * [Marc Labud](https://github.com/marclabud)
