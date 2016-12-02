@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {BhJournal} from '../model/bhjournal';
 
@@ -7,20 +7,17 @@ import {BhJournal} from '../model/bhjournal';
   templateUrl: 'bhjournal-detail.component.html',
   styleUrls: ['bhjournal-detail.component.css']
 })
-export class BhjournalDetailComponent implements OnInit {
-  private infoMsg = {body: '', type: 'info'};
-  private isLoading = true;
+export class BhjournalDetailComponent {
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelStart = 'Beginn der Therapie';
+  /* tslint:disable-next-line:no-unused-variable */
+  private labelEnde = 'Ende der Therapie';
 
-  @Input() bhjournal: BhJournal;
+  private infoMsg = {body: '', type: 'info'};
+
+  @Input() bhjournal: BhJournal = new BhJournal();
 
   constructor(private bhjournalService: BhJournalService) {
-  }
-
-  ngOnInit() {
-  }
-
-  private actualizeCache() {
-    this.bhjournalService.writeCache(this.bhjournal);
   }
   saveBhJournal(bhjournal) {
     console.log('Behandlungsjournal wird gespeichert', bhjournal);
@@ -48,6 +45,11 @@ export class BhjournalDetailComponent implements OnInit {
     console.log('Dialog Abbrechen');
     this.bhjournal = undefined;
   }
+
+  private actualizeCache() {
+    this.bhjournalService.writeCache(this.bhjournal);
+  }
+
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;
