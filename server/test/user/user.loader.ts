@@ -9,7 +9,7 @@ export class UserLoader extends DataLoader {
   }
 
   getCollectionName() {
-    return 'UserCollection';
+    return 'User';
   }
 
   // some specific loader
