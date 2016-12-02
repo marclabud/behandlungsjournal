@@ -1,5 +1,4 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Http} from '@angular/http';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
@@ -24,7 +23,7 @@ export class IndikatorListComponent implements OnInit, OnDestroy {
   private isLoading = true;
   private infoMsg = {body: '', type: 'info'};
 
-  constructor(http: Http, private bhjournalService: BhJournalService, private indikatorService: IndikatorService) {
+  constructor(private bhjournalService: BhJournalService, private indikatorService: IndikatorService) {
     this.messageService = bhjournalService.messageService;
     this.messageServiceIndikator = indikatorService.messageService;
     this.subscription = this.messageService.Itemselected$.subscribe(

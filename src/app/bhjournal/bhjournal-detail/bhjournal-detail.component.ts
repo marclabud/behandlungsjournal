@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {BhJournal} from '../model/bhjournal';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-bhjournal-detail',
@@ -17,8 +19,8 @@ export class BhjournalDetailComponent {
 
   @Input() bhjournal: BhJournal = new BhJournal();
 
-  constructor(private bhjournalService: BhJournalService) {
-  }
+  constructor(private bhjournalService: BhJournalService) {}
+
   saveBhJournal(bhjournal) {
     console.log('Behandlungsjournal wird gespeichert', bhjournal);
     if (typeof(bhjournal._id) === 'undefined') {
@@ -44,6 +46,14 @@ export class BhjournalDetailComponent {
   onCancel() {
     console.log('Dialog Abbrechen');
     this.bhjournal = undefined;
+  }
+
+  onStartDatumChanged(startDatum: moment.Moment) {
+    this.bhjournal.dauer.startDatum = startDatum;
+  }
+
+  onEndeDatumChanged(endeDatum: moment.Moment) {
+    this.bhjournal.dauer.endeDatum = endeDatum;
   }
 
   private actualizeCache() {

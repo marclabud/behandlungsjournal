@@ -50,8 +50,6 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.patient_id = this.selectedPatient._id;
       console.log('Bhjournal-Component ngOnInit selected Patient is undefined');
     }
-    // TODO: ist dieser Call noch nötig?!
-    this.getJournalsbyPatient(this.patient_id);
   }
 
   private getJournalsbyPatient(patient_id: string) {
