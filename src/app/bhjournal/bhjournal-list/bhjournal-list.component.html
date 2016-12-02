@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <div *ngIf="!isLoading">
     <ul class="list-group">
-      <li class="list-group-item list-group-item-action" *ngFor="let journal of journals">
+      <li class="list-group-item list-group-item-action" *ngFor="let journal of journals" (click)="onSelect(journal)">
         <h2 class="list-group-item-text">{{journal.name}}</h2>
         <div class="list-group-item-text">
           <p class="col-sm-2">Diagnose:</p>
           <p class="col-sm-10">{{journal.diagnose}}</p>
           <app-dauer [isEditing]="false" [dauer]="journal.dauer" [labelStartDatum]="labelTherapieStart"
                      [labelEndeDatum]="labelTherapieEnde"></app-dauer>
-          <app-bhjournal-detail>[bhjournal]={{journal}}</app-bhjournal-detail>
         </div>
       </li>
     </ul>
+    <app-bhjournal-detail [bhjournal]="selectedJournal"> </app-bhjournal-detail>
   </div>
 </div>

@@ -17,6 +17,7 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
   private subscriptionPatient: Subscription;
   private messageServicePatient: MessageService<Patient>;
   private selectedPatient: Patient;
+  private selectedJournal: BhJournal;
   private patient_id: string;
   private journals: Array<BhJournal> = [];
 
@@ -35,7 +36,6 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
-
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
       this.patient_id = this.selectedPatient._id;
@@ -50,7 +50,6 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
     this.getJournalsbyPatient(this.patient_id);
 
   }
-
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -58,12 +57,16 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
       () => this.isLoading = false
     );
   }
-
   private getJournals(journals: Array<BhJournal>) {
     console.log('getJournals Parameter journals: ', journals);
     this.journals = journals;
   }
 
+  onSelect(journal: BhJournal) {
+    console.log ('selectedJournal', journal);
+    this.selectedJournal = journal;
+    this.bhJournalChange.emit(journal);
+  }
     ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();

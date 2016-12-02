@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {BhJournal} from '../model/bhjournal';
 import * as moment from 'moment';
@@ -9,7 +9,7 @@ import * as moment from 'moment';
   templateUrl: 'bhjournal-detail.component.html',
   styleUrls: ['bhjournal-detail.component.css']
 })
-export class BhjournalDetailComponent {
+export class BhjournalDetailComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */
   private labelStart = 'Beginn der Therapie';
   /* tslint:disable-next-line:no-unused-variable */
@@ -20,6 +20,9 @@ export class BhjournalDetailComponent {
   @Input() bhjournal: BhJournal = new BhJournal();
 
   constructor(private bhjournalService: BhJournalService) {}
+
+  ngOnInit() {
+  }
 
   saveBhJournal(bhjournal) {
     console.log('Behandlungsjournal wird gespeichert', bhjournal);
@@ -43,10 +46,9 @@ export class BhjournalDetailComponent {
       );
     }
   }
-  onCancel() {
-    console.log('Dialog Abbrechen');
-    this.bhjournal = undefined;
-  }
+  // onCancel() {
+  //   console.log('Dialog Abbrechen');
+  // }
 
   onStartDatumChanged(startDatum: moment.Moment) {
     this.bhjournal.dauer.startDatum = startDatum;

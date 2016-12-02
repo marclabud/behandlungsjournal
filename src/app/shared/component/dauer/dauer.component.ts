@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, OnInit, Output, AfterViewChecked} from '@angular/core';
+import {Component, Input, EventEmitter, OnInit, Output} from '@angular/core';
 import * as moment from 'moment';
 import {Dauer} from '../../model/dauer';
 
@@ -8,7 +8,7 @@ import {Dauer} from '../../model/dauer';
   templateUrl: './dauer.component.html',
   styleUrls: ['./dauer.component.css']
 })
-export class DauerComponent implements OnInit, AfterViewChecked {
+export class DauerComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */
   @Input() private isEditing: Boolean = true;
   @Input() private dauer: Dauer;
@@ -34,14 +34,6 @@ export class DauerComponent implements OnInit, AfterViewChecked {
     this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
     this.isLoading = false;
   }
-
-  ngAfterViewChecked() {
-    this.startdatum = moment(this.dauer.startDatum); // must be cast
-    this.endedatum = moment(this.dauer.endeDatum);  // must be cast
-    this.startDatumShow = this.startdatum.format('DD.MM.YYYY');
-    this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
-  }
-
   /* tslint:disable-next-line:no-unused-variable */
   private onStartDatumChanged(startDatum: moment.Moment) {
     this.StartDatumChange.emit(startDatum);
