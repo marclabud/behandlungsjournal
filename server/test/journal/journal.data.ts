@@ -8,27 +8,32 @@ export class JournalData implements IData {
       name: 'Journal Strolch',
       patient_id: '1',
       diagnose: 'Bisswunde',
-      startdatum:  new Date('2016-10-08T00:00:00'),
-      enddatum: new Date('2016-10-16T00:00:00'),
+      dauer: {
+        startDatum: new Date('2016-10-07T00:00:00.00Z'),
+        endeDatum: new Date('2016-10-17T00:00:00.000Z')
+      }
     },
     {
       _id: '2',
       name: 'Journal Minka',
       patient_id: '2',
       diagnose: 'Vergiftung',
-      startdatum: new Date('2016-11-08T00:00:00'),
-      enddatum: new Date('2016-11-17T00:00:00'),
+      dauer: {
+        startDatum: new Date('2016-11-08T00:00:00.00Z'),
+        endeDatum: new Date('2016-11-17T00:00:00.000Z')
+      }
     },
     {
       _id: '3',
       name: 'Journal Blacky',
       patient_id: '3',
       diagnose: 'Stauchung',
-      startdatum: new Date('2016-11-21T00:00:00'),
-      enddatum: new Date('2016-11-30T00:00:00'),
+      dauer: {
+        startDatum: new Date('2016-11-21T00:00:00.00Z'),
+        endeDatum: new Date('2016-11-30T00:00:00.00Z')
+      }
     }
   ];
-
   getData() {
     return this.journale;
   }
