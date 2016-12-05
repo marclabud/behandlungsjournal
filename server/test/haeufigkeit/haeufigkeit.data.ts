@@ -26,5 +26,4 @@ export class HaeufigkeitData implements IData {
   getData() {
     return this.haeufigkeiten;
   }
-
 }
