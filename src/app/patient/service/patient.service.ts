@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {Patient} from '../model/patient';
 import {paths} from '../../../../server/src/server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
+import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class PatientService extends ServiceBase<Patient> {
@@ -14,27 +15,27 @@ export class PatientService extends ServiceBase<Patient> {
   private serviceUrl: string;
   public messageService;
 
-  constructor(http: Http) {
-    super(http, 'PatientService:Patient');
+  constructor(authHttp: AuthHttp) {
+    super(authHttp, 'PatientService:Patient');
     this.serviceUrl = '/patient';
-    this.messageService = new MessageService<Patient>(http, this);
+    this.messageService = new MessageService<Patient>(authHttp, this);
   }
 
   getPatients() {
-    console.log(this.http.get(paths.base_path + '/patients').map(res => res.json()));
-    return this.http.get(paths.base_path + '/patients').map(res => res.json());
+    console.log(this.authHttp.get(paths.base_path + '/patients').map(res => res.json()));
+    return this.authHttp.get(paths.base_path + '/patients').map(res => res.json());
   }
 
   addPatient(patient: Patient) {
-    return this.http.post(paths.base_path + '/patient', JSON.stringify(patient), this.options);
+    return this.authHttp.post(paths.base_path + '/patient', JSON.stringify(patient), this.options);
   }
 
   editPatient(patient: Patient) {
-    return this.http.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), this.options);
+    return this.authHttp.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), this.options);
   }
 
   deletePatient(patient: Patient) {
-    return this.http.delete(`${paths.base_path}/patient/${patient._id}`, this.options);
+    return this.authHttp.delete(`${paths.base_path}/patient/${patient._id}`, this.options);
   }
 
   getServiceUrl(isList: boolean): string {

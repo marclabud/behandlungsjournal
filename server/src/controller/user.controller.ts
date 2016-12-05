@@ -2,10 +2,13 @@
 import {JwtUserService} from '../service/userJwtService';
 import {JwtKeyProvider} from '../service/keyProviderService';
 import {User} from '../service/model/user';
+import {Request} from 'express-serve-static-core';
 
 const UserCollection = require('../models/user.model');
 
 module.exports.getAllUsers = (request, response) => {
+  let username = whoIsUser(request);
+  console.log ('getallusers: usernamefromtoken', username);
   UserCollection.find({}, (err, docs) => {
     if (err) {
       return console.error(err);
@@ -92,4 +95,10 @@ function getjwtToken(user: User): string {
   let keyProvider = new JwtKeyProvider();
   let jwtUserservice = new JwtUserService(keyProvider);
   return jwtUserservice.createJWT(user);
+}
+
+function whoIsUser(request: Request): string {
+  let keyProvider = new JwtKeyProvider();
+  let jwtUserService = new JwtUserService(keyProvider);
+  return jwtUserService.whoIsUser(request);
 }

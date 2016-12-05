@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs/Observable';
 import {Cache} from './cache';
 
@@ -10,7 +10,7 @@ export abstract class ServiceBase<TItem> {
   protected cacheList: Cache<Array<TItem>>;
   protected cache: Cache<TItem>;
 
-  constructor(protected http: Http, protected cacheKey: string) {
+  constructor(protected authHttp: AuthHttp, protected cacheKey: string) {
     this.cacheList = new Cache<Array<TItem>>(cacheKey);
     this.cache = new Cache<TItem>(cacheKey);
   }
@@ -37,7 +37,7 @@ export abstract class ServiceBase<TItem> {
       });
     }
 
-    return this.http.get(this.getServiceUrl(false), {withCredentials: true}).map(res => {
+    return this.authHttp.get(this.getServiceUrl(false), {withCredentials: true}).map(res => {
       this.log('DB');
       let orderStatus = res.json();
       this.cache.writeCache(orderStatus);
@@ -57,7 +57,7 @@ export abstract class ServiceBase<TItem> {
       });
     }
 
-    return this.http.get(this.getServiceUrl(isList), {withCredentials: true}).map(res => {
+    return this.authHttp.get(this.getServiceUrl(isList), {withCredentials: true}).map(res => {
       this.log('DB', isList);
       let orderStatus = res.json();
       this.cacheList.writeCache(orderStatus, isList);
