@@ -20,9 +20,9 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private therapiedauer: Dauer = new Dauer();
   private isLoading = true;
   private subscriptionPatient: Subscription;
-  private selectedPatient: Patient;
+  private selectedPatient: Patient = null;
   private selectedBhJournal: BhJournal;
-  private patient_id: string;
+  private patient_id: string = null;
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
 
@@ -42,23 +42,24 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (typeof (this.selectedPatient) !== 'undefined') {
+    if (this.selectedPatient !== null) {
       this.patient_id = this.selectedPatient._id;
     } else {
       // Component called by path
       this.selectedPatient = this.patientService.readCache();
       if (null == this.selectedPatient) {
-        // TODO: bitte fixen
-        this.patient_id = '1';
+        // Noch kein Patient ausgewählt und leerer Cache nach Userwechsel
+        this.isLoading = false;
         console.log('Bhjournal-Component ngOnInit selected Patient is null');
       } else {
         this.patient_id = this.selectedPatient._id;
       }
     }
-    // TODO: ist dieser Call noch nötig?!
-    this.getJournalsbyPatient(this.patient_id);
+    // Alle Journale für einen Patienten lesen
+    if (this.patient_id !== null) {
+      this.getJournalsbyPatient(this.patient_id);
+    }
   }
-
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
