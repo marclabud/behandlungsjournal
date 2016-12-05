@@ -23,10 +23,6 @@ export abstract class ServiceBase<TItem> {
     return this.cache.readCache();
   }
 
-  clearCache() {
-    this.cache.clearCache();
-  }
-
   hasCache(isList = false): boolean {
     return this.cache.hasCache(isList);
   }
@@ -78,6 +74,14 @@ export abstract class ServiceBase<TItem> {
   writeCache(item: TItem) {
     this.cache.writeCache(item);
     console.log('Write Cache with ' + this.getKey(), JSON.stringify(item));
+  }
+
+  removeFromCache() {
+    this.cache.removeFromCache();
+  }
+
+  clearCache() {
+    this.cache.clearCache();
   }
 
   private log(source: string, isList = false) {

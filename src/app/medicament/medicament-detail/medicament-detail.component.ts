@@ -116,7 +116,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   }
 
   back() {
-    this.messageHaeufigkeitService.clearCache();
+    this.messageHaeufigkeitService.removeFromCache();
     this.goBack = true;
   }
 
