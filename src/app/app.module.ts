@@ -3,6 +3,7 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import {HttpModule} from '@angular/http';
+import {} from 'angular2-jwt';
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
@@ -32,7 +33,16 @@ import {DauerComponent} from './shared/component/dauer/dauer.component';
 import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufigkeit.service';
 import {IndikatorService} from './indikator/service/indikator.service';
 import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
-import { LogoutComponent } from './logout/logout.component';
+import {LogoutComponent} from './logout/logout.component';
+import {provideAuth} from 'angular2-jwt';
+
+const bhj_HEADER_NAME = 'Authorisation',
+      bhj_HEADER_PREFIX = 'Bearer',
+      bhj_TOKEN_NAME = 'token',
+      bhj_TOKEN_GETTER_FUNCTION = () => sessionStorage.getItem(bhj_TOKEN_NAME)
+  ;
+
+
 
 @NgModule({
   declarations: [
@@ -67,6 +77,15 @@ import { LogoutComponent } from './logout/logout.component';
     routing
   ],
   providers: [
+    provideAuth({
+      headerName: bhj_HEADER_NAME,
+      headerPrefix: bhj_HEADER_PREFIX,
+      tokenName: bhj_TOKEN_NAME,
+      tokenGetter: bhj_TOKEN_GETTER_FUNCTION,
+      globalHeaders: [{'Content-Type': 'application/json'}],
+      noJwtError: true,
+      noTokenScheme: true
+    }),
     UserService,
     PatientService,
     BhJournalService,
