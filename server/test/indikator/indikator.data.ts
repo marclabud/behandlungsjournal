@@ -1,13 +1,11 @@
-'use strict';
 import {IData} from '../shared/data';
 import * as mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 // ToDo Rating Id new ObjectID
-
 export class IndikatorData implements IData {
 
-  private indikator = [
+  private indikatoren = [
     {
       _id: new ObjectId('5835ec3cf47d103118bbd8ca'),
       name: 'Allgemeinzustand',
@@ -53,6 +51,6 @@ export class IndikatorData implements IData {
   ];
 
   getData() {
-    return this.indikator;
+    return this.indikatoren;
   }
 }

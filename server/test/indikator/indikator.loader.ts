@@ -1,10 +1,8 @@
-import {Db} from 'mongodb';
 import {DataLoader} from '../shared/data.loader';
 import {IndikatorData} from './indikator.data';
 
 export class IndikatorLoader extends DataLoader {
-
-  constructor(db: Db, data: IndikatorData) {
+  constructor(db, data: IndikatorData) {
     super(db, data);
   }
 
