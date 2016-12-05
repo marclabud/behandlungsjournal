@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {JwtHelper} from 'angular2-jwt';
+
+import {JwtHelper, AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs';
 import {paths} from '../../../../../server/src/server.conf';
 import {User} from '../../../user/model/user';
@@ -16,8 +16,8 @@ export class AuthentificationService extends ServiceBase<User> {
   redirectUrl: string;
   jwthelper: JwtHelper = new JwtHelper();
 
-  constructor(http: Http, private userService: UserService) {
-    super(http, 'AuthentificationService:User');
+  constructor(authHTTP: AuthHttp, private userService: UserService) {
+    super(authHTTP, 'AuthentificationService:User');
     this.serviceUrl = '/user';
   }
 
