@@ -115,7 +115,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
   }
 
   back() {
-    this.messageHaeufigkeitService.clearCache();
+    this.messageHaeufigkeitService.removeFromCache();
     this.goBack = true;
   }
 
