@@ -40,7 +40,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
-
+  // To Do: Refactor Logic, when Patient is selectedPatient
   ngOnInit() {
     if (this.selectedPatient !== null) {
       this.patient_id = this.selectedPatient._id;
@@ -49,7 +49,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.selectedPatient = this.patientService.readCache();
       if (null == this.selectedPatient) {
         // Noch kein Patient ausgewählt und leerer Cache nach Userwechsel
-        this.isLoading = false;
+        this.isLoading = true;
         console.log('Bhjournal-Component ngOnInit selected Patient is null');
       } else {
         this.patient_id = this.selectedPatient._id;
@@ -58,6 +58,8 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     // Alle Journale für einen Patienten lesen
     if (this.patient_id !== null) {
       this.getJournalsbyPatient(this.patient_id);
+    } else {
+      this.isLoading = true;
     }
   }
   private getJournalsbyPatient(patient_id: string) {
@@ -73,6 +75,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     this.journalsUTC = journals;
     if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
+      this.patient_id = this.selectedBhJournal._id;
       // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
       this.therapiedauer.startDatum = moment.utc(this.selectedBhJournal.startdatum);
       this.therapiedauer.endeDatum = moment.utc(this.selectedBhJournal.enddatum);

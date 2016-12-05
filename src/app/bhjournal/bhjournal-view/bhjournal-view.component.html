@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <div *ngIf="!isLoading">
-    <div *ngIf = "selectedPatient!==null">
     <div class="card card-block card-outline-primary">
       <div class="card-text" *ngFor="let journal of journalsUTC">
         <h2 class="card-title">{{journal.name}}</h2>
@@ -19,10 +18,6 @@
           <app-indikator-list></app-indikator-list>
         </div>
       </div>
-    </div>
-    </div>
-    <div *ngIf = "selectedPatient===null" >
-      <p>Bitte Patienten auswählen !</p>
     </div>
   </div>
 </div>
