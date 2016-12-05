@@ -34,7 +34,7 @@ module.exports.countIndicators = (request, response) => {
 };
 
 module.exports.addIndicator = (request, response) => {
-  let IndicatortoUpdate = new Medikation(request.body);
+  let IndicatortoUpdate = new Indikator(request.body);
   IndicatortoUpdate.save((err) => {
     if (err) {
       return console.error(err);
