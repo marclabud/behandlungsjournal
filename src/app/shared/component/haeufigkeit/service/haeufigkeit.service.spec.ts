@@ -2,12 +2,14 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {HaeufigkeitService} from './haeufigkeit.service';
 import {HttpModule} from '@angular/http';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
+
 
 describe('Service: Haeufigkeit', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HaeufigkeitService],
       imports: [HttpModule],
+      providers: [HaeufigkeitService, AUTH_PROVIDERS],
     });
   });
 

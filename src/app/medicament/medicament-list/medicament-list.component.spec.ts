@@ -10,6 +10,7 @@ import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigke
 import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
+import {AUTH_PROVIDERS}   from 'angular2-jwt';
 
 describe('MedicamentListComponent', () => {
   let component: MedicamentListComponent;
@@ -19,7 +20,7 @@ describe('MedicamentListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [MedicamentListComponent, MedicamentDetailComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
       imports: [HttpModule, FormsModule],
-      providers: [BhJournalService, MedikationService, HaeufigkeitService]
+      providers: [BhJournalService, MedikationService, HaeufigkeitService, AUTH_PROVIDERS]
     })
       .compileComponents();
   }));

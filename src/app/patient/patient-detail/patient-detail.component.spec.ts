@@ -3,6 +3,7 @@ import {PatientDetailComponent} from './patient-detail.component';
 import {HttpModule} from '@angular/http';
 import {PatientService} from '../service/patient.service';
 import {FormsModule} from '@angular/forms';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 
 describe('Component: PatientDetail', () => {
@@ -13,7 +14,7 @@ describe('Component: PatientDetail', () => {
     TestBed.configureTestingModule({
       declarations: [PatientDetailComponent],
       imports: [HttpModule, FormsModule],
-      providers: [PatientService]
+      providers: [PatientService, AUTH_PROVIDERS]
     })
       .compileComponents();
   }));

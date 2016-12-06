@@ -6,10 +6,12 @@ import {IndikatorListComponent} from '../indikator-list/indikator-list.component
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
 import {HttpModule} from '@angular/http';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {IndikatorService} from '../service/indikator.service';
 import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
+
 
 describe('IndikatorDetailComponent', () => {
   let component: IndikatorDetailComponent;
@@ -19,7 +21,7 @@ describe('IndikatorDetailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [IndikatorDetailComponent, IndikatorListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
       imports: [HttpModule, FormsModule],
-      providers: [BhJournalService, IndikatorService, HaeufigkeitService]
+      providers: [BhJournalService, IndikatorService, HaeufigkeitService, AUTH_PROVIDERS]
     })
       .compileComponents();
   }));
