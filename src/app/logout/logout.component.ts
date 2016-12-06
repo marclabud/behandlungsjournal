@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthentificationService} from '../shared/service/auth/authentification.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,13 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthentificationService) {
+  }
 
   ngOnInit() {
-    // ToDo Logout Prozedur
-    sessionStorage.removeItem('token');
-    // Ausgewählten Patienten löschen
-    // Cache löschen ???
+    this.authenticationService.logout();
   }
 
 }

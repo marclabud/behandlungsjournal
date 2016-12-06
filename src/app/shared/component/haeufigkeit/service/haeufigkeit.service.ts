@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import {paths} from '../../../../../../server/src/server.conf';
 import {Haeufigkeit} from '../../../model/haeufigkeit';
 import {ServiceBase} from '../../../service.base';
 import {MessageService} from '../../../service/message/message.service';
+import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class HaeufigkeitService extends ServiceBase<Haeufigkeit> {
@@ -11,10 +11,10 @@ export class HaeufigkeitService extends ServiceBase<Haeufigkeit> {
   private serviceUrl: string;
   public messageService;
 
-  constructor(http: Http) {
-    super(http, HaeufigkeitService.name + ':' + Haeufigkeit.name);
+  constructor(authHttp: AuthHttp) {
+    super(authHttp, HaeufigkeitService.name + ':' + Haeufigkeit.name);
     this.serviceUrl = '/haeufigkeit';
-    this.messageService = new MessageService<Haeufigkeit>(http, this);
+    this.messageService = new MessageService<Haeufigkeit>(authHttp, this);
   }
 
   getServiceUrl(isList: boolean): string {

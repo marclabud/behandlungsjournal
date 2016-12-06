@@ -14,8 +14,8 @@ import {JournalLoader} from './journal/journal.loader';
 import {JournalData} from './journal/journal.data';
 import {MedikationData} from './medikation/medikation.data';
 import {MedikationLoader} from './medikation/medikation.loader';
-// import {IndikatorLoader} from './indikator/indikator.loader';
-// import {IndikatorData} from './indikator/indikator.data';
+import {IndikatorLoader} from './indikator/indikator.loader';
+import {IndikatorData} from './indikator/indikator.data';
 
 // connect away
 MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
@@ -37,7 +37,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
   new MedikationLoader(db, new MedikationData());
 
   // prepare Indikator data
-  // new IndikatorLoader(db, new IndikatorData());
+  new IndikatorLoader(db, new IndikatorData());
 
   // close db
   db.close();

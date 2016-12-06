@@ -20,9 +20,9 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   private therapiedauer: Dauer = new Dauer();
   private isLoading = true;
   private subscriptionPatient: Subscription;
-  private selectedPatient: Patient;
+  private selectedPatient: Patient = null;
   private selectedBhJournal: BhJournal;
-  private patient_id: string;
+  private patient_id: string = null;
   private messageServicePatient: MessageService<Patient>;
   private messageServiceBhJournal: MessageService<BhJournal>;
 
@@ -40,18 +40,28 @@ export class BhjournalComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
-
+  // To Do: Refactor Logic, when Patient is selectedPatient
   ngOnInit() {
-    if (typeof (this.selectedPatient) !== 'undefined') {
+    if (this.selectedPatient !== null) {
       this.patient_id = this.selectedPatient._id;
     } else {
       // Component called by path
       this.selectedPatient = this.patientService.readCache();
-      this.patient_id = this.selectedPatient._id;
-      console.log('Bhjournal-Component ngOnInit selected Patient is undefined');
+      if (null == this.selectedPatient) {
+        // Noch kein Patient ausgewählt und leerer Cache nach Userwechsel
+        this.isLoading = true;
+        console.log('Bhjournal-Component ngOnInit selected Patient is null');
+      } else {
+        this.patient_id = this.selectedPatient._id;
+      }
+    }
+    // Alle Journale für einen Patienten lesen
+    if (this.patient_id !== null) {
+      this.getJournalsbyPatient(this.patient_id);
+    } else {
+      this.isLoading = true;
     }
   }
-
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -65,6 +75,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
     this.journalsUTC = journals;
     if (0 !== journals.length) {
       this.selectedBhJournal = this.journalsUTC[0];
+      this.patient_id = this.selectedBhJournal._id;
       // TODO: ein Patient kann mehrere Journale haben, wenn sortiert nach Jüngstem wäre 1. element ok sonst nok !!
       this.therapiedauer.startDatum = moment.utc(this.selectedBhJournal.dauer.startDatum);
       this.therapiedauer.endeDatum = moment.utc(this.selectedBhJournal.dauer.endeDatum);

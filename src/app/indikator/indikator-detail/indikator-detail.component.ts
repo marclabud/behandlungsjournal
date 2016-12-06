@@ -1,13 +1,14 @@
 import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {Indikator} from '../model/indikator';
 import {IndikatorService} from '../service/indikator.service';
-import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Subscription} from 'rxjs';
-import {Haeufigkeit} from '../../shared/model/haeufigkeit';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import * as moment from 'moment';
+import {Haeufigkeit} from '../../shared/model/haeufigkeit';
+import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
+
 
 @Component({
   selector: 'app-indikator-detail',
@@ -115,7 +116,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
   }
 
   back() {
-    this.messageHaeufigkeitService.clearCache();
+    this.messageHaeufigkeitService.removeFromCache();
     this.goBack = true;
   }
 

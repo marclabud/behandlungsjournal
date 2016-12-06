@@ -17,8 +17,13 @@ export class Cache<T> {
     return !(localStorage.getItem(this.getKey(isList)) === null);
   }
 
-  clearCache(isList = false): void {
+  removeFromCache(isList = false): void {
     return localStorage.removeItem(this.getKey(isList));
+  }
+
+  /* tslint:disable-next-line:no-unused-variable */
+  clearCache(): void {
+    return localStorage.clear();
   }
 
   private getKey(isList: boolean): string {

@@ -7,63 +7,57 @@
     <div class="container">
       <div class="card">
         <h4 class="card-header">Indikatoren für das {{behandlungsjournal.name}}
-          <button class="btn btn-sm btn-success bhj-btn-right" (click)="enableAdding()"><i
+          <button class="btn btn-sm btn-primary bhj-btn-right" (click)="enableAdding()"><i
             class="fa fa-floppy-o"></i>Hinzufügen
           </button>
         </h4>
-        <div class="card-block">
-          <table class="table table-bordered table-striped">
-            <thead class="thead-default">
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Wann erfassen?</th>
-              <th>Aktionen</th>
-            </tr>
-            </thead>
-            <tbody *ngIf="indikatoren.length === 0">
-            <tr>
-              <td colspan="5">Es gibt keine Indikatoren für dieses Journal. Bitte Indikatoren erfassen.</td>
-            </tr>
-            </tbody>
-            <tbody *ngIf="!isEditing">
-            <tr *ngFor="let indikator of indikatoren">
-              <td>{{indikator.name}}</td>
-              <td>
-                <label
-                  class="btn btn-sm btn-block btn-outline-info {{indikator.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
-                  <input type="checkbox" class="bhj-hidden">morgens
-                </label>
-              </td>
-              <td>
-                <label
-                  class="btn btn-sm btn-block btn-outline-info {{indikator.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
-                  <input type="checkbox" class="bhj-hidden">mittags
-                </label>
-              </td>
-              <td>
-                <label
-                  class="btn btn-sm btn-block btn-outline-info  {{indikator.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
-                  <input type="checkbox" class="bhj-hidden">abends
-                </label>
-              </td>
-              <td>
-                <button class="btn btn-sm btn-warning btn-block" (click)="enableEditing(indikator)"><i
-                  class="fa fa-pencil"></i>
-                  Bearbeiten
-                </button>
-                <button class="btn btn-sm btn-danger btn-block" (click)="deleteMedication(indikator)"><i
-                  class="fa fa-trash"></i>
-                  Löschen
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Meldung:</strong> {{infoMsg.body}}
+        <div class="card card-block">
+          <div class="row">
+            <div *ngIf="!isEditing">
+              <div *ngFor="let indikator of indikatoren">
+                <h5>Indikator: {{indikator.name}}</h5>
+                <p>Wann erfassen ?</p>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <label
+                      class="btn btn-sm btn-outline-info {{indikator.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
+                      <input type="checkbox" class="bhj-hidden">morgens
+                    </label>
+                    <label
+                      class="btn btn-sm btn-outline-info {{indikator.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
+                      <input type="checkbox" class="bhj-hidden">mittags
+                    </label>
+                    <label
+                      class="btn btn-sm btn-outline-info {{indikator.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
+                      <input type="checkbox" class="bhj-hidden">abends
+                    </label>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>
+                      <button class="btn btn-sm btn-primary" (click)="enableEditing(indikator)"><i
+                        class="fa fa-pencil"></i>
+                        Bearbeiten
+                      </button>
+                      <button class="btn btn-sm btn-warning" (click)="deleteIndikator(indikator)"><i
+                        class="fa fa-divash"></i>
+                        Löschen
+                      </button>
+                    </label>
+                  </div>
+                </div>
+                <div *ngIf="indikatoren.length === 0">
+                  <div>
+                    <div>Es gibt keine Indikatoren für dieses Journal. Bitte Indikatoren erfassen.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>Meldung:</strong> {{infoMsg.body}}
+            </div>
           </div>
         </div>
       </div>

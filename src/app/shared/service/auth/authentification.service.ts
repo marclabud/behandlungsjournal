@@ -1,18 +1,24 @@
 import {Injectable} from '@angular/core';
-import {UserService} from '../../../user/service/user.service';
-import {User} from '../../../user/model/user';
+
+import {JwtHelper, AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs';
-import {JwtHelper} from 'angular2-jwt';
+import {paths} from '../../../../../server/src/server.conf';
+import {User} from '../../../user/model/user';
+import {ServiceBase} from '../../service.base';
+import {UserService} from '../../../user/service/user.service';
 
 const JWT_STORAGE_KEY = 'token';
 
 @Injectable()
-export class AuthentificationService {
+export class AuthentificationService extends ServiceBase<User> {
   private validToken: string;
+  private serviceUrl: string;
   redirectUrl: string;
   jwthelper: JwtHelper = new JwtHelper();
 
-  constructor(private userService: UserService) {
+  constructor(authHTTP: AuthHttp, private userService: UserService) {
+    super(authHTTP, 'AuthentificationService:User');
+    this.serviceUrl = '/user';
   }
 
   public login(user: User): Observable<boolean> {
@@ -31,10 +37,11 @@ export class AuthentificationService {
 
   public logout(): void {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
+    this.clearCache(); // only localstorage
   }
 
   public isLoggedIn(): boolean {
-    return this.checkTokenOK();
+    return this.isTokenValid();
   }
 
   private setToken(jwtToken: string): void {
@@ -54,24 +61,16 @@ export class AuthentificationService {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
   }
 
-  private checkTokenOK() {
+  private isTokenValid() {
     let token = this.getToken();
-    if ('' !== token) {
-      if (this.jwthelper.isTokenExpired(token)) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return false;
-    }
+    return ('' !== token && !this.jwthelper.isTokenExpired(token));
   }
 
   whoIsLoggedIn(): User {
     let user: User = new User();
     let token: string = this.getToken();
     if ('' !== token) {
-      console.log (this.jwthelper.decodeToken(token));
+      console.log(this.jwthelper.decodeToken(token));
       user.name = this.jwthelper.decodeToken(token)._doc.name;
       user.email = this.jwthelper.decodeToken(token)._doc.email;
       return user;
@@ -83,5 +82,13 @@ export class AuthentificationService {
 
   private isEmpty(str: string) {
     return (!str || 0 === str.length);
+  }
+
+  getServiceUrl(isList: boolean): string {
+    return paths.base_path + (isList ? this.serviceUrl + 's' : this.serviceUrl);
+  }
+
+  getCacheKey(isList: boolean): string {
+    return isList ? this.cacheKey + 's' : this.cacheKey;
   }
 }
