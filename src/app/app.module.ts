@@ -3,7 +3,6 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import {HttpModule} from '@angular/http';
-import {} from 'angular2-jwt';
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
@@ -21,26 +20,21 @@ import {MessageService} from './shared/service/message/message.service';
 import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-detail.component';
 import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.component';
 import {BhJournalService} from './bhjournal/service/bhjournal.service';
-import {BhjDatepickerComponent} from './shared/component/bhj-datepicker/bhj-datepicker.component';
-import {HaeufigkeitComponent} from './shared/component/haeufigkeit/haeufigkeit.component';
-import {MedicamentDetailComponent} from './medicament/medicament-detail/medicament-detail.component';
-import {MedicamentListComponent} from './medicament/medicament-list/medicament-list.component';
-import {IndikatorListComponent} from './indikator/indikator-list/indikator-list.component';
-import {IndikatorDetailComponent} from './indikator/indikator-detail/indikator-detail.component';
-import {MedikationService} from './medicament/service/medikation.service';
-import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/index';
-import {DauerComponent} from './shared/component/dauer/dauer.component';
-import {HaeufigkeitService} from './shared/component/haeufigkeit/service/haeufigkeit.service';
-import {IndikatorService} from './indikator/service/indikator.service';
+import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/NG2DatetimePicker.module';
 import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
 import {LogoutComponent} from './logout/logout.component';
 import {provideAuth} from 'angular2-jwt';
 
+// Feature-modules
+import {IndikatorModule} from './indikator/indikator.module';
+import {MedikationModule} from './medicament/medicament.module';
+
+
+
 const bhj_HEADER_NAME = 'Authorisation',
-      bhj_HEADER_PREFIX = 'Bearer',
-      bhj_TOKEN_NAME = 'token',
-      bhj_TOKEN_GETTER_FUNCTION = () => sessionStorage.getItem(bhj_TOKEN_NAME)
-  ;
+  bhj_HEADER_PREFIX = 'Bearer',
+  bhj_TOKEN_NAME = 'token',
+  bhj_TOKEN_GETTER_FUNCTION = () => sessionStorage.getItem(bhj_TOKEN_NAME);
 
 
 
@@ -56,15 +50,7 @@ const bhj_HEADER_NAME = 'Authorisation',
     TitelComponent,
     MainNavComponent,
     BhjournalDetailComponent,
-    BhjDatepickerComponent,
     BhjournalListComponent,
-    HaeufigkeitComponent,
-    MedicamentDetailComponent,
-    MedicamentDetailComponent,
-    MedicamentListComponent,
-    IndikatorListComponent,
-    IndikatorDetailComponent,
-    DauerComponent,
     AuthButtonComponent,
     LogoutComponent
   ],
@@ -74,6 +60,8 @@ const bhj_HEADER_NAME = 'Authorisation',
     ReactiveFormsModule,
     HttpModule,
     Ng2DatetimePickerModule,
+    IndikatorModule,
+    MedikationModule,
     routing
   ],
   providers: [
@@ -89,12 +77,9 @@ const bhj_HEADER_NAME = 'Authorisation',
     UserService,
     PatientService,
     BhJournalService,
-    MedikationService,
     AuthentificationService,
     GuardService,
     MessageService,
-    HaeufigkeitService,
-    IndikatorService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
