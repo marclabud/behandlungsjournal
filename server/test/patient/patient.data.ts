@@ -1,4 +1,4 @@
-import {IData} from '../shared/data';
+import {IData} from '../../src/shared/interface/data';
 
 export class PatientData implements IData {
 

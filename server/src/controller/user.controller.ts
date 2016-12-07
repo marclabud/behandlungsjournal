@@ -1,74 +1,18 @@
 'use strict';
-import {JwtUserService} from '../service/userJwtService';
-import {JwtKeyProvider} from '../service/keyProviderService';
-import {User} from '../service/model/user';
-import {Request} from 'express-serve-static-core';
-
-const RBAC = require('rbac-a');
-// const CustomProvider = require('CustomProvider');
-
-// const JsonProvider = RBAC.providers.JsonProvider;
-const CustomProvider = RBAC.providers.CustomProvider;
-
-const PERMISSIONS = {
-  roles: {
-    'guest': {},
-    'reader': {
-      permissions: ['read'],
-      inherited: ['guest']
-    },
-    'writer': {
-      permissions: ['create'],
-      inherited: ['reader']
-    },
-    'editor': {
-      permissions: ['update'],
-      inherited: ['reader']
-    },
-    'director': {
-      permissions: ['delete'],
-      inherited: ['reader', 'writer', 'editor'],
-      attributes: ['test']
-    },
-    'arzt': {
-      permissions: ['manage'],
-      inherited: ['director']
-    },
-    'tierpfleger': {
-      inherited: ['reader', 'writer']
-    }
-  }
-  // users: {
-  //   'joe': ['guest'],
-  //   'jim': ['missingRole']
-  // }
-};
-
-let roles = {
-  'director': {
-    'reader': {'guest': null},
-    'editor': {'reader': null},
-    'writer': {'reader': null}
-  }
-};
-
-let rbac = new RBAC({
-  // provider: new JsonProvider(RULES)
-  provider: new CustomProvider(PERMISSIONS, roles)
-});
-
-rbac.on('error', function (err) {
-  console.error('Error while checking $s/%s', err.role, err.user);
-  console.error(err.stack);
-});
+import {User} from '../shared/model/user';
+import {RbacService} from '../shared/service/rbac/rbac.service';
+import {RbacPermissions} from '../shared/service/rbac/rbac.permissions';
+import {AuthService} from '../shared/service/auth/auth.service';
 
 const UserCollection = require('../models/user.model');
+const rbacService = new RbacService(new RbacPermissions());
+const authService = new AuthService();
 
 module.exports.getAllUsers = (request, response) => {
-  let username = whoIsUser(request);
-  console.log('getallusers: usernamefromtoken', username);
-
-  rbac.check('joe', 'manage').then(function (allowed) {
+  let user: User = authService.whoIsUser(request);
+  console.log('getallusers: user name from token', user);
+  rbacService.setRoles(user.role);
+  rbacService.rbac.check(user.name, 'manage').then(function (allowed) {
       if (allowed) {
         UserCollection.find({}, (err, docs) => {
           if (err) {
@@ -154,7 +98,7 @@ module.exports.loginUser = (request, response) => {
       if (1 === (docs.length)) {
         // genau 1 User wurde gefunden; Token wird zurückgesendet
         let user: User = docs[0];
-        let token = getjwtToken(user);
+        let token = authService.getjwtToken(user);
         response.status(201).send({id_token: token});
         console.log('Token', 'Token to response ok');
       } else {    // keinen oder mehr als einen User mit diesem Passwort gefunden
@@ -162,15 +106,3 @@ module.exports.loginUser = (request, response) => {
       }
     });
 };
-
-function getjwtToken(user: User): string {
-  let keyProvider = new JwtKeyProvider();
-  let jwtUserservice = new JwtUserService(keyProvider);
-  return jwtUserservice.createJWT(user);
-}
-
-function whoIsUser(request: Request): string {
-  let keyProvider = new JwtKeyProvider();
-  let jwtUserService = new JwtUserService(keyProvider);
-  return jwtUserService.whoIsUser(request);
-}

@@ -1,5 +1,5 @@
 'use strict';
-import {jwtKey} from '../server.conf';
+import {jwtKey} from '../../../server.conf';
 /**
  * Provides key for JsonWebToken jwt.sign
  */
