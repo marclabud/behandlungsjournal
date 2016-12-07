@@ -1,10 +1,20 @@
 import {IData} from '../shared/data';
+import * as mongoose from 'mongoose';
+const ObjectId = mongoose.Types.ObjectId;
 
 export class PatientData implements IData {
 
   private patienten = [
     {
-      _id: '1',
+      _id: new ObjectId('5848025ccd971414b8e71f32'),
+      name: 'Toni',
+      tierart: 'Vogel',
+      rasse: 'Türkisvogel',
+      eigentuemerVorname: 'Thomas',
+      eigentuemerNachname: 'Test'
+    },
+    {
+      _id: new ObjectId('5848025ccd971414b8e71f33'),
       name: 'Strolch',
       tierart: 'Hund',
       rasse: 'Mischling',
@@ -12,7 +22,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Iten'
     },
     {
-      _id: '2',
+      _id: new ObjectId('5848025ccd971414b8e71f34'),
       name: 'Minka',
       tierart: 'Katze',
       rasse: 'Siam',
@@ -20,7 +30,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Rogenmoser'
     },
     {
-      _id: '3',
+      _id: new ObjectId('5848025ccd971414b8e71f35'),
       name: 'Blacky',
       tierart: 'Pferd',
       rasse: 'Freiberger',
