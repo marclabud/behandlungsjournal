@@ -7,8 +7,8 @@ import {Request} from 'express-serve-static-core';
 const UserCollection = require('../models/user.model');
 
 module.exports.getAllUsers = (request, response) => {
-  let username = whoIsUser(request);
-  console.log ('getallusers: usernamefromtoken', username);
+  let user = whoIsUser(request);
+  console.log ('getallusers: usernamefromtoken', user);
   UserCollection.find({}, (err, docs) => {
     if (err) {
       return console.error(err);
@@ -97,7 +97,7 @@ function getjwtToken(user: User): string {
   return jwtUserservice.createJWT(user);
 }
 
-function whoIsUser(request: Request): string {
+function whoIsUser(request: Request): User {
   let keyProvider = new JwtKeyProvider();
   let jwtUserService = new JwtUserService(keyProvider);
   return jwtUserService.whoIsUser(request);

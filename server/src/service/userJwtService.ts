@@ -18,19 +18,22 @@ export class JwtUserService {
     return createdToken;
   }
 
-  public whoIsUser(request: Request): string {
-    let username = 'null'; // null
+  public whoIsUser(request: Request): User {
+    let user: User = new User();
     let auth: any = request.header('authorisation');
     if (auth && auth.indexOf('Bearer') >= 0) {
       let jwt = auth.substring(7);
       jwt = jwt.replace(/\"/g, '');
       let decodedtoken = verify(jwt, this.keyProvider.getKey());
       if (decodedtoken) {
-        console.log('username from token:' , decodedtoken._doc.name);
-        username = decodedtoken._doc.name;
+        console.log('username from token:' , 'name:', decodedtoken._doc.name, 'rolle:', decodedtoken._doc.role );
+        user.name = decodedtoken._doc.name;
+        user.role = decodedtoken._doc.role;
+      } else {
+        user = null;
       }
     }
-    return username;
+    return user;
 
   }
 }
