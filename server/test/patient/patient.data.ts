@@ -6,7 +6,7 @@ export class PatientData implements IData {
 
   private patienten = [
     {
-      _id: new ObjectId('5848025ccd971414b8e71f32'),
+      _id: '10',
       name: 'Toni',
       tierart: 'Vogel',
       rasse: 'Türkisvogel',
@@ -14,7 +14,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Test'
     },
     {
-      _id: new ObjectId('5848025ccd971414b8e71f33'),
+      _id: '1',
       name: 'Strolch',
       tierart: 'Hund',
       rasse: 'Mischling',
@@ -22,7 +22,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Iten'
     },
     {
-      _id: new ObjectId('5848025ccd971414b8e71f34'),
+      _id: '2',
       name: 'Minka',
       tierart: 'Katze',
       rasse: 'Siam',
@@ -30,7 +30,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Rogenmoser'
     },
     {
-      _id: new ObjectId('5848025ccd971414b8e71f35'),
+      _id: '3',
       name: 'Blacky',
       tierart: 'Pferd',
       rasse: 'Freiberger',
