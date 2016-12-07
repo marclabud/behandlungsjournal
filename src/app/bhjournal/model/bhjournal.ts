@@ -8,4 +8,7 @@ export class BhJournal {
   diagnose: string;
   dauer: Dauer;
 
+  constructor() {
+    this.dauer = new Dauer();
+  }
 }

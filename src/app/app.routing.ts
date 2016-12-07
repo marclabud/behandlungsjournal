@@ -8,6 +8,7 @@ import {BhjournalComponent} from './bhjournal/bhjournal-view/bhjournal-view.comp
 import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.component';
 import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-detail.component';
 import {LogoutComponent} from './logout/logout.component';
+import {BhjournalListDetailComponent} from './bhjournal/bhjournal-list-detail/bhjournal-list-detail.component';
 
 
 
@@ -34,12 +35,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'bhjournal-detail',
-    component: BhjournalListComponent,
+    component: BhjournalDetailComponent,
     canActivate: [GuardService]
   },
   {
     path: 'bhjournal-list-detail',
-    component: BhjournalDetailComponent,
+    component: BhjournalListDetailComponent,
     canActivate: [GuardService]
   },
   {
