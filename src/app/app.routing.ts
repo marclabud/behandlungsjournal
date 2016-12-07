@@ -6,7 +6,9 @@ import {LoginComponent} from './login/login.component';
 import {UserComponent} from './user/user.component';
 import {BhjournalComponent} from './bhjournal/bhjournal-view/bhjournal-view.component';
 import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.component';
+import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-detail.component';
 import {LogoutComponent} from './logout/logout.component';
+
 
 
 const appRoutes: Routes = [
@@ -28,6 +30,16 @@ const appRoutes: Routes = [
   {
     path: 'bhjournal-liste',
     component: BhjournalListComponent,
+    canActivate: [GuardService]
+  },
+  {
+    path: 'bhjournal-detail',
+    component: BhjournalListComponent,
+    canActivate: [GuardService]
+  },
+  {
+    path: 'bhjournal-list-detail',
+    component: BhjournalDetailComponent,
     canActivate: [GuardService]
   },
   {

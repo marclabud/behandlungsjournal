@@ -20,13 +20,14 @@
       Speichern
     </button>
     <!--<button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">-->
-      <!--Abbrechen-->
+    <!--Abbrechen-->
     <!--</button>-->
-  <!--</div>-->
-  <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <strong>Meldung:</strong> {{infoMsg.body}}
+    <!--</div>-->
+    <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Meldung:</strong> {{infoMsg.body}}
+    </div>
   </div>
 </div>

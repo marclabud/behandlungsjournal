@@ -21,11 +21,6 @@ import {PatientListComponent} from './patient/patient-list/patient-list.componen
 import {PatientDetailComponent} from './patient/patient-detail/patient-detail.component';
 import {PatientService} from './patient/service/patient.service';
 
-import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-detail.component';
-import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.component';
-import {BhjournalComponent} from './bhjournal/bhjournal-view/bhjournal-view.component';
-import {BhJournalService} from './bhjournal/service/bhjournal.service';
-
 import {TitelComponent} from './titel/titel.component';
 import {MainNavComponent} from './main-nav/main-nav.component';
 import {MessageService} from './shared/service/message/message.service';
@@ -35,6 +30,7 @@ import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/NG2Dat
 // Feature-modules
 import {IndikatorModule} from './indikator/indikator.module';
 import {MedikationModule} from './medicament/medicament.module';
+import {BehandlungsJournalModule} from './bhjournal/bhjournal.module';
 
 
 
@@ -44,8 +40,6 @@ const bhj_HEADER_NAME = 'Authorisation',
   bhj_TOKEN_NAME = 'token',
   bhj_TOKEN_GETTER_FUNCTION = () => sessionStorage.getItem(bhj_TOKEN_NAME);
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,11 +48,8 @@ const bhj_HEADER_NAME = 'Authorisation',
     LoginComponent,
     PatientListComponent,
     PatientDetailComponent,
-    BhjournalComponent,
     TitelComponent,
     MainNavComponent,
-    BhjournalDetailComponent,
-    BhjournalListComponent,
     AuthButtonComponent,
     LogoutComponent
   ],
@@ -70,6 +61,7 @@ const bhj_HEADER_NAME = 'Authorisation',
     Ng2DatetimePickerModule,
     IndikatorModule,
     MedikationModule,
+    BehandlungsJournalModule,
     routing
   ],
   providers: [
@@ -84,7 +76,6 @@ const bhj_HEADER_NAME = 'Authorisation',
     }),
     UserService,
     PatientService,
-    BhJournalService,
     AuthentificationService,
     GuardService,
     MessageService,
