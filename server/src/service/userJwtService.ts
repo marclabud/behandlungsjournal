@@ -32,6 +32,8 @@ export class JwtUserService {
       } else {
         user = null;
       }
+    } else {
+      user = null;
     }
     return user;
 
