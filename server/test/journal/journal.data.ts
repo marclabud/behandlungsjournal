@@ -1,5 +1,6 @@
 import {IData} from '../shared/data';
 import * as mongoose from 'mongoose';
+/* tslint:disable-next-line:no-unused-variable */
 const ObjectId = mongoose.Types.ObjectId;
 
 export class JournalData implements IData {
@@ -33,7 +34,8 @@ export class JournalData implements IData {
       dauer: {
         startDatum: new Date('2016-11-21T00:00:00.00Z'),
         endeDatum: new Date('2016-11-30T00:00:00.00Z')
-      },
+      }
+    },
     {
       id: '4',
       name: 'Journal Toni',
