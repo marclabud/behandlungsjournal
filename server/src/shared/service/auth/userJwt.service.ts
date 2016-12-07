@@ -3,8 +3,8 @@
  * Service for JsonWebToken (JWT). Introduction see https://jwt.io/introduction/
  */
 import {sign, verify} from 'jsonwebtoken';
-import {User} from './model/user';
-import {JwtKeyProvider} from './keyProviderService';
+import {User} from '../../model/user';
+import {JwtKeyProvider} from './keyProvider.service';
 import {Request} from 'express-serve-static-core';
 
 export class JwtUserService {
