@@ -10,8 +10,6 @@ import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-d
 import {LogoutComponent} from './logout/logout.component';
 import {BhjournalListDetailComponent} from './bhjournal/bhjournal-list-detail/bhjournal-list-detail.component';
 
-
-
 const appRoutes: Routes = [
   {
     path: '',
@@ -29,7 +27,7 @@ const appRoutes: Routes = [
     canActivate: [GuardService]
   },
   {
-    path: 'bhjournal-liste',
+    path: 'bhjournal-list',
     component: BhjournalListComponent,
     canActivate: [GuardService]
   },

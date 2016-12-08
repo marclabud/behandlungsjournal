@@ -26,11 +26,11 @@ export class BhjournalDetailComponent implements OnInit {
 
   private infoMsg = {body: '', type: 'info'};
 
-  // benötigt einen gültigen @Input bhjournal
+  // benötigt einen gültigen @Input bhJournal
   // kein standalone-Aufruf möglich
-  // Neues bhjournal benötigt korrekte PatientenID für den das Journal erstellt wird.
+  // Neues bhJournal benötigt korrekte PatientenID für den das Journal erstellt wird.
 
-  @Input() bhjournal: BhJournal = new BhJournal();
+  @Input() bhJournal: BhJournal = new BhJournal();
 
   constructor(private patientService: PatientService, private bhjournalService: BhJournalService) {
   this.messageServicePatient = this.patientService.messageService;
@@ -41,12 +41,12 @@ export class BhjournalDetailComponent implements OnInit {
   }
   ngOnInit() {
     // Prüfen auf neues BhJournal
-    if (typeof (this.bhjournal._id) === 'undefined') {
+    if (typeof (this.bhJournal._id) === 'undefined') {
       // Falls neu Patienten ermitteln
       if (this.patient === null) {
         this.patient = this.patientService.readCache();
       }
-      this.bhjournal = this.initBhJournal(this.patient);
+      this.bhJournal = this.initBhJournal(this.patient);
     }
 
   }
@@ -82,15 +82,15 @@ export class BhjournalDetailComponent implements OnInit {
   // }
 
   onStartDatumChanged(startDatum: moment.Moment) {
-    this.bhjournal.dauer.startDatum = startDatum;
+    this.bhJournal.dauer.startDatum = startDatum;
   }
 
   onEndeDatumChanged(endeDatum: moment.Moment) {
-    this.bhjournal.dauer.endeDatum = endeDatum;
+    this.bhJournal.dauer.endeDatum = endeDatum;
   }
 
   private actualizeCache() {
-    this.bhjournalService.writeCache(this.bhjournal);
+    this.bhjournalService.writeCache(this.bhJournal);
   }
 
   sendInfoMsg(body, type, time = 3000) {
