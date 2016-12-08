@@ -3,7 +3,7 @@
     <h2 class="col-xs-7">{{bhJournal.name}}</h2>
   </div>
   <div class="form-group row">
-    <label class="col-xs-3 col-form-label">Name des Behandlungsjournals: </label>
+    <label class="col-xs-3 col-form-label">Name des Journals: </label>
     <input [(ngModel)]="bhJournal.name" class="col-xs-7" type="text" placeholder="Name"/>
   </div>
   <div class="form-group row">
@@ -16,12 +16,14 @@
              (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
 
   <div class="form-group row">
-    <button class="col-xs-3 col-form-label btn btn-sm btn-primary" type="submit" (click)="saveBhJournal(bhJournal)">
+    <button class="col-xs-5 col-form-label btn btn-sm btn-primary" type="submit" (click)="saveBhJournal(bhJournal)">
       Speichern
     </button>
-    <button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
+    <div class="col-xs-1"></div>
+    <button class="col-xs-5 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
       Abbrechen
     </button>
+    <div class="col-xs-1"></div>
   </div>
   <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

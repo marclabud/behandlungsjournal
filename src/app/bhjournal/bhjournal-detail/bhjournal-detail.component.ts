@@ -52,6 +52,7 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
     console.log('Behandlungsjournal wird gespeichert', bhjournal);
     if (!bhjournal._id) {
       // Neues Behandlungsjournal anlegen
+      // Patch temporary ToDo remove with objectId auto
       this.bhjournalService.addJournal(bhjournal).subscribe(
         res => {
           this.actualizeCache();
@@ -71,7 +72,7 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
     }
   }
   onCancel() {
-    this.isLoading = true;
+    // FormReset auf Initiale Bhjournalwerte
   }
 
   onStartDatumChanged(startDatum: moment.Moment) {

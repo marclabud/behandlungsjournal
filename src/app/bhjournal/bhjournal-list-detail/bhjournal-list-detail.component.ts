@@ -56,6 +56,7 @@ export class BhjournalListDetailComponent implements OnInit, OnDestroy {
   }
   /* tslint:disable-next-line:no-unused-variable */
   private onJournalselected(journal: BhJournal) {
+    console.log ('LD: onJournalselected', journal);
     this.selectedBhJournal = journal;
   }
   ngOnDestroy() {
