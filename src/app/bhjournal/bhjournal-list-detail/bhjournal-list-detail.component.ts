@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BhJournal} from '../model/bhjournal';
 
 @Component({
@@ -10,10 +10,15 @@ import {BhJournal} from '../model/bhjournal';
 // kombiniertes ListDetail-Control für die Bearbeitung der Behandlungsjournale
 
 export class BhjournalListDetailComponent implements OnInit {
-  private selectedBhJournal: BhJournal
+  private selectedBhJournal: BhJournal;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  /* tslint:disable-next-line:no-unused-variable */
+  private onJournalselected(journal: BhJournal) {
+    this.selectedBhJournal = journal;
   }
 
 }

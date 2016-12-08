@@ -1,5 +1,12 @@
-
 <div class="card">
-<app-bhjournal-list></app-bhjournal-list>
-<app-bhjournal-detail></app-bhjournal-detail>
+  <div class="row">
+    <div class="col-sm-6">
+      <app-bhjournal-list (bhJournalChange)="onJournalselected($event)"></app-bhjournal-list>
+    </div>
+    <div *ngIf="selectedBhJournal!==undefined">
+      <div class="col-sm-6">
+        <app-bhjournal-detail [bhjournal]="selectedBhJournal"></app-bhjournal-detail>
+      </div>
+    </div>
+  </div>
 </div>

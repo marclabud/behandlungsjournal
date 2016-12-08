@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnDestroy, Output, Input, EventEmitter} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {BhJournal} from '../model/bhjournal';
 import {Patient} from '../../patient/model/patient';
@@ -19,16 +19,17 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
   private selectedPatient: Patient;
   private selectedJournal: BhJournal;
   private patient_id: string;
-  private journals: Array<BhJournal> = [];
 
   /* tslint:disable-next-line:no-unused-variable */
   private labelTherapieStart = 'Beginn der Therapie';
   /* tslint:disable-next-line:no-unused-variable */
   private labelTherapieEnde = 'Ende der Therapie';
 
+  @Input() journals: Array<BhJournal> = [];
   @Output() bhJournalChange: EventEmitter<BhJournal> = new EventEmitter<BhJournal>();
+  @Output() bhJournalCountChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private bhjournalService: BhJournalService, private patientService: PatientService ) {
+  constructor(private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServicePatient = patientService.messageService;
     this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
       patient => {
@@ -36,6 +37,7 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
+
   ngOnInit() {
     if (typeof (this.selectedPatient) !== 'undefined') {
       this.patient_id = this.selectedPatient._id;
@@ -50,6 +52,7 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
     this.getJournalsbyPatient(this.patient_id);
 
   }
+
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -57,17 +60,22 @@ export class BhjournalListComponent implements OnInit, OnDestroy {
       () => this.isLoading = false
     );
   }
+
   private getJournals(journals: Array<BhJournal>) {
     console.log('getJournals Parameter journals: ', journals);
+    // this.bhJournalChange.emit(journals.length);
     this.journals = journals;
+    console.log(this.journals.length);
+    // this.bhJournalChange.emit(this.journals.length);
   }
 
   onSelect(journal: BhJournal) {
-    console.log ('selectedJournal', journal);
+    console.log('selectedJournal', journal);
     this.selectedJournal = journal;
     this.bhJournalChange.emit(journal);
   }
-    ngOnDestroy() {
+
+  ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();
   }

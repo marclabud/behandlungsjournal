@@ -1,5 +1,8 @@
 <div class="container-fluid">
   <div *ngIf="!isLoading">
+    <button class="btn btn-sm btn-primary bhj-btn-right"><i
+      class="fa fa-floppy-o"></i>Hinzufügen
+    </button>
     <ul class="list-group">
       <li class="list-group-item list-group-item-action" *ngFor="let journal of journals" (click)="onSelect(journal)">
         <h2 class="list-group-item-text">{{journal.name}}</h2>
