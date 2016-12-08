@@ -1,9 +1,12 @@
 'use strict';
-import * as mongoose from 'mongoose';
 const model = 'Journal';
 
+import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Schema.Types.ObjectId;
+
+
 const journalSchema = new mongoose.Schema({
-  _id: String,
+  _id: {type: ObjectId, auto: true}, // auto generate new ObjectId
   name: {type: String, required: true},
   patient_id: {type: String, required: true},
   diagnose: String,
