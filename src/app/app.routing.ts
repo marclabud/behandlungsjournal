@@ -7,8 +7,9 @@ import {UserComponent} from './user/user.component';
 import {BhjournalComponent} from './bhjournal/bhjournal-view/bhjournal-view.component';
 import {BhjournalListComponent} from './bhjournal/bhjournal-list/bhjournal-list.component';
 import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-detail.component';
-import {LogoutComponent} from './logout/logout.component';
 import {BhjournalListDetailComponent} from './bhjournal/bhjournal-list-detail/bhjournal-list-detail.component';
+import {PatientCardComponent} from './patient/patient-card/patient-card.component';
+import {LogoutComponent} from './logout/logout.component';
 
 const appRoutes: Routes = [
   {
@@ -39,6 +40,11 @@ const appRoutes: Routes = [
   {
     path: 'bhjournal-list-detail',
     component: BhjournalListDetailComponent,
+    canActivate: [GuardService]
+  },
+  {
+    path: 'patient-card',
+    component: PatientCardComponent,
     canActivate: [GuardService]
   },
   {

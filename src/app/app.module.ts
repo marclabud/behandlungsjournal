@@ -31,6 +31,7 @@ import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/NG2Dat
 import {IndikatorModule} from './indikator/indikator.module';
 import {MedikationModule} from './medicament/medicament.module';
 import {BehandlungsJournalModule} from './bhjournal/bhjournal.module';
+import { PatientCardComponent } from './patient/patient-card/patient-card.component';
 
 
 
@@ -51,7 +52,8 @@ const bhj_HEADER_NAME = 'Authorisation',
     TitelComponent,
     MainNavComponent,
     AuthButtonComponent,
-    LogoutComponent
+    LogoutComponent,
+    PatientCardComponent
   ],
   imports: [
     BrowserModule,

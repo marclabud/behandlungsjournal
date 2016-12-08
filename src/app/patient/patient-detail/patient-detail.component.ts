@@ -17,6 +17,8 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   private messageService: MessageService<Patient>;
 
   @Input() patient: Patient;
+  @Input() isEditing: boolean= false;
+
 
   constructor(http: Http, private patientService: PatientService) {
     this.messageService = patientService.messageService;
@@ -37,6 +39,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
         res => {
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
+          this.isEditing = false;
         },
         error => console.log(error)
       );
@@ -54,6 +57,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
 
   onCancel() {
     console.log('Dialog Abbrechen');
+    this.isEditing = false;
     this.patient = undefined;
   }
 
