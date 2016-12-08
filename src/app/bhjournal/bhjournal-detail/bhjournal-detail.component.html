@@ -1,4 +1,4 @@
-<div *ngIf="bhJournal">
+<div *ngIf="!isLoading">
   <div class="form-group row">
     <h2 class="col-xs-7">{{bhJournal.name}}</h2>
   </div>
@@ -19,15 +19,14 @@
     <button class="col-xs-3 col-form-label btn btn-sm btn-primary" type="submit" (click)="saveBhJournal(bhJournal)">
       Speichern
     </button>
-    <!--<button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">-->
-    <!--Abbrechen-->
-    <!--</button>-->
-    <!--</div>-->
-    <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>Meldung:</strong> {{infoMsg.body}}
-    </div>
+    <button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
+      Abbrechen
+    </button>
+  </div>
+  <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Meldung:</strong> {{infoMsg.body}}
   </div>
 </div>

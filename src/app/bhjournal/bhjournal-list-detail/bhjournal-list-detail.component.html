@@ -4,9 +4,9 @@
       <div class="col-sm-6">
         <app-bhjournal-list [journals]="bhJournals" (bhJournalChange)="onJournalselected($event)"></app-bhjournal-list>
       </div>
-      <div *ngIf="selectedBhJournal!==undefined">
+      <div *ngIf="selectedBhJournal && selectedPatient">
         <div class="col-sm-6">
-          <app-bhjournal-detail [bhJournal]="selectedBhJournal"></app-bhjournal-detail>
+          <app-bhjournal-detail [patient]="selectedPatient" [bhJournal]="selectedBhJournal"></app-bhjournal-detail>
         </div>
       </div>
     </div>

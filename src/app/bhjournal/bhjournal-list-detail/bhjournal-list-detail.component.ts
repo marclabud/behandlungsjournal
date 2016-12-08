@@ -11,7 +11,6 @@ import {Subscription} from 'rxjs';
   templateUrl: './bhjournal-list-detail.component.html',
   styleUrls: ['./bhjournal-list-detail.component.css']
 })
-
 // kombiniertes ListDetail-Control für die Bearbeitung der Behandlungsjournale
 
 export class BhjournalListDetailComponent implements OnInit, OnDestroy {
@@ -23,7 +22,6 @@ export class BhjournalListDetailComponent implements OnInit, OnDestroy {
   private selectedBhJournal: BhJournal;
   private bhJournals: Array<BhJournal>;
 
-
   constructor(private bhjournalService: BhJournalService, private patientService: PatientService) {
     this.messageServicePatient = patientService.messageService;
     this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
@@ -32,22 +30,17 @@ export class BhjournalListDetailComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
-
   ngOnInit() {
-    if (typeof (this.selectedPatient) !== 'undefined') {
-      this.patient_id = this.selectedPatient._id;
-    } else {
-      // Component called by path
-      this.selectedPatient = this.patientService.readCache();
-      this.patient_id = this.selectedPatient._id;
-      console.log('Bhjournal-Component ngOnInit selected Patient is undefined');
-    }
-    // Abfrage aller Journale eines Patiente, da das subscribe nur wirkt, wenn die Komponente initialisiert ist
-    // wenn der Patient ausgewählt wird.
+    this.getPatientId(this.selectedPatient);
     this.getJournalsbyPatient(this.patient_id);
-
   }
-
+  private getPatientId(patient: Patient) {
+    if (!this.selectedPatient) {
+      this.selectedPatient = this.patientService.readCache();
+      console.log('Bhjournal-Component ngOnInit selected Patient was undefined');
+    }
+    this.patient_id = this.selectedPatient._id;
+  }
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -55,14 +48,12 @@ export class BhjournalListDetailComponent implements OnInit, OnDestroy {
       () => this.isLoading = false
     );
   }
-
   private getJournals(journals: Array<BhJournal>) {
     console.log('getJournals Parameter journals: ', journals);
     // this.bhJournalChange.emit(journals.length);
     this.bhJournals = journals;
     console.log(this.bhJournals.length);
   }
-
   /* tslint:disable-next-line:no-unused-variable */
   private onJournalselected(journal: BhJournal) {
     this.selectedBhJournal = journal;
@@ -71,5 +62,4 @@ export class BhjournalListDetailComponent implements OnInit, OnDestroy {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();
   }
-
 }

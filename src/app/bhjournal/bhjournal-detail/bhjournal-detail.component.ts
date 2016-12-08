@@ -1,24 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
-import {PatientService} from '../../patient/service/patient.service';
-import {MessageService} from '../../shared/service/message/message.service';
-import {Subscription} from 'rxjs/Subscription';
 import {BhJournal} from '../model/bhjournal';
-import * as moment from 'moment';
 import {Patient} from '../../patient/model/patient';
-
-
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bhjournal-detail',
   templateUrl: 'bhjournal-detail.component.html',
   styleUrls: ['bhjournal-detail.component.css']
 })
-export class BhjournalDetailComponent implements OnInit {
-  private subscriptionPatient: Subscription;
-  private messageServicePatient: MessageService<Patient>;
-  private patient: Patient = null;
+export class BhjournalDetailComponent implements OnInit, OnChanges {
+  private isLoading = true;
   /* tslint:disable-next-line:no-unused-variable */
   private labelStart = 'Beginn der Therapie';
   /* tslint:disable-next-line:no-unused-variable */
@@ -31,33 +23,34 @@ export class BhjournalDetailComponent implements OnInit {
   // Neues bhJournal benötigt korrekte PatientenID für den das Journal erstellt wird.
 
   @Input() bhJournal: BhJournal = new BhJournal();
+  @Input() patient: Patient = new Patient();
 
-  constructor(private patientService: PatientService, private bhjournalService: BhJournalService) {
-  this.messageServicePatient = this.patientService.messageService;
-  this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
-  patient => {
-    this.patient = patient;
-  });
+  constructor(private bhjournalService: BhJournalService) {
   }
   ngOnInit() {
+    this.checkBhJournal();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    this.checkBhJournal();
+  }
+  private checkBhJournal() {
     // Prüfen auf neues BhJournal
-    if (typeof (this.bhJournal._id) === 'undefined') {
-      // Falls neu Patienten ermitteln
-      if (this.patient === null) {
-        this.patient = this.patientService.readCache();
-      }
+    if (!this.bhJournal._id) {
+      // Neues Journal anlegen
       this.bhJournal = this.initBhJournal(this.patient);
     }
-
+    this.isLoading = false;
   }
-  initBhJournal(patient: Patient): BhJournal {
+  private initBhJournal(patient: Patient): BhJournal {
     let newBhJournal = new BhJournal();
+    newBhJournal.patient_id = patient._id;
     console.log ('Neues BhJournal', newBhJournal);
     return newBhJournal;
-}
+  }
   saveBhJournal(bhjournal) {
     console.log('Behandlungsjournal wird gespeichert', bhjournal);
-    if (typeof(bhjournal._id) === 'undefined') {
+    if (!bhjournal._id) {
       // Neues Behandlungsjournal anlegen
       this.bhjournalService.addJournal(bhjournal).subscribe(
         res => {
@@ -77,9 +70,9 @@ export class BhjournalDetailComponent implements OnInit {
       );
     }
   }
-  // onCancel() {
-  //   console.log('Dialog Abbrechen');
-  // }
+  onCancel() {
+    this.isLoading = true;
+  }
 
   onStartDatumChanged(startDatum: moment.Moment) {
     this.bhJournal.dauer.startDatum = startDatum;
