@@ -1,47 +1,48 @@
 <nav class="navbar navbar-dark bg-primary">
-  <!-- Toggle Button -->
-  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-  </button>
+    <!-- Toggle Button -->
+    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    </button>
 
-  <!-- Nav Content -->
-  <div class="collapse navbar-toggleable-md" id="navbarResponsive">
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="login">{{brandName}} <span class="sr-only">(current)</span></a>
-      </li>
-      <div *ngIf="userIsLoggedIn()">
-        <li class="nav-item">
+    <!-- Nav Content -->
+    <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="bhjournal">{{brandName}} <span class="sr-only">(current)</span></a>
+            </li>
+            <div *ngIf="userIsLoggedIn()">
+                <li class="nav-item">
 
-        </li>
-        <li class="nav-item dropdown pull-lg-right">
-          <a class="nav-link dropdown-toggle" href="bhjournal" id="journal"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Behandlungsjournal</a>
-          <div class="dropdown-menu" aria-labelledby="journal">
-            <a class="dropdown-item" href="bhjournal-liste">Behandlungsjournal</a>
-            <a class="dropdown-item" href="#">Medikation</a>
-            <a class="dropdown-item" href="#">Indikatoren</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown pull-lg-right">
-          <form class="form-inline navbar-form pull-lg-right">
-            <app-patient-list></app-patient-list>
-            <input class="form-control" type="text" placeholder="Suchen">
-            <button class="btn btn-outline-success" type="submit">Suchen</button>
-          </form>
-        <li class="nav-item dropdown pull-lg-right">
-          <a class="nav-link dropdown-toggle" href="link auf die nav" id="user"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <app-auth-button></app-auth-button>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="user">Benutzerverwaltung</a>
-            <a class="dropdown-item" href="logout">Logout</a>
+                </li>
+                <li class="nav-item dropdown pull-lg-right">
+                    <a class="nav-link dropdown-toggle" href="bhjournal" id="journal"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Planen</a>
+                    <div class="dropdown-menu" aria-labelledby="journal">
+                        <a class="dropdown-item" href="#">Patient</a>
+                        <a class="dropdown-item" href="bhjournal-list-detail">Behandlungsjournal</a>
+                        <a class="dropdown-item" href="#">Medikation</a>
+                        <a class="dropdown-item" href="#">Indikatoren</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown pull-lg-right">
+                    <form class="form-inline navbar-form pull-lg-right">
+                        <app-patient-list></app-patient-list>
+                        <input class="form-control" type="text" placeholder="Suchen">
+                        <button class="btn btn-outline-success" type="submit">Suchen</button>
+                    </form>
+                <li class="nav-item dropdown pull-lg-right">
+                    <a class="nav-link dropdown-toggle" href="link auf die nav" id="user"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <app-auth-button></app-auth-button>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="">
+                        <a class="dropdown-item" href="user">Benutzerverwaltung</a>
+                        <a class="dropdown-item" href="logout">Logout</a>
 
-          </div>
-        </li>
-      </div>
-    </ul>
+                    </div>
+                </li>
+            </div>
+        </ul>
 
-  </div>
+    </div>
 </nav>

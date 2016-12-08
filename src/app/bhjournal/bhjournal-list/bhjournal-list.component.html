@@ -1,11 +1,23 @@
 <div class="container-fluid">
     <div *ngIf="!isLoading">
-        <div class="form-group row">
-            <button class="col-xs-5 btn btn-primary" (click)="onCreateJournal()"><i
-                    class="fa fa-floppy-o"></i>Hinzufügen
-            </button>
-        </div>
-            <ul class="form-group list-group">
+        <div class="card">
+            <div class="card-header>"></div>
+            <div class="card-block row">
+                <button class="col-xs-5 btn btn-primary" (click)="onCreateJournal()"><i
+                        class="fa fa-floppy-o"></i>Hinzufügen
+                </button>
+                <div class="col-xs-1"></div>
+                <button class="col-xs-5 btn btn-warning" (click)="onDeleteJournal()"><i
+                        class="fa fa-floppy-o"></i>Löschen
+                </button>
+                <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Meldung:</strong> {{infoMsg.body}}
+                </div>
+            </div>
+            <ul class="card-block list-group">
                 <li class="list-group-item list-group-item-action" *ngFor="let journal of journals"
                     (click)="onSelect(journal)">
                     <h2 class="list-group-item-text">{{journal.name}}</h2>
@@ -19,4 +31,5 @@
             </ul>
         </div>
     </div>
+</div>
 
