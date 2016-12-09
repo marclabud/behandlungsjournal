@@ -1,6 +1,6 @@
 {
   "name": "behandlungsjournal",
-  "version": "0.0.5",
+  "version": "0.4.0",
   "license": "MIT",
   "author": "Marc Labaud, Michel Rimbeaux",
   "description": "Behandlungsjournal | Angular 2 full stack project.",

@@ -14,7 +14,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Test'
     },
     {
-      _id: '1',
+      _id: new ObjectId('584a56feacef2512182a99fc'),
       name: 'Strolch',
       tierart: 'Hund',
       rasse: 'Mischling',
@@ -22,7 +22,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Iten'
     },
     {
-      _id: '2',
+      _id: new ObjectId('584a584aacef2512182a99fd'),
       name: 'Minka',
       tierart: 'Katze',
       rasse: 'Siam',
@@ -30,7 +30,7 @@ export class PatientData implements IData {
       eigentuemerNachname: 'Rogenmoser'
     },
     {
-      _id: '3',
+      _id: new ObjectId('584a5986acef2512182a99fe'),
       name: 'Blacky',
       tierart: 'Pferd',
       rasse: 'Freiberger',
