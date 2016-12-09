@@ -1,19 +1,15 @@
-'use strict';
 import {RbacPermissions} from './rbac.permissions';
 const RBAC = require('rbac-a');
-const CustomProvider = RBAC.providers.CustomProvider;
-
-// const CustomProvider = require('CustomProvider');
-// const JsonProvider = RBAC.providers.JsonProvider;
+const RbacProvider = require('./rbac.provider');
 
 export class RbacService {
 
   public rbac;
-  public provider = new CustomProvider(this.permissions.getData());
+  public rbacProvider = new RbacProvider(this.permissions.getData());
 
   constructor(private permissions: RbacPermissions) {
     this.rbac = new RBAC({
-      provider: this.provider
+      provider: this.rbacProvider
     });
 
     this.rbac.on('error',
@@ -25,8 +21,8 @@ export class RbacService {
   }
 
   setRoles(roles: string) {
-    this.provider.roles = JSON.parse('{"' + roles + '":null}');
-    console.log('provider.roles: ', JSON.stringify(this.provider.roles));
+    this.rbacProvider.roles = JSON.parse('{"' + roles + '":null}');
+    console.log('provider.roles: ', JSON.stringify(this.rbacProvider.roles));
   };
 
 }

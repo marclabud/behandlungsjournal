@@ -1,12 +1,16 @@
-'use strict';
-const Provider = require('../provider');
+import {IRbacProvider} from './irbac.provider';
 
+const Provider = require('rbac-a').Provider;
+const RBACProvider = <IRbacProvider>Provider;
 
-module.exports = class CustomProvider extends Provider {
+module.exports = class RbacProvider extends RBACProvider {
+
+  private permissions;
+  private roles;
 
   constructor(permissions, roles) {
     super();
-    this.perm = permissions || {};
+    this.permissions = permissions || {};
     this.roles = roles || {guest: null};
   }
 
@@ -32,7 +36,7 @@ module.exports = class CustomProvider extends Provider {
    @return {Object<string,number>}
    */
   getRoles(user) {
-    console.log('getRoles for user: '+ user + ', roles='+ JSON.stringify(this.roles));
+    console.log('getRoles for user: ' + user + ', roles=' + JSON.stringify(this.roles));
     return this.roles;
   }
 
@@ -52,7 +56,10 @@ module.exports = class CustomProvider extends Provider {
    */
   getPermissions(role) {
     console.log('getPermissions for role: ', role);
-    let permissions = this.perm && this.perm['roles'] && this.perm['roles'][role] && this.perm['roles'][role]['permissions'] || [];
+    let permissions = this.permissions
+      && this.permissions['roles']
+      && this.permissions['roles'][role]
+      && this.permissions['roles'][role]['permissions'] || [];
     console.log('permissions: ', permissions);
     return permissions;
   }
@@ -71,7 +78,7 @@ module.exports = class CustomProvider extends Provider {
    @return {Array<string>}
    */
   getAttributes(role) {
-    return []; // TODO : implement stub
+    return []; // not yet used
   }
-}
+};
 
