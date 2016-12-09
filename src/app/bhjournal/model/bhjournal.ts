@@ -1,5 +1,3 @@
-'use strict';
-
 export class BhJournal {
   _id: string;
   name: string;

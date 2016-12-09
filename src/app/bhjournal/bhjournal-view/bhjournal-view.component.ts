@@ -1,4 +1,3 @@
-'use strict';
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';

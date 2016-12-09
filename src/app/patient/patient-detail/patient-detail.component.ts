@@ -1,8 +1,7 @@
-'use strict';
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Http} from '@angular/http';
 import {PatientService} from '../service/patient.service';
-import {Patient} from './../model/patient';
+import {Patient} from '../model/patient';
 import {Subscription} from 'rxjs/Subscription';
 import {MessageService} from '../../shared/service/message/message.service';
 

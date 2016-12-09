@@ -1,4 +1,3 @@
-'use strict';
 /* This component is based on the open source project
  *  ng2-datetime-picker on github
  *  https://github.com/ng2-ui/ng2-datetime-picker
