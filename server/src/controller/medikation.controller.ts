@@ -1,5 +1,3 @@
-'use strict';
-
 const Medikation = require('../models/medikation.model');
 
 module.exports.getAllMedications = (request, response) => {

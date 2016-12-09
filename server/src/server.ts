@@ -1,5 +1,3 @@
-'use strict';
-
 import * as express from 'express';
 import {json, urlencoded} from 'body-parser';
 import {connection, paths} from './server.conf';

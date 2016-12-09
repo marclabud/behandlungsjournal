@@ -1,4 +1,3 @@
-'use strict';
 import {IData} from '../../src/shared/interface/data';
 
 export class UserData implements IData {

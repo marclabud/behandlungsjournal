@@ -1,4 +1,3 @@
-'use strict';
 /**
  * Service for JsonWebToken (JWT). Introduction see https://jwt.io/introduction/
  */

@@ -1,4 +1,3 @@
-'use strict';
 import {IData} from '../../interface/data';
 
 export class RbacPermissions implements IData {

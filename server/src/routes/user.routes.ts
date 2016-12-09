@@ -1,4 +1,3 @@
-'use strict';
 import {Router} from 'express';
 import {paths} from '../server.conf';
 const UserController = require('../controller/user.controller');

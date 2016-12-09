@@ -1,4 +1,3 @@
-'use strict';
 import {User} from '../shared/model/user';
 import {RbacService} from '../shared/service/rbac/rbac.service';
 import {RbacPermissions} from '../shared/service/rbac/rbac.permissions';

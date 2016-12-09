@@ -1,4 +1,3 @@
-'use strict';
 import * as mongoose from 'mongoose';
 
 const model = 'User';

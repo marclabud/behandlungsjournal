@@ -1,4 +1,3 @@
-'use strict';
 import * as express from 'express';
 const path = require('path');
 const staticRouter = express.Router();

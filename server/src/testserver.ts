@@ -1,5 +1,3 @@
-'use strict';
-
 // Swagger Backend Mock-Server
 const swagger = require('swagger-server');
 const Server = swagger.Server;

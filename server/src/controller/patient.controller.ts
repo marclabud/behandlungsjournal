@@ -1,5 +1,3 @@
-'use strict';
-
 const Patient = require('../models/patient.model');
 
 module.exports.getAllPatients = (request, response) => {

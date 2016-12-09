@@ -1,5 +1,3 @@
-'use strict';
-
 const Indikator = require('../models/indikator.model');
 
 module.exports.getAllIndicators = (request, response) => {

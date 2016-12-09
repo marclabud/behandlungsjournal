@@ -1,4 +1,3 @@
-'use strict';
 // ToDo: Use classes
 
 // base-path for testserver

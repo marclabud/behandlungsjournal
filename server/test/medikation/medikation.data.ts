@@ -1,4 +1,3 @@
-'use strict';
 import {IData} from '../../src/shared/interface/data';
 import * as mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;

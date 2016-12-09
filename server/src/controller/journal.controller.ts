@@ -1,5 +1,3 @@
-'use strict';
-
 const Journal = require('../models/journal.model');
 
 module.exports.getAllJournals = (request, response) => {
