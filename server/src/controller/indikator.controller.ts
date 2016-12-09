@@ -1,6 +1,7 @@
-'use strict';
-
 const Indikator = require('../models/indikator.model');
+
+import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Types.ObjectId;
 
 module.exports.getAllIndicators = (request, response) => {
   Indikator.find({}, (err, docs) => {
@@ -14,8 +15,9 @@ module.exports.getAllIndicators = (request, response) => {
 
 module.exports.getIndicatorsByJournalId = (request, response) => {
   let journal_id: string = request.params.journal_id;
-  console.log('parameter journal_id', journal_id);
-  Indikator.find({journal_id: journal_id}, (err, docs) => {
+  let objectId = ObjectId(journal_id);
+  console.log('parameter journal_id', objectId );
+  Indikator.find({journal_id: objectId}, (err, docs) => {
     console.log('getIndicatorsByJournalId: docs', docs);
     if (err) {
       return console.error(err);
