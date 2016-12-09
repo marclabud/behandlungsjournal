@@ -4,8 +4,6 @@ import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from './service/user.service';
 import {User} from './model/user';
 
-// let rbac = require('mongoose-rbac');
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -15,6 +13,7 @@ export class UserComponent implements OnInit {
 
   private users: Array<User> = [];
   private user: User = null;
+  protected roles: [string] = ['guest', 'tierpfleger', 'arzt'];
 
   private isLoading = true;
   private isAlerting = false;
@@ -24,6 +23,7 @@ export class UserComponent implements OnInit {
   private name = new FormControl('', Validators.required);
   private email = new FormControl('', Validators.required);
   private password = new FormControl('', Validators.required);
+  private role = new FormControl('', Validators.required);
 
   private infoMsg = {body: '', type: 'info'};
 
@@ -36,7 +36,8 @@ export class UserComponent implements OnInit {
     this.addUserForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: this.role
     });
   }
 
@@ -46,8 +47,7 @@ export class UserComponent implements OnInit {
       error => {
         if (error instanceof Response) {
           if (401 === error.status) {
-            this.sendInfoMsg('User ist nicht berechtigt' +
-              '', 'danger', 0);
+            this.sendInfoMsg('Benutzer ist nicht berechtigt' + '', 'danger', 0);
           } else {
             this.sendInfoMsg('Status: ' + error.status + ' Text: ' + error.statusText, 'danger', 0);
           }
@@ -115,6 +115,14 @@ export class UserComponent implements OnInit {
     }
   }
 
+  selectRole(role: string) {
+    if (this.user) {
+      this.user.role = role;
+    } else {
+      this.role.setValue(role);
+    }
+  }
+
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;
@@ -126,5 +134,4 @@ export class UserComponent implements OnInit {
   private actualizeCache() {
     this.userService.writeCacheList(this.users);
   }
-
 }

@@ -6,16 +6,17 @@
 </div>
 
 <div class="container">
-  <div class="jumbotron">
-    <div class="card" *ngIf="!isLoading && !isAlerting">
-      <h4 class="card-header">Aktuelle Benutzer ({{users.length}})</h4>
-      <div class="card-block">
+  <div class="card" *ngIf="!isLoading && !isEditing && !isAlerting">
+    <h4 class="card-header">Aktuelle Benutzer ({{users.length}})</h4>
+    <div class="card-block">
+      <div class="table-responsive">
         <table class="table table-bordered table-striped">
           <thead class="thead-default">
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Passwort</th>
+            <th>Rolle</th>
             <th>Aktionen</th>
           </tr>
           </thead>
@@ -29,70 +30,104 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.password}}</td>
+            <td>{{user.role}}</td>
             <td>
               <button class="btn btn-sm btn-warning" (click)="enableEditing(user)"><i class="fa fa-pencil"></i>
                 Bearbeiten
               </button>
-              <button class="btn btn-sm btn-danger" (click)="deleteUser(user)"><i class="fa fa-trash"></i> Löschen
+              <button class="btn btn-sm btn-danger" (click)="deleteUser(user)"><i class="fa fa-trash"></i>
+                Löschen
               </button>
             </td>
           </tr>
           </tbody>
-          <tbody *ngIf="isEditing">
-          <tr>
-            <td colspan="4">
-              <form class="form-inline" #form="ngForm" (ngSubmit)="editUser(user)" style="display:inline">
-                <div class="form-group">
-                  <input class="form-control" type="text" name="name" [(ngModel)]="user.name" placeholder="Name"
-                         required>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="email" name="email" [(ngModel)]="user.email"
-                         placeholder="Email required" required>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="password" name="password" [(ngModel)]="user.password"
-                         placeholder="Password" required>
-                </div>
-                <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i
-                  class="fa fa-floppy-o"></i> Speichern
-                </button>
-              </form>
-              <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Abbrechen
-              </button>
-            </td>
-          </tr>
-          </tbody>
+
+
         </table>
       </div>
     </div>
+  </div>
 
-    <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>Meldung:</strong> {{infoMsg.body}}
-    </div>
+  <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Meldung:</strong> {{infoMsg.body}}
+  </div>
 
-    <div class="card" *ngIf="!isEditing && !isAlerting">
-      <h4 class="card-header">Neuen Benutzer hinzufügen</h4>
-      <div class="card-block">
-        <form class="form-inline" [formGroup]="addUserForm" (ngSubmit)="addUser()" style="text-align:center">
-          <div class="form-group">
-            <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email" min="0">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="password" name="password" formControlName="password"
-                   placeholder="Password" step="any" min="0">
-          </div>
-          <button class="btn btn-primary" type="submit" [disabled]="!addUserForm.valid"><i class="fa fa-floppy-o"></i>
-            Hinzufügen
+
+  <div class="card" *ngIf="isEditing">
+    <h4 class="card-header">Benutzer {{user.name}} mutieren</h4>
+    <div class="card-block">
+      <form class="form-inline" #form="ngForm" (ngSubmit)="editUser(user)" style="display:inline">
+        <div class="form-group">
+          <input class="form-control" type="text" name="name" [(ngModel)]="user.name"
+                 placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="email" name="email" [(ngModel)]="user.email"
+                 placeholder="Email required" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" name="password" [(ngModel)]="user.password"
+                 placeholder="Password" required>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary">{{user.role}}</button>
+          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
-        </form>
+          <div class="dropdown-menu">
+            <div class="list-group">
+              <button class="dropdown-item " type="button" *ngFor="let role of roles"
+                      (click)="selectRole(role)"> {{role}}
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.form.valid"><i
+          class="fa fa-floppy-o"></i> Speichern
+        </button>
+      </form>
+      <button class="btn btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Abbrechen
+      </button>
+      <div class="form-group">
       </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="!isEditing && !isAlerting">
+    <h4 class="card-header">Neuen Benutzer hinzufügen</h4>
+    <div class="card-block">
+      <form class="form-inline" [formGroup]="addUserForm" (ngSubmit)="addUser()" style="text-align:center">
+        <div class="form-group">
+          <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email" min="0">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" name="password" formControlName="password"
+                 placeholder="Password" step="any" min="0">
+        </div>
+        <div class="btn-group">
+          <input class="form-control" type="hidden" name="role" formControlName="role">
+          <button type="button" class="btn btn-secondary">{{role.value? role.value : 'Rolle'}}</button>
+          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu">
+            <div class="list-group">
+              <button class="dropdown-item " type="button" *ngFor="let role of roles"
+                      (click)="selectRole(role)"> {{role}}
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!addUserForm.valid"><i class="fa fa-floppy-o"></i>
+          Hinzufügen
+        </button>
+      </form>
     </div>
   </div>
 </div>
