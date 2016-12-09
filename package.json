@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "license": "MIT",
   "author": "Marc Labaud, Michel Rimbeaux",
-  "description": "Behandlungsjournal | Angular 2 full stack project.",
+  "description": "Behandlungsjournal | Angular 2 (MEAN stack) project.",
   "angular-cli": {},
   "scripts": {
     "start": "nodemon --watch dist/src dist/server.js",
@@ -41,6 +41,7 @@
     "mongoose": "^4.7.0",
     "morgan": "^1.7.0",
     "ng2-bootstrap": "^1.1.16",
+    "rbac-a": "^0.2.5",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.25"
   },

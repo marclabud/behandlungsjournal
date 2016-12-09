@@ -1,6 +1,5 @@
-'use strict';
 import {Router} from 'express';
-import {paths} from './../server.conf';
+import {paths} from '../server.conf';
 const Indicator = require('../controller/indikator.controller');
 
 const IndicatorRouter = Router();

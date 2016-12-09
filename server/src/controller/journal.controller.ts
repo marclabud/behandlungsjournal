@@ -1,6 +1,5 @@
 'use strict';
-import * as mongoose from 'mongoose';
-let ObjectId = mongoose.Types.ObjectId;
+
 const Journal = require('../models/journal.model');
 
 module.exports.getAllJournals = (request, response) => {
@@ -15,9 +14,8 @@ module.exports.getAllJournals = (request, response) => {
 
 module.exports.getAllJournalsbyPatientId = (request, response) => {
   let patient_id: string = request.params.patient_id;
-  let ObjectID = ObjectId(patient_id);
-  Journal.find({patient_id: ObjectID
-  }, (err, docs) => {
+  console.log('parameter patient_id', patient_id);
+  Journal.find({patient_id: patient_id}, (err, docs) => {
     console.log('getAllJournalsbyPatientId: docs', docs);
     if (err) {
       return console.error(err);

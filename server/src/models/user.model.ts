@@ -1,4 +1,3 @@
-'use strict';
 import * as mongoose from 'mongoose';
 
 const model = 'User';
@@ -11,3 +10,4 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model(model, userSchema);
 
 module.exports = User;
+

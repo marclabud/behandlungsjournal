@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Response} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from './service/user.service';
 import {User} from './model/user';
@@ -13,9 +14,10 @@ import {User} from './model/user';
 export class UserComponent implements OnInit {
 
   private users: Array<User> = [];
-  private isLoading = true;
-
   private user: User = null;
+
+  private isLoading = true;
+  private isAlerting = false;
   private isEditing = false;
 
   private addUserForm: FormGroup;
@@ -41,7 +43,20 @@ export class UserComponent implements OnInit {
   getUsers(forceReload = false) {
     this.userService.getAllItems(forceReload).subscribe(
       data => this.users = data,
-      error => console.log(error),
+      error => {
+        if (error instanceof Response) {
+          if (401 === error.status) {
+            this.sendInfoMsg('User ist nicht berechtigt' +
+              '', 'danger', 0);
+          } else {
+            this.sendInfoMsg('Status: ' + error.status + ' Text: ' + error.statusText, 'danger', 0);
+          }
+          this.isLoading = false;
+          this.isAlerting = true;
+        } else {
+          console.log(error);
+        }
+      },
       () => this.isLoading = false
     );
   }
@@ -103,7 +118,9 @@ export class UserComponent implements OnInit {
   sendInfoMsg(body, type, time = 3000) {
     this.infoMsg.body = body;
     this.infoMsg.type = type;
-    window.setTimeout(() => this.infoMsg.body = '', time);
+    if (time !== 0) {
+      window.setTimeout(() => this.infoMsg.body = '', time);
+    }
   }
 
   private actualizeCache() {

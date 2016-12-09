@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="jumbotron">
-    <div class="card" *ngIf="!isLoading">
+    <div class="card" *ngIf="!isLoading && !isAlerting">
       <h4 class="card-header">Aktuelle Benutzer ({{users.length}})</h4>
       <div class="card-block">
         <table class="table table-bordered table-striped">
@@ -64,16 +64,17 @@
           </tr>
           </tbody>
         </table>
-        <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <strong>Meldung:</strong> {{infoMsg.body}}
-        </div>
       </div>
     </div>
 
-    <div class="card" *ngIf="!isEditing">
+    <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Meldung:</strong> {{infoMsg.body}}
+    </div>
+
+    <div class="card" *ngIf="!isEditing && !isAlerting">
       <h4 class="card-header">Neuen Benutzer hinzufügen</h4>
       <div class="card-block">
         <form class="form-inline" [formGroup]="addUserForm" (ngSubmit)="addUser()" style="text-align:center">

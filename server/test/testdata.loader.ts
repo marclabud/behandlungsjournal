@@ -1,4 +1,3 @@
-'use strict';
 /*
  * This Test data load framework uses the node MongoDB module to connect to the local
  * mongodb database on this virtual machine
