@@ -13,7 +13,7 @@
         <strong>Meldung:</strong> {{infoMsg.body}}
       </div>
     </div>
-    <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient"></app-patient-detail>
+    <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient" (patientnew)="onNewPatient($event)"></app-patient-detail>
     <!-- ToDo Remove card-deck-wrapper when changed to flexbox-->
     <div class="card-deck-wrapper">
       <div class="card-deck">

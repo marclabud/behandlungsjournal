@@ -86,10 +86,14 @@ export class PatientCardComponent implements OnInit {
     }
   }
 
+  onNewPatient(newPatient: Patient) {
+      console.log ('onNewPerson', newPatient);
+      this.patients.push(newPatient);
+  }
+
   private actualizeCache() {
     this.patientService.writeCacheList(this.patients);
   }
-
 
     sendInfoMsg(body, type, time = 3000) {
         this.infoMsg.body = body;

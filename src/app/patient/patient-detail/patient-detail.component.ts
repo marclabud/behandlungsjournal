@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angular/core';
 import {Http} from '@angular/http';
 import {PatientService} from '../service/patient.service';
 import {Patient} from '../model/patient';
@@ -14,9 +14,12 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   private infoMsg = {body: '', type: 'info'};
   private subscription: Subscription;
   private messageService: MessageService<Patient>;
+  private newPatient: Patient;
 
   @Input() patient: Patient;
   @Input() isEditing: boolean= false;
+
+  @Output() patientnew:  EventEmitter<Patient> = new EventEmitter<Patient>();
 
 
   constructor(http: Http, private patientService: PatientService) {
@@ -26,18 +29,19 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
         this.patient = patient;
       });
   }
-
   ngOnInit() {
   }
 
   savePatient(patient) {
     console.log('Patient wird gespeichert', patient);
-    if (typeof(patient._id) === 'undefined') {
+    if (!patient._id) {
       // Neuen Patienten anlegen
       this.patientService.addPatient(patient).subscribe(
         res => {
+          this.newPatient = res.json();
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
+          this.patientnew.emit(this.newPatient);
           this.isEditing = false;
         },
         error => console.log(error)
