@@ -14,8 +14,7 @@ module.exports.getAllIndicators = (request, response) => {
 };
 
 module.exports.getIndicatorsByJournalId = (request, response) => {
-  let journal_id: string = request.params.journal_id;
-  let objectId = ObjectId(journal_id);
+  let objectId = ObjectId( request.params.journal_id);
   console.log('parameter journal_id', objectId );
   Indikator.find({journal_id: objectId}, (err, docs) => {
     console.log('getIndicatorsByJournalId: docs', docs);

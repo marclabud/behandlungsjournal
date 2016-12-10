@@ -1,6 +1,7 @@
-'use strict';
-
 const Journal = require('../models/journal.model');
+
+import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Types.ObjectId;
 
 module.exports.getAllJournals = (request, response) => {
   Journal.find({}, (err, docs) => {
@@ -14,7 +15,8 @@ module.exports.getAllJournals = (request, response) => {
 
 module.exports.getAllJournalsbyPatientId = (request, response) => {
   let patient_id: string = request.params.patient_id;
-  console.log('parameter patient_id', patient_id);
+  let objectId = ObjectId(request.params.id);
+  console.log('parameter patient_id', objectId);
   Journal.find({patient_id: patient_id}, (err, docs) => {
     console.log('getAllJournalsbyPatientId: docs', docs);
     if (err) {
@@ -43,7 +45,8 @@ module.exports.addJournal = (request, response) => {
   });
 };
 module.exports.findJournalbyId = (request, response) => {
-  Journal.findOne({_id: request.params.id}, (err, docs) => {
+  let objectId = ObjectId(request.params.id);
+  Journal.findOne({_id: objectId}, (err, docs) => {
     if (err) {
       return console.error(err);
     }
@@ -52,7 +55,8 @@ module.exports.findJournalbyId = (request, response) => {
 };
 // update Journal by Id
 module.exports.updateJournal = (request, response) => {
-  Journal.findOneAndUpdate({_id: request.params.id}, request.body, (err) => {
+  let objectId = ObjectId(request.params.id);
+  Journal.findOneAndUpdate({_id: objectId}, request.body, (err) => {
     if (err) {
       return console.error(err);
     }
@@ -61,7 +65,8 @@ module.exports.updateJournal = (request, response) => {
 };
 
 module.exports.deleteJournal = (request, response) => {
-  Journal.findOneAndRemove({_id: request.params.id}, (err) => {
+  let objectId = ObjectId(request.params.id);
+  Journal.findOneAndRemove({_id: objectId}, (err) => {
     if (err) {
       return console.error(err);
     }

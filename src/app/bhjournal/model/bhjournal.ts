@@ -5,5 +5,5 @@ export class BhJournal {
   name: string;
   patient_id: string;
   diagnose: string;
-  dauer: Dauer;
+  dauer: Dauer = new Dauer();
 }
