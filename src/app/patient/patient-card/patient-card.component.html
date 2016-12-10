@@ -1,0 +1,45 @@
+<div *ngIf="!isLoading">
+  <div class="card">
+    <div class="card-header>"></div>
+    <div class="card-block row">
+      <button class="col-xs-3 btn btn-primary" (click)="onAddPatient()"><i
+        class="fa fa-floppy-o"></i>Hinzufügen
+      </button>
+      <div class="col-xs-1"></div>
+      <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Meldung:</strong> {{infoMsg.body}}
+      </div>
+    </div>
+    <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient" (patientnew)="onNewPatient($event)"></app-patient-detail>
+    <!-- ToDo Remove card-deck-wrapper when changed to flexbox-->
+    <div class="card-deck-wrapper">
+      <div class="card-deck">
+        <div class="card" *ngFor="let patient of patients"
+             (click)="onSelect(patient)">
+          <div class="card-block">
+            <h4 class="card-title text-xs-center">Patient: {{patient.name}}</h4>
+            <div class="card-subtitle">{{patient.tierart}}</div>
+            <div class="card-text">{{patient.rasse}}</div>
+          </div>
+          <div class="card-block">
+            <div class="card-text text-xs-center">Tierhalter</div>
+            <div class="card-text">{{patient.eigentuemerVorname}}</div>
+            <div class="card-text">{{patient.eigentuemerNachname}}</div>
+          </div>
+          <div class="card-block">
+            <button class="btn btn-sm btn-primary" (click)="onEditPatient()"><i
+              class="fa fa-pencil"></i>
+              Bearbeiten
+            </button>
+            <button class="btn btn-sm btn-warning" (click)="onDeletePatient()"><i
+              class="fa fa-floppy-o"></i>Löschen
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

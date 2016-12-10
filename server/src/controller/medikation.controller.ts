@@ -1,3 +1,6 @@
+import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Types.ObjectId;
+
 const Medikation = require('../models/medikation.model');
 
 module.exports.getAllMedications = (request, response) => {
@@ -12,8 +15,9 @@ module.exports.getAllMedications = (request, response) => {
 
 module.exports.getMedicationsByJournalId = (request, response) => {
   let journal_id: string = request.params.journal_id;
-  console.log('parameter journal_id', journal_id);
-  Medikation.find({journal_id: journal_id}, (err, docs) => {
+  let objectId = ObjectId(journal_id);
+  console.log('parameter journal_id', objectId );
+  Medikation.find({journal_id: objectId}, (err, docs) => {
     console.log('getMedicationsByJournalId: docs', docs);
     if (err) {
       return console.error(err);

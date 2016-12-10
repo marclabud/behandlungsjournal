@@ -1,5 +1,8 @@
 const Patient = require('../models/patient.model');
 
+import * as mongoose from 'mongoose';
+let ObjectId = mongoose.Types.ObjectId;
+
 module.exports.getAllPatients = (request, response) => {
   Patient.find({}, (err, docs) => {
     console.log('getAllPatients: docs', docs);
@@ -29,7 +32,8 @@ module.exports.addPatient = (request, response) => {
   });
 };
 module.exports.findPatientbyId = (request, response) => {
-  Patient.findOne({_id: request.params.id}, (err, docs) => {
+  let objectId = ObjectId(request.params.id);
+  Patient.findOne({_id: objectId}, (err, docs) => {
     if (err) {
       return console.error(err);
     }
@@ -38,7 +42,8 @@ module.exports.findPatientbyId = (request, response) => {
 };
 // update Patient by Id
 module.exports.updatePatient = (request, response) => {
-  Patient.findOneAndUpdate({_id: request.params.id}, request.body, (err) => {
+  let objectId = ObjectId(request.params.id);
+  Patient.findOneAndUpdate({_id: objectId}, request.body, (err) => {
     if (err) {
       return console.error(err);
     }
@@ -47,7 +52,8 @@ module.exports.updatePatient = (request, response) => {
 };
 
 module.exports.deletePatient = (request, response) => {
-  Patient.findOneAndRemove({_id: request.params.id}, (err) => {
+  let objectId = ObjectId(request.params.id);
+  Patient.findOneAndRemove({_id: objectId}, (err) => {
     if (err) {
       return console.error(err);
     }

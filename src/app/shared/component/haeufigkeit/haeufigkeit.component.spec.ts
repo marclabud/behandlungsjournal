@@ -4,6 +4,7 @@ import {HaeufigkeitService} from './service/haeufigkeit.service';
 import {HaeufigkeitComponent} from './haeufigkeit.component';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {AUTH_PROVIDERS }   from 'angular2-jwt';
 
 describe('HaeufigkeitComponent', () => {
   let component: HaeufigkeitComponent;
@@ -13,7 +14,7 @@ describe('HaeufigkeitComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HaeufigkeitComponent],
       imports: [HttpModule, FormsModule],
-      providers: [HaeufigkeitService]
+      providers: [HaeufigkeitService, AUTH_PROVIDERS]
     })
       .compileComponents();
   }));

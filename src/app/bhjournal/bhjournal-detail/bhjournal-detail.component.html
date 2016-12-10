@@ -1,3 +1,38 @@
-<p>
-  bhjournal-detail works!
-</p>
+<div *ngIf="!isLoading">
+    <div class="card">
+        <div class="card-block row">
+            <h2 class="col-xs-12">Im Detail</h2>
+        </div>
+        <div class="card-block row">
+            <label class="col-xs-4">Name des Journals: </label>
+            <input [(ngModel)]="bhJournal.name" class="col-xs-8" type="text" placeholder="Name"/>
+        </div>
+        <div class="card-block row">
+            <label class="col-xs-4">Diagnose: </label>
+            <input [(ngModel)]="bhJournal.diagnose" class="col-xs-8" type="text" placeholder="Diagnose"/>
+        </div>
+
+        <app-dauer [isEditing]="true" [dauer]="bhJournal.dauer" [labelStartDatum]="labelStart"
+                   [labelEndeDatum]="labelEnde"
+                   (StartDatumChange)="onStartDatumChanged($event)"
+                   (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
+
+        <div class="card-block row">
+            <button class="col-xs-5 btn btn-sm btn-primary" type="submit"
+                    (click)="saveBhJournal(bhJournal)">
+                Speichern
+            </button>
+            <div class="col-xs-1"></div>
+            <button class="col-xs-5 btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
+                Abbrechen
+            </button>
+            <div class="col-xs-1"></div>
+        </div>
+        <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Meldung:</strong> {{infoMsg.body}}
+        </div>
+    </div>
+</div>

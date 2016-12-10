@@ -2,11 +2,12 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {HttpModule} from '@angular/http';
 import {MedikationService} from './medikation.service';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 describe('Service: Medikation', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MedikationService],
+      providers: [MedikationService, AUTH_PROVIDERS],
       imports: [HttpModule]
     });
   });

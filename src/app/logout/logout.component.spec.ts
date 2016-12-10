@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { LogoutComponent } from './logout.component';
+import {AuthentificationService} from '../shared/service/auth/authentification.service';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpModule} from '@angular/http';
+import {UserService} from '../user/service/user.service';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -11,7 +15,9 @@ describe('LogoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoutComponent ]
+      imports: [HttpModule],
+      declarations: [ LogoutComponent ],
+      providers: [AuthentificationService, AUTH_PROVIDERS, UserService]
     })
     .compileComponents();
   }));

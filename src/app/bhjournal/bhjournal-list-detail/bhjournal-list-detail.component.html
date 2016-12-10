@@ -1,0 +1,12 @@
+<div *ngIf="!isLoading">
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <app-bhjournal-list [journals]="bhJournals" (bhJournalChange)="onJournalselected($event)"></app-bhjournal-list>
+      </div>
+      <div *ngIf="selectedBhJournal && selectedPatient">
+        <div class="col-sm-6">
+          <app-bhjournal-detail [patient]="selectedPatient" [bhJournal]="selectedBhJournal"></app-bhjournal-detail>
+        </div>
+      </div>
+    </div>
+</div>

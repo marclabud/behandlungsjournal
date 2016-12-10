@@ -5,7 +5,7 @@ const model = 'Medikation';
 const medikationSchema = new mongoose.Schema({
   _id: {type: ObjectId, auto: true}, // auto generate new ObjectId
   name: {type: String, required: true},
-  journal_id: {type: String, required: true},
+  journal_id: {type: ObjectId, required: true},
   dosierung: {type: Number, required: true},
   haeufigkeit: {
     morgens: {type: Boolean, required: true},
