@@ -4,30 +4,30 @@ export class RbacPermissions implements IData {
 
   private permissions = {
     roles: {
-      'guest': {},
-      'reader': {
+      'Gast': {},
+      'Reader': {
         permissions: ['read'],
-        inherited: ['guest']
+        inherited: ['Gast']
       },
-      'writer': {
+      'Writer': {
         permissions: ['create'],
-        inherited: ['reader']
+        inherited: ['Reader']
       },
-      'editor': {
+      'Editor': {
         permissions: ['update'],
-        inherited: ['reader']
+        inherited: ['Reader']
       },
-      'director': {
+      'Director': {
         permissions: ['delete'],
-        inherited: ['writer', 'editor'],
+        inherited: ['Writer', 'Editor'],
         attributes: ['test']
       },
-      'tierpfleger': {
-        inherited: ['writer', 'editor'],
+      'Tierpfleger': {
+        inherited: ['Writer', 'Editor'],
       },
-      'arzt': {
+      'Arzt': {
         permissions: ['manage'],
-        inherited: ['director']
+        inherited: ['Director']
       }
     }
   };

@@ -41,8 +41,6 @@
             </td>
           </tr>
           </tbody>
-
-
         </table>
       </div>
     </div>
@@ -54,7 +52,6 @@
     </button>
     <strong>Meldung:</strong> {{infoMsg.body}}
   </div>
-
 
   <div class="card" *ngIf="isEditing">
     <h4 class="card-header">Benutzer {{user.name}} mutieren</h4>
@@ -112,7 +109,7 @@
         </div>
         <div class="btn-group">
           <input class="form-control" type="hidden" name="role" formControlName="role">
-          <button type="button" class="btn btn-secondary">{{role.value? role.value : 'Rolle'}}</button>
+          <button type="button" class="btn btn-secondary">{{role.value? role.value : labelRole}}</button>
           <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>

@@ -13,7 +13,8 @@ export class UserComponent implements OnInit {
 
   private users: Array<User> = [];
   private user: User = null;
-  protected roles: [string] = ['guest', 'tierpfleger', 'arzt'];
+  protected roles: [string] = ['Gast', 'Tierpfleger', 'Arzt'];
+  private labelRole: string = 'Rolle';
 
   private isLoading = true;
   private isAlerting = false;
@@ -92,6 +93,8 @@ export class UserComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.user = user;
+        this.role.setValue(this.labelRole);
+        this.isEditing = false;
         this.actualizeCache();
         this.sendInfoMsg('Benutzer erfolgreich bearbeitet.', 'success');
       },
@@ -116,7 +119,7 @@ export class UserComponent implements OnInit {
   }
 
   selectRole(role: string) {
-    if (this.user) {
+    if (this.isEditing) {
       this.user.role = role;
     } else {
       this.role.setValue(role);
