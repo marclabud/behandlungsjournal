@@ -32,6 +32,7 @@ import {IndikatorModule} from './indikator/indikator.module';
 import {MedikationModule} from './medicament/medicament.module';
 import {BehandlungsJournalModule} from './bhjournal/bhjournal.module';
 import { PatientCardComponent } from './patient/patient-card/patient-card.component';
+import { PatientMenuComponent } from './patient/patient-menu/patient-menu.component';
 
 
 
@@ -53,7 +54,8 @@ const bhj_HEADER_NAME = 'Authorisation',
     MainNavComponent,
     AuthButtonComponent,
     LogoutComponent,
-    PatientCardComponent
+    PatientCardComponent,
+    PatientMenuComponent
   ],
   imports: [
     BrowserModule,

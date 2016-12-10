@@ -28,23 +28,17 @@ export class PatientCardComponent implements OnInit {
 
     ngOnInit() {
         this.getPatients();
-        this.getSelectedPatient();
     }
 
     getPatients() {
         this.patientService.getAllItems().subscribe(
-            data => this.patients = data,
+            data => {
+              this.patients = data;
+              this.isLoading = false;
+            },
             error => console.log(error),
             () => this.isLoading = false
         );
-    }
-
-    getSelectedPatient() {
-        let patient: Patient;
-        patient = this.patientService.readCache();
-        if (patient != null) {
-            this.onSelect(patient);
-        }
     }
 
     onSelect(patient: Patient): void {
@@ -52,6 +46,7 @@ export class PatientCardComponent implements OnInit {
         console.log('Component list view onSelect', patient);
         this.PatientAnzeige = this.selectedPatient.name;
         this.messageService.selectItem(patient);
+
     }
 
     onAddPatient(): Patient {

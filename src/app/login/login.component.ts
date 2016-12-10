@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             this.isLoading = true;
             // Check redirect for succesful login
             if (this.authService.isLoggedIn()) {
-              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/bhjournal';
+              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/patient-card';
               this.router.navigate([redirect]);
             } else {
               this.isLoading = false;
