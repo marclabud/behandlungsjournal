@@ -14,8 +14,6 @@
       </div>
     </div>
     <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient" (patientnew)="onNewPatient($event)"></app-patient-detail>
-    <!-- ToDo Remove card-deck-wrapper when changed to flexbox-->
-    <div class="card-deck-wrapper">
       <div class="card-deck">
         <div class="card" *ngFor="let patient of patients">
           <div (click)="onSelect(patient)">
@@ -43,4 +41,3 @@
       </div>
     </div>
   </div>
-</div>
