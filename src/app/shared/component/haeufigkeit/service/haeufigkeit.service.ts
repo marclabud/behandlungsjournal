@@ -8,7 +8,6 @@ import {AuthHttp} from 'angular2-jwt';
 @Injectable()
 export class HaeufigkeitService extends ServiceBase<Haeufigkeit> {
 
-  private serviceUrl: string;
   public messageService;
 
   constructor(authHttp: AuthHttp) {

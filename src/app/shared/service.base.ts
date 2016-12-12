@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
+import {Headers, RequestOptions} from '@angular/http';
 import {AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs/Observable';
 import {Cache} from './cache';
 
-
 @Injectable()
 export abstract class ServiceBase<TItem> {
+
+  protected headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
+  protected options = new RequestOptions({headers: this.headers});
+  protected serviceUrl: string;
 
   protected cacheList: Cache<Array<TItem>>;
   protected cache: Cache<TItem>;

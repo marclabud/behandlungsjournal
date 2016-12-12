@@ -1,18 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
-import {paths} from './../../../../server/src/server.conf';
+import {paths} from '../../../../server/src/server.conf';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
-
-  private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
-  private options = new RequestOptions({headers: this.headers});
-  private serviceUrl: string;
-
   // secured routes use authHttp
   // unsecured routes use HTTP (Login, Sign-Up)
   constructor(authHttp: AuthHttp, private http: Http) {

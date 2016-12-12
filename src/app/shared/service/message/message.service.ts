@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
+import {AuthHttp} from 'angular2-jwt';
 import {Subject} from 'rxjs/Subject';
 import {ServiceBase} from '../../service.base';
-import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class MessageService<TItem> extends ServiceBase<TItem> {

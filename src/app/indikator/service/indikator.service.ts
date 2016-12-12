@@ -1,16 +1,12 @@
 import {Injectable} from '@angular/core';
+import {AuthHttp} from 'angular2-jwt';
 import {ServiceBase} from '../../shared/service.base';
 import {paths} from '../../../../server/src/server.conf';
-import {Indikator} from '../model/indikator';
-import {Headers, RequestOptions} from '@angular/http';
 import {MessageService} from '../../shared/service/message/message.service';
-import {AuthHttp} from 'angular2-jwt';
+import {Indikator} from '../model/indikator';
 
 @Injectable()
 export class IndikatorService extends ServiceBase<Indikator> {
-  private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
-  private options = new RequestOptions({headers: this.headers});
-  private serviceUrl: string;
   public messageService;
 
   constructor(authHttp: AuthHttp) {

@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-
 import {JwtHelper, AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs';
 import {paths} from '../../../../../server/src/server.conf';
@@ -12,7 +11,6 @@ const JWT_STORAGE_KEY = 'token';
 @Injectable()
 export class AuthentificationService extends ServiceBase<User> {
   private validToken: string;
-  private serviceUrl: string;
   redirectUrl: string;
   jwthelper: JwtHelper = new JwtHelper();
 

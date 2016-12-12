@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Headers, RequestOptions} from '@angular/http';
 import {ServiceBase} from '../../shared/service.base';
 import {BhJournal} from '../model/bhjournal';
 import {paths} from '../../../../server/src/server.conf';
@@ -9,9 +8,6 @@ import {AuthHttp} from 'angular2-jwt';
 @Injectable()
 export class BhJournalService extends ServiceBase<BhJournal> {
 
-  private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
-  private options = new RequestOptions({headers: this.headers});
-  private serviceUrl: string;
   public messageService;
 
   constructor(authHttp: AuthHttp) {

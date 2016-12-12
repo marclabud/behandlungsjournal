@@ -1,18 +1,14 @@
 import {Injectable} from '@angular/core';
-import {Headers, RequestOptions} from '@angular/http';
-import 'rxjs/add/operator/map';
-import {ServiceBase} from '../../shared/service.base';
-import {Patient} from '../model/patient';
-import {paths} from '../../../../server/src/server.conf';
-import {MessageService} from '../../shared/service/message/message.service';
 import {AuthHttp} from 'angular2-jwt';
+import 'rxjs/add/operator/map';
+import {paths} from '../../../../server/src/server.conf';
+import {ServiceBase} from '../../shared/service.base';
+import {MessageService} from '../../shared/service/message/message.service';
+import {Patient} from '../model/patient';
 
 @Injectable()
 export class PatientService extends ServiceBase<Patient> {
 
-  private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
-  private options = new RequestOptions({headers: this.headers});
-  private serviceUrl: string;
   public messageService;
 
   constructor(authHttp: AuthHttp) {

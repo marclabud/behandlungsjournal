@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {Medikation} from '../model/medikation';
@@ -10,9 +9,6 @@ import {AuthHttp} from 'angular2-jwt';
 @Injectable()
 export class MedikationService extends ServiceBase<Medikation> {
 
-  private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
-  private options = new RequestOptions({headers: this.headers});
-  private serviceUrl: string;
   public messageService;
 
   constructor(authHTTP: AuthHttp) {
