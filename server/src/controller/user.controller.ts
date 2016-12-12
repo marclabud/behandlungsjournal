@@ -9,7 +9,7 @@ const authService = new AuthService();
 
 module.exports.getAllUsers = (request, response) => {
   let user: User = authService.whoIsUser(request);
-  console.log('getallusers: user name from token', user);
+  console.log('getAllUsers: user name from token', user);
   rbacService.setRoles(user.role);
   rbacService.rbac.check(user.name, 'manage').then(function (allowed) {
       if (allowed) {
