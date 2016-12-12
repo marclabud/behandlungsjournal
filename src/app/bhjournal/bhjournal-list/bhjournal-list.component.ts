@@ -13,9 +13,9 @@ export class BhjournalListComponent implements OnInit {
 
 
     /* tslint:disable-next-line:no-unused-variable */
-    private labelTherapieStart = 'Beginn';
+    private labelTherapieStart = 'Beginn:';
     /* tslint:disable-next-line:no-unused-variable */
-    private labelTherapieEnde = 'Ende';
+    private labelTherapieEnde = 'Ende:';
 
     private infoMsg = {body: '', type: 'info'};
 

@@ -20,6 +20,9 @@
     "e2e": "protractor",
     "loadtestdata": "node server/test/testdata.loader.js"
   },
+  "engines": {
+    "npm": "~6.5"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "~2.2.0",
@@ -59,7 +62,7 @@
     "@types/mongoose": "^4.6.1",
     "@types/morgan": "^1.7.31",
     "@types/node": "^6.0.38",
-    "angular-cli": "^1.0.0-beta.21",
+    "angular-cli": "1.0.0-beta.21",
     "codelyzer": "~0.0.26",
     "debug": "^2.2.0",
     "del": "^2.2.2",
