@@ -1,43 +1,51 @@
 <div *ngIf="!isLoading">
-  <div class="card">
-    <div class="card-header>"></div>
-    <div class="card-block row">
-      <button class="col-xs-3 btn btn-primary" (click)="onAddPatient()"><i
-        class="fa fa-floppy-o"></i>Hinzufügen
-      </button>
-      <div class="col-xs-1"></div>
-      <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>Meldung:</strong> {{infoMsg.body}}
-      </div>
-    </div>
-    <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient" (patientnew)="onNewPatient($event)"></app-patient-detail>
-      <div class="card-deck">
-        <div class="card" *ngFor="let patient of patients">
-          <div (click)="onSelect(patient)">
-          <div class="card-block">
-            <h4 class="card-title text-xs-center">Patient: {{patient.name}}</h4>
-            <div class="card-subtitle">{{patient.tierart}}</div>
-            <div class="card-text">{{patient.rasse}}</div>
-          </div>
-          <div class="card-block">
-            <div class="card-text text-xs-center">Tierhalter</div>
-            <div class="card-text">{{patient.eigentuemerVorname}}</div>
-            <div class="card-text">{{patient.eigentuemerNachname}}</div>
-          </div>
-          </div>
-          <div class="card-block">
-            <button class="btn btn-sm btn-primary" (click)="onEditPatient(patient)"><i
-              class="fa fa-pencil"></i>
-              Bearbeiten
+    <div class="card">
+        <div class="card-header>"></div>
+        <div class="card-block row">
+            <button class="col-xs-3 btn btn-primary" (click)="onAddPatient()"><i
+                    class="fa fa-floppy-o"></i>Hinzufügen
             </button>
-            <button class="btn btn-sm btn-warning" (click)="onDeletePatient(patient)"><i
-              class="fa fa-floppy-o"></i>Löschen
-            </button>
-          </div>
+            <div class="col-xs-1"></div>
+            <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Meldung:</strong> {{infoMsg.body}}
+            </div>
         </div>
-      </div>
+        <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient"
+                            (patientnew)="onNewPatient($event)"></app-patient-detail>
+        <div class="card-deck">
+            <div class="card card-outline-primary" *ngFor="let patient of patients">
+                <div (click)="onSelect(patient)">
+                    <div class="card-block">
+                        <h4 class="card-title text-xs-center">Patient {{patient.name}}</h4>
+                        <div class="row">
+                            <div class="col-sm-2 card-subtitle">Tierart:</div>
+                            <div class="col-sm-10 card-subtitle">{{patient.tierart}}</div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-2 card-text">Rasse:</div>
+                            <div class="col-sm-10 card-text">{{patient.rasse}}</div>
+                        </div>
+                    </div>
+
+                    <div class="card-block">
+                        <h5 class="card-text text-xs-center">Tierhalter</h5>
+                        <div class="card-text">{{patient.eigentuemerVorname}} {{patient.eigentuemerNachname}}</div>
+                    </div>
+                </div>
+
+                <div class="card-block">
+                    <button class="btn btn-sm btn-primary" (click)="onEditPatient(patient)"><i
+                            class="fa fa-pencil"></i>
+                        Bearbeiten
+                    </button>
+                    <button class="btn btn-sm btn-warning" (click)="onDeletePatient(patient)"><i
+                            class="fa fa-floppy-o"></i>Löschen
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
