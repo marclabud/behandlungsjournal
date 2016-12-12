@@ -4,55 +4,53 @@
   </div>
   <div *ngIf="medikation && !goBack">
     <div class="container-fluid">
-      <div class="jumbotron">
-        <div class="card">
-          <div *ngIf="!isEditing">
-            <h4 class="card-header">Neue Medikation hinzufügen</h4>
+      <div class="card">
+        <div *ngIf="!isEditing">
+          <h4 class="card-header">Neue Medikation hinzufügen</h4>
+        </div>
+        <div *ngIf="isEditing">
+          <h4 class="card-header">Medikation {{medikation.name}} ändern</h4>
+        </div>
+
+        <div class="card-block">
+          <div class="row">Name des Medikamentes:</div>
+          <div class="form-group row">
+            <input [(ngModel)]="medikation.name" class="form-control" type="text" placeholder="Name"/>
           </div>
-          <div *ngIf="isEditing">
-            <h4 class="card-header">Medikation {{medikation.name}} mutieren</h4>
+
+          <app-haeufigkeit [isEditing]="isEditing"
+                           (notifyHaufigkeitChanged)="onHaeufigkeitChange($event)"></app-haeufigkeit>
+
+          <div class="row">Dosierung:</div>
+          <div class="form-group row">
+            <input [(ngModel)]="medikation.dosierung" name="stueckanzahl" #stueckanzahl="ngModel"
+                   type="number" class="form-control" placeholder="Anzahl Tabletten"/>
           </div>
 
-          <div class="card-block">
-            <div class="row">Name des Medikamentes:</div>
-            <div class="form-group row">
-              <input [(ngModel)]="medikation.name" class="form-control" type="text" placeholder="Name"/>
-            </div>
+          <app-dauer [dauer]="medikation.dauer" [labelStartDatum]="labelStart" [labelEndeDatum]="labelEnde"
+                     (StartDatumChange)="onStartDatumChanged($event)"
+                     (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
 
-            <app-haeufigkeit [isEditing]="isEditing"
-                             (notifyHaufigkeitChanged)="onHaeufigkeitChange($event)"></app-haeufigkeit>
+          <div class="form-group row">
+            <button *ngIf="!isEditing" class="btn btn-success" type="submit" (click)="addMedication(medikation)"><i
+              class="fa fa-floppy-o"></i>
+              Hinzufügen
+            </button>
+            <button *ngIf="isEditing" class="btn btn-success" type="submit" (click)="editMedication(medikation)"><i
+              class="fa fa-floppy-o"></i>
+              Speichern
+            </button>
+            <button class="btn btn-primary" type="button" (click)="back()"><i
+              class="fa fa-floppy-o"></i>
+              Abbrechen
+            </button>
+          </div>
 
-            <div class="row">Dosierung:</div>
-            <div class="form-group row">
-              <input [(ngModel)]="medikation.dosierung" name="stueckanzahl" #stueckanzahl="ngModel"
-                     type="number" class="form-control" placeholder="Anzahl Tabletten"/>
-            </div>
-
-            <app-dauer [dauer]="medikation.dauer" [labelStartDatum]="labelStart" [labelEndeDatum]="labelEnde"
-                       (StartDatumChange)="onStartDatumChanged($event)"
-                       (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
-
-            <div class="form-group row">
-              <button *ngIf="!isEditing" class="btn btn-success" type="submit" (click)="addMedication(medikation)"><i
-                class="fa fa-floppy-o"></i>
-                Hinzufügen
-              </button>
-              <button *ngIf="isEditing" class="btn btn-success" type="submit" (click)="editMedication(medikation)"><i
-                class="fa fa-floppy-o"></i>
-                Speichern
-              </button>
-              <button class="btn btn-primary bhj-btn-right" type="button" (click)="back()"><i
-                class="fa fa-floppy-o"></i>
-                Abbrechen
-              </button>
-            </div>
-
-            <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Meldung:</strong> {{infoMsg.body}}
-            </div>
+          <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Meldung:</strong> {{infoMsg.body}}
           </div>
         </div>
       </div>

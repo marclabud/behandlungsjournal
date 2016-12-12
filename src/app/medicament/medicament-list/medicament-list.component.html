@@ -9,7 +9,7 @@
       <div class="card">
         <h4 class="card-header">Medikamente für das {{bhJournal.name}}
           <button class="btn btn-sm btn-primary bhj-btn-right" (click)="enableAdding()"><i
-            class="fa fa-floppy-o"></i>Hinzufügen
+            class="fa fa-floppy-o"></i>
           </button>
         </h4>
         <div class="card card-block">
@@ -17,7 +17,7 @@
           <div *ngIf="!isEditing">
             <div *ngFor="let medication of medications">
               <h5>Medikament: {{medication.name}}</h5>
-              <p>Wie oft ?</p>
+              <p>Wann einnehmen?</p>
                 <div class="col-sm-8">
                   <label
                     class="btn btn-sm btn-outline-info {{medication.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
