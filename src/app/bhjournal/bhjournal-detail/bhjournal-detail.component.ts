@@ -12,9 +12,9 @@ import * as moment from 'moment';
 export class BhjournalDetailComponent implements OnInit, OnChanges {
   private isLoading = true;
   /* tslint:disable-next-line:no-unused-variable */
-  private labelStart = 'Beginn';
+  private labelStart = 'Beginn:';
   /* tslint:disable-next-line:no-unused-variable */
-  private labelEnde = 'Ende';
+  private labelEnde = 'Ende:';
 
   private infoMsg = {body: '', type: 'info'};
 
