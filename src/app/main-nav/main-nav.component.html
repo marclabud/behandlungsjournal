@@ -12,7 +12,6 @@
       </li>
       <div *ngIf="userIsLoggedIn()">
         <li class="nav-item">
-
         </li>
         <li class="nav-item dropdown pull-lg-right">
           <a class="nav-link dropdown-toggle" href="patient-card" id="journal"
@@ -43,8 +42,11 @@
         </li>
       </div>
     </ul>
-    <form class="form-inline float-xs-right">
+    <div *ngIf="userIsLoggedIn()">
+      <form class="form-inline float-xs-right">
       <app-auth-button></app-auth-button>
     </form>
+    </div>
+
   </div>
 </nav>
