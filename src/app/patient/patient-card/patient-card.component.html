@@ -17,8 +17,8 @@
     <!-- ToDo Remove card-deck-wrapper when changed to flexbox-->
     <div class="card-deck-wrapper">
       <div class="card-deck">
-        <div class="card" *ngFor="let patient of patients"
-             (click)="onSelect(patient)">
+        <div class="card" *ngFor="let patient of patients">
+          <div (click)="onSelect(patient)">
           <div class="card-block">
             <h4 class="card-title text-xs-center">Patient: {{patient.name}}</h4>
             <div class="card-subtitle">{{patient.tierart}}</div>
@@ -29,12 +29,13 @@
             <div class="card-text">{{patient.eigentuemerVorname}}</div>
             <div class="card-text">{{patient.eigentuemerNachname}}</div>
           </div>
+          </div>
           <div class="card-block">
-            <button class="btn btn-sm btn-primary" (click)="onEditPatient()"><i
+            <button class="btn btn-sm btn-primary" (click)="onEditPatient(patient)"><i
               class="fa fa-pencil"></i>
               Bearbeiten
             </button>
-            <button class="btn btn-sm btn-warning" (click)="onDeletePatient()"><i
+            <button class="btn btn-sm btn-warning" (click)="onDeletePatient(patient)"><i
               class="fa fa-floppy-o"></i>Löschen
             </button>
           </div>

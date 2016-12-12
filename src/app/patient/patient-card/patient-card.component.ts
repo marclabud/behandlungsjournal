@@ -58,18 +58,19 @@ export class PatientCardComponent implements OnInit {
         this.isEditing = true;
         return this.selectedPatient;
     }
-    onEditPatient() {
+    onEditPatient(patient) {
+        this.selectedPatient = patient;
         this.isEditing = true;
     }
 
   /* tslint:disable-next-line:no-unused-variable */
-  private onDeletePatient() {
-    if (this.selectedPatient) {
-      this.patientService.deletePatient(this.selectedPatient).subscribe(
+  private onDeletePatient(patient) {
+    if (patient) {
+      this.patientService.deletePatient(patient).subscribe(
         res => {
           let pos = this.patients.map(obj => {
             return obj._id;
-          }).indexOf(this.selectedPatient._id);
+          }).indexOf(patient._id);
           this.patients.splice(pos, 1);
           this.actualizeCache();
           this.sendInfoMsg('Medikation erfolgreich gelöscht.', 'success');
