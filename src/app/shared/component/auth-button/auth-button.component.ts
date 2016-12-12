@@ -21,5 +21,9 @@ export class AuthButtonComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.auth.logout();
+  }
+
 
 }
