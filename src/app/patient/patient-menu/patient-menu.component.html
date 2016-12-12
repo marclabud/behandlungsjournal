@@ -1,2 +1,7 @@
-<label class="navbar-text">Patient: {{patient.name}}</label>
-<Button class="btn btn-info" (click)="onChoosePatient()">Auswählen</Button>
+<form class="form-inline">
+  <div class="input-group">
+    <span class="input-group-addon" id="SelectedPatient">Patient: {{patient.name}}</span>
+    <Button class="form-control btn btn-outline-info" (click)="onChoosePatient()">Auswählen</Button>
+  </div>
+</form>
+
