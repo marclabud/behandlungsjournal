@@ -32,7 +32,7 @@ export class PatientMenuComponent implements OnInit {
   }
   getSelectedPatient() {
     this.patient = this.patientService.readCache();
-    if (this.patient != null) {
+    if (this.patient !== null) {
       this.router.navigate(['/bhjournal']);
     } else {
       this.patient = new Patient();
