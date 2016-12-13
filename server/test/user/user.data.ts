@@ -16,6 +16,19 @@ export class UserData implements IData {
       'role': 'Arzt'
     },
     {
+      'name': 'Michael',
+      'email': 'michael.gfeller@hsr.ch',
+      'password': 'michael',
+      'role': 'Arzt'
+    },
+    {
+      'name': 'Silvan',
+      'email': 'silvan.gehrig@hsr.ch',
+      'password': 'silvan',
+      'role': 'Arzt'
+    },
+
+    {
       'name': 'Peter',
       'email': 'peter@gmail.com',
       'password': 'peter',

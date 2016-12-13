@@ -73,12 +73,12 @@ export class PatientCardComponent implements OnInit {
           }).indexOf(patient._id);
           this.patients.splice(pos, 1);
           this.actualizeCache();
-          this.sendInfoMsg('Medikation erfolgreich gelöscht.', 'success');
+          this.sendInfoMsg('Patient erfolgreich gelöscht.', 'success');
         },
         error => console.log(error)
       );
     } else {
-      this.sendInfoMsg('Kein Journal zum Löschen ausgewählt.', 'danger');
+      this.sendInfoMsg('Kein Patient zum Löschen ausgewählt.', 'danger');
     }
   }
 

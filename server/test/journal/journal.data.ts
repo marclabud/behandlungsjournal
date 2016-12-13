@@ -12,8 +12,8 @@ export class JournalData implements IData {
       patient_id:  new ObjectId('584a56feacef2512182a99fc'),
       diagnose: 'Bisswunde',
       dauer: {
-        startDatum: new Date('2016-10-07T00:00:00.00Z'),
-        endeDatum: new Date('2016-10-17T00:00:00.000Z')
+        startDatum: new Date('2016-12-07T00:00:00.00Z'),
+        endeDatum: new Date('2016-12-21T00:00:00.000Z')
       }
     },
     {
@@ -22,8 +22,8 @@ export class JournalData implements IData {
       patient_id: new ObjectId('584a584aacef2512182a99fd'),
       diagnose: 'Vergiftung',
       dauer: {
-        startDatum: new Date('2016-11-08T00:00:00.00Z'),
-        endeDatum: new Date('2016-11-17T00:00:00.000Z')
+        startDatum: new Date('2016-12-01T00:00:00.00Z'),
+        endeDatum: new Date('2016-12-18T00:00:00.000Z')
       }
     },
     {
@@ -32,8 +32,8 @@ export class JournalData implements IData {
       patient_id:  ObjectId('584a5986acef2512182a99fe'),
       diagnose: 'Stauchung',
       dauer: {
-        startDatum: new Date('2016-11-21T00:00:00.00Z'),
-        endeDatum: new Date('2016-11-30T00:00:00.00Z')
+        startDatum: new Date('2016-12-02T00:00:00.00Z'),
+        endeDatum: new Date('2016-12-21T00:00:00.00Z')
       }
     },
     {
