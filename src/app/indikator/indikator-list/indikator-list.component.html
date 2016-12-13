@@ -45,19 +45,19 @@
                       </label>
                     </div>
                   </div>
-                  <div *ngIf="indikatoren.length === 0">
-                    <div>
-                      <div>Es gibt keine Indikatoren für dieses Journal. Bitte Indikatoren erfassen.</div>
-                    </div>
+                </div>
+                <div *ngIf="indikatoren.length === 0">
+                  <div>
+                    <div>Es gibt keine Indikatoren für dieses Journal. Bitte Indikatoren erfassen.</div>
                   </div>
                 </div>
               </div>
-              <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>Meldung:</strong> {{infoMsg.body}}
-              </div>
+            </div>
+            <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>Meldung:</strong> {{infoMsg.body}}
             </div>
           </div>
         </div>
