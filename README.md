@@ -11,13 +11,14 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [**A**ngular 2](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
 * [Angular CLI](https://cli.angular.io): to generate the project
-* [Bootstrap](https://v4-alpha.getbootstrap.com/getting-started/introduction/): layout and styles
+* [SASS](http://sass-lang.com/libsass): to process SASS-Sources
+* [Bootstrap Version 4 alpha 5](https://v4-alpha.getbootstrap.com/getting-started/introduction/): SASS-sources as base for layout and styles
 * [Font Awesome](http://fontawesome.io): icons
 
 
 ## Prerequisites
 1. Install [**N**ode.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
-2. Install Angular CLI: `npm i angular-cli -g`
+2. Install Angular CLI: `npm i angular-cli@1.0.0-beta.21 -g` : Angular-cli version is important, due to beta state of the application.
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
@@ -30,7 +31,17 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 4. Go to [localhost:3000](http://localhost:3000)
 
 ## Production
-Run `ng build --prod` to create a production ready bundle.
+1. Command window 1: 
+ Windows: `mongod`: run MongoDB
+ Mac OS X: `mongod --config /usr/local/etc/mongod.conf`: run MongoDB
+ Mac OS X homebrew: `brew info mongo`: How to run mongoDB 
+ 
+2. Command window 2: 
+   `npm run init` : SASS-build, client-build for production, server-build
+   `npm start` : run Express server
+3. Go to [localhost:3000](http://localhost:3000)   
+    
+ 
 
 [Build Details](/docs/build.md) 
 
