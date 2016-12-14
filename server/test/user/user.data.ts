@@ -10,6 +10,12 @@ export class UserData implements IData {
       'role': 'Gast'
     },
     {
+      'name': 'Peter',
+      'email': 'peter@gmail.com',
+      'password': 'peter',
+      'role': 'Tierpfleger'
+    },
+    {
       'name': 'Paul',
       'email': 'paul@gmail.com',
       'password': 'paul',
@@ -26,13 +32,6 @@ export class UserData implements IData {
       'email': 'silvan.gehrig@hsr.ch',
       'password': 'silvan',
       'role': 'Administrator'
-    },
-
-    {
-      'name': 'Peter',
-      'email': 'peter@gmail.com',
-      'password': 'peter',
-      'role': 'Tierpfleger'
     }
   ];
 
