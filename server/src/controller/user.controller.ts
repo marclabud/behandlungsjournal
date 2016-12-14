@@ -11,7 +11,7 @@ module.exports.getAllUsers = (request, response) => {
   let user: User = authService.whoIsUser(request);
   console.log('getAllUsers: user name from token', user);
   rbacService.setRoles(user.role);
-  rbacService.rbac.check(user.name, 'manage').then(function (allowed) {
+  rbacService.rbac.check(user.name, 'manage, administrate').then(function (allowed) {
       if (allowed) {
         UserCollection.find({}, (err, docs) => {
           if (err) {

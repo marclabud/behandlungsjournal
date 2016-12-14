@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
 
   private users: Array<User> = [];
   private user: User = null;
-  protected roles: [string] = ['Gast', 'Tierpfleger', 'Arzt'];
+  protected roles: [string] = ['Gast', 'Tierpfleger', 'Arzt', 'Administrator'];
   private labelRole: string = 'Rolle';
 
   private isLoading = true;

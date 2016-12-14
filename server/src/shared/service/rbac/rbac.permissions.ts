@@ -25,6 +25,10 @@ export class RbacPermissions implements IData {
       'Tierpfleger': {
         inherited: ['Writer', 'Editor'],
       },
+      'Administrator': {
+        permissions: ['administrate'],
+        inherited: ['Director']
+      },
       'Arzt': {
         permissions: ['manage'],
         inherited: ['Director']
