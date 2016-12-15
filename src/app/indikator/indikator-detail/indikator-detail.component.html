@@ -15,7 +15,11 @@
         <div class="card-block">
           <div class="row">Name des Indikators:</div>
           <div class="form-group row">
-            <input [(ngModel)]="indikator.name" class="form-control" type="text" placeholder="Name"/>
+            <input [(ngModel)]="indikator.name" class="form-control" type="text" placeholder="Name" aria-describedby="IndikatorHelpBlock"/>
+            <p id="IndikatorHelpBlock" class="form-text text-muted">
+              Bitte den Namen des Indikators eingeben.
+            </p>
+
           </div>
 
           <app-haeufigkeit [isEditing]="isEditing"

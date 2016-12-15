@@ -15,7 +15,11 @@
         <div class="card-block">
           <div class="row">Name des Medikamentes:</div>
           <div class="form-group row">
-            <input [(ngModel)]="medikation.name" class="form-control" type="text" placeholder="Name"/>
+            <input [(ngModel)]="medikation.name" class="form-control" type="text" placeholder="Name" aria-describedby="MedikamentHelpBlock"/>
+            <p id="MedikamentHelpBlock" class="form-text text-muted">
+              Bitte den Namen des Medikaments eingeben.
+            </p>
+
           </div>
 
           <app-haeufigkeit [isEditing]="isEditing"
@@ -24,7 +28,10 @@
           <div class="row">Dosierung:</div>
           <div class="form-group row">
             <input [(ngModel)]="medikation.dosierung" name="stueckanzahl" #stueckanzahl="ngModel"
-                   type="number" class="form-control" placeholder="Anzahl Tabletten"/>
+                   type="number" class="form-control" placeholder="Anzahl Tabletten" aria-describedby="MedikamentHelpBlock"/>
+            <p id="DosierungHelpBlock" class="form-text text-muted" >
+              Bitte die Dosierung des Medikaments eingeben.
+            </p>
           </div>
 
           <app-dauer [dauer]="medikation.dauer" [labelStartDatum]="labelStart" [labelEndeDatum]="labelEnde"
