@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {Patient} from '../model/patient';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -9,7 +9,7 @@ import {MessageService} from '../../shared/service/message/message.service';
     styleUrls: ['./patient-card.component.scss']
 })
 
-export class PatientCardComponent implements OnInit {
+export class PatientCardComponent implements OnInit , OnChanges{
 
     private patients: Array<Patient> = [];
     private isLoading = true;
@@ -25,11 +25,12 @@ export class PatientCardComponent implements OnInit {
     constructor(private patientService: PatientService) {
         this.messageService = patientService.messageService;
     }
-
     ngOnInit() {
         this.getPatients();
     }
-
+    ngOnChanges() {
+         this.isEditing = false;
+    }
     getPatients() {
         this.patientService.getAllItems().subscribe(
             data => {
@@ -40,29 +41,35 @@ export class PatientCardComponent implements OnInit {
             () => this.isLoading = false
         );
     }
-
     onSelect(patient: Patient): void {
         this.selectedPatient = patient;
         console.log('Component list view onSelect', patient);
         this.PatientAnzeige = this.selectedPatient.name;
         this.messageService.selectItem(patient);
-
     }
-
-    onAddPatient(): Patient {
-        let patient = new Patient();
-        patient.name = 'Neuer Patient';
-        console.log('onselect patient', patient);
-        this.selectedPatient = patient;
-        console.log('onselect selectedPatient', this.selectedPatient);
-        this.isEditing = true;
+    // Ein neuer Patient soll im patient-Detail angelegt werden (button-click hinzufügen)
+   onAddPatient(): Patient {
+     let patient = new Patient();
+     patient.name = 'Neuer Patient';
+     this.selectedPatient = patient;
+     // Patient-Detail anzeigen
+     this.isEditing = true;
+      return this.selectedPatient;
+   }
+    // Im Patient-Detail wurde ein neuer Patient angelegt
+    onNewPatient(patient: Patient): Patient {
+       console.log('onselect selectedPatient', this.selectedPatient);
+       this.selectedPatient = patient;
+        this.patients.push(patient);
+        this.actualizeCache();
+        this.isEditing = false;
         return this.selectedPatient;
     }
-    onEditPatient(patient) {
+    onEditPatient(patient: Patient): void {
+        console.log( 'OnEditPatient isEditing', this.isEditing);
         this.selectedPatient = patient;
         this.isEditing = true;
     }
-
   /* tslint:disable-next-line:no-unused-variable */
   private onDeletePatient(patient) {
     if (patient) {
@@ -81,11 +88,10 @@ export class PatientCardComponent implements OnInit {
       this.sendInfoMsg('Kein Patient zum Löschen ausgewählt.', 'danger');
     }
   }
+  onDetailDone() {
+    this.isEditing = false;
+  };
 
-  onNewPatient(newPatient: Patient) {
-      console.log ('onNewPerson', newPatient);
-      this.patients.push(newPatient);
-  }
 
   private actualizeCache() {
     this.patientService.writeCacheList(this.patients);
@@ -96,9 +102,5 @@ export class PatientCardComponent implements OnInit {
         this.infoMsg.type = type;
         window.setTimeout(() => this.infoMsg.body = '', time);
     }
-
-    // private actualizeCache() {
-    //     this.bhjournalService.writeCacheList(this.journals);
-    // }
 
 }

@@ -1,3 +1,6 @@
+@import "../../../sass/mixins/_cards";
+@import "../../../sass/_variables";
+
 .card.card-outline-primary:hover {
-    background-color: #eceeef;
+  @include card-variant($gray-lightest,$brand-primary );
 }
