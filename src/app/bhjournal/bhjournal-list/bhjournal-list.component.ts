@@ -61,7 +61,7 @@ export class BhjournalListComponent implements OnInit {
                     }).indexOf(this.selectedJournal._id);
                     this.journals.splice(pos, 1);
                     this.actualizeCache();
-                    this.sendInfoMsg('Medikation erfolgreich gelöscht.', 'success');
+                    this.sendInfoMsg('Journal erfolgreich gelöscht.', 'success');
                 },
                 error => console.log(error)
             );

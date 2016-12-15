@@ -3,30 +3,33 @@
     <div class="card">
       <div class="card-header>"></div>
       <div class="card-block row">
-        <button class="col-xs-5 btn btn-primary" (click)="onCreateJournal()"><i
+        <button class="col-sm-6 col-md-4 col-lg-3 btn btn-primary" (click)="onCreateJournal()"><i
           class="fa fa-floppy-o"></i>Hinzufügen
         </button>
-        <div class="col-xs-1"></div>
-        <button class="col-xs-5 btn btn-warning" (click)="onDeleteJournal()"><i
-          class="fa fa-floppy-o"></i>Löschen
-        </button>
+      </div>
+      <div class="card-block">
         <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
+            <strong>Meldung:</strong> {{infoMsg.body}}
           </button>
-          <strong>Meldung:</strong> {{infoMsg.body}}
         </div>
       </div>
       <ul class="card-block list-group">
         <li class="list-group-item list-group-item-action" *ngFor="let journal of journals"
             (click)="onSelect(journal)">
-          <h2 class="card-header">{{journal.name}}</h2>
+          <h4 class="card-header">{{journal.name}}</h4>
           <div class="row">
             <p class="col-sm-2">Diagnose:</p>
             <p class="col-sm-10">{{journal.diagnose}}</p>
           </div>
           <app-dauer [isEditing]="false" [dauer]="journal.dauer" [labelStartDatum]="labelTherapieStart"
                      [labelEndeDatum]="labelTherapieEnde"></app-dauer>
+          <div class="card-block">
+            <button class="col-sm-6 col-md-4 col-lg-3 btn btn-warning btn-sm" (click)="onDeleteJournal()"><i
+              class="fa fa-floppy-o"></i>Löschen
+            </button>
+          </div>
         </li>
       </ul>
     </div>

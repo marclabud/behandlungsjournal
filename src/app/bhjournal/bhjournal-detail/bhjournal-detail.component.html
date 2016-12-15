@@ -1,15 +1,19 @@
 <div *ngIf="!isLoading">
-    <div class="card">
-        <div class="card-block row">
-            <h2 class="col-xs-12">Im Detail</h2>
+    <div class="card card-block">
+        <div class="form-group row">
+            <h4 class="col-sm-10">Im Detail</h4>
         </div>
-        <div class="card-block row">
-            <label class="col-xs-4">Name des Journals: </label>
-            <input [(ngModel)]="bhJournal.name" class="col-xs-8" type="text" placeholder="Name"/>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Name des Journals: </label>
+          <div class="col-sm-8">
+            <input [(ngModel)]="bhJournal.name" class="form-control" type="text" placeholder="Name"/>
+          </div>
         </div>
-        <div class="card-block row">
-            <label class="col-xs-4">Diagnose: </label>
-            <input [(ngModel)]="bhJournal.diagnose" class="col-xs-8" type="text" placeholder="Diagnose"/>
+        <div class="form-group row">
+            <label class="col-sm-3">Diagnose: </label>
+          <div class="col-sm-8">
+            <input [(ngModel)]="bhJournal.diagnose" class="form-control" type="text" placeholder="Diagnose"/>
+          </div>
         </div>
 
         <app-dauer [isEditing]="true" [dauer]="bhJournal.dauer" [labelStartDatum]="labelStart"
@@ -17,22 +21,22 @@
                    (StartDatumChange)="onStartDatumChanged($event)"
                    (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
 
-        <div class="card-block row">
-            <button class="col-xs-5 btn btn-sm btn-primary" type="submit"
+        <div class="form-group">
+            <button class="col-sm-3 btn btn-sm btn-primary" type="submit"
                     (click)="saveBhJournal(bhJournal)">
                 Speichern
             </button>
-            <div class="col-xs-1"></div>
-            <button class="col-xs-5 btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
+            <button class="offset-sm-1 col-sm-3 btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
                 Abbrechen
             </button>
-            <div class="col-xs-1"></div>
         </div>
+      <div class="formgroup">
         <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <strong>Meldung:</strong> {{infoMsg.body}}
         </div>
+      </div>
     </div>
 </div>
