@@ -1,6 +1,4 @@
 <div class="container-fluid">
-    <p>{{isEditing}}</p>
-    <div *ngIf="patient"><p>{{patient.name}}</p></div>
     <div *ngIf="isEditing && patient">
       <div class="row">
         <h4 class="col-sm-10">{{patient.name}}</h4>

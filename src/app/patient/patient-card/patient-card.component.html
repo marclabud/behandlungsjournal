@@ -1,53 +1,57 @@
 <div class="container-fluid">
-<div *ngIf="!isLoading">
+  <div *ngIf="!isLoading">
     <div class="card">
+      <div *ngIf="isEditing">
+        <app-patient-detail [(isEditing)]="isEditing" [patient]="selectedPatient"
+                            (patientnew)="onNewPatient($event)" (editingDone)="onDetailDone()"></app-patient-detail>
+      </div>
+      <div *ngIf="!isEditing">
         <div class="card-header>"></div>
         <div class="card-block row">
-            <button class="col-sm-6 col-md-4 col-lg-2 btn btn-primary" (click)="onAddPatient()"><i
-                    class="fa fa-floppy-o"></i>Hinzufügen
+          <button class="col-sm-6 col-md-4 col-lg-2 btn btn-primary" (click)="onAddPatient()"><i
+            class="fa fa-floppy-o"></i>Hinzufügen
+          </button>
+          <div class="row"></div>
+          <div [hidden]="!infoMsg.body" class="col-sm-12 alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
-            <div class="row"></div>
-            <div [hidden]="!infoMsg.body" class="col-sm-12 alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>Meldung:</strong> {{infoMsg.body}}
-            </div>
+            <strong>Meldung:</strong> {{infoMsg.body}}
+          </div>
         </div>
-        <app-patient-detail [isEditing]="isEditing" [patient]="selectedPatient"
-                            (patientnew)="onNewPatient($event)"></app-patient-detail>
         <div class="card-deck">
-            <div class="card card-outline-primary" *ngFor="let patient of patients">
-                <div (click)="onSelect(patient)">
-                    <div class="card-block">
-                        <h4 class="card-title text-xs-center">Patient {{patient.name}}</h4>
-                        <div class="row">
-                            <div class="col-sm-4 card-text">Tierart:</div>
-                            <div class="col-sm-8 card-text">{{patient.tierart}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4 card-text">Rasse:</div>
-                            <div class="col-sm-8 card-text">{{patient.rasse}}</div>
-                        </div>
-                    </div>
-
-                    <div class="card-block">
-                        <h5 class="card-text text-xs-center">Tierhalter</h5>
-                        <div class="card-text">{{patient.eigentuemerVorname}} {{patient.eigentuemerNachname}}</div>
-                    </div>
+          <div class="card card-outline-primary" *ngFor="let patient of patients">
+            <div (click)="onSelect(patient)">
+              <div class="card-block">
+                <h4 class="card-title text-xs-center">Patient {{patient.name}}</h4>
+                <div class="row">
+                  <div class="col-sm-4 card-text">Tierart:</div>
+                  <div class="col-sm-8 card-text">{{patient.tierart}}</div>
                 </div>
-
-                <div class="card-block">
-                    <button class="btn btn-sm btn-primary" (click)="onEditPatient(patient)"><i
-                            class="fa fa-pencil"></i>
-                        Bearbeiten
-                    </button>
-                    <button class="btn btn-sm btn-warning" (click)="onDeletePatient(patient)"><i
-                            class="fa fa-floppy-o"></i>Löschen
-                    </button>
+                <div class="row">
+                  <div class="col-sm-4 card-text">Rasse:</div>
+                  <div class="col-sm-8 card-text">{{patient.rasse}}</div>
                 </div>
+              </div>
+
+              <div class="card-block">
+                <h5 class="card-text text-xs-center">Tierhalter</h5>
+                <div class="card-text">{{patient.eigentuemerVorname}} {{patient.eigentuemerNachname}}</div>
+              </div>
             </div>
+
+            <div class="card-block">
+              <button class="btn btn-sm btn-primary" (click)="onEditPatient(patient)"><i
+                class="fa fa-pencil"></i>
+                Bearbeiten
+              </button>
+              <button class="btn btn-sm btn-warning" (click)="onDeletePatient(patient)"><i
+                class="fa fa-floppy-o"></i>Löschen
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>

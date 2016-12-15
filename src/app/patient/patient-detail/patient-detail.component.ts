@@ -20,6 +20,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   @Input() isEditing: boolean= false;
 
   @Output() patientnew:  EventEmitter<Patient> = new EventEmitter<Patient>();
+  @Output() editingDone: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
   constructor(http: Http, private patientService: PatientService) {
@@ -42,6 +43,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
           this.patientnew.emit(this.newPatient);
+          this.editingDone.emit(false);
           this.isEditing = false;
           this.patient = null;
         },
@@ -53,6 +55,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
         res => {
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich geändert.', 'success');
+          this.editingDone.emit(false);
           this.isEditing = false;
           this.patient = null;
         },
@@ -63,6 +66,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
 
   onCancel(patient) {
     this.isEditing = false;
+    this.editingDone.emit(false);
     this.patient = null;
   }
 

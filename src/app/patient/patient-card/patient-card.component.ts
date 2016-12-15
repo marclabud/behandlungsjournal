@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {Patient} from '../model/patient';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -9,7 +9,7 @@ import {MessageService} from '../../shared/service/message/message.service';
     styleUrls: ['./patient-card.component.scss']
 })
 
-export class PatientCardComponent implements OnInit {
+export class PatientCardComponent implements OnInit , OnChanges{
 
     private patients: Array<Patient> = [];
     private isLoading = true;
@@ -25,11 +25,12 @@ export class PatientCardComponent implements OnInit {
     constructor(private patientService: PatientService) {
         this.messageService = patientService.messageService;
     }
-
     ngOnInit() {
         this.getPatients();
     }
-
+    ngOnChanges() {
+         this.isEditing = false;
+    }
     getPatients() {
         this.patientService.getAllItems().subscribe(
             data => {
@@ -40,7 +41,6 @@ export class PatientCardComponent implements OnInit {
             () => this.isLoading = false
         );
     }
-
     onSelect(patient: Patient): void {
         this.selectedPatient = patient;
         console.log('Component list view onSelect', patient);
@@ -88,6 +88,9 @@ export class PatientCardComponent implements OnInit {
       this.sendInfoMsg('Kein Patient zum Löschen ausgewählt.', 'danger');
     }
   }
+  onDetailDone() {
+    this.isEditing = false;
+  };
 
 
   private actualizeCache() {
