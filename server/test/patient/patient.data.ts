@@ -5,6 +5,15 @@ const ObjectId = mongoose.Types.ObjectId;
 export class PatientData implements IData {
 
   private patienten = [
+
+    {
+      _id: new ObjectId('584ada13b339191fc494ed18'),
+      name: 'Toni',
+      tierart: 'Vogel',
+      rasse: 'Türkisvogel',
+      eigentuemerVorname: 'Thomas',
+      eigentuemerNachname: 'Test'
+    },
     {
       _id: new ObjectId('584a56feacef2512182a99fc'),
       name: 'Strolch',

@@ -43,6 +43,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
           this.patientnew.emit(this.newPatient);
           this.isEditing = false;
+          this.patient = null;
         },
         error => console.log(error)
       );
@@ -52,16 +53,17 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
         res => {
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich geändert.', 'success');
+          this.isEditing = false;
+          this.patient = null;
         },
         error => console.log(error)
       );
     }
   }
 
-  onCancel() {
-    console.log('Dialog Abbrechen');
+  onCancel(patient) {
     this.isEditing = false;
-    this.patient = undefined;
+    this.patient = null;
   }
 
   sendInfoMsg(body, type, time = 3000) {

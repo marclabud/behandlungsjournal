@@ -1,4 +1,6 @@
-<div *ngIf="patient && isEditing">
+<p>{{isEditing}}</p>
+<div *ngIf="patient"><p>{{patient.name}}</p></div>
+<div *ngIf="isEditing && patient">
   <div class="form-group row">
     <h2 class="col-xs-7">{{patient.name}}</h2>
   </div>
@@ -26,7 +28,7 @@
     <button class="col-xs-3 col-form-label btn btn-sm btn-primary" type="submit" (click)="savePatient(patient)">
       Speichern
     </button>
-    <button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">
+    <button class="col-xs-7 col-form-label btn btn-sm btn btn-secondary" type="reset" (click)="onCancel(patient)">
       Abbrechen
     </button>
   </div>
