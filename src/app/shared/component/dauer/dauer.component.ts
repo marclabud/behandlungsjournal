@@ -6,7 +6,7 @@ import {Dauer} from '../../model/dauer';
 @Component({
   selector: 'app-dauer',
   templateUrl: './dauer.component.html',
-  styleUrls: ['./dauer.component.css']
+  styleUrls: ['./dauer.component.scss']
 })
 export class DauerComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */

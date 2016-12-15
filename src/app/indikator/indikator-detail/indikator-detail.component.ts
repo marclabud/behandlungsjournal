@@ -13,7 +13,7 @@ import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/hae
 @Component({
   selector: 'app-indikator-detail',
   templateUrl: './indikator-detail.component.html',
-  styleUrls: ['./indikator-detail.component.css']
+  styleUrls: ['./indikator-detail.component.scss']
 })
 export class IndikatorDetailComponent implements OnInit, OnDestroy {
 

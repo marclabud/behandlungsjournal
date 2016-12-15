@@ -5,7 +5,7 @@ import {BhJournalService} from '../service/bhjournal.service';
 @Component({
     selector: 'app-bhjournal-list',
     templateUrl: 'bhjournal-list.component.html',
-    styleUrls: ['bhjournal-list.component.css']
+    styleUrls: ['bhjournal-list.component.scss']
 })
 export class BhjournalListComponent implements OnInit {
     private isLoading = true;

@@ -9,7 +9,7 @@ enum HAEUFIGKEIT {MORGENS, MITTAGS, ABENDS}
 @Component({
   selector: 'app-haeufigkeit',
   templateUrl: './haeufigkeit.component.html',
-  styleUrls: ['./haeufigkeit.component.css']
+  styleUrls: ['./haeufigkeit.component.scss']
 })
 export class HaeufigkeitComponent implements OnInit, OnDestroy {
 

@@ -8,7 +8,7 @@ import {MessageService} from '../../shared/service/message/message.service';
 @Component({
   selector: 'app-patient-detail',
   templateUrl: './patient-detail.component.html',
-  styleUrls: ['./patient-detail.component.css']
+  styleUrls: ['./patient-detail.component.scss']
 })
 export class PatientDetailComponent implements OnInit, OnDestroy {
   private infoMsg = {body: '', type: 'info'};

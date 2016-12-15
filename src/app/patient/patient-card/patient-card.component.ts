@@ -6,7 +6,7 @@ import {MessageService} from '../../shared/service/message/message.service';
 @Component({
     selector: 'app-patient-card',
     templateUrl: './patient-card.component.html',
-    styleUrls: ['./patient-card.component.css']
+    styleUrls: ['./patient-card.component.scss']
 })
 
 export class PatientCardComponent implements OnInit {

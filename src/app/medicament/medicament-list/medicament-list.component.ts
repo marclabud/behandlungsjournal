@@ -9,7 +9,7 @@ import {Medikation} from '../model/medikation';
 @Component({
   selector: 'app-medicament-list',
   templateUrl: './medicament-list.component.html',
-  styleUrls: ['./medicament-list.component.css']
+  styleUrls: ['./medicament-list.component.scss']
 })
 export class MedicamentListComponent implements OnInit, OnDestroy {
   private messageServiceBhJournal: MessageService<BhJournal>;

@@ -5,7 +5,7 @@ import {User} from '../../../user/model/user';
 @Component({
   selector: 'app-auth-button',
   templateUrl: './auth-button.component.html',
-  styleUrls: ['./auth-button.component.css']
+  styleUrls: ['./auth-button.component.scss']
 })
 export class AuthButtonComponent implements OnInit {
   private buttonTxt: string = 'Login';

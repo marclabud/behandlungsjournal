@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-bhjournal-list-detail',
   templateUrl: './bhjournal-list-detail.component.html',
-  styleUrls: ['./bhjournal-list-detail.component.css']
+  styleUrls: ['./bhjournal-list-detail.component.scss']
 })
 // kombiniertes ListDetail-Control für die Bearbeitung der Behandlungsjournale
 

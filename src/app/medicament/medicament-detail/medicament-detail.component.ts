@@ -12,7 +12,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-medicament-detail',
   templateUrl: './medicament-detail.component.html',
-  styleUrls: ['./medicament-detail.component.css']
+  styleUrls: ['./medicament-detail.component.scss']
 })
 export class MedicamentDetailComponent implements OnInit, OnDestroy {
 

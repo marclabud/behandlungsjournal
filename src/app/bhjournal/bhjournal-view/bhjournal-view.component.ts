@@ -11,7 +11,7 @@ import {Dauer} from '../../shared/model/dauer';
 @Component({
   selector: 'app-bhjournal',
   templateUrl: 'bhjournal-view.component.html',
-  styleUrls: ['bhjournal-view.component.css']
+  styleUrls: ['bhjournal-view.component.scss']
 })
 export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';

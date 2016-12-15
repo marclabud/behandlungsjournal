@@ -7,7 +7,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-bhjournal-detail',
   templateUrl: 'bhjournal-detail.component.html',
-  styleUrls: ['bhjournal-detail.component.css']
+  styleUrls: ['bhjournal-detail.component.scss']
 })
 export class BhjournalDetailComponent implements OnInit, OnChanges {
   private isLoading = true;

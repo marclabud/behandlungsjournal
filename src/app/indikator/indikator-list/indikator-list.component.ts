@@ -9,7 +9,7 @@ import {IndikatorService} from '../service/indikator.service';
 @Component({
   selector: 'app-indikator-list',
   templateUrl: './indikator-list.component.html',
-  styleUrls: ['./indikator-list.component.css']
+  styleUrls: ['./indikator-list.component.scss']
 })
 export class IndikatorListComponent implements OnInit, OnDestroy {
   private messageService: MessageService<BhJournal>;

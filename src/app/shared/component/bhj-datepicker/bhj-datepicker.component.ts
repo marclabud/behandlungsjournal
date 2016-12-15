@@ -4,7 +4,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-datepicker',
   templateUrl: './bhj-datepicker.component.html',
-  styleUrls: ['./bhj-datepicker.component.css']
+  styleUrls: ['./bhj-datepicker.component.scss']
 })
 export class BhjDatepickerComponent implements OnInit {
   @Input() private defaultDate: moment.Moment;

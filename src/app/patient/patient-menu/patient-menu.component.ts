@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-patient-menu',
   templateUrl: './patient-menu.component.html',
-  styleUrls: ['./patient-menu.component.css']
+  styleUrls: ['./patient-menu.component.scss']
 })
 export class PatientMenuComponent implements OnInit {
   private messageServicePatient: MessageService<Patient>;
