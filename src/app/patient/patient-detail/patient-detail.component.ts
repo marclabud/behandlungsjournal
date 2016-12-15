@@ -19,7 +19,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   @Input() patient: Patient;
   @Input() isEditing: boolean= false;
 
-  @Output() patientnew:  EventEmitter<Patient> = new EventEmitter<Patient>();
+  @Output() patientNew:  EventEmitter<Patient> = new EventEmitter<Patient>();
   @Output() editingDone: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
@@ -42,7 +42,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
           this.newPatient = res.json();
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
-          this.patientnew.emit(this.newPatient);
+          this.patientNew.emit(this.newPatient);
           this.editingDone.emit(false);
           this.isEditing = false;
           this.patient = null;

@@ -27,17 +27,21 @@ export class BhjournalListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getJournals(this.journals);
+      this.getJournals(this.journals);
     }
 
-    private getJournals(journals: Array<BhJournal>) {
-        console.log('getJournals Parameter journals: ', journals);
-        // this.bhJournalChange.emit(journals.length);
-        this.journals = journals;
-        console.log(this.journals.length);
-        this.isLoading = false;
-        // this.bhJournalChange.emit(this.journals.length);
+  private getJournals(journals: Array<BhJournal>) {
+    console.log('getJournals Parameter journals: ', journals);
+    this.journals = journals;
+    if (1 === this.journals.length) {   // Genau 1 Journal vorhanden
+      this.selectedJournal = this.journals[0];
+      this.bhJournalChange.emit(this.selectedJournal);
     }
+    if (0 === this.journals.length) {   // Kein Journal vorhanden: Neues Anlegen
+      this.onCreateJournal();
+    }
+    this.isLoading = false;
+  }
 
     onSelect(journal: BhJournal) {
         console.log('selectedJournal', journal);
@@ -47,8 +51,9 @@ export class BhjournalListComponent implements OnInit {
 
     /* tslint:disable-next-line:no-unused-variable */
     onCreateJournal() {
-        let newbhJournal = new BhJournal();
-        this.bhJournalChange.emit(newbhJournal);
+        let newBhJournal = new BhJournal();
+        newBhJournal.name = 'Neues Journal';
+        this.bhJournalChange.emit(newBhJournal);
     }
 
     /* tslint:disable-next-line:no-unused-variable */

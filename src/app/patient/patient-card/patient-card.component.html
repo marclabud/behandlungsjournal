@@ -3,7 +3,7 @@
     <div class="card">
       <div *ngIf="isEditing">
         <app-patient-detail [(isEditing)]="isEditing" [patient]="selectedPatient"
-                            (patientnew)="onNewPatient($event)" (editingDone)="onDetailDone()"></app-patient-detail>
+                            (patientNew)="onNewPatient($event)" (editingDone)="onDetailDone()"></app-patient-detail>
       </div>
       <div *ngIf="!isEditing">
         <div class="card-header>"></div>

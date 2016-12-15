@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {BhJournal} from '../model/bhjournal';
 import {Patient} from '../../patient/model/patient';
@@ -25,6 +25,8 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
   @Input() bhJournal: BhJournal = new BhJournal();
   @Input() patient: Patient = new Patient();
 
+  @Output() bhJournalChanged:  EventEmitter<BhJournal> = new EventEmitter<BhJournal>();
+
   constructor(private bhjournalService: BhJournalService) {
   }
   ngOnInit() {
@@ -37,17 +39,12 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
   private checkBhJournal() {
     // Prüfen auf neues BhJournal
     if (!this.bhJournal._id) {
-      // Neues Journal anlegen
-      this.bhJournal = this.initBhJournal(this.patient);
+      // Ausgewählten Patienten zuweisen
+      this.bhJournal.patient_id = this.patient._id;
     }
     this.isLoading = false;
   }
-  private initBhJournal(patient: Patient): BhJournal {
-    let newBhJournal = new BhJournal();
-    newBhJournal.patient_id = patient._id;
-    console.log ('Neues BhJournal', newBhJournal);
-    return newBhJournal;
-  }
+
   saveBhJournal(bhjournal) {
     console.log('Behandlungsjournal wird gespeichert', bhjournal);
     if (!bhjournal._id) {
@@ -70,6 +67,7 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
         error => console.log(error)
       );
     }
+    this.bhJournalChanged.emit(bhjournal);
   }
   onCancel() {
     // FormReset auf Initiale Bhjournalwerte

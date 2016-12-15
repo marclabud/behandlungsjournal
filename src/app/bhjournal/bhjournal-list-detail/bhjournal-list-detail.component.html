@@ -5,7 +5,7 @@
       </div>
       <div *ngIf="selectedBhJournal && selectedPatient">
         <div class="col-sm-6">
-          <app-bhjournal-detail [patient]="selectedPatient" [bhJournal]="selectedBhJournal"></app-bhjournal-detail>
+          <app-bhjournal-detail [patient]="selectedPatient" [bhJournal]="selectedBhJournal" (bhJournalChanged)="onbhJournalChange($event)"></app-bhjournal-detail>
         </div>
       </div>
     </div>

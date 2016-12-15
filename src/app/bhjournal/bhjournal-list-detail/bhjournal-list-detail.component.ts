@@ -59,6 +59,16 @@ export class BhjournalListDetailComponent implements OnInit, OnDestroy {
     console.log ('LD: onJournalselected', journal);
     this.selectedBhJournal = journal;
   }
+
+  onbhJournalChange(bhJournal: BhJournal) {
+    // Wenn geändert, dann im Array, ansonsten hinzufügen.
+    console.log ('indexof bhjournal', this.bhJournals.indexOf(bhJournal));
+    if (-1 === this.bhJournals.indexOf(bhJournal) ) {
+      // bhjournal ist neu
+      this.bhJournals.push(bhJournal);
+    }
+
+  }
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();

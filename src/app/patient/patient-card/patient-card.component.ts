@@ -9,7 +9,7 @@ import {MessageService} from '../../shared/service/message/message.service';
     styleUrls: ['./patient-card.component.scss']
 })
 
-export class PatientCardComponent implements OnInit , OnChanges{
+export class PatientCardComponent implements OnInit , OnChanges {
 
     private patients: Array<Patient> = [];
     private isLoading = true;
