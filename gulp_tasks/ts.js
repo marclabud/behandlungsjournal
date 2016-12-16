@@ -10,7 +10,7 @@ gulp.task('ts', tsc);
 
 function tsc() {
   gutil.log("tsc call started");
-  tsProject.src()
+  gulp.src(["server/src/**/*.ts","server/test/**/*.ts"])
     .on('error', gutil.log)
     .pipe(tsProject())
     .pipe(gulp.dest(conf.paths.dist));

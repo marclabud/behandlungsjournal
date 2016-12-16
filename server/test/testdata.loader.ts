@@ -15,9 +15,18 @@ import {MedikationData} from './medikation/medikation.data';
 import {MedikationLoader} from './medikation/medikation.loader';
 import {IndikatorLoader} from './indikator/indikator.loader';
 import {IndikatorData} from './indikator/indikator.data';
+import {connection} from './server.conf';
+
 
 // connect away
-MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
+let dbconnection: string;
+if (process.env.MONGODB_URI) {
+  dbconnection = process.env.MONGODB_URI;
+} else {
+  dbconnection = connection.dbsystem + connection.dburl + '/' + connection.dbname;
+}
+console.log ('dbc', dbconnection );
+MongoClient.connect(dbconnection, (err, db) => {
   if (err) {
     throw err;
   }
