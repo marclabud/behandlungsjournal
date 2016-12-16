@@ -17,6 +17,14 @@
 /server/src/**/*.js
 /server/src/**/*.map
 
+
+# scss
+#/src/**/*.css
+#/src/**/*.css.map
+
+# debug
+npm-debug.log.*
+
 # Swagger
 /api/server/**/*
 /api/client/**/*
