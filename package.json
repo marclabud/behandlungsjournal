@@ -1,6 +1,6 @@
 {
   "name": "behandlungsjournal",
-  "version": "0.5.0",
+  "version": "0.5.4",
   "license": "MIT",
   "author": "Marc Labud, Michel Rimbeaux",
   "description": "Behandlungsjournal | Angular 2 (MEAN stack) project.",

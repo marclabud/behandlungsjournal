@@ -9,6 +9,7 @@ import {UserService} from '../user/service/user.service';
 import {AuthButtonComponent} from '../shared/component/auth-button/auth-button.component';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {PatientMenuComponent} from '../patient/patient-menu/patient-menu.component';
+import {SearchComponent} from '../shared/component/search/search.component';
 
 describe('MainNavComponent', () => {
   let component: MainNavComponent;
@@ -20,7 +21,8 @@ describe('MainNavComponent', () => {
         MainNavComponent,
         PatientListComponent,
         AuthButtonComponent,
-        PatientMenuComponent
+        PatientMenuComponent,
+        SearchComponent
       ],
       imports: [HttpModule],
       providers: [PatientService, AuthentificationService, UserService, AUTH_PROVIDERS]

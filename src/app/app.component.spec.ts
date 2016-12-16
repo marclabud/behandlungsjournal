@@ -10,6 +10,7 @@ import {UserService} from './user/service/user.service';
 import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {PatientMenuComponent} from './patient/patient-menu/patient-menu.component';
+import {SearchComponent} from './shared/component/search/search.component';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
@@ -19,7 +20,8 @@ describe('App: Behandlungsjournal', () => {
         MainNavComponent,
         PatientListComponent,
         PatientMenuComponent,
-        AuthButtonComponent
+        AuthButtonComponent,
+        SearchComponent
       ],
       imports: [RouterTestingModule, HttpModule],
       providers: [PatientService, AuthentificationService, AUTH_PROVIDERS, UserService]
