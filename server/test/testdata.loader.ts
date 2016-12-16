@@ -15,7 +15,7 @@ import {MedikationData} from './medikation/medikation.data';
 import {MedikationLoader} from './medikation/medikation.loader';
 import {IndikatorLoader} from './indikator/indikator.loader';
 import {IndikatorData} from './indikator/indikator.data';
-import {connection} from './server.conf';
+import {connection} from './demo.conf';
 
 
 // connect away
