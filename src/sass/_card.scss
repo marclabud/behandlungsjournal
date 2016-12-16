@@ -207,7 +207,9 @@
     display: flex;
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
-    margin-bottom: $card-space r-y; // Margin balancing
+    // Fix: $card-space r-y; Variable $card-space is undefined
+    // changed to $card-spacer-y
+    margin-bottom: $card-spacer-y; // Margin balancing
     margin-left: -$card-deck-margin;
 
     .card {

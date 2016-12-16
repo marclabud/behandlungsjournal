@@ -7,6 +7,7 @@ import {AuthentificationService} from '../shared/service/auth/authentification.s
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent implements OnInit {
+  /* tslint:disable-next-line:no-unused-variable */
   private brandName = 'Behandlungsjournal';
 
   constructor(private auth: AuthentificationService) {
