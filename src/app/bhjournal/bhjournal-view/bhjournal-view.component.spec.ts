@@ -13,6 +13,7 @@ import {IndikatorDetailComponent} from '../../indikator/indikator-detail/indikat
 import {PatientService} from '../../patient/service/patient.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 
 describe('Component: Bhjournal', () => {
@@ -29,7 +30,7 @@ describe('Component: Bhjournal', () => {
         BhjDatepickerComponent,
         DauerComponent,
         HaeufigkeitComponent],
-      imports: [HttpModule, FormsModule],
+      imports: [HttpModule, FormsModule, RouterTestingModule],
       providers: [BhJournalService, PatientService, AUTH_PROVIDERS]
     })
       .compileComponents();

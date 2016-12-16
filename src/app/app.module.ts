@@ -33,6 +33,7 @@ import {MedikationModule} from './medicament/medicament.module';
 import {BehandlungsJournalModule} from './bhjournal/bhjournal.module';
 import { PatientCardComponent } from './patient/patient-card/patient-card.component';
 import { PatientMenuComponent } from './patient/patient-menu/patient-menu.component';
+import { SearchComponent } from './shared/component/search/search.component';
 
 
 
@@ -55,7 +56,8 @@ const bhj_HEADER_NAME = 'Authorisation',
     AuthButtonComponent,
     LogoutComponent,
     PatientCardComponent,
-    PatientMenuComponent
+    PatientMenuComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import {AuthentificationService} from './shared/service/auth/authentification.se
 import {UserService} from './user/service/user.service';
 import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {PatientMenuComponent} from './patient/patient-menu/patient-menu.component';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
@@ -17,6 +18,7 @@ describe('App: Behandlungsjournal', () => {
         AppComponent,
         MainNavComponent,
         PatientListComponent,
+        PatientMenuComponent,
         AuthButtonComponent
       ],
       imports: [RouterTestingModule, HttpModule],
