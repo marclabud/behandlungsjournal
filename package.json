@@ -6,7 +6,7 @@
   "description": "Behandlungsjournal | Angular 2 (MEAN stack) project.",
   "angular-cli": {},
   "scripts": {
-    "start": "nodemon --watch dist/src dist/server.js",
+    "start": "node dist/server.js",
     "testserver": "node server/src/testserver.js",
     "init": "gulp init",
     "watch": "gulp watch",
