@@ -1,3 +1,4 @@
+<script src="indikator-detail.component.ts"></script>
 <div *ngIf="!isLoading">
   <div *ngIf="goBack">
     <app-indikator-list></app-indikator-list>
@@ -11,38 +12,33 @@
         <div *ngIf="isEditing">
           <h4 class="card-header">Indikator {{indikator.name}} ändern</h4>
         </div>
-
         <div class="card-block">
           <div class="row">Name des Indikators:</div>
-          <div class="form-group row">
-            <input [(ngModel)]="indikator.name" class="form-control" type="text" placeholder="Name" aria-describedby="IndikatorHelpBlock"/>
-            <p id="IndikatorHelpBlock" class="form-text text-muted">
-              Bitte den Namen des Indikators eingeben.
-            </p>
-
-          </div>
-
-          <app-haeufigkeit [isEditing]="isEditing"
-                           (notifyHaufigkeitChanged)="onHaeufigkeitChange($event)"></app-haeufigkeit>
-          <app-dauer [dauer]="indikator.dauer" [labelStartDatum]="labelStart" [labelEndeDatum]="labelEnde"
-                     (StartDatumChange)="onStartDatumChanged($event)"
-                     (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
-
-          <div class="form-group row">
-            <button *ngIf="!isEditing" class="btn btn-success" type="submit" (click)="addIndikator(indikator)"><i
-              class="fa fa-floppy-o"></i>
-              Hinzufügen
-            </button>
-            <button *ngIf="isEditing" class="btn btn-success" type="submit" (click)="editIndikator(indikator)"><i
-              class="fa fa-floppy-o"></i>
-              Speichern
-            </button>
-            <button class="btn btn-primary" type="button" (click)="back()"><i
-              class="fa fa-floppy-o"></i>
-              Abbrechen
-            </button>
-          </div>
-
+          <form #form="ngForm" (ngSubmit)="isEditing? editIndikator(indikator) : addIndikator(indikator)">
+            <div class="form-group row">
+              <input [(ngModel)]="indikator.name" name="name" class="form-control" type="text" placeholder="Name"
+                     aria-describedby="IndikatorHelpBlock" required/>
+              <p id="IndikatorHelpBlock" class="form-text text-muted">
+                Bitte den Namen des Indikators eingeben.
+              </p>
+            </div>
+            <app-haeufigkeit [isEditing]="isEditing"
+                             (notifyHaufigkeitChanged)="onHaeufigkeitChange($event)"></app-haeufigkeit>
+            <app-dauer [dauer]="indikator.dauer" [labelStartDatum]="labelStart" [labelEndeDatum]="labelEnde"
+                       (StartDatumChange)="onStartDatumChanged($event)"
+                       (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
+            <div class="form-group row">
+              <button *ngIf="!isEditing" class="btn btn-success" type="submit" [disabled]="!(form.valid && isDauerValid())">
+                <i class="fa fa-floppy-o"></i>Hinzufügen
+              </button>
+              <button *ngIf="isEditing" class="btn btn-success" type="submit" [disabled]="!(form.valid && isDauerValid())">
+                <i class="fa fa-floppy-o"></i>Speichern
+              </button>
+              <button class="btn btn-primary" type="button" (click)="back()">
+                <i class="fa fa-floppy-o"></i>Abbrechen
+              </button>
+            </div>
+          </form>
           <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>

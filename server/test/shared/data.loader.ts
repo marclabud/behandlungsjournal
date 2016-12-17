@@ -3,13 +3,8 @@ import {Db} from '@types/mongodb';
 
 export abstract class DataLoader {
 
-  private db: Db;
-  private data: IData;
-
   // constructor
-  constructor(db: Db, data: IData) {
-    this.db = db;
-    this.data = data;
+  constructor(private db: Db, private data: IData) {
     this.prepareData();
   }
 
@@ -29,7 +24,7 @@ export abstract class DataLoader {
 
   // insert data
   insert(data) {
-    this.db.collection(this.getCollectionName()).insert(data, () => {
+    this.db.collection(this.getCollectionName()).insertMany(data, () => {
       data.forEach((obj) => {
         console.log('+ ' + this.getCollectionName() + ' added as ' + obj.name);
       });

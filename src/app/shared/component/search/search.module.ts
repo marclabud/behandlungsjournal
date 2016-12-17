@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {SearchComponent} from './search.component';
 import {SearchService} from '../service/search.service';
 
 @NgModule({
-  imports: [FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   declarations: [SearchComponent],
   providers: [SearchService],
 

@@ -15,22 +15,14 @@ import {MedikationData} from './medikation/medikation.data';
 import {MedikationLoader} from './medikation/medikation.loader';
 import {IndikatorLoader} from './indikator/indikator.loader';
 import {IndikatorData} from './indikator/indikator.data';
-import {connection} from './server.conf';
-
+import {dbConnectionUrl} from '../src/server.conf';
 
 // connect away
-let dbconnection: string;
-if (process.env.MONGODB_URI) {
-  dbconnection = process.env.MONGODB_URI;
-} else {
-  dbconnection = connection.dbsystem + connection.dburl + '/' + connection.dbname;
-}
-console.log ('dbc', dbconnection );
-MongoClient.connect(dbconnection, (err, db) => {
+MongoClient.connect(dbConnectionUrl, (err, db) => {
   if (err) {
     throw err;
   }
-  console.log('Connected to Database');
+  console.log(`Connected to Database: ${dbConnectionUrl}`);
 
   // prepare User data
   new UserLoader(db, new UserData());

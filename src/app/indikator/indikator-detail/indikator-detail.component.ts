@@ -115,6 +115,11 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
     this.indikator.dauer.endeDatum = endeDatum;
   }
 
+  isDauerValid(): boolean {
+    return moment(this.indikator.dauer.startDatum).isValid()
+      && moment(this.indikator.dauer.endeDatum).isValid();
+  }
+
   back() {
     this.messageHaeufigkeitService.removeFromCache();
     this.goBack = true;
