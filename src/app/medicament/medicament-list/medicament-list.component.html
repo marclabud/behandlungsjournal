@@ -3,62 +3,58 @@
     <app-medicament-detail [isEditing]="isEditing"></app-medicament-detail>
   </div>
   <div *ngIf="!(isAdding || isEditing)">
-    <div class="container">
-      <div class="card-group">
-        <div class="card">
-          <h4 class="card-header">Medikamente
-            <button class="btn btn-sm btn-primary bhj-btn-right" (click)="enableAdding()"><i
-              class="fa fa-floppy-o"></i>Hinzufügen
-            </button>
-          </h4>
-          <div class="card-group">
-            <div class="card card-block">
-              <div *ngIf="!isEditing">
-                <div *ngFor="let medication of medications">
-                  <h5>{{medication.name}}</h5>
-                  <p>Wann einnehmen?</p>
-                  <div class="row">
-                    <div class="col-sm-8">
-                      <label
-                        class="btn btn-sm btn-outline-info {{medication.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
-                        <input type="checkbox" class="bhj-hidden">morgens
-                      </label>
-                      <label
-                        class="btn btn-sm btn-outline-info {{medication.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
-                        <input type="checkbox" class="bhj-hidden">mittags
-                      </label>
-                      <label
-                        class="btn btn-sm btn-outline-info {{medication.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
-                        <input type="checkbox" class="bhj-hidden">abends
-                      </label>
-                    </div>
-                    <div class="col-sm-4">
-                      <label>
-                        <button class="btn btn-sm btn-primary" (click)="enableEditing(medication)"><i
-                          class="fa fa-pencil"></i>
-                          Bearbeiten
-                        </button>
-                        <button class="btn btn-sm btn-warning" (click)="deleteMedication(medication)"><i
-                          class="fa fa-divash"></i>
-                          Löschen
-                        </button>
-                      </label>
-                    </div>
-                  </div>
+    <div class="container-fluid">
+      <div class="card">
+        <h4 class="card-header">Medikamente
+          <button class="btn btn-sm btn-primary bhj-btn-right" (click)="enableAdding()"><i
+            class="fa fa-floppy-o"></i>Hinzufügen
+          </button>
+        </h4>
+        <div class="card-block">
+          <div *ngIf="!isEditing">
+            <div *ngFor="let medication of medications">
+              <h5>{{medication.name}}</h5>
+              <p>Wann einnehmen?</p>
+              <div class="row">
+                <div class="col-sm-8">
+                  <label
+                    class="btn btn-sm btn-outline-info {{medication.haeufigkeit.morgens ? 'bhj-btn-active': 'nohover'}}">
+                    <input type="checkbox" class="bhj-hidden">morgens
+                  </label>
+                  <label
+                    class="btn btn-sm btn-outline-info {{medication.haeufigkeit.mittags ? 'bhj-btn-active': 'nohover'}}">
+                    <input type="checkbox" class="bhj-hidden">mittags
+                  </label>
+                  <label
+                    class="btn btn-sm btn-outline-info {{medication.haeufigkeit.abends ? 'bhj-btn-active': 'nohover'}}">
+                    <input type="checkbox" class="bhj-hidden">abends
+                  </label>
                 </div>
-                <div *ngIf="medications.length === 0">
-                  <div>
-                    <div>Es gibt keine Medikamente für dieses Journal. Bitte Medikamente erfassen.</div>
-                  </div>
+                <div class="col-sm-4">
+                  <label>
+                    <button class="btn btn-sm btn-primary" (click)="enableEditing(medication)"><i
+                      class="fa fa-pencil"></i>
+                      Bearbeiten
+                    </button>
+                    <button class="btn btn-sm btn-warning" (click)="deleteMedication(medication)"><i
+                      class="fa fa-divash"></i>
+                      Löschen
+                    </button>
+                  </label>
                 </div>
               </div>
             </div>
-            <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Meldung:</strong> {{infoMsg.body}}
+            <div *ngIf="medications.length === 0">
+              <div>
+                <div>Es gibt keine Medikamente für dieses Journal. Bitte Medikamente erfassen.</div>
+              </div>
             </div>
+          </div>
+          <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Meldung:</strong> {{infoMsg.body}}
           </div>
         </div>
       </div>
