@@ -1,2 +1,4 @@
-<input class="form-control" type="text" placeholder="Suchen">
-<button class="btn btn-outline-info" type="submit">Suchen</button>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <input class="form-control" formControlName="searchTermCtrl" type="text" placeholder="Patient">
+  <button class="btn btn-outline-info" type="submit">Suchen</button>
+</form>

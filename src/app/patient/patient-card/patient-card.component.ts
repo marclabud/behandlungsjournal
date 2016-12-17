@@ -12,6 +12,7 @@ import {MessageService} from '../../shared/service/message/message.service';
 export class PatientCardComponent implements OnInit , OnChanges {
 
     private patients: Array<Patient> = [];
+    private filteredpatients:  Array<Patient> = [];
     private isLoading = true;
     private isEditing = false;
     selectedPatient: Patient;
@@ -26,7 +27,10 @@ export class PatientCardComponent implements OnInit , OnChanges {
         this.messageService = patientService.messageService;
     }
     ngOnInit() {
+        let search = 'Min';
         this.getPatients();
+        this.filteredpatients = this.patients.filter(filterPatientname(search));
+        console.log (this.filteredpatients);
     }
     ngOnChanges() {
          this.isEditing = false;
@@ -71,7 +75,7 @@ export class PatientCardComponent implements OnInit , OnChanges {
         this.isEditing = true;
     }
   /* tslint:disable-next-line:no-unused-variable */
-  private onDeletePatient(patient) {
+  private onDeletePatient(patient: Patient) {
     if (patient) {
       this.patientService.deletePatient(patient).subscribe(
         res => {
@@ -88,6 +92,7 @@ export class PatientCardComponent implements OnInit , OnChanges {
       this.sendInfoMsg('Kein Patient zum Löschen ausgewählt.', 'danger');
     }
   }
+
   onDetailDone() {
     this.isEditing = false;
   };
@@ -104,3 +109,10 @@ export class PatientCardComponent implements OnInit , OnChanges {
     }
 
 }
+
+function filterPatientname(searchTerm: string) {
+  return function (element) {
+    return element.name.indexOf(searchTerm) !== -1;
+  };
+}
+
