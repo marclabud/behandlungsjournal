@@ -19,8 +19,6 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   private messageServiceMedication: MessageService<Medikation>;
   private messageHaeufigkeitService: MessageService<Haeufigkeit>;
   private subscriptionMedication: Subscription;
-
-  // TODO: form controls, validation
   private medications: Array<Medikation> = [];
   private infoMsg = {body: '', type: 'info'};
   private goBack = false;
@@ -113,6 +111,11 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
 
   onEndeDatumChanged(endeDatum: moment.Moment) {
     this.medikation.dauer.endeDatum = endeDatum;
+  }
+
+  isDauerValid(): boolean {
+    return moment(this.medikation.dauer.startDatum).isValid()
+      && moment(this.medikation.dauer.endeDatum).isValid();
   }
 
   back() {

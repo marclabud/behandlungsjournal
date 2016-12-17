@@ -19,8 +19,10 @@
 
 
 # scss
-#/src/**/*.css
-#/src/**/*.css.map
+src/**/*.css
+/src/**/*.css.map
+!/src/bootstrap.css
+
 
 # debug
 npm-debug.log.*

@@ -15,13 +15,14 @@ import {MedikationData} from './medikation/medikation.data';
 import {MedikationLoader} from './medikation/medikation.loader';
 import {IndikatorLoader} from './indikator/indikator.loader';
 import {IndikatorData} from './indikator/indikator.data';
+import {dbConnectionUrl} from '../src/server.conf';
 
 // connect away
-MongoClient.connect('mongodb://127.0.0.1:27017/test', (err, db) => {
+MongoClient.connect(dbConnectionUrl, (err, db) => {
   if (err) {
     throw err;
   }
-  console.log('Connected to Database');
+  console.log(`Connected to Database: ${dbConnectionUrl}`);
 
   // prepare User data
   new UserLoader(db, new UserData());
