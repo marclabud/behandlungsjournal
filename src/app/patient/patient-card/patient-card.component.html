@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="card-deck">
-          <div class="card card-outline-primary" *ngFor="let patient of patients">
+          <div class="card card-outline-primary" *ngFor="let patient of filteredpatients">
             <div (click)="onSelect(patient)">
               <div class="card-block">
                 <h4 class="card-title text-xs-center">Patient {{patient.name}}</h4>
