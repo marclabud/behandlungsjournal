@@ -80,7 +80,10 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
   onEndeDatumChanged(endeDatum: moment.Moment) {
     this.bhJournal.dauer.endeDatum = endeDatum;
   }
-
+  isDauerValid(): boolean {
+    return moment(this.bhJournal.dauer.startDatum).isValid()
+      && moment(this.bhJournal.dauer.endeDatum).isValid();
+  }
   private actualizeCache() {
     this.bhjournalService.writeCache(this.bhJournal);
   }

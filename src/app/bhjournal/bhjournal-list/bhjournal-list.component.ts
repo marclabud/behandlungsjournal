@@ -44,7 +44,6 @@ export class BhjournalListComponent implements OnInit {
   }
 
     onSelect(journal: BhJournal) {
-        console.log('selectedJournal', journal);
         this.selectedJournal = journal;
         this.bhJournalChange.emit(journal);
     }
@@ -57,13 +56,13 @@ export class BhjournalListComponent implements OnInit {
     }
 
     /* tslint:disable-next-line:no-unused-variable */
-    onDeleteJournal() {
-        if (this.selectedJournal) {
-            this.bhjournalService.deleteJournal(this.selectedJournal).subscribe(
+    onDeleteJournal(bhJournal: BhJournal ) {
+        if (bhJournal) {
+            this.bhjournalService.deleteJournal(bhJournal).subscribe(
                 res => {
                     let pos = this.journals.map(obj => {
                         return obj._id;
-                    }).indexOf(this.selectedJournal._id);
+                    }).indexOf(bhJournal._id);
                     this.journals.splice(pos, 1);
                     this.actualizeCache();
                     this.sendInfoMsg('Journal erfolgreich gelöscht.', 'success');
@@ -71,7 +70,7 @@ export class BhjournalListComponent implements OnInit {
                 error => console.log(error)
             );
         } else {
-            this.sendInfoMsg('Kein Journal zum Löschen ausgewählt.', 'danger');
+            this.sendInfoMsg('Kein gültiges Journal vorhanden.', 'danger');
         }
     }
     sendInfoMsg(body, type, time = 3000) {
