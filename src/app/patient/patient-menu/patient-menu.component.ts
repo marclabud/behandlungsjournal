@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Patient} from '../model/patient';
@@ -15,11 +15,14 @@ export class PatientMenuComponent implements OnInit {
   private subscriptionPatient: Subscription;
   private patient: Patient;
 
+  @Output() private patientSelectionWithSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(private patientService: PatientService, private router: Router) {
     this.messageServicePatient = patientService.messageService;
     this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
       patient => {
         this.patient = patient;
+        this.patientSelectionWithSearch.emit(false);
         this.router.navigate(['/bhjournal']);
       });
   }
@@ -28,6 +31,7 @@ export class PatientMenuComponent implements OnInit {
     this.getSelectedPatient();
   }
   onChoosePatient() {
+    this.patientSelectionWithSearch.emit(true);
     this.router.navigate(['/patient-card']);
   }
   getSelectedPatient() {

@@ -36,13 +36,10 @@ export class PatientCardComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getPatients();
-
   }
-
   ngOnChanges() {
     this.isEditing = false;
   }
-
   getPatients() {
     this.patientService.getAllItems().subscribe(
       data => {
@@ -62,7 +59,6 @@ export class PatientCardComponent implements OnInit, OnChanges {
 
   onSelect(patient: Patient): void {
     this.selectedPatient = patient;
-    console.log('Component list view onSelect', patient);
     this.PatientAnzeige = this.selectedPatient.name;
     this.messageService.selectItem(patient);
   }
