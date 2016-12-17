@@ -12,10 +12,11 @@ export class SearchComponent implements OnInit {
   searchTerm: string;
 
   @Input() isVisible: Boolean = true;
-  constructor(private search: SearchService, private formBuilder: FormBuilder ) {
+
+  constructor(private search: SearchService, private formBuilder: FormBuilder) {
     this.searchForm = formBuilder.group({
-         searchTermCtrl: '',
-      });
+      searchTermCtrl: '',
+    });
   }
 
   ngOnInit() {
@@ -32,13 +33,8 @@ export class SearchComponent implements OnInit {
   getSearchTerm(search) {
     console.log('searchTerm Value', search);
     if (search) {
-
       this.searchTerm = search.searchTermCtrl;
+      this.search.setSearchTerm(this.searchTerm);
     }
   }
-
-  onSubmit() {
-    this.search.setSearchTerm(this.searchTerm);
-  }
-
 }

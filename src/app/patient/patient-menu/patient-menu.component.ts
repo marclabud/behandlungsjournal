@@ -26,12 +26,12 @@ export class PatientMenuComponent implements OnInit {
         this.router.navigate(['/bhjournal']);
       });
   }
-
   ngOnInit() {
     this.getSelectedPatient();
   }
   onChoosePatient() {
     this.patientSelectionWithSearch.emit(true);
+    this.patient.name = 'Kein Patient';
     this.router.navigate(['/patient-card']);
   }
   getSelectedPatient() {
@@ -40,7 +40,7 @@ export class PatientMenuComponent implements OnInit {
       this.router.navigate(['/bhjournal']);
     } else {
       this.patient = new Patient();
-      this.patient.name = 'Bitte auswählen...';
+      this.patient.name = 'Kein Patient';
     }
   }
 
