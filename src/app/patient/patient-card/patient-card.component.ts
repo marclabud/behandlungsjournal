@@ -2,6 +2,8 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {Patient} from '../model/patient';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
+import {SearchService} from '../../shared/component/service/search.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-patient-card',
@@ -16,6 +18,7 @@ export class PatientCardComponent implements OnInit, OnChanges {
   private isLoading = true;
   private isEditing = false;
   selectedPatient: Patient;
+  searchSubscript: Subscription;
 
   PatientAnzeige: string = 'Patient';
   private messageService: MessageService<Patient>;
@@ -23,8 +26,12 @@ export class PatientCardComponent implements OnInit, OnChanges {
   private infoMsg = {body: '', type: 'info'};
 
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
-  constructor(private patientService: PatientService) {
+  constructor(private patientService: PatientService, private searchService: SearchService) {
     this.messageService = patientService.messageService;
+    this.searchSubscript = searchService.SearchTermselected$.subscribe(
+      search => {
+        this.onNewFilter(search);
+      });
   }
 
   ngOnInit() {

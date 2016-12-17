@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
   searchTerm: string;
 
   @Input() isVisible: Boolean = true;
-  constructor(private search: SearchService, formBuilder: FormBuilder ) {
+  constructor(private search: SearchService, private formBuilder: FormBuilder ) {
     this.searchForm = formBuilder.group({
          searchTermCtrl: '',
       });
@@ -32,12 +32,13 @@ export class SearchComponent implements OnInit {
   getSearchTerm(search: string) {
     console.log('searchTerm Value', search);
     if (search) {
-    this.searchTerm = search;
+      console.log(search);
+      this.searchTerm = search;
     }
   }
 
   onSubmit() {
-    console.log('onSubmit', this.searchTerm);
+    this.search.setSearchTerm(this.searchTerm);
   }
 
 }
