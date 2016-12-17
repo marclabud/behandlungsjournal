@@ -8,6 +8,7 @@
 exports.paths = {
   src: 'src',
   srcServer: 'server',
+  srcTestdata: 'server/test',
   dist: 'dist',
   tmp: '.tmp',
   tasks: 'gulp_tasks',

@@ -14,7 +14,6 @@ app.use('/', express.static(__dirname + '/' + paths.dist_client));
 // body-parser
 app.use(json());
 app.use(urlencoded({extended: false}));
-
 app.use(morgan('dev'));
 
 // mongoose
@@ -42,7 +41,12 @@ function listen() {
 }
 
 function connect() {
-  let dbconnection: string = connection.dbsystem + connection.dburl + '/' + connection.dbname;
+  let dbconnection: string;
+  if (process.env.MONGODB_URI) {
+    dbconnection = process.env.MONGODB_URI;
+  } else {
+    dbconnection = connection.dbsystem + connection.dburl + '/' + connection.dbname;
+  }
   console.log('dbc', dbconnection);
   let options = {server: {socketOptions: {keepAlive: 1}}};
   return mongoose.connect(dbconnection, options).connection;

@@ -25,12 +25,14 @@
 
         <li class="nav-item">
           <form class="form-inline navbar-form pull-lg-right">
-            <app-patient-menu></app-patient-menu>
+            <app-patient-menu (patientSelectionWithSearch)="onSearchIsVisible($event)"></app-patient-menu>
           </form>
         </li>
+        <div *ngIf="searchIsVisible">
         <li class="nav-item form-inline">
           <app-search></app-search>
         </li>
+        </div>
         <li class="nav-item dropdown pull-lg-right">
           <a class="nav-link dropdown-toggle" href="link auf die nav" id="log"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Einstellungen</a>

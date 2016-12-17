@@ -4,19 +4,14 @@ import {Subject} from 'rxjs';
 @Injectable()
 export class SearchService {
   // Observable string sources
-  private selectedSearchTermSource = new Subject<String>();
+  private selectedSearchTermSource = new Subject<string>();
   // Observable string streams
   SearchTermselected$ = this.selectedSearchTermSource.asObservable();
 
   constructor() {
   }
 
-  setSearchTerm(searchTerm: String) {
-
+  setSearchTerm(searchTerm: string) {
+    this.selectedSearchTermSource.next(searchTerm);
   }
-
-  getSearchTerm(searchTerm: String) {
-
-  }
-
 }

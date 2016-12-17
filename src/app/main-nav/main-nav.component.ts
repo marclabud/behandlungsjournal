@@ -9,6 +9,7 @@ import {AuthentificationService} from '../shared/service/auth/authentification.s
 export class MainNavComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */
   private brandName = 'Behandlungsjournal';
+  searchIsVisible = false;
 
   constructor(private auth: AuthentificationService) {
   }
@@ -16,6 +17,10 @@ export class MainNavComponent implements OnInit {
   ngOnInit() {
     this.userIsLoggedIn();
     this.whoIsLoggedIn();
+  }
+  /* tslint:disable-next-line:no-unused-variable */
+  private onSearchIsVisible(event: boolean) {
+    this.searchIsVisible = event;
   }
 
   private userIsLoggedIn() {
