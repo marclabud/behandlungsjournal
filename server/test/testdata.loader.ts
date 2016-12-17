@@ -28,7 +28,8 @@ if (process.env.MONGODB_URI) {
 console.log ('dbc', dbconnection );
 MongoClient.connect(dbconnection, (err, db) => {
   if (err) {
-    throw err;
+    console.log('No connect to Database!');
+    return;
   }
   console.log('Connected to Database');
 

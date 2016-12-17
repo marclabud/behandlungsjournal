@@ -1,0 +1,26 @@
+version: '2'
+services:
+
+  web:
+    image: mlabud/behandlungsjournal:0.1
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c 'npm install; npm i angular-cli@1.0.0-beta.21 -g; npm i gulp -g; gulp sass; gulp build_server; ng build; npm run loaddemodata; node dist/server.js;'
+    ports:
+      - "80:3000"
+    depends_on:
+      - mongo
+    networks:
+      - all
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017/test"
+
+  mongo:
+    image: mongo:3
+    command: mongod --smallfiles
+    networks:
+      - all
+
+networks:
+  all:
