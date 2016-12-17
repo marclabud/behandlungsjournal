@@ -19,9 +19,9 @@
 
 
 # scss
-#src/**/*.css
-#/src/**/*.css.map
-#!/src/bootstrap.css
+src/**/*.css
+/src/**/*.css.map
+!/src/bootstrap.css
 
 
 # debug
