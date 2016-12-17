@@ -18,7 +18,6 @@ export class PatientService extends ServiceBase<Patient> {
   }
 
   getPatients() {
-    console.log(this.authHttp.get(paths.base_path + '/patients').map(res => res.json()));
     return this.authHttp.get(paths.base_path + '/patients').map(res => res.json());
   }
 

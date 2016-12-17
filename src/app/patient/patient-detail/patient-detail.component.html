@@ -1,12 +1,14 @@
 <div class="container-fluid">
-    <div *ngIf="isEditing && patient">
+  <div *ngIf="isEditing && patient">
+    <form #form="ngForm">
       <div class="row">
         <h4 class="col-sm-10">{{patient.name}}</h4>
       </div>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Name des Patienten: </label>
         <div class="col-sm-8">
-          <input [(ngModel)]="patient.name" class="form-control" type="text" placeholder="Name" aria-describedby="PatientHelpBlock"/>
+          <input [(ngModel)]="patient.name" name="name" class="form-control" type="text" placeholder="Name"
+                 aria-describedby="PatientHelpBlock" required/>
           <p id="PatientHelpBlock" class="form-text text-muted">
             Bitte den Namen des Patienten eingeben.
           </p>
@@ -15,7 +17,8 @@
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Tierart: </label>
         <div class="col-sm-8">
-          <input [(ngModel)]="patient.tierart" class="form-control" type="text" placeholder="Tierart" aria-describedby="TierartHelpBlock"/>
+          <input [(ngModel)]="patient.tierart" name="tierart" class="form-control" type="text" placeholder="Tierart"
+                 aria-describedby="TierartHelpBlock" required/>
           <p id="TierartHelpBlock" class="form-text text-muted">
             Bitte die Tierart des Patienten eingeben.
           </p>
@@ -24,39 +27,40 @@
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Rasse: </label>
         <div class="col-sm-8">
-          <input [(ngModel)]="patient.rasse" class="form-control" type="text" placeholder="Tierrasse"/>
+          <input [(ngModel)]="patient.rasse" name="rasse" class="form-control" type="text" placeholder="Tierrasse"/>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Vorname des Tierhalters: </label>
         <div class="col-sm-8">
-          <input [(ngModel)]="patient.eigentuemerVorname" class="form-control" type="text" placeholder="Vorname"/>
+          <input [(ngModel)]="patient.eigentuemerVorname" name="eigentuemerVorname" class="form-control" type="text" placeholder="Vorname"/>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Nachname des Tierhalters: </label>
         <div class="col-sm-8">
-          <input [(ngModel)]="patient.eigentuemerNachname" class="form-control" type="text" placeholder="Nachname" aria-describedby="NachnameHelpBlock"/>
+          <input [(ngModel)]="patient.eigentuemerNachname" name="eigentuemerNachname" class="form-control" type="text" placeholder="Nachname"
+                 aria-describedby="NachnameHelpBlock" required/>
           <p id="NachnameHelpBlock" class="form-text text-muted">
             Bitte den Nachnamen des Tierhalters eingeben.
           </p>
         </div>
       </div>
       <div class="form-group">
-          <button class="btn btn-primary btn-sm"
-                  type="submit" (click)="savePatient(patient)">
-            Speichern
-          </button>
-          <button class="btn btn-secondary btn-sm" type="reset" (click)="onCancel(patient)">
-            Abbrechen
-          </button>
-        </div>
-    </div>
+        <button class="btn btn-primary btn-sm"
+                type="submit" (click)="savePatient(patient)" [disabled]="!form.valid">
+          Speichern
+        </button>
+        <button class="btn btn-secondary btn-sm" type="reset" (click)="onCancel(patient)">
+          Abbrechen
+        </button>
+      </div>
+    </form>
     <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
       <strong>Meldung:</strong> {{infoMsg.body}}
     </div>
+  </div>
 </div>
-
