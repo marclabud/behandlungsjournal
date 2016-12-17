@@ -3,13 +3,8 @@ import {Db} from '@types/mongodb';
 
 export abstract class DataLoader {
 
-  private db: Db;
-  private data: IData;
-
   // constructor
-  constructor(db: Db, data: IData) {
-    this.db = db;
-    this.data = data;
+  constructor(private db: Db, private data: IData) {
     this.prepareData();
   }
 

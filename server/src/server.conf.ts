@@ -15,4 +15,9 @@ export const connection: any = {
   dbname: 'test'
 };
 
+export const dbConnectionUrl: string = connection.dbsystem
+  .concat(connection.dburl)
+  .concat('/')
+  .concat(connection.dbName);
+
 export const jwtKey = 'CASFrontendEngineering2016';
