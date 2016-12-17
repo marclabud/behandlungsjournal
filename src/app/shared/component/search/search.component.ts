@@ -29,11 +29,11 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  getSearchTerm(search: string) {
+  getSearchTerm(search) {
     console.log('searchTerm Value', search);
     if (search) {
-      console.log(search);
-      this.searchTerm = search;
+
+      this.searchTerm = search.searchTermCtrl;
     }
   }
 
