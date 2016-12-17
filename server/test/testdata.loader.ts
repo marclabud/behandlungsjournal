@@ -22,7 +22,7 @@ MongoClient.connect(dbConnectionUrl, (err, db) => {
   if (err) {
     throw err;
   }
-  console.log('Connected to Database');
+  console.log(`Connected to Database: ${dbConnectionUrl}`);
 
   // prepare User data
   new UserLoader(db, new UserData());
