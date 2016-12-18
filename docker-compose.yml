@@ -1,0 +1,22 @@
+version: '2'
+services:
+
+  web:
+    image: mlabud/behandlungsjournal:0.1
+    ports:
+      - "80:3000"
+    depends_on:
+      - mongo
+    networks:
+      - all
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017/test"
+
+  mongo:
+    image: mongo:3
+    command: mongod --smallfiles
+    networks:
+      - all
+
+networks:
+  all:

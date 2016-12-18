@@ -1,0 +1,48 @@
+{
+"project": "behandlungsjournal",
+    "services": [
+        {
+            "id": "web",
+            "apps": [
+                {
+                    "id": "node",
+                    "domain": {
+                        "uri": "behandlungsjournal.sloppy.zone"
+                    },
+                    "mem": 512,
+                    "image": "mlabud/behandlungsjournal:0.1",
+                    "instances": 1,
+                    "port_mappings": [
+                        {
+                            "container_port": 3000
+                        }
+                    ],
+                    "env": {
+                        "MONGODB_URI": "mongodb://mongodb.db.behandlungsjournal/behandlungsjournal"
+                    },
+                    "dependencies": [
+                        "../db/mongodb"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "db",
+            "apps": [
+                {
+                    "id": "mongodb",
+                    "mem": 512,
+                    "image": "mongo:3",
+                    "cmd": "mongod --smallfiles",
+                    "instances": 1,
+                    "volumes": [
+                        {
+                            "container_path": "/data/db",
+                            "size": "8GB"
+                }
+            ]
+                    }
+            ]
+        }
+    ]
+}
