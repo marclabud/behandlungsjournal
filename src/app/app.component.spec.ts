@@ -11,6 +11,7 @@ import {AuthButtonComponent} from './shared/component/auth-button/auth-button.co
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {PatientMenuComponent} from './patient/patient-menu/patient-menu.component';
 import {SearchComponent} from './shared/component/search/search.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 describe('App: Behandlungsjournal', () => {
   beforeEach(() => {
@@ -23,7 +24,7 @@ describe('App: Behandlungsjournal', () => {
         AuthButtonComponent,
         SearchComponent
       ],
-      imports: [RouterTestingModule, HttpModule],
+      imports: [RouterTestingModule, HttpModule, ReactiveFormsModule, FormsModule],
       providers: [PatientService, AuthentificationService, AUTH_PROVIDERS, UserService]
     });
   });
