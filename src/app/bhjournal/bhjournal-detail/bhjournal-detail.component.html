@@ -28,11 +28,11 @@
                  (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
 
       <div class="form-group">
-        <button class="col-sm-3 btn btn-sm btn-primary" type="submit"
+        <button class="col-sm-3 btn btn btn-primary" type="submit"
                 (click)="saveBhJournal(bhJournal)" [disabled]="!(form.valid && isDauerValid())">
           {{JournalButtonText}}
         </button>
-        <button class="offset-sm-1 col-sm-3 btn btn-sm btn btn-secondary" type="button" (click)="onCancel()">
+        <button class="offset-sm-1 col-sm-3 btn btn btn btn-warning" type="button" (click)="onCancel()">
           Abbrechen
         </button>
       </div>
