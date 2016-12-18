@@ -7,7 +7,8 @@
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Name des Journals: </label>
         <div class="col-sm-8">
-          <input [(ngModel)]="bhJournal.name" name="name" class="form-control" type="text" placeholder="Name" aria-describedby="bhJournalHelpBlock" required/>
+          <input [(ngModel)]="bhJournal.name" name="name" class="form-control" type="text" placeholder="Name"
+                 aria-describedby="bhJournalHelpBlock" required/>
           <p id="bhJournalHelpBlock" class="form-text text-muted">
             Bitte den Namen des Journals eingeben.
           </p>
@@ -20,20 +21,15 @@
                  placeholder="Diagnose"/>
         </div>
       </div>
-
       <app-dauer [isEditing]="true" [dauer]="bhJournal.dauer" [labelStartDatum]="labelStart"
                  [labelEndeDatum]="labelEnde"
                  (StartDatumChange)="onStartDatumChanged($event)"
                  (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
-
       <div class="form-group">
-        <button class="col-sm-3 btn btn-sm btn-primary" type="submit"
+        <button class="col-sm-3 btn btn-primary" type="submit"
                 (click)="saveBhJournal(bhJournal)" [disabled]="!(form.valid && isDauerValid())">
           Speichern
         </button>
-        <!--<button class="offset-sm-1 col-sm-3 btn btn-sm btn btn-secondary" type="reset" (click)="onCancel()">-->
-          <!--Abbrechen-->
-        <!--</button>-->
       </div>
     </form>
     <div class="card-block">
@@ -44,6 +40,5 @@
         <strong>Meldung:</strong> {{infoMsg.body}}
       </div>
     </div>
-
   </div>
 </div>
