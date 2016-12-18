@@ -41,6 +41,8 @@ export class PatientMenuComponent implements OnInit {
     } else {
       this.patient = new Patient();
       this.patient.name = 'Kein Patient';
+      this.router.navigate(['/patient-card']);
+
     }
   }
 
