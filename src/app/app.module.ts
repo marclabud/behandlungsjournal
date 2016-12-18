@@ -28,6 +28,7 @@ import {PatientCardComponent} from './patient/patient-card/patient-card.componen
 import {PatientMenuComponent} from './patient/patient-menu/patient-menu.component';
 import {SearchComponent} from './shared/component/search/search.component';
 import {SearchService} from './shared/component/service/search.service';
+import {GetstartedComponent} from './shared/component/getstarted/getstarted.component';
 
 // Angular2-jwt authHttp const used in provideAuth
 const bhj_HEADER_NAME = 'Authorisation',
@@ -49,7 +50,8 @@ const bhj_HEADER_NAME = 'Authorisation',
     LogoutComponent,
     PatientCardComponent,
     PatientMenuComponent,
-    SearchComponent
+    SearchComponent,
+    GetstartedComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import {BhjournalDetailComponent} from './bhjournal/bhjournal-detail/bhjournal-d
 import {BhjournalListDetailComponent} from './bhjournal/bhjournal-list-detail/bhjournal-list-detail.component';
 import {PatientCardComponent} from './patient/patient-card/patient-card.component';
 import {LogoutComponent} from './logout/logout.component';
+import {GetstartedComponent} from './shared/component/getstarted/getstarted.component';
 
 const appRoutes: Routes = [
   {
@@ -58,6 +59,10 @@ const appRoutes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'getstarted',
+    component: GetstartedComponent
   }
 ];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

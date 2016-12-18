@@ -10,10 +10,16 @@ import {Response} from '@angular/http';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
+  public submitted: boolean;
   private LoginForm: FormGroup;
   private isLoading = false;
-  public submitted: boolean;
   private infoMsg = {body: '', type: 'info'};
+  /* tslint:disable-next-line:no-unused-variable */
+  private title: string = 'Bitte anmelden';
+  /* tslint:disable-next-line:no-unused-variable */
+  private signup: boolean = true;
+  /* tslint:disable-next-line:no-unused-variable */
+  private getstarted: boolean = true;
 
   constructor(private authService: AuthentificationService,
               private router: Router,

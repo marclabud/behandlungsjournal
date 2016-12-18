@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-titel',
@@ -7,10 +7,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TitelComponent implements OnInit {
 
+  @Input() title: string;
+  @Input() titlesize: string = '4';
+  @Input() btsize: string = 'sm';
+  @Input() login: boolean = false;
+  @Input() signup: boolean = false;
+  @Input() getstarted: boolean = false;
+
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

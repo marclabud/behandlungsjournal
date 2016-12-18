@@ -12,6 +12,12 @@ export class SignupComponent implements OnInit {
 
   private signupForm: FormGroup;
   public submitted: boolean;
+  /* tslint:disable-next-line:no-unused-variable */
+  private title: string = 'Erstellen Sie ihr Konto';
+  /* tslint:disable-next-line:no-unused-variable */
+  private login: boolean = true;
+  /* tslint:disable-next-line:no-unused-variable */
+  private getstarted: boolean = true;
 
   constructor(private userService: UserService,
               private formbuilder: FormBuilder,
@@ -38,7 +44,7 @@ export class SignupComponent implements OnInit {
         error => console.log(error)
       );
       this.actualizeCache();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/getstarted']);
     }
     // error
     console.log(model, isValid);

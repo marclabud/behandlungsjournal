@@ -1,11 +1,14 @@
-<div class="container">
-  <div class="jumbotron">
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-{{titlesize}}">{{title}}</h1>
     <p>
       Mit dem Behandlungsjournal können Sie die Behandlung ihres kranken Tieres dokumentieren. Damit behalten Sie
       jederzeit die Übersicht.
     </p>
-
-    <a routerLink="/login" routerLinkActive="nav-link active">Anmelden</a>
-    <a routerLink="/signup" routerLinkActive="nav-link active">Registrieren</a>
+    <p>
+      <a *ngIf="login" class="btn btn-primary btn-{{btsize}}" href="login" role="button">Anmelden &raquo;</a>
+      <a *ngIf="signup" class="btn btn-primary btn-{{btsize}}" href="signup" role="button">Registrieren &raquo;</a>
+      <a *ngIf="getstarted" class="btn btn-primary btn-{{btsize}}" href="getstarted" role="button">Get Started &raquo;</a>
+    </p>
   </div>
 </div>
