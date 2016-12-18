@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { LogoutComponent } from './logout.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {LogoutComponent} from './logout.component';
 import {AuthentificationService} from '../shared/service/auth/authentification.service';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {HttpModule} from '@angular/http';
@@ -16,10 +13,10 @@ describe('LogoutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
-      declarations: [ LogoutComponent ],
+      declarations: [LogoutComponent],
       providers: [AuthentificationService, AUTH_PROVIDERS, UserService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

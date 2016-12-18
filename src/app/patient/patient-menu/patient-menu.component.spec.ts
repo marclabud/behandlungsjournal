@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { PatientMenuComponent } from './patient-menu.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {PatientMenuComponent} from './patient-menu.component';
 import {PatientService} from '../service/patient.service';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
@@ -16,12 +13,12 @@ describe('PatientMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PatientMenuComponent ],
+      declarations: [PatientMenuComponent],
       imports: [HttpModule, FormsModule, RouterTestingModule],
       providers: [PatientService, AUTH_PROVIDERS]
 
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

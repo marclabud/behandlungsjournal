@@ -10,7 +10,7 @@ describe('Service: Authenticate', () => {
     TestBed.configureTestingModule({
       providers: [
         AuthentificationService,
-        UserService,  AUTH_PROVIDERS],
+        UserService, AUTH_PROVIDERS],
       imports: [
         HttpModule
       ]

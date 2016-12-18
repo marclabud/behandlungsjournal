@@ -2,7 +2,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {BhjournalComponent} from './bhjournal-view.component';
 import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS }   from 'angular2-jwt';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {BhJournalService} from '../service/bhjournal.service';
 import {FormsModule} from '@angular/forms';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';

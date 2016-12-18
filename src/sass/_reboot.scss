@@ -5,7 +5,6 @@
 // Global resets to common HTML elements and more for easier usage by Bootstrap.
 // Adds additional rules on top of Normalize.css, including several overrides.
 
-
 // Reset the box-sizing
 //
 // Change from `box-sizing: content-box` to `border-box` so that when you add
@@ -29,7 +28,6 @@ html {
   box-sizing: inherit;
 }
 
-
 // Make viewport responsive
 //
 // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
@@ -46,9 +44,10 @@ html {
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
 @at-root {
-  @-ms-viewport { width: device-width; }
+  @-ms-viewport {
+    width: device-width;
+  }
 }
-
 
 //
 // Reset HTML, body, and more
@@ -65,7 +64,7 @@ html {
   // See https://github.com/twbs/bootstrap/issues/18543
   -ms-overflow-style: scrollbar;
   // Changes the default tap highlight to be completely transparent in iOS.
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -87,7 +86,6 @@ body {
 [tabindex="-1"]:focus {
   outline: none !important;
 }
-
 
 //
 // Typography
@@ -113,7 +111,7 @@ p {
 
 // Abbreviations and acronyms
 abbr[title],
-// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+  // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted $abbr-border-color;
@@ -151,7 +149,6 @@ dd {
 blockquote {
   margin: 0 0 1rem;
 }
-
 
 //
 // Links
@@ -191,7 +188,6 @@ a:not([href]):not([tabindex]) {
   }
 }
 
-
 //
 // Code
 //
@@ -205,7 +201,6 @@ pre {
   overflow: auto;
 }
 
-
 //
 // Figures
 //
@@ -215,7 +210,6 @@ figure {
   // We reset that to create a better flow in-page.
   margin: 0 0 1rem;
 }
-
 
 //
 // Images
@@ -229,7 +223,6 @@ img {
   // For the rationale behind this, see the comments on the `.img-fluid` class.
 }
 
-
 // iOS "clickable elements" fix for role="button"
 //
 // Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
@@ -239,7 +232,6 @@ img {
 [role="button"] {
   cursor: pointer;
 }
-
 
 // Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
 //
@@ -262,7 +254,6 @@ summary,
 textarea {
   touch-action: manipulation;
 }
-
 
 //
 // Tables
@@ -287,7 +278,6 @@ th {
   // Centered by default, but left-align-ed to match the `td`s below.
   text-align: left;
 }
-
 
 //
 // Forms
@@ -326,7 +316,6 @@ input[type="checkbox"] {
     cursor: $cursor-disabled;
   }
 }
-
 
 input[type="date"],
 input[type="time"],
@@ -377,9 +366,9 @@ input[type="search"] {
 // todo: needed?
 output {
   display: inline-block;
-//  font-size: $font-size-base;
-//  line-height: $line-height;
-//  color: $input-color;
+  //  font-size: $font-size-base;
+  //  line-height: $line-height;
+  //  color: $input-color;
 }
 
 // Always hide an element with the `hidden` HTML attribute (from PureCSS).

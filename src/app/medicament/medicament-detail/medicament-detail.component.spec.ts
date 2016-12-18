@@ -5,15 +5,12 @@ import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MedikationService} from '../service/medikation.service';
 import {MedicamentListComponent} from '../medicament-list/medicament-list.component';
-
 import {HttpModule} from '@angular/http';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
-
 import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigkeit.component';
 import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
-
 
 
 describe('MedicamentDetailComponent', () => {

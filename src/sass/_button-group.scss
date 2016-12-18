@@ -63,6 +63,7 @@
     @include border-right-radius(0);
   }
 }
+
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
@@ -73,15 +74,18 @@
 .btn-group > .btn-group {
   float: left;
 }
+
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     @include border-right-radius(0);
   }
 }
+
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @include border-left-radius(0);
 }
@@ -92,14 +96,17 @@
   outline: 0;
 }
 
-
 // Sizing
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-sm > .btn { @extend .btn-sm; }
-.btn-group-lg > .btn { @extend .btn-lg; }
+.btn-group-sm > .btn {
+  @extend .btn-sm;
+}
 
+.btn-group-lg > .btn {
+  @extend .btn-lg;
+}
 
 //
 // Split button dropdowns
@@ -124,7 +131,6 @@
   padding-left: $btn-padding-x-lg * .75;
 }
 
-
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
 .btn-group.open .dropdown-toggle {
@@ -136,22 +142,21 @@
   }
 }
 
-
 // Reposition the caret
 .btn .caret {
   margin-left: 0;
 }
+
 // Carets in other button sizes
 .btn-lg .caret {
   border-width: $caret-width-lg $caret-width-lg 0;
   border-bottom-width: 0;
 }
+
 // Upside down carets for .dropup
 .dropup .btn-lg .caret {
   border-width: 0 $caret-width-lg $caret-width-lg;
 }
-
-
 
 //
 // Vertical button groups
@@ -196,19 +201,21 @@
     @include border-top-radius(0);
   }
 }
+
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group-vertical > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     @include border-bottom-radius(0);
   }
 }
+
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @include border-top-radius(0);
 }
-
 
 // Checkbox and radio options
 //
@@ -228,7 +235,7 @@
     input[type="radio"],
     input[type="checkbox"] {
       position: absolute;
-      clip: rect(0,0,0,0);
+      clip: rect(0, 0, 0, 0);
       pointer-events: none;
     }
   }

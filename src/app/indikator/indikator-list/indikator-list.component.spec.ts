@@ -21,7 +21,7 @@ describe('IndikatorListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [IndikatorListComponent, IndikatorDetailComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
       imports: [HttpModule, FormsModule],
-      providers: [BhJournalService, IndikatorService, HaeufigkeitService, AUTH_PROVIDERS ]
+      providers: [BhJournalService, IndikatorService, HaeufigkeitService, AUTH_PROVIDERS]
     })
       .compileComponents();
   }));

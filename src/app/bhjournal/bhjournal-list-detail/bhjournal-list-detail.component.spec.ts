@@ -1,11 +1,8 @@
 ///<reference path="../bhjournal-detail/bhjournal-detail.component.ts"/>
 ///<reference path="../bhjournal-list/bhjournal-list.component.ts"/>
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { BhjournalListDetailComponent } from './bhjournal-list-detail.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {BhjournalListDetailComponent} from './bhjournal-list-detail.component';
 import {BhjournalDetailComponent} from '../bhjournal-detail/bhjournal-detail.component';
 import {BhjournalListComponent} from '../bhjournal-list/bhjournal-list.component';
 import {DauerModule} from '../../shared/component/dauer/dauer.module';
@@ -22,15 +19,15 @@ describe('BhjournalListDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BhjournalListDetailComponent, BhjournalDetailComponent, BhjournalListComponent],
+      declarations: [BhjournalListDetailComponent, BhjournalDetailComponent, BhjournalListComponent],
       imports: [FormsModule, DauerModule, HttpModule, RouterTestingModule],
       providers: [BhJournalService, PatientService, AUTH_PROVIDERS]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BhjournalListDetailComponent, );
+    fixture = TestBed.createComponent(BhjournalListDetailComponent,);
     component = fixture.componentInstance;
     // fixture.detectChanges();
   });

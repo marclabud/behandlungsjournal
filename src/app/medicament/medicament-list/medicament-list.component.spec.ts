@@ -10,7 +10,7 @@ import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigke
 import {HaeufigkeitService} from '../../shared/component/haeufigkeit/service/haeufigkeit.service';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
-import {AUTH_PROVIDERS}   from 'angular2-jwt';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 describe('MedicamentListComponent', () => {
   let component: MedicamentListComponent;

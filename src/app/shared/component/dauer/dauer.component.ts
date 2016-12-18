@@ -34,6 +34,7 @@ export class DauerComponent implements OnInit {
     this.endeDatumShow = this.endedatum.format('DD.MM.YYYY');
     this.isLoading = false;
   }
+
   /* tslint:disable-next-line:no-unused-variable */
   private onStartDatumChanged(startDatum: moment.Moment) {
     this.StartDatumChange.emit(startDatum);

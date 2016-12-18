@@ -4,7 +4,7 @@ import {HaeufigkeitService} from './service/haeufigkeit.service';
 import {HaeufigkeitComponent} from './haeufigkeit.component';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS }   from 'angular2-jwt';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 describe('HaeufigkeitComponent', () => {
   let component: HaeufigkeitComponent;

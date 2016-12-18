@@ -8,7 +8,6 @@
   margin-bottom: 0;
 }
 
-
 // Individual list items
 //
 // Use on `li`s or `div`s within the `.list-group` parent.
@@ -76,7 +75,6 @@
   }
 }
 
-
 // Interactive list items
 //
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
@@ -99,7 +97,6 @@
   }
 }
 
-
 // Contextual variants
 //
 // Add modifier classes to change text and background color on individual items.
@@ -110,7 +107,6 @@
 @include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
 @include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
 
-
 // Custom content options
 //
 // Extra classes for creating well-formatted content within `.list-group-item`s.
@@ -119,6 +115,7 @@
   margin-top: 0;
   margin-bottom: $list-group-item-heading-margin-bottom;
 }
+
 .list-group-item-text {
   margin-bottom: 0;
   line-height: 1.3;

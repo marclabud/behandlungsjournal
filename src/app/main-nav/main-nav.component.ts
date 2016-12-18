@@ -18,6 +18,7 @@ export class MainNavComponent implements OnInit {
     this.userIsLoggedIn();
     this.whoIsLoggedIn();
   }
+
   /* tslint:disable-next-line:no-unused-variable */
   private onSearchIsVisible(event: boolean) {
     this.searchIsVisible = event;

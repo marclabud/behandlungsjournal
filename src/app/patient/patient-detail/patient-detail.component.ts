@@ -17,9 +17,9 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   private newPatient: Patient;
 
   @Input() patient: Patient;
-  @Input() isEditing: boolean= false;
+  @Input() isEditing: boolean = false;
 
-  @Output() patientNew:  EventEmitter<Patient> = new EventEmitter<Patient>();
+  @Output() patientNew: EventEmitter<Patient> = new EventEmitter<Patient>();
   @Output() editingDone: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
@@ -30,6 +30,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
         this.patient = patient;
       });
   }
+
   ngOnInit() {
   }
 

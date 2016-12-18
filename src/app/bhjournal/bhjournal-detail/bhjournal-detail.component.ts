@@ -12,6 +12,7 @@ import * as moment from 'moment';
 export class BhjournalDetailComponent implements OnInit, OnChanges {
   private isLoading = true;
   private JournalActionText = 'bearbeiten';
+  /* tslint:disable-next-line:no-unused-variable */
   private JournalButtonText = 'speichern';
   /* tslint:disable-next-line:no-unused-variable */
   private labelStart = 'Beginn:';
@@ -27,17 +28,20 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
   @Input() bhJournal: BhJournal = new BhJournal();
   @Input() patient: Patient = new Patient();
 
-  @Output() bhJournalChanged:  EventEmitter<BhJournal> = new EventEmitter<BhJournal>();
+  @Output() bhJournalChanged: EventEmitter<BhJournal> = new EventEmitter<BhJournal>();
 
   constructor(private bhjournalService: BhJournalService) {
   }
+
   ngOnInit() {
     this.checkBhJournal();
   }
+
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
     this.checkBhJournal();
   }
+
   private checkBhJournal() {
     // Prüfen auf neues BhJournal
     if (!this.bhJournal._id) {
@@ -74,6 +78,7 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
     }
     this.bhJournalChanged.emit(bhjournal);
   }
+
   onCancel() {
     this.isLoading = true;
   }
@@ -85,10 +90,12 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
   onEndeDatumChanged(endeDatum: moment.Moment) {
     this.bhJournal.dauer.endeDatum = endeDatum;
   }
+
   isDauerValid(): boolean {
     return moment(this.bhJournal.dauer.startDatum).isValid()
       && moment(this.bhJournal.dauer.endeDatum).isValid();
   }
+
   private actualizeCache() {
     this.bhjournalService.writeCache(this.bhJournal);
   }

@@ -26,14 +26,17 @@ export class PatientMenuComponent implements OnInit {
         this.router.navigate(['/bhjournal']);
       });
   }
+
   ngOnInit() {
     this.getSelectedPatient();
   }
+
   onChoosePatient() {
     this.patientSelectionWithSearch.emit(true);
     this.patient.name = 'Kein Patient';
     this.router.navigate(['/patient-card']);
   }
+
   getSelectedPatient() {
     this.patient = this.patientService.readCache();
     if (this.patient !== null) {

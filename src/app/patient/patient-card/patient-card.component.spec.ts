@@ -1,10 +1,7 @@
 ///<reference path="../patient-detail/patient-detail.component.ts"/>
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { PatientCardComponent } from './patient-card.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {PatientCardComponent} from './patient-card.component';
 import {PatientDetailComponent} from '../patient-detail/patient-detail.component';
 import {FormsModule} from '@angular/forms';
 import {PatientService} from '../service/patient.service';
@@ -18,11 +15,11 @@ describe('PatientCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PatientCardComponent, PatientDetailComponent ],
+      declarations: [PatientCardComponent, PatientDetailComponent],
       imports: [FormsModule, HttpModule],
       providers: [PatientService, SearchService, AUTH_PROVIDERS]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

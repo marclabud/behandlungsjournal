@@ -4,7 +4,6 @@ import {CommonModule} from '@angular/common';
 import {MedicamentListComponent} from './medicament-list/medicament-list.component';
 import {MedicamentDetailComponent} from './medicament-detail/medicament-detail.component';
 import {MedikationService} from './service/medikation.service';
-
 import {HaeufigkeitModule} from '../shared/component/haeufigkeit/haeufigkeit.module';
 import {DauerModule} from '../shared/component/dauer/dauer.module';
 

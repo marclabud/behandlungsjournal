@@ -37,9 +37,11 @@ export class PatientCardComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getPatients();
   }
+
   ngOnChanges() {
     this.isEditing = false;
   }
+
   getPatients() {
     this.patientService.getAllItems().subscribe(
       data => {

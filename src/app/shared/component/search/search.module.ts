@@ -10,4 +10,5 @@ import {SearchService} from '../service/search.service';
   providers: [SearchService],
 
 })
-export class SearchModule {}
+export class SearchModule {
+}

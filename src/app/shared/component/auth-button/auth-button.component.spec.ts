@@ -4,7 +4,7 @@ import {AuthButtonComponent} from './auth-button.component';
 import {AuthentificationService} from '../../service/auth/authentification.service';
 import {UserService} from '../../../user/service/user.service';
 import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS}   from 'angular2-jwt';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 describe('AuthButtonComponent', () => {
   let component: AuthButtonComponent;

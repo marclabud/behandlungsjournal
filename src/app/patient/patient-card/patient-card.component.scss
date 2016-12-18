@@ -2,5 +2,5 @@
 @import "../../../sass/_variables";
 
 .card.card-outline-primary:hover {
-  @include card-variant($gray-lightest,$brand-primary );
+  @include card-variant($gray-lightest, $brand-primary);
 }

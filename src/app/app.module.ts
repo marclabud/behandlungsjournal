@@ -1,12 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import {HttpModule} from '@angular/http';
 import {provideAuth} from 'angular2-jwt';
-
 import {routing} from './app.routing';
-
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SignupComponent} from './signup/signup.component';
@@ -16,23 +13,19 @@ import {UserService} from './user/service/user.service';
 import {AuthButtonComponent} from './shared/component/auth-button/auth-button.component';
 import {AuthentificationService} from './shared/service/auth/authentification.service';
 import {GuardService} from './shared/service/guard/guard.service';
-
 import {PatientListComponent} from './patient/patient-list/patient-list.component';
 import {PatientDetailComponent} from './patient/patient-detail/patient-detail.component';
 import {PatientService} from './patient/service/patient.service';
-
 import {TitelComponent} from './titel/titel.component';
 import {MainNavComponent} from './main-nav/main-nav.component';
 import {MessageService} from './shared/service/message/message.service';
-
 import {Ng2DatetimePickerModule} from './shared/component/datetime-picker/NG2DatetimePicker.module';
-
 // Feature-modules
 import {IndikatorModule} from './indikator/indikator.module';
 import {MedikationModule} from './medicament/medicament.module';
 import {BehandlungsJournalModule} from './bhjournal/bhjournal.module';
-import { PatientCardComponent } from './patient/patient-card/patient-card.component';
-import { PatientMenuComponent } from './patient/patient-menu/patient-menu.component';
+import {PatientCardComponent} from './patient/patient-card/patient-card.component';
+import {PatientMenuComponent} from './patient/patient-menu/patient-menu.component';
 import {SearchComponent} from './shared/component/search/search.component';
 import {SearchService} from './shared/component/service/search.service';
 

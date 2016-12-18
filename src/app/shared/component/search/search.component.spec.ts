@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { SearchComponent } from './search.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SearchComponent} from './search.component';
 import {SearchService} from '../service/search.service';
 import {ReactiveFormsModule} from '@angular/forms';
 
@@ -13,11 +10,11 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ],
+      declarations: [SearchComponent],
       imports: [ReactiveFormsModule],
       providers: [SearchService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -40,6 +40,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
         this.getJournalsbyPatient(this.selectedPatient._id);
       });
   }
+
   // To Do: Refactor Logic, when Patient is selectedPatient
   ngOnInit() {
     if (this.selectedPatient !== null) {
@@ -64,6 +65,7 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.isLoading = true;
     }
   }
+
   private getJournalsbyPatient(patient_id: string) {
     this.bhjournalService.getJournalsbyPatient_id(patient_id).subscribe(
       journal => this.getJournals(journal),
@@ -83,9 +85,10 @@ export class BhjournalComponent implements OnInit, OnDestroy {
       this.therapiedauer.endeDatum = moment.utc(this.selectedBhJournal.dauer.endeDatum);
       this.messageServiceBhJournal.selectItem(this.selectedBhJournal);
     } else { // Kein BhJournal vorhanden, bhjournal anlegen
-       this.router.navigate(['/bhjournal-list-detail']);
+      this.router.navigate(['/bhjournal-list-detail']);
     }
   };
+
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionPatient.unsubscribe();

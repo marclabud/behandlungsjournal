@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-
 import {DauerModule} from '../shared/component/dauer/dauer.module';
 import {HaeufigkeitModule} from '../shared/component/haeufigkeit/haeufigkeit.module';
 import {BhJournalService} from './service/bhjournal.service';
@@ -14,7 +13,7 @@ import {MedikationModule} from '../medicament/medicament.module';
 
 @NgModule({
   imports: [DauerModule, HaeufigkeitModule, FormsModule, ReactiveFormsModule, CommonModule, IndikatorModule, MedikationModule],
-  declarations: [BhjournalComponent, BhjournalListComponent, BhjournalDetailComponent, BhjournalListDetailComponent ],
+  declarations: [BhjournalComponent, BhjournalListComponent, BhjournalDetailComponent, BhjournalListDetailComponent],
   exports: [BhjournalComponent, BhjournalListComponent, BhjournalDetailComponent, BhjournalListDetailComponent],
   providers: [BhJournalService]
 })

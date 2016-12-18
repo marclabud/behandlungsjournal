@@ -29,9 +29,9 @@
           </form>
         </li>
         <div *ngIf="searchIsVisible">
-        <li class="nav-item form-inline">
-          <app-search></app-search>
-        </li>
+          <li class="nav-item form-inline">
+            <app-search></app-search>
+          </li>
         </div>
         <li class="nav-item dropdown pull-lg-right">
           <a class="nav-link dropdown-toggle" href="link auf die nav" id="log"
@@ -45,8 +45,8 @@
     </ul>
     <div *ngIf="userIsLoggedIn()">
       <form class="form-inline float-xs-right">
-      <app-auth-button></app-auth-button>
-    </form>
+        <app-auth-button></app-auth-button>
+      </form>
     </div>
 
   </div>
