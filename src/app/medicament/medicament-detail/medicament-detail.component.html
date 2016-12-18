@@ -36,13 +36,10 @@
                        (StartDatumChange)="onStartDatumChanged($event)"
                        (EndeDatumChange)="onEndeDatumChanged($event)"></app-dauer>
             <div class="form-group row">
-              <button *ngIf="!isEditing" class="btn btn-success" type="submit" [disabled]="!(form.valid && isDauerValid())">
-                <i class="fa fa-floppy-o"></i>Hinzufügen
-              </button>
-              <button *ngIf="isEditing" class="btn btn-success" type="submit" [disabled]="!(form.valid && isDauerValid())">
+              <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && isDauerValid())">
                 <i class="fa fa-floppy-o"></i>Speichern
               </button>
-              <button class="btn btn-primary" type="button" (click)="back()">
+              <button class="btn btn-warning" type="button" (click)="back()">
                 <i class="fa fa-floppy-o"></i>Abbrechen
               </button>
             </div>
