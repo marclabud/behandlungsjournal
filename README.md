@@ -39,8 +39,18 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 2. Command window 2: 
    <br/>a) `npm run init` : SASS-build, client-build for production, server-build
    <br/>b) `npm start` : run Express server
-3. Go to [localhost:3000](http://localhost:3000)   
+3. Go to [localhost:3000](http://localhost:3000) 
+
+## Docker
+docker.compose.yml for production build
+docker.compose-dev.yml for development build
+
+client application: 
+ 
     
+## Projekt ist Live unter
+behandlungsjournal.sloppy.zone
+
 
 ## Documentation
 1. [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki)
