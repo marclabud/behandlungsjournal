@@ -52,6 +52,7 @@ export class BhjournalListComponent implements OnInit {
     onCreateJournal() {
         let newBhJournal = new BhJournal();
         newBhJournal.name = 'Neues Journal';
+        newBhJournal.patient_id = 'INIT';    // Parameter für die Textänderung eines neuen Journals
         this.bhJournalChange.emit(newBhJournal);
     }
 

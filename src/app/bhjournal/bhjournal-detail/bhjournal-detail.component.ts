@@ -11,6 +11,8 @@ import * as moment from 'moment';
 })
 export class BhjournalDetailComponent implements OnInit, OnChanges {
   private isLoading = true;
+  private JournalActionText = 'bearbeiten';
+  private JournalButtonText = 'speichern';
   /* tslint:disable-next-line:no-unused-variable */
   private labelStart = 'Beginn:';
   /* tslint:disable-next-line:no-unused-variable */
@@ -39,9 +41,12 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
   private checkBhJournal() {
     // Prüfen auf neues BhJournal
     if (!this.bhJournal._id) {
-      // Ausgewählten Patienten zuweisen
-      this.bhJournal.patient_id = this.patient._id;
+      if (this.bhJournal.patient_id === 'INIT') {
+        this.JournalActionText = 'anlegen';
+      }
     }
+    // Ausgewählten Patienten zuweisen
+    this.bhJournal.patient_id = this.patient._id;
     this.isLoading = false;
   }
 
@@ -70,7 +75,7 @@ export class BhjournalDetailComponent implements OnInit, OnChanges {
     this.bhJournalChanged.emit(bhjournal);
   }
   onCancel() {
-    // FormReset auf Initiale Bhjournalwerte
+    this.isLoading = true;
   }
 
   onStartDatumChanged(startDatum: moment.Moment) {
