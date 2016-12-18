@@ -42,15 +42,12 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 3. Go to [localhost:3000](http://localhost:3000) 
 
 ## Docker
-<code>docker.compose.yml</code> for production build
-<code>docker.compose-dev.yml</code> for development build
-
-[Docker Hub](https://hub.docker.com/r/mlabud/behandlungsjournal/)
- 
-    
+* <code>docker.compose.yml</code> for production build
+* <code>docker.compose-dev.yml</code> for development build
+* [Docker Hub](https://hub.docker.com/r/mlabud/behandlungsjournal/)
+     
 ## Project is live
 [Behandlungsjournal live](behandlungsjournal.sloppy.zone)
-
 
 ## Documentation
 1. [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki)
