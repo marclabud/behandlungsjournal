@@ -51,6 +51,8 @@ export class BhjournalComponent implements OnInit, OnDestroy {
         // Noch kein Patient ausgewählt und leerer Cache nach Userwechsel
         this.isLoading = true;
         console.log('Bhjournal-Component ngOnInit selected Patient is null');
+        // Redirect zur Patienten auswählen
+        this.router.navigate(['/patient-card']);
       } else {
         this.patient_id = this.selectedPatient._id;
       }
