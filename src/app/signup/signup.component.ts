@@ -10,7 +10,7 @@ import {User} from '../user/model/user';
 })
 export class SignupComponent implements OnInit {
 
-  private SignupForm: FormGroup;
+  private signupForm: FormGroup;
   public submitted: boolean;
 
   constructor(private userService: UserService,
@@ -19,11 +19,12 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.SignupForm = this.formbuilder.group({
+    this.signupForm = this.formbuilder.group({
       name: ['', [<any>Validators.required]],
       email: ['', [<any>Validators.required]],
       password: ['', [<any>Validators.required]]
     });
+    this.submitted = false;
   }
 
   onSubmit(model: User, isValid: Boolean) {
