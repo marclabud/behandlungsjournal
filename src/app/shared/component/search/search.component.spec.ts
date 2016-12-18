@@ -5,6 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { SearchComponent } from './search.component';
 import {SearchService} from '../service/search.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -13,6 +14,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchComponent ],
+      imports: [ReactiveFormsModule],
       providers: [SearchService]
     })
     .compileComponents();
@@ -21,7 +23,7 @@ describe('SearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

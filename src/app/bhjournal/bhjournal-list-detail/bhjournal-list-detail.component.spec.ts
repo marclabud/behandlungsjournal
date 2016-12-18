@@ -14,6 +14,7 @@ import {BhJournalService} from '../service/bhjournal.service';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {HttpModule} from '@angular/http';
 import {PatientService} from '../../patient/service/patient.service';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('BhjournalListDetailComponent', () => {
   let component: BhjournalListDetailComponent;
@@ -22,7 +23,7 @@ describe('BhjournalListDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ BhjournalListDetailComponent, BhjournalDetailComponent, BhjournalListComponent],
-      imports: [FormsModule, DauerModule, HttpModule],
+      imports: [FormsModule, DauerModule, HttpModule, RouterTestingModule],
       providers: [BhJournalService, PatientService, AUTH_PROVIDERS]
     })
     .compileComponents();

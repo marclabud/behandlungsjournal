@@ -10,6 +10,7 @@ import {AuthButtonComponent} from '../shared/component/auth-button/auth-button.c
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {PatientMenuComponent} from '../patient/patient-menu/patient-menu.component';
 import {SearchComponent} from '../shared/component/search/search.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 describe('MainNavComponent', () => {
   let component: MainNavComponent;
@@ -24,7 +25,7 @@ describe('MainNavComponent', () => {
         PatientMenuComponent,
         SearchComponent
       ],
-      imports: [HttpModule],
+      imports: [HttpModule, ReactiveFormsModule, FormsModule],
       providers: [PatientService, AuthentificationService, UserService, AUTH_PROVIDERS]
     })
       .compileComponents();

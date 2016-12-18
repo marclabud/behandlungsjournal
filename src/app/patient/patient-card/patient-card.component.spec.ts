@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {PatientService} from '../service/patient.service';
 import {HttpModule} from '@angular/http';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {SearchService} from '../../shared/component/service/search.service';
 
 describe('PatientCardComponent', () => {
   let component: PatientCardComponent;
@@ -19,7 +20,7 @@ describe('PatientCardComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ PatientCardComponent, PatientDetailComponent ],
       imports: [FormsModule, HttpModule],
-      providers: [PatientService, AUTH_PROVIDERS]
+      providers: [PatientService, SearchService, AUTH_PROVIDERS]
     })
     .compileComponents();
   }));
