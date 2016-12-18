@@ -47,7 +47,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [Docker Hub](https://hub.docker.com/r/mlabud/behandlungsjournal/)
      
 ## Project is live
-[Behandlungsjournal live](behandlungsjournal.sloppy.zone)
+[Behandlungsjournal live](http://behandlungsjournal.sloppy.zone/)
 
 ## Documentation
 1. [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki)
