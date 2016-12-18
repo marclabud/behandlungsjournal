@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {UserService} from '../user/service/user.service';
 import {User} from '../user/model/user';
 
@@ -13,7 +14,8 @@ export class SignupComponent implements OnInit {
   public submitted: boolean;
 
   constructor(private userService: UserService,
-              private formbuilder: FormBuilder) {
+              private formbuilder: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class SignupComponent implements OnInit {
         error => console.log(error)
       );
       this.actualizeCache();
+      this.router.navigate(['/login']);
     }
     // error
     console.log(model, isValid);
