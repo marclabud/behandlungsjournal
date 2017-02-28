@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ServiceBase} from '../../shared/service.base';
 import {BhJournal} from '../model/bhjournal';
-import {paths} from '../../../../server/src/server.conf';
+import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
 import {AuthHttp} from 'angular2-jwt';
 

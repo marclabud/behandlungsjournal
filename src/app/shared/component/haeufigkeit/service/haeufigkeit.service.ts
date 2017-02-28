@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {paths} from '../../../../../../server/src/server.conf';
+import {paths} from '../../../../server.conf';
 import {Haeufigkeit} from '../../../model/haeufigkeit';
 import {ServiceBase} from '../../../service.base';
 import {MessageService} from '../../../service/message/message.service';

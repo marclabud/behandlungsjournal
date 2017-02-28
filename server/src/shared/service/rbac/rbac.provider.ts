@@ -5,7 +5,7 @@ const RBACProvider = <IRbacProvider>Provider;
 
 module.exports = class RbacProvider extends RBACProvider {
 
-  private permissions;
+  private  permissions;
   private roles;
 
   constructor(permissions, roles) {
@@ -51,12 +51,13 @@ module.exports = class RbacProvider extends RBACProvider {
    The method mey return a promise resolving with the
    expected return value.
 
+
    @param role {mixed}
    @return {Array<string>}
    */
   getPermissions(role) {
     console.log('getPermissions for role: ', role);
-    let permissions = this.permissions
+    const permissions = this.permissions
       && this.permissions['roles']
       && this.permissions['roles'][role]
       && this.permissions['roles'][role]['permissions'] || [];

@@ -2,7 +2,7 @@
 const model = 'Journal';
 
 import * as mongoose from 'mongoose';
-let ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const journalSchema = new mongoose.Schema({

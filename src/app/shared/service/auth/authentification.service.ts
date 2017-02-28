@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {JwtHelper, AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs';
-import {paths} from '../../../../../server/src/server.conf';
+import {paths} from '../../../server.conf';
 import {User} from '../../../user/model/user';
 import {ServiceBase} from '../../service.base';
 import {UserService} from '../../../user/service/user.service';

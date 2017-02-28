@@ -11,19 +11,19 @@ export class JwtUserService {
   constructor( private keyProvider: JwtKeyProvider) {}
 
   public createJWT(user: User ) {
-    let secret = this.keyProvider.getKey();
-    let createdToken = sign (user, secret);
+    const secret = this.keyProvider.getKey();
+    const createdToken = sign (user, secret);
     console.log ('createJWT: ' , createdToken);
     return createdToken;
   }
 
   public whoIsUser(request: Request): User {
     let user: User = new User();
-    let auth: any = request.header('authorisation');
+    const auth: any = request.header('authorisation');
     if (auth && auth.indexOf('Bearer') >= 0) {
       let jwt = auth.substring(7);
       jwt = jwt.replace(/\"/g, '');
-      let decodedtoken = verify(jwt, this.keyProvider.getKey());
+      const decodedtoken = verify(jwt, this.keyProvider.getKey());
       if (decodedtoken) {
         console.log('username from token:' , 'name:', decodedtoken._doc.name, 'rolle:', decodedtoken._doc.role );
         user.name = decodedtoken._doc.name;

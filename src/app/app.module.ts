@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {provideAuth} from 'angular2-jwt';
+
 import {routing} from './app.routing';
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
@@ -29,12 +29,8 @@ import {PatientMenuComponent} from './patient/patient-menu/patient-menu.componen
 import {SearchComponent} from './shared/component/search/search.component';
 import {SearchService} from './shared/component/service/search.service';
 import {GetstartedComponent} from './shared/component/getstarted/getstarted.component';
-
-// Angular2-jwt authHttp const used in provideAuth
-const bhj_HEADER_NAME = 'Authorisation',
-  bhj_HEADER_PREFIX = 'Bearer',
-  bhj_TOKEN_NAME = 'token',
-  bhj_TOKEN_GETTER_FUNCTION = () => sessionStorage.getItem(bhj_TOKEN_NAME);
+import {AuthModule} from './shared/service/auth/auth.module';
+import {SearchModule} from './shared/component/search/search.module';
 
 @NgModule({
   declarations: [
@@ -50,30 +46,22 @@ const bhj_HEADER_NAME = 'Authorisation',
     LogoutComponent,
     PatientCardComponent,
     PatientMenuComponent,
-    SearchComponent,
     GetstartedComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    AuthModule,
     ReactiveFormsModule,
     Ng2DatetimePickerModule,
     IndikatorModule,
     MedikationModule,
     BehandlungsJournalModule,
+    SearchModule,
     routing
   ],
   providers: [
-    provideAuth({
-      headerName: bhj_HEADER_NAME,
-      headerPrefix: bhj_HEADER_PREFIX,
-      tokenName: bhj_TOKEN_NAME,
-      tokenGetter: bhj_TOKEN_GETTER_FUNCTION,
-      globalHeaders: [{'Content-Type': 'application/json'}],
-      noJwtError: true,
-      noTokenScheme: true
-    }),
     UserService,
     PatientService,
     AuthentificationService,

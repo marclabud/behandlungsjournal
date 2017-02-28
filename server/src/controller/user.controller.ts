@@ -8,7 +8,7 @@ const rbacService = new RbacService(new RbacPermissions());
 const authService = new AuthService();
 
 module.exports.getAllUsers = (request, response) => {
-  let user: User = authService.whoIsUser(request);
+  const user: User = authService.whoIsUser(request);
   console.log('getAllUsers: user name from token', user);
   rbacService.setRoles(user.role);
   rbacService.rbac.check(user.name, 'manage, administrate').then(function (allowed) {
@@ -42,7 +42,7 @@ module.exports.countUsers = (request, response) => {
 };
 
 module.exports.addUser = (request, response) => {
-  let UsertoUpdate = new UserCollection(request.body);
+  const UsertoUpdate = new UserCollection(request.body);
   UsertoUpdate.save((err) => {
     if (err) {
       return console.error(err);
@@ -79,10 +79,8 @@ module.exports.deleteUser = (request, response) => {
 };
 
 module.exports.loginUser = (request, response) => {
-  let email = '';
-  email = request.body.email;
-  let password = '';
-  password = request.body.password;
+  const email = request.body.email;
+  const password = request.body.password;
 
   if (email === '' || password === '') {
     return response.status(400).send('You must send the username and the password');
@@ -96,8 +94,8 @@ module.exports.loginUser = (request, response) => {
 
       if (1 === (docs.length)) {
         // genau 1 User wurde gefunden; Token wird zurückgesendet
-        let user: User = docs[0];
-        let token = authService.getjwtToken(user);
+        const user: User = docs[0];
+        const token = authService.getjwtToken(user);
         response.status(201).send({id_token: token});
         console.log('Token', 'Token to response ok');
       } else {    // keinen oder mehr als einen User mit diesem Passwort gefunden

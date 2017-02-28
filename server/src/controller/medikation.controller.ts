@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-let ObjectId = mongoose.Types.ObjectId;
+const ObjectId = mongoose.Types.ObjectId;
 
 const Medikation = require('../models/medikation.model');
 
@@ -14,8 +14,8 @@ module.exports.getAllMedications = (request, response) => {
 };
 
 module.exports.getMedicationsByJournalId = (request, response) => {
-  let journal_id: string = request.params.journal_id;
-  let objectId = ObjectId(journal_id);
+  const journal_id: string = request.params.journal_id;
+  const objectId = ObjectId(journal_id);
   console.log('parameter journal_id', objectId );
   Medikation.find({journal_id: objectId}, (err, docs) => {
     console.log('getMedicationsByJournalId: docs', docs);
@@ -36,7 +36,7 @@ module.exports.countMedications = (request, response) => {
 };
 
 module.exports.addMedication = (request, response) => {
-  let MedicationtoUpdate = new Medikation(request.body);
+  const MedicationtoUpdate = new Medikation(request.body);
   MedicationtoUpdate.save((err) => {
     if (err) {
       return console.error(err);
