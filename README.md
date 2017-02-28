@@ -3,7 +3,7 @@
 Ein [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki) für kranke Tiere.
 
 ## Technology stack
-Behandlungsjournal is generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
+Behandlungsjournal is generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
