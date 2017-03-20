@@ -23,11 +23,10 @@
         "bootstrap.css"
       ],
       "scripts": [
+        "../node_modules/moment/min/moment-with-locales.js",
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/tether/dist/js/tether.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js",
-        "../node_modules/moment/min/moment-with-locales.js",
-        "../src/app/shared/lib/modernizr.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
       ],
       "dev": "environments/environment.ts",
       "prod": "environments/environment.prod.ts"
