@@ -13,38 +13,35 @@
       <li class="nav-item active">
         <a class="nav-link" href="bhjournal">{{brandName}} <span class="sr-only">(current)</span></a>
       </li>
-      <div *ngIf="userIsLoggedIn()">
-        <li class="nav-item">
-        </li>
-        <li class="nav-item dropdown pull-lg-right">
-          <a class="nav-link dropdown-toggle" href="patient-card" id="journal"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Planen</a>
-          <div class="dropdown-menu" aria-labelledby="journal">
-            <a class="dropdown-item" href="patient-card">Patient</a>
-            <a class="dropdown-item" href="bhjournal-list-detail">Behandlungsjournal</a>
-            <a class="dropdown-item" href="bhjournal">Medikation</a>
-            <a class="dropdown-item" href="bhjournal">Indikatoren</a>
-          </div>
 
-        <li class="nav-item">
+        <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
+          <a class="nav-link dropdown-toggle" routerLink="patient-card" id="journal"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Planen</a>
+          <span class="dropdown-menu" aria-labelledby="journal">
+            <a class="dropdown-item" routerLink="patient-card">Patient</a>
+            <a class="dropdown-item" routerLink="bhjournal-list-detail">Behandlungsjournal</a>
+            <a class="dropdown-item" routerLink="bhjournal">Medikation</a>
+            <a class="dropdown-item" routerLink="bhjournal">Indikatoren</a>
+          </span>
+
+        <li class="nav-item" *ngIf="userIsLoggedIn()">
           <form class="form-inline navbar-form pull-lg-right">
             <app-patient-menu (patientSelectionWithSearch)="onSearchIsVisible($event)"></app-patient-menu>
           </form>
         </li>
-        <div *ngIf="searchIsVisible">
+      <!--*ngIf="searchIsVisible"-->
           <li class="nav-item form-inline">
             <app-search></app-search>
           </li>
-        </div>
-        <li class="nav-item dropdown pull-lg-right">
+
+        <li class="nav-item dropdown pull-lg-right"  *ngIf="userIsLoggedIn()">
           <a class="nav-link dropdown-toggle" href="link auf die nav" id="log"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Einstellungen</a>
           <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="user">Benutzerverwaltung</a>
-            <a class="dropdown-item" href="getstarted">Get Started</a>
+            <a class="dropdown-item" routerLink="user">Benutzerverwaltung</a>
+            <a class="dropdown-item" routerLink="getstarted">Get Started</a>
           </div>
         </li>
-      </div>
     </ul>
     <div *ngIf="userIsLoggedIn()">
       <form class="form-inline float-xs-right">
