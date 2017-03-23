@@ -1,41 +1,39 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <!-- Toggle Button -->
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <!-- Nav Content -->
   <a class="navbar-brand" href="#">{{brandName}}</a>
-  <app-patient-menu (patientSelectionWithSearch)="onSearchIsVisible($event)"></app-patient-menu>
+  <div *ngIf="userIsLoggedIn()">
+    <app-patient-menu (patientSelectionWithSearch)="onSearchIsVisible($event)"></app-patient-menu>
+  </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
-          <a class="nav-link dropdown-toggle" routerLink="patient-card" id="journal"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Planen</a>
-          <span class="dropdown-menu" aria-labelledby="journal">
+
+      <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
+        <a class="nav-link dropdown-toggle" routerLink="patient-card" id="journal"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Planen</a>
+        <span class="dropdown-menu" aria-labelledby="journal">
             <a class="dropdown-item" routerLink="patient-card">Patient</a>
             <a class="dropdown-item" routerLink="bhjournal-list-detail">Behandlungsjournal</a>
             <a class="dropdown-item" routerLink="bhjournal">Medikation</a>
             <a class="dropdown-item" routerLink="bhjournal">Indikatoren</a>
           </span>
 
-      <!--*ngIf="searchIsVisible"-->
-          <li class="nav-item form-inline">
-            <app-search></app-search>
-          </li>
-
-        <li class="nav-item dropdown pull-lg-right"  *ngIf="userIsLoggedIn()">
-          <a class="nav-link dropdown-toggle" href="link auf die nav" id="log"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Einstellungen</a>
-          <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" routerLink="user">Benutzerverwaltung</a>
-            <a class="dropdown-item" routerLink="getstarted">Get Started</a>
-          </div>
-        </li>
+      <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
+        <a class="nav-link dropdown-toggle" href="link auf die nav" id="log"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Einstellungen</a>
+        <div class="dropdown-menu" aria-labelledby="">
+          <a class="dropdown-item" routerLink="user">Benutzerverwaltung</a>
+          <a class="dropdown-item" routerLink="getstarted">Get Started</a>
+        </div>
+      </li>
     </ul>
     <div *ngIf="userIsLoggedIn()">
-      <form class="form-inline float-xs-right">
-        <app-auth-button></app-auth-button>
-      </form>
+      <app-auth-button></app-auth-button>
     </div>
   </div>
 </nav>
