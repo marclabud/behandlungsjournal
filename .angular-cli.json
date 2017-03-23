@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "bootstrap.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [
         "../node_modules/moment/min/moment-with-locales.js",
