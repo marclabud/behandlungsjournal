@@ -4,4 +4,8 @@
     <Button class="form-control btn btn-outline-info my-2 my-sm-0" (click)="onChoosePatient()">Auswählen</Button>
   </div>
 </form>
-
+<div *ngIf="PatientsearchIsVisible">
+<form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
+  <input class="form-control" formControlName="searchTermCtrl" type="text" placeholder="Patientensuche">
+</form>
+</div>
