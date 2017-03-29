@@ -27,9 +27,9 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   @Input() private medikation: Medikation;
 
   /* tslint:disable-next-line:no-unused-variable */
-  private labelStart: string = 'Beginn:';
+  private labelStart: string = 'Beginn: ';
   /* tslint:disable-next-line:no-unused-variable */
-  private labelEnde: string = 'Ende:';
+  private labelEnde: string = ' Ende:   ';
 
   constructor(private haeufigkeitService: HaeufigkeitService,
               private medikationService: MedikationService,
