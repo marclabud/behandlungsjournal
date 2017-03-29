@@ -3,7 +3,7 @@
 Ein [Online-Behandlungsjournal](https://github.com/marclabud/behandlungsjournal/wiki) für kranke Tiere.
 
 ## Technology stack
-Behandlungsjournal is generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+Behandlungsjournal is generated with [angular-cli](https://github.com/angular/angular-cli).
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
@@ -13,13 +13,13 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [Angular CLI](https://cli.angular.io): to generate the project
 * [Typescript](https://github.com/Microsoft/TypeScript): client and node-server: Both with same typescript version. 
 * [SASS](http://sass-lang.com/libsass): to process SASS-Sources in global framework and Angular-Components
-* [Bootstrap Version 4 alpha 5](https://v4-alpha.getbootstrap.com/getting-started/introduction/): SASS-sources as base for layout and styles
+* [Bootstrap Version 4](https://v4-alpha.getbootstrap.com/getting-started/introduction/): SASS-sources as base for layout and styles
 * [Font Awesome](http://fontawesome.io): icons
 
 
 ## Prerequisites
-1. Install [**N**ode.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
-2. Install Angular CLI: `npm i @angular/cli@1.0.0-rc.2 -g` : Install global and local.
+1. Install [**N**ode.js](https  ://nodejs.org) and [MongoDB](http://www.mongodb.com)
+2. Install Angular CLI: `npm i @angular/cli@1.0.0 -g` : Install global and local.
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
