@@ -1,5 +1,5 @@
-@import "../../../sass/mixins/_cards";
-@import "../../../sass/_variables";
+@import "../../../scss/mixins/_cards";
+@import "../../../scss/_variables";
 
 .card.card-outline-primary:hover {
   @include card-variant($gray-lightest, $brand-primary);
