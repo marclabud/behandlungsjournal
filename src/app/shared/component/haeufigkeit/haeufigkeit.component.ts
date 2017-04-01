@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {MessageService} from '../../service/message/message.service';
 import {Haeufigkeit} from '../../model/haeufigkeit';
 import {HaeufigkeitService} from './service/haeufigkeit.service';
@@ -16,7 +16,7 @@ export class HaeufigkeitComponent implements OnInit, OnDestroy {
   private messageService: MessageService<Haeufigkeit>;
   private subscription: Subscription;
   /* tslint:disable-next-line:no-unused-variable */
-  private isLoading = true;
+  isLoading = true;
 
   @Input() private isEditing;
   @Input() private haeufigkeit: Haeufigkeit = null;

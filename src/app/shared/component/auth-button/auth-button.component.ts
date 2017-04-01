@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./auth-button.component.scss']
 })
 export class AuthButtonComponent implements OnInit {
-  private buttonTxt: string = 'Login';
+  buttonTxt = 'Login';
 
   constructor(private auth: AuthentificationService, private router: Router) {
   }

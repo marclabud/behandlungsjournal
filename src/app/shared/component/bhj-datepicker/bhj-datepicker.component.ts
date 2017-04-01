@@ -9,12 +9,12 @@ import * as moment from 'moment';
 export class BhjDatepickerComponent implements OnInit {
   @Input() private defaultDate: moment.Moment;
   /* tslint:disable-next-line:no-unused-variable */
-  @Input() private labeltext: string;
+  @Input() labeltext: string;
   @Output() private DateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
 
-  private HTML5_inputtype_date_Supported = false;
-  private HTML5Date: String;
-  private NG2Date: Date;
+  HTML5_inputtype_date_Supported = false;
+  HTML5Date: String;
+  NG2Date: Date;
   constructor() {
     // this.defaultDate = moment();
   }
@@ -48,11 +48,11 @@ export class BhjDatepickerComponent implements OnInit {
   }
 
   private BrowserSupportsInputTypeDate() {
-    let input: HTMLInputElement = document.createElement('input');
-    input.setAttribute('type','date');
+    const input: HTMLInputElement = document.createElement('input');
+    input.setAttribute('type', 'date');
 
     // check by setting an illegal value to field date
-    let notADateValue = 'not-a-date';
+    const notADateValue = 'not-a-date';
     input.setAttribute('value', notADateValue);
 
     return (input.value !== notADateValue);

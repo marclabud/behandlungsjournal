@@ -3,7 +3,7 @@ import {Indikator} from '../model/indikator';
 import {IndikatorService} from '../service/indikator.service';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import * as moment from 'moment';
 import {Haeufigkeit} from '../../shared/model/haeufigkeit';
@@ -24,14 +24,15 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
   private indikatoren: Array<Indikator> = [];
   private infoMsg = {body: '', type: 'info'};
   private goBack = false;
+  isLoading = true;
 
   @Input() private isEditing;
   @Input() private indikator: Indikator;
 
   /* tslint:disable-next-line:no-unused-variable */
-  private labelStart: string = 'Beginn:';
+  private labelStart = 'Beginn:';
   /* tslint:disable-next-line:no-unused-variable */
-  private labelEnde: string = 'Ende:';
+  private labelEnde = 'Ende:';
 
   constructor(private haeufigkeitService: HaeufigkeitService,
               private indikatorService: IndikatorService,
@@ -51,6 +52,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getIndikator();
     this.setJournalId();
+    this.isLoading = false;
   }
 
   private getIndikator() {
@@ -63,7 +65,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
   }
 
   private setJournalId() {
-    let journal: BhJournal = this.bhjournalService.readCache();
+    const journal: BhJournal = this.bhjournalService.readCache();
     this.indikator.journal_id = journal._id;
   }
 
@@ -72,7 +74,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
     if (typeof(indikator._id) === 'undefined' || indikator._id === '') {
       this.indikatorService.addIndikator(indikator).subscribe(
         res => {
-          let newIndikator = res.json();
+          const newIndikator = res.json();
           this.indikatoren.push(newIndikator);
           this.actualizeCache();
           this.sendInfoMsg('Neuer Indikator erfolgreich hinzugefügt.', 'success');

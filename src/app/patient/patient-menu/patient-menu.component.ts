@@ -1,8 +1,8 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Patient} from '../model/patient';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SearchService} from '../../shared/component/service/search.service';
@@ -16,21 +16,22 @@ export class PatientMenuComponent implements OnInit {
 
   searchForm: FormGroup;
   searchTerm: string;
-  private PatientsearchIsVisible=false;
+  PatientsearchIsVisible= false;
   private messageServicePatient: MessageService<Patient>;
   private subscriptionPatient: Subscription;
-  private patient: Patient;
+  patient: Patient;
 
   @Output() private patientSelectionWithSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private search: SearchService,private patientService: PatientService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private search: SearchService, private patientService: PatientService,
+              private formBuilder: FormBuilder, private router: Router) {
     this.searchForm = formBuilder.group({
       searchTermCtrl: '',
     });
     this.messageServicePatient = patientService.messageService;
     this.subscriptionPatient = this.messageServicePatient.Itemselected$.subscribe(
       patient => {
-        this.PatientsearchIsVisible=false;
+        this.PatientsearchIsVisible = false;
         this.patient = patient;
         this.patientSelectionWithSearch.emit(false);
         this.router.navigate(['/bhjournal']);
@@ -48,7 +49,7 @@ export class PatientMenuComponent implements OnInit {
   }
 
   onChoosePatient() {
-    this.PatientsearchIsVisible=true;
+    this.PatientsearchIsVisible = true;
     this.patientSelectionWithSearch.emit(true);
     this.patient.name = 'Kein Patient';
     this.router.navigate(['/patient-card']);

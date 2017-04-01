@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {MedikationService} from '../service/medikation.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Medikation} from '../model/medikation';
@@ -20,6 +20,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   private messageHaeufigkeitService: MessageService<Haeufigkeit>;
   private subscriptionMedication: Subscription;
   private medications: Array<Medikation> = [];
+  isLoading = true;
   private infoMsg = {body: '', type: 'info'};
   private goBack = false;
 
@@ -27,9 +28,9 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   @Input() private medikation: Medikation;
 
   /* tslint:disable-next-line:no-unused-variable */
-  private labelStart: string = 'Beginn: ';
+  private labelStart = 'Beginn:';
   /* tslint:disable-next-line:no-unused-variable */
-  private labelEnde: string = ' Ende:   ';
+  private labelEnde = 'Ende:';
 
   constructor(private haeufigkeitService: HaeufigkeitService,
               private medikationService: MedikationService,
@@ -49,6 +50,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getMedication();
     this.setJournalId();
+    this.isLoading = false;
   }
 
   private getMedication() {
@@ -61,7 +63,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
   }
 
   private setJournalId() {
-    let journal: BhJournal = this.bhjournalService.readCache();
+    const journal: BhJournal = this.bhjournalService.readCache();
     this.medikation.journal_id = journal._id;
   }
 
@@ -70,7 +72,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
     if (typeof(medikation._id) === 'undefined' || medikation._id === '') {
       this.medikationService.addMedikation(medikation).subscribe(
         res => {
-          let newMedication = res.json();
+          const newMedication = res.json();
           this.medications.push(newMedication);
           this.actualizeCache();
           // this.addMedicationForm.reset();
