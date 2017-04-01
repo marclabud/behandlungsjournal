@@ -11,15 +11,16 @@ import {Response} from '@angular/http';
 })
 export class LoginComponent implements OnInit {
   public submitted: boolean;
-  private LoginForm: FormGroup;
-  private isLoading = false;
-  private infoMsg = {body: '', type: 'info'};
+  //private removed due to angular aot-restriction
+  LoginForm: FormGroup;
+  isLoading = false;
+  infoMsg = {body: '', type: 'info'};
   /* tslint:disable-next-line:no-unused-variable */
-  private title: string = 'Bitte anmelden';
+  title: string = 'Bitte anmelden';
   /* tslint:disable-next-line:no-unused-variable */
-  private signup: boolean = true;
+  signup: boolean = true;
   /* tslint:disable-next-line:no-unused-variable */
-  private getstarted: boolean = true;
+  getstarted: boolean = true;
 
   constructor(private authService: AuthentificationService,
               private router: Router,

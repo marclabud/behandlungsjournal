@@ -25,7 +25,8 @@ export class DauerComponent implements OnInit {
 
   private startDatumShow: string;
   private endeDatumShow: string;
-  private isLoading = true;
+  //private removed due to angular aot restrictions
+  isLoading = true;
 
   ngOnInit() {
     this.startdatum = moment(this.dauer.startDatum); // must be cast

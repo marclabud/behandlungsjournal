@@ -15,8 +15,10 @@ export class PatientCardComponent implements OnInit, OnChanges {
 
   private patients: Array<Patient> = [];
   private filteredpatients: Array<Patient> = [];
-  private isLoading = true;
-  private isEditing = false;
+  //private removed due to angular aot-restriction
+  isLoading = true;
+  //private removed due to angular aot-restriction
+  isEditing = false;
   selectedPatient: Patient;
   searchSubscript: Subscription;
 

@@ -6,17 +6,17 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./getstarted.component.scss']
 })
 export class GetstartedComponent implements OnInit {
-
+  //private removed due to angular aot-restriction
   /* tslint:disable-next-line:no-unused-variable */
-  private title: string = 'Get Started';
+  title: string = 'Get Started';
   /* tslint:disable-next-line:no-unused-variable */
-  private titlesize: string = '3';
+  titlesize: string = '3';
   /* tslint:disable-next-line:no-unused-variable */
-  private btsize: string = 'lg';
+  btsize: string = 'lg';
   /* tslint:disable-next-line:no-unused-variable */
-  private login: boolean = true;
+  login: boolean = true;
   /* tslint:disable-next-line:no-unused-variable */
-  private signup: boolean = true;
+  signup: boolean = true;
 
   constructor() {
   }

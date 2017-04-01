@@ -8,7 +8,8 @@ import {AuthentificationService} from '../shared/service/auth/authentification.s
 })
 export class MainNavComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */
-  private brandName = 'Behandlungsjournal';
+  //private removed due to angular aot-restriction
+  brandName = 'Behandlungsjournal';
   searchIsVisible = false;
 
   constructor(private auth: AuthentificationService) {
@@ -23,12 +24,12 @@ export class MainNavComponent implements OnInit {
   private onSearchIsVisible(event: boolean) {
     this.searchIsVisible = event;
   }
-
-  private userIsLoggedIn() {
+  //private removed due to angular aot-restriction
+  userIsLoggedIn() {
     return this.auth.isLoggedIn();
   }
-
-  private whoIsLoggedIn() {
+  //private removed due to angular aot-restriction
+  whoIsLoggedIn() {
     this.auth.whoIsLoggedIn();
   }
 }

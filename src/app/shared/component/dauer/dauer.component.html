@@ -1,4 +1,4 @@
-<div *ngIf="!isloading">
+<div *ngIf="!isLoading">
   <form class="form-group" *ngIf="isEditing">
       <app-datepicker [(defaultDate)]="startdatum" [labeltext]="labelStartDatum"
                       (DateChange)="onStartDatumChanged($event)"></app-datepicker>
