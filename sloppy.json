@@ -9,8 +9,9 @@
           "domain": {
             "uri": "behandlungsjournal.sloppy.zone"
           },
-          "mem": 512,
-          "image": "mlabud/behandlungsjournal:0.2",
+          "mem": 256,
+          "ssl": true,
+          "image": "mlabud/behandlungsjournal:0.3",
           "instances": 1,
           "port_mappings": [
             {
@@ -31,7 +32,7 @@
       "apps": [
         {
           "id": "mongodb",
-          "mem": 512,
+          "mem": 256,
           "image": "mongo:3",
           "cmd": "mongod --smallfiles",
           "instances": 1,
