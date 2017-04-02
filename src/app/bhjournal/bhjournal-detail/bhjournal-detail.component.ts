@@ -10,7 +10,7 @@ import * as moment from 'moment';
   styleUrls: ['bhjournal-detail.component.scss']
 })
 export class BhjournalDetailComponent implements OnInit, OnChanges {
-  private isLoading = true;
+  isLoading = true;
   private JournalActionText = 'bearbeiten';
   /* tslint:disable-next-line:no-unused-variable */
   private JournalButtonText = 'speichern';

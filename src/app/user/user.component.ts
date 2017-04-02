@@ -16,9 +16,10 @@ export class UserComponent implements OnInit {
   protected roles: [string] = ['Gast', 'Tierpfleger', 'Arzt', 'Administrator'];
   private labelRole: string = 'Rolle';
 
-  private isLoading = true;
-  private isAlerting = false;
-  private isEditing = false;
+  //private removed due to angular aot-restriction
+  isLoading = true;
+  isAlerting = false;
+  isEditing = false;
 
   private addUserForm: FormGroup;
   private name = new FormControl('', Validators.required);
@@ -26,7 +27,7 @@ export class UserComponent implements OnInit {
   private password = new FormControl('', Validators.required);
   private role = new FormControl('', Validators.required);
 
-  private infoMsg = {body: '', type: 'info'};
+  infoMsg = {body: '', type: 'info'};
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder) {

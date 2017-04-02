@@ -18,10 +18,11 @@ export class MedicamentListComponent implements OnInit, OnDestroy {
   private bhJournal: BhJournal;
   private medications: Array<Medikation> = [];
   private medikation: Medikation = new Medikation();
-  private isEditing = false;
-  private isAdding = false;
-  private isLoading = true;
-  private infoMsg = {body: '', type: 'info'};
+  //private removed due to angular aot-restriction
+  isEditing = false;
+  isAdding = false;
+  isLoading = true;
+  infoMsg = {body: '', type: 'info'};
 
   constructor(private bhjournalService: BhJournalService, private medikationService: MedikationService) {
     this.messageServiceBhJournal = bhjournalService.messageService;

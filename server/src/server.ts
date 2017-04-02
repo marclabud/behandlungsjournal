@@ -48,7 +48,7 @@ function connect() {
     dbconnection = connection.dbsystem + connection.dburl + '/' + connection.dbname;
   }
   console.log('dbc', dbconnection);
-  let options = {server: {socketOptions: {keepAlive: 1}}};
+  const options = {server: {socketOptions: {keepAlive: 1}}};
   return mongoose.connect(dbconnection, options).connection;
 }
 

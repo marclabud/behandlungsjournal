@@ -9,15 +9,16 @@ import {User} from '../user/model/user';
   templateUrl: './signup.component.html'
 })
 export class SignupComponent implements OnInit {
-
-  private signupForm: FormGroup;
+  //private removed due to angular aot-restriction
+  signupForm: FormGroup;
   public submitted: boolean;
+  //private removed due to angular aot-restriction
   /* tslint:disable-next-line:no-unused-variable */
-  private title: string = 'Erstellen Sie ihr Konto';
+  title: string = 'Erstellen Sie ihr Konto';
   /* tslint:disable-next-line:no-unused-variable */
-  private login: boolean = true;
+  login: boolean = true;
   /* tslint:disable-next-line:no-unused-variable */
-  private getstarted: boolean = true;
+  getstarted: boolean = true;
 
   constructor(private userService: UserService,
               private formbuilder: FormBuilder,

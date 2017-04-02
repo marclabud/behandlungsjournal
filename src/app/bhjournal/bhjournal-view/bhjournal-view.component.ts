@@ -18,7 +18,8 @@ export class BhjournalComponent implements OnInit, OnDestroy {
   title = 'Behandlungsjournal';
   private journalsUTC: Array<BhJournal> = [];
   private therapiedauer: Dauer = new Dauer();
-  private isLoading = true;
+  // private removed due to angular aot rules
+  isLoading = true;
   private subscriptionPatient: Subscription;
   private selectedPatient: Patient = null;
   private selectedBhJournal: BhJournal;

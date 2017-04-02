@@ -21,9 +21,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm.valueChanges.subscribe(value => {
-      this.getSearchTerm(value)
-      ;
-
+      this.getSearchTerm(value);
     });
     this.searchForm.statusChanges.subscribe(value => {
       console.log('searchTerm Value', value);

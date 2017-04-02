@@ -8,14 +8,14 @@ export class AuthService {
   }
 
   getjwtToken(user: User): string {
-    let keyProvider = new JwtKeyProvider();
-    let jwtUserservice = new JwtUserService(keyProvider);
+    const keyProvider = new JwtKeyProvider();
+    const jwtUserservice = new JwtUserService(keyProvider);
     return jwtUserservice.createJWT(user);
   }
 
   whoIsUser(request: Request): User {
-    let keyProvider = new JwtKeyProvider();
-    let jwtUserService = new JwtUserService(keyProvider);
+    const keyProvider = new JwtKeyProvider();
+    const jwtUserService = new JwtUserService(keyProvider);
     return jwtUserService.whoIsUser(request);
   }
 

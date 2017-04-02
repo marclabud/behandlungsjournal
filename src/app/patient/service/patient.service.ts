@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
-import {paths} from '../../../../server/src/server.conf';
+import {paths} from '../../server.conf';
 import {ServiceBase} from '../../shared/service.base';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Patient} from '../model/patient';

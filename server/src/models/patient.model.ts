@@ -2,7 +2,7 @@
 const model = 'Patient';
 
 import * as mongoose from 'mongoose';
-let ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const patientSchema = new mongoose.Schema({
   _id: {type: ObjectId, auto: true}, // auto generate new ObjectId

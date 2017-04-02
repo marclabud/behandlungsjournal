@@ -4,11 +4,10 @@ const gutil = require('gulp-util');
 const gsass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 
-
 gulp.task('sass', sass);
 
 function sass() {
-  gulp.src('./src/sass/bootstrap.scss')
+  gulp.src('./src/scss/bootstrap.scss')
     .pipe(sourcemaps.init())
     .pipe(gsass().on('error', gutil.log))
     .pipe(sourcemaps.write('./maps'))

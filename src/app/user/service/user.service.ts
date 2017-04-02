@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
-import {paths} from '../../../../server/src/server.conf';
+import {paths} from '../../server.conf';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()

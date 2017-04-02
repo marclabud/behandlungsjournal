@@ -1,6 +1,6 @@
-import {BehandlungsjournalPage} from './app.po';
+import { BehandlungsjournalPage } from './app.po';
 
-describe('behandlungsjournal App', function () {
+describe('behandlungsjournal App', () => {
   let page: BehandlungsjournalPage;
 
   beforeEach(() => {

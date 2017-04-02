@@ -1,39 +1,27 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
 # compiled output
 /dist
 /tmp
 
 # dependencies
 /node_modules
-/bower_components
 
 # IDEs and editors
 /.idea
 .project
 .classpath
+.c9/
 *.launch
 .settings/
+*.sublime-workspace
 
-# Express-Server
-/server/src/**/*.js
-/server/src/**/*.map
-
-
-# scss
-src/**/*.css
-/src/**/*.css.map
-!/src/bootstrap.css
-
-
-# debug
-npm-debug.log.*
-
-# Swagger
-/api/server/**/*
-/api/client/**/*
-
-# Test data
-/server/test/**/*.js
-/server/test/**/*.map
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache

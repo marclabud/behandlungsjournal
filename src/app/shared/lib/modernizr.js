@@ -84,9 +84,7 @@
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
 
-
   var classes = [];
-
 
   /**
    * is returns a boolean if the typeof an obj is exactly type.

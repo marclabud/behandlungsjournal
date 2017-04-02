@@ -1,7 +1,7 @@
 const Indikator = require('../models/indikator.model');
 
 import * as mongoose from 'mongoose';
-let ObjectId = mongoose.Types.ObjectId;
+const ObjectId = mongoose.Types.ObjectId;
 
 module.exports.getAllIndicators = (request, response) => {
   Indikator.find({}, (err, docs) => {
@@ -14,7 +14,7 @@ module.exports.getAllIndicators = (request, response) => {
 };
 
 module.exports.getIndicatorsByJournalId = (request, response) => {
-  let objectId = ObjectId( request.params.journal_id);
+  const objectId = ObjectId( request.params.journal_id);
   console.log('parameter journal_id', objectId );
   Indikator.find({journal_id: objectId}, (err, docs) => {
     console.log('getIndicatorsByJournalId: docs', docs);
@@ -35,7 +35,7 @@ module.exports.countIndicators = (request, response) => {
 };
 
 module.exports.addIndicator = (request, response) => {
-  let IndicatortoUpdate = new Indikator(request.body);
+  const IndicatortoUpdate = new Indikator(request.body);
   IndicatortoUpdate.save((err) => {
     if (err) {
       return console.error(err);

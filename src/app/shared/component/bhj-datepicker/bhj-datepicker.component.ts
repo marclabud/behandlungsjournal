@@ -9,20 +9,18 @@ import * as moment from 'moment';
 export class BhjDatepickerComponent implements OnInit {
   @Input() private defaultDate: moment.Moment;
   /* tslint:disable-next-line:no-unused-variable */
-  @Input() private labeltext: string;
+  @Input() labeltext: string;
   @Output() private DateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
 
-  private HTML5_inputtype_date_Supported = false;
-  private HTML5Date: String;
-  private NG2Date: Date;
-
+  HTML5_inputtype_date_Supported = false;
+  HTML5Date: String;
+  NG2Date: Date;
   constructor() {
     // this.defaultDate = moment();
   }
-
   ngOnInit() {
     // Browser auf Unterstützung vom Inputtype date prüfen
-    this.HTML5_inputtype_date_Supported = Modernizr.inputtypes.date;
+    this.HTML5_inputtype_date_Supported = this.BrowserSupportsInputTypeDate();
     if (moment.isMoment(this.defaultDate)) {
       this.NG2Date = this.defaultDate.toDate();
       this.HTML5Date = this.defaultDate.format('YYYY-MM-DD');
@@ -48,5 +46,18 @@ export class BhjDatepickerComponent implements OnInit {
     }
     this.DateChange.emit(dateReturned);
   }
+
+  private BrowserSupportsInputTypeDate() {
+    const input: HTMLInputElement = document.createElement('input');
+    input.setAttribute('type', 'date');
+
+    // check by setting an illegal value to field date
+    const notADateValue = 'not-a-date';
+    input.setAttribute('value', notADateValue);
+
+    return (input.value !== notADateValue);
+  }
 }
+
+
 

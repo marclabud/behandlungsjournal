@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-let ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const model = 'Indikator';
 const IndikatorSchema = new mongoose.Schema({

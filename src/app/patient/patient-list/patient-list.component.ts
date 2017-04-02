@@ -12,10 +12,10 @@ import {MessageService} from '../../shared/service/message/message.service';
 export class PatientListComponent implements OnInit {
 
   private patients: Array<Patient> = [];
-  private isLoading = true;
+  isLoading = true;
   selectedPatient: Patient;
   // DropdownListbox im Menü
-  PatientAnzeige: string = 'Patient';
+  PatientAnzeige = 'Patient';
   private messageService: MessageService<Patient>;
 
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
@@ -52,7 +52,7 @@ export class PatientListComponent implements OnInit {
   }
 
   onAddPatient(): Patient {
-    let patient = new Patient();
+    const patient = new Patient();
     patient.name = 'Neuer Patient';
     console.log('onselect patient', patient);
     this.selectedPatient = patient;

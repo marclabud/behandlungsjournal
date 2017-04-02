@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {Indikator} from '../model/indikator';
 import {IndikatorService} from '../service/indikator.service';
 
@@ -18,9 +18,9 @@ export class IndikatorListComponent implements OnInit, OnDestroy {
   private behandlungsjournal: BhJournal;
   private indikatoren: Array<Indikator> = [];
   private indikator: Indikator = new Indikator();
-  private isEditing = false;
-  private isAdding = false;
-  private isLoading = true;
+  isEditing = false;
+  isAdding = false;
+  isLoading = true;
   private infoMsg = {body: '', type: 'info'};
 
   constructor(private bhjournalService: BhJournalService, private indikatorService: IndikatorService) {
@@ -57,7 +57,7 @@ export class IndikatorListComponent implements OnInit, OnDestroy {
     if (window.confirm('Wollen Sie sicher diese Medikation löschen?')) {
       this.indikatorService.deleteIndikator(indikator).subscribe(
         res => {
-          let pos = this.indikatoren.map(obj => {
+          const pos = this.indikatoren.map(obj => {
             return obj._id;
           }).indexOf(indikator._id);
           this.indikatoren.splice(pos, 1);

@@ -4,7 +4,7 @@ import {Patient} from '../../patient/model/patient';
 import {BhJournalService} from '../service/bhjournal.service';
 import {PatientService} from '../../patient/service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 // kombiniertes ListDetail-Control für die Bearbeitung der Behandlungsjournale
 
 export class BhjournalListDetailComponent implements OnInit, OnDestroy {
-  private isLoading = true;
+  isLoading = true;
   private subscriptionPatient: Subscription;
   private messageServicePatient: MessageService<Patient>;
   private patient_id: string;

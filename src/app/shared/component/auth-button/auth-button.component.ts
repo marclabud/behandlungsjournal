@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthentificationService} from '../../service/auth/authentification.service';
 import {User} from '../../../user/model/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth-button',
@@ -8,9 +9,9 @@ import {User} from '../../../user/model/user';
   styleUrls: ['./auth-button.component.scss']
 })
 export class AuthButtonComponent implements OnInit {
-  private buttonTxt: string = 'Login';
+  buttonTxt = 'Login';
 
-  constructor(private auth: AuthentificationService) {
+  constructor(private auth: AuthentificationService, private router: Router) {
   }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class AuthButtonComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    this.router.navigate(['/login']);
   }
 
 
