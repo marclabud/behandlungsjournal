@@ -19,7 +19,8 @@
             }
           ],
           "env": {
-            "MONGODB_URI": "mongodb://mongodb.db.behandlungsjournal/behandlungsjournal"
+            "MONGODB_URI": "mongodb://mongodb.db.behandlungsjournal/behandlungsjournal",
+            "HAPROXY_0_REDIRECT_TO_HTTPS": "true"
           },
           "dependencies": [
             "../db/mongodb"
