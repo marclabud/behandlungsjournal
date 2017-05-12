@@ -3,7 +3,8 @@ import {Patient} from '../model/patient';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {SearchService} from '../../shared/component/service/search.service';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-patient-card',
@@ -15,14 +16,14 @@ export class PatientCardComponent implements OnInit, OnChanges {
 
   private patients: Array<Patient> = [];
   private filteredpatients: Array<Patient> = [];
-  //private removed due to angular aot-restriction
+  // private removed due to angular aot-restriction
   isLoading = true;
-  //private removed due to angular aot-restriction
+  // private removed due to angular aot-restriction
   isEditing = false;
   selectedPatient: Patient;
   searchSubscript: Subscription;
 
-  PatientAnzeige: string = 'Patient';
+  PatientAnzeige = 'Patient';
   private messageService: MessageService<Patient>;
 
   private infoMsg = {body: '', type: 'info'};
@@ -69,7 +70,7 @@ export class PatientCardComponent implements OnInit, OnChanges {
 
   // Ein neuer Patient soll im patient-Detail angelegt werden (button-click hinzufügen)
   onAddPatient(): Patient {
-    let patient = new Patient();
+    const patient = new Patient();
     patient.name = 'Neuer Patient';
     this.selectedPatient = patient;
     // Patient-Detail anzeigen
@@ -98,7 +99,7 @@ export class PatientCardComponent implements OnInit, OnChanges {
     if (patient) {
       this.patientService.deletePatient(patient).subscribe(
         res => {
-          let pos = this.patients.map(obj => {
+          const pos = this.patients.map(obj => {
             return obj._id;
           }).indexOf(patient._id);
           this.patients.splice(pos, 1);
