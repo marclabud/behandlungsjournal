@@ -11,6 +11,6 @@ COPY package.json /usr/src/app/
 RUN npm install
 
 COPY . /usr/src/app/
-RUN gulp sass && gulp build_server && ng build --prod
+RUN gulp sass && gulp build_server && ng build -prod
 
 CMD npm run loaddemodata; node dist/server.js
