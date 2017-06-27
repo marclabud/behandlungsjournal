@@ -55,7 +55,7 @@
     "@types/moment": "^2.13.0",
     "@types/mongoose": "^4.6.1",
     "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0",
+    "codelyzer": "~3.0.1",
     "del": "^2.2.2",
     "gulp": "3.9.1",
     "gulp-exec": "^2.1.3",
