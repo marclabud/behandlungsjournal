@@ -1,7 +1,7 @@
 FROM node:6.10.2
 
 # Globale Installation vom Angular Cli und gulp
-RUN npm install -g @angular/cli@1.0.3  && npm install -g gulp@3.9.1 && npm cache clean
+RUN npm install -g @angular/cli@1.1.3  && npm install -g gulp@3.9.1 && npm cache clean
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
