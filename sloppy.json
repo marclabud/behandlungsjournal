@@ -11,7 +11,7 @@
           },
           "mem": 256,
           "ssl": true,
-          "image": "mlabud/behandlungsjournal:0.4.1",
+          "image": "mlabud/behandlungsjournal:0.4.2",
           "instances": 1,
           "port_mappings": [
             {
