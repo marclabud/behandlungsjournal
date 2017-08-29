@@ -2,7 +2,7 @@ version: '3'
 services:
 
   web:
-    image: mlabud/behandlungsjournal:0.4.2
+    image: mlabud/behandlungsjournal:0.4.5
     ports:
       - "80:3000"
     depends_on:

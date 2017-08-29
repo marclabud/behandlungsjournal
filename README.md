@@ -17,13 +17,13 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
   To work properly with webpack bootstrap loader is used (August 2017):
      npm install --save resolve-url-loader
      npm i --save bootstrap@next bootstrap-loader tether jquery
-     npm i --save popper.js
+     npm i --save popper.js (needed for dropdown menues)
 * [Font Awesome](http://fontawesome.io): icons
 
 
 ## Prerequisites
 1. Install [**N**ode.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
-2. Install Angular CLI: `npm i -g @angular/cli@1.0.0` : Install global and local.
+2. Install Angular CLI: `npm i -g @angular/cli@1.3.2` : Install global and local.
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
