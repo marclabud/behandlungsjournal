@@ -16,12 +16,12 @@
       <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
         <a class="nav-link dropdown-toggle" routerLink="patient-card" id="journal"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Planen</a>
-        <span class="dropdown-menu" aria-labelledby="journal">
+        <div class="dropdown-menu" aria-labelledby="journal">
             <a class="dropdown-item" routerLink="patient-card">Patient</a>
             <a class="dropdown-item" routerLink="bhjournal-list-detail">Behandlungsjournal</a>
             <a class="dropdown-item" routerLink="bhjournal">Medikation</a>
             <a class="dropdown-item" routerLink="bhjournal">Indikatoren</a>
-          </span>
+          </div>
 
       <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
         <a class="nav-link dropdown-toggle" id="settings"

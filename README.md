@@ -13,7 +13,11 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [Angular CLI](https://cli.angular.io): to generate the project
 * [Typescript](https://github.com/Microsoft/TypeScript): client and node-server: Both with same typescript version. 
 * [SASS](http://sass-lang.com/libsass): to process SASS-Sources in global framework and Angular-Components
-* [Bootstrap Version 4](https://v4-alpha.getbootstrap.com/getting-started/introduction/): SASS-sources as base for layout and styles
+* [Bootstrap Version 4](htt ps://v4-alpha.getbootstrap.com/getting-started/introduction/): SASS-sources as base for layout and styles
+  To work properly with webpack bootstrap loader is used (August 2017):
+     npm install --save resolve-url-loader
+     npm i --save bootstrap@next bootstrap-loader tether jquery
+     npm i --save popper.js
 * [Font Awesome](http://fontawesome.io): icons
 
 
