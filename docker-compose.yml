@@ -2,7 +2,7 @@ version: '3'
 services:
 
   web:
-    image: mlabud/behandlungsjournal:0.4.5
+    image: mlabud/behandlungsjournal:0.4.6
     ports:
       - "80:3000"
     depends_on:
@@ -13,7 +13,7 @@ services:
       MONGODB_URI: "mongodb://mongo:27017/test"
 
   mongo:
-    image: mongo:3
+    image: mongo:3.2.9
     command: mongod --smallfiles
     networks:
       - all

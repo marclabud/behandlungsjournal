@@ -17,7 +17,7 @@ services:
       MONGODB_URI: "mongodb://mongo:27017/test"
 
   mongo:
-    image: mongo:3
+    image: mongo:3.2.9
     command: mongod
     networks:
       - all
