@@ -13,10 +13,10 @@ export class UserComponent implements OnInit {
 
   private users: Array<User> = [];
   private user: User = null;
-  protected roles: [string] = ['Gast', 'Tierpfleger', 'Arzt', 'Administrator'];
-  private labelRole: string = 'Rolle';
+  protected roles: string[] = ['Gast', 'Tierpfleger', 'Arzt', 'Administrator'];
+  private labelRole = 'Rolle';
 
-  //private removed due to angular aot-restriction
+  // private removed due to angular aot-restriction
   isLoading = true;
   isAlerting = false;
   isEditing = false;
@@ -66,7 +66,7 @@ export class UserComponent implements OnInit {
   addUser() {
     this.userService.addUser(this.addUserForm.value).subscribe(
       res => {
-        let newUser = res.json();
+        const newUser = res.json();
         this.users.push(newUser);
         this.actualizeCache();
         this.addUserForm.reset();
@@ -107,7 +107,7 @@ export class UserComponent implements OnInit {
     if (window.confirm('Wollen Sie sicher diesen Benutzer permanent löschen?')) {
       this.userService.deleteUser(user).subscribe(
         res => {
-          let pos = this.users.map(obj => {
+          const pos = this.users.map(obj => {
             return obj._id;
           }).indexOf(user._id);
           this.users.splice(pos, 1);

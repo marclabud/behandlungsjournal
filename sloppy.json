@@ -11,7 +11,7 @@
           },
           "mem": 256,
           "ssl": true,
-          "image": "mlabud/behandlungsjournal:0.4.6",
+          "image": "mlabud/behandlungsjournal:0.4.7",
           "instances": 1,
           "port_mappings": [
             {
@@ -33,9 +33,9 @@
       "apps": [
         {
           "id": "mongodb",
-          "mem": 512,
+          "mem": 256,
           "image": "mongo:3.2.9",
-          "cmd": "mongod --smallfiles",
+          "cmd": "numactl --interleave=all mongod --smallfiles",
           "instances": 1,
           "volumes": [
             {

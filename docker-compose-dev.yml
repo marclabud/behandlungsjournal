@@ -6,7 +6,7 @@ services:
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
-    command: sh -c 'npm install; npm i @angular/cli@1.0.0 -g; npm i gulp -g; gulp sass; gulp build_server; ng build; npm run loaddemodata; node dist/server.js;'
+    command: sh -c 'npm install; npm i @angular/cli@1.7.4 -g; npm i gulp -g; gulp sass; gulp build_server; ng build; npm run loaddemodata; node dist/server.js;'
     ports:
       - "3000:3000"
     depends_on:
