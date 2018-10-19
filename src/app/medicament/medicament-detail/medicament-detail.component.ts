@@ -72,8 +72,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
     if (typeof(medikation._id) === 'undefined' || medikation._id === '') {
       this.medikationService.addMedikation(medikation).subscribe(
         res => {
-          const newMedication = res.json();
-          this.medications.push(newMedication);
+          const newMedication = this.medications.push(res);
           this.actualizeCache();
           // this.addMedicationForm.reset();
           this.sendInfoMsg('Medikation erfolgreich hinzugefügt.', 'success');

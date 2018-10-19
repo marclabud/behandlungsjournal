@@ -4,39 +4,40 @@ import {BhJournal} from '../model/bhjournal';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
 import {AuthHttp} from 'angular2-jwt';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class BhJournalService extends ServiceBase<BhJournal> {
 
   public messageService;
 
-  constructor(authHttp: AuthHttp) {
-    super(authHttp, 'BhJournalService:BhJournal');
+  constructor(http: HttpClient) {
+    super(http, 'BhJournalService:BhJournal');
     this.serviceUrl = '/journal';
-    this.messageService = new MessageService<BhJournal>(this.authHttp, this);
+    this.messageService = new MessageService<BhJournal>(this.http, this);
   }
 
   getJournals() {
-    console.log(this.authHttp.get(paths.base_path + '/journals').map(res => res.json()));
-    return this.authHttp.get(paths.base_path + '/journals').map(res => res.json());
+    console.log(this.http.get<BhJournal[]>(paths.base_path + '/journals'));
+    return this.http.get<BhJournal[]>(paths.base_path + '/journals');
   }
 
 
   getJournalsbyPatient_id(patient_id: string) {
-    console.log(this.authHttp.get(`${paths.base_path}/journals/${patient_id}`).map(res => res.json()));
-    return this.authHttp.get(`${paths.base_path}/journals/${patient_id}`).map(res => res.json());
+    console.log(this.http.get<BhJournal[]>(`${paths.base_path}/journals/${patient_id}`));
+    return this.http.get<BhJournal[]>(`${paths.base_path}/journals/${patient_id}`);
   }
 
   addJournal(journal: BhJournal) {
-    return this.authHttp.post(paths.base_path + '/journal', JSON.stringify(journal), this.options);
+    return this.http.post(paths.base_path + '/journal', JSON.stringify(journal), this.httpOptions);
   }
 
   editJournal(journal: BhJournal) {
-    return this.authHttp.put(`${paths.base_path}/journal/${journal._id}`, JSON.stringify(journal), this.options);
+    return this.http.put(`${paths.base_path}/journal/${journal._id}`, JSON.stringify(journal), this.httpOptions);
   }
 
   deleteJournal(journal: BhJournal) {
-    return this.authHttp.delete(`${paths.base_path}/journal/${journal._id}`, this.options);
+    return this.http.delete(`${paths.base_path}/journal/${journal._id}`, this.httpOptions);
   }
 
   getServiceUrl(isList: boolean): string {

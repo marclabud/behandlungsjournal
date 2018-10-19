@@ -5,36 +5,37 @@ import {ServiceBase} from '../../shared/service.base';
 import {User} from '../model/user';
 import {paths} from '../../server.conf';
 import {AuthHttp} from 'angular2-jwt';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
-  // secured routes use authHttp
+  // secured routes use http
   // unsecured routes use HTTP (Login, Sign-Up)
-  constructor(authHttp: AuthHttp, private http: Http) {
-    super(authHttp, 'UserService:User');
+  constructor(http: HttpClient) {
+    super(http, 'UserService:User');
     this.serviceUrl = '/user';
   }
 
   getUsers() {
-    console.log(this.authHttp.get(paths.base_path + '/users').map((res: Response) => res.json()));
-    return this.authHttp.get(paths.base_path + '/users').map((res: Response) => res.json());
+    console.log(this.http.get(paths.base_path + '/users').map((res: Response) => res.json()));
+    return this.http.get(paths.base_path + '/users').map((res: Response) => res.json());
   }
 
   addUser(user) {
-    return this.authHttp.post(paths.base_path + '/user', JSON.stringify(user), this.options);
+    return this.http.post<User>(paths.base_path + '/user', JSON.stringify(user), this.httpOptions);
   }
 
   editUser(user) {
-    return this.authHttp.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.options);
+    return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.httpOptions);
   }
 
   deleteUser(user) {
-    return this.authHttp.delete(`${paths.base_path}/user/${user._id}`, this.options);
+    return this.http.delete(`${paths.base_path}/user/${user._id}`, this.httpOptions);
   }
 
   loginUser(user) {
-    let creds = JSON.stringify({email: user.email, password: user.password});
-    return this.http.post(`${paths.base_path}/user/login`, creds, this.options)
+    const creds = JSON.stringify({email: user.email, password: user.password});
+    return this.http.post(`${paths.base_path}/user/login`, creds, this.httpOptions)
       .map((res: Response) => {
           if (res) {
             if (201 === res.status) {

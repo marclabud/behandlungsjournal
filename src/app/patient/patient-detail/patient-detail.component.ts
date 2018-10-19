@@ -40,7 +40,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
       // Neuen Patienten anlegen
       this.patientService.addPatient(patient).subscribe(
         res => {
-          this.newPatient = res.json();
+          this.newPatient = res;
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
           this.patientNew.emit(this.newPatient);

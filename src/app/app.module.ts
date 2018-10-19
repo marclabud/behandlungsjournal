@@ -1,7 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 import {routing} from './app.routing';
 import {AppComponent} from './app.component';
@@ -26,51 +27,51 @@ import {MedikationModule} from './medicament/medicament.module';
 import {BehandlungsJournalModule} from './bhjournal/bhjournal.module';
 import {PatientCardComponent} from './patient/patient-card/patient-card.component';
 import {PatientMenuComponent} from './patient/patient-menu/patient-menu.component';
-import {SearchComponent} from './shared/component/search/search.component';
 import {SearchService} from './shared/component/service/search.service';
 import {GetstartedComponent} from './shared/component/getstarted/getstarted.component';
 import {AuthModule} from './shared/service/auth/auth.module';
 import {SearchModule} from './shared/component/search/search.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserComponent,
-    SignupComponent,
-    LoginComponent,
-    PatientListComponent,
-    PatientDetailComponent,
-    TitelComponent,
-    MainNavComponent,
-    AuthButtonComponent,
-    LogoutComponent,
-    PatientCardComponent,
-    PatientMenuComponent,
-    GetstartedComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    AuthModule,
-    ReactiveFormsModule,
-    Ng2DatetimePickerModule,
-    IndikatorModule,
-    MedikationModule,
-    BehandlungsJournalModule,
-    SearchModule,
-    routing
-  ],
-  providers: [
-    UserService,
-    PatientService,
-    AuthentificationService,
-    GuardService,
-    MessageService,
-    SearchService
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        UserComponent,
+        SignupComponent,
+        LoginComponent,
+        PatientListComponent,
+        PatientDetailComponent,
+        TitelComponent,
+        MainNavComponent,
+        AuthButtonComponent,
+        LogoutComponent,
+        PatientCardComponent,
+        PatientMenuComponent,
+        GetstartedComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        HttpClientModule,
+        FormsModule,
+        AuthModule,
+        ReactiveFormsModule,
+        Ng2DatetimePickerModule,
+        IndikatorModule,
+        MedikationModule,
+        BehandlungsJournalModule,
+        SearchModule,
+        routing
+    ],
+    providers: [
+        UserService,
+        PatientService,
+        AuthentificationService,
+        GuardService,
+        MessageService,
+        SearchService
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

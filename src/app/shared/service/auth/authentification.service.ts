@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {JwtHelper, AuthHttp} from 'angular2-jwt';
+import {JwtHelper} from 'angular2-jwt';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {paths} from '../../../server.conf';
 import {User} from '../../../user/model/user';
@@ -14,24 +15,25 @@ export class AuthentificationService extends ServiceBase<User> {
   redirectUrl: string;
   jwthelper: JwtHelper = new JwtHelper();
 
-  constructor(authHTTP: AuthHttp, private userService: UserService) {
-    super(authHTTP, 'AuthentificationService:User');
+  constructor(http: HttpClient, private userService: UserService) {
+    super(http, 'AuthentificationService:User');
     this.serviceUrl = '/user';
   }
 
-  public login(user: User): Observable<boolean> {
-    this.deleteToken();
-    return this.userService.loginUser(user)
-      .map(result => {
-        let status: number = result[0].status;
-        if (201 === status) {
-          // status 201: Token wurde erstellt.
-          this.validToken = result[0].body.id_token;
-          this.setToken(this.validToken);
-        }
-        return (201 === status);
-      });
-  }
+    public login(user: User): Observable<boolean> {
+        this.deleteToken();
+        return this.userService.loginUser(user)
+            .map(result => {
+                const status: number = result[0].status;
+                if (201 === status) {
+                    // status 201: Token wurde erstellt.
+                    console.log(result[0].body);
+                    // this.validToken = result[0].body;
+                    this.setToken(this.validToken);
+                }
+                return (201 === status);
+            });
+    }
 
   public logout(): void {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
@@ -60,13 +62,13 @@ export class AuthentificationService extends ServiceBase<User> {
   }
 
   private isTokenValid() {
-    let token = this.getToken();
+    const token = this.getToken();
     return ('' !== token && !this.jwthelper.isTokenExpired(token));
   }
 
   whoIsLoggedIn(): User {
-    let user: User = new User();
-    let token: string = this.getToken();
+    const user: User = new User();
+    const token: string = this.getToken();
     if ('' !== token) {
       console.log(this.jwthelper.decodeToken(token));
       user.name = this.jwthelper.decodeToken(token)._doc.name;

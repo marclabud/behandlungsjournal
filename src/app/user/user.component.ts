@@ -66,8 +66,7 @@ export class UserComponent implements OnInit {
   addUser() {
     this.userService.addUser(this.addUserForm.value).subscribe(
       res => {
-        const newUser = res.json();
-        this.users.push(newUser);
+        const newUser = this.users.push(res);
         this.actualizeCache();
         this.addUserForm.reset();
         this.sendInfoMsg('Benutzer erfolgreich hinzugefügt.', 'success');

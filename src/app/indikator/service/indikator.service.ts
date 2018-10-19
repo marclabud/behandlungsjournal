@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
+import {HttpClient} from '@angular/common/http';
 import {ServiceBase} from '../../shared/service.base';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -9,32 +10,32 @@ import {Indikator} from '../model/indikator';
 export class IndikatorService extends ServiceBase<Indikator> {
   public messageService;
 
-  constructor(authHttp: AuthHttp) {
-    super(authHttp, 'IndikatorService:Indikator');
+  constructor(http: HttpClient) {
+    super(http, 'IndikatorService:Indikator');
     this.serviceUrl = '/indicator';
-    this.messageService = new MessageService<Indikator>(authHttp, this);
+    this.messageService = new MessageService<Indikator>(http, this);
   }
 
   getIndikatoren() {
-    console.log(this.authHttp.get(paths.base_path + '/indicators').map(res => res.json()));
-    return this.authHttp.get(paths.base_path + '/indicators').map(res => res.json());
+    console.log(this.http.get<Indikator[]>(paths.base_path + '/indicators'));
+    return this.http.get<Indikator[]>(paths.base_path + '/indicators');
   }
 
   getIndikatorenByJournalId(journal_id: string) {
-    console.log(this.authHttp.get(`${paths.base_path}/indicators/${journal_id}`).map(res => res.json()));
-    return this.authHttp.get(`${paths.base_path}/indicators/${journal_id}`).map(res => res.json());
+    console.log(this.http.get<Indikator[]>(`${paths.base_path}/indicators/${journal_id}`));
+    return this.http.get<Indikator[]>(`${paths.base_path}/indicators/${journal_id}`);
   }
 
   addIndikator(indikator: Indikator) {
-    return this.authHttp.post(paths.base_path + '/indicator', JSON.stringify(indikator), this.options);
+    return this.http.post<Indikator>(paths.base_path + '/indicator', JSON.stringify(indikator), this.httpOptions);
   }
 
   editIndikator(indikator: Indikator) {
-    return this.authHttp.put(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), this.options);
+    return this.http.put<Indikator>(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), this.httpOptions);
   }
 
   deleteIndikator(indikator: Indikator) {
-    return this.authHttp.delete(`${paths.base_path}/indicator/${indikator._id}`, this.options);
+    return this.http.delete(`${paths.base_path}/indicator/${indikator._id}`, this.httpOptions);
   }
 
   getServiceUrl(isList: boolean): string {

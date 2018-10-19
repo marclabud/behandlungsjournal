@@ -74,8 +74,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
     if (typeof(indikator._id) === 'undefined' || indikator._id === '') {
       this.indikatorService.addIndikator(indikator).subscribe(
         res => {
-          const newIndikator = res.json();
-          this.indikatoren.push(newIndikator);
+          const newIndikator = this.indikatoren.push(res);
           this.actualizeCache();
           this.sendInfoMsg('Neuer Indikator erfolgreich hinzugefügt.', 'success');
         },
