@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ServiceBase} from '../../shared/service.base';
-import {User} from '../model/user';
+import {LoginInterface, User} from '../model/user';
 import {paths} from '../../server.conf';
-import {AuthHttp} from 'angular2-jwt';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
@@ -29,23 +29,27 @@ export class UserService extends ServiceBase<User> {
     return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.httpOptions);
   }
 
-  deleteUser(user) {
-    return this.http.delete(`${paths.base_path}/user/${user._id}`, this.httpOptions);
-  }
+    deleteUser(user) {
+        return this.http.delete(`${paths.base_path}/user/${user._id}`, this.httpOptions);
+    }
 
-  loginUser(user) {
-    const creds = JSON.stringify({email: user.email, password: user.password});
-    return this.http.post(`${paths.base_path}/user/login`, creds, this.httpOptions)
-      .map((res: Response) => {
+    loginUser(user): Observable<HttpResponse<LoginInterface>> {
+        const creds = JSON.stringify({email: user.email, password: user.password});
+        // Todo: Options
+        return this.http.post<LoginInterface>(`${paths.base_path}/user/login`, creds, {
+            headers: new HttpHeaders({'Content-Type': 'application/json'}),
+            observe: 'response'
+        });
+/*      .map(res => {
           if (res) {
             if (201 === res.status) {
-              return [{status: res.status, body: res.json()}];
+              return [{status: res.status, body: res.body()}];
             } else if (200 === res.status) {
-              return [{status: res.status, body: res.json()}];
+              return [{status: res.status, body: res.body()}];
             }
           }
-        },
-      );
+        }
+      );,*/
   }
 
   getServiceUrl(isList: boolean): string {

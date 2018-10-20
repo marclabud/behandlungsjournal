@@ -21,19 +21,23 @@ export class AuthentificationService extends ServiceBase<User> {
   }
 
     public login(user: User): Observable<boolean> {
+        let loggedin: Observable<boolean>;
         this.deleteToken();
-        return this.userService.loginUser(user)
-            .map(result => {
-                const status: number = result[0].status;
-                if (201 === status) {
-                    // status 201: Token wurde erstellt.
-                    console.log(result[0].body);
-                    // this.validToken = result[0].body;
-                    this.setToken(this.validToken);
-                }
-                return (201 === status);
-            });
-    }
+        this.userService.loginUser(user).subscribe(resp => {
+          console.log(resp);
+            const status: number = resp.status;
+            if (201 === status) {
+                // status 201: Token wurde erstellt.
+                console.log(resp.body);
+                this.validToken = resp.body.id_token;
+                this.setToken(this.validToken);
+                loggedin = Observable.of(true);
+            } else {
+                loggedin = Observable.of(false)
+            }
+        });
+        return loggedin
+    };
 
   public logout(): void {
     sessionStorage.removeItem(JWT_STORAGE_KEY);

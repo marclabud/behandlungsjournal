@@ -15,6 +15,14 @@ export abstract class ServiceBase<TItem> {
             'Content-Type':  'application/json',
             'charset': 'UTF-8'
         })
+
+    };
+    protected httpFROptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'charset': 'UTF-8'
+        }),
+        observe: 'response'
     };
   protected serviceUrl: string;
 

@@ -11,16 +11,16 @@ import {Response} from '@angular/http';
 })
 export class LoginComponent implements OnInit {
   public submitted: boolean;
-  //private removed due to angular aot-restriction
+  // private removed due to angular aot-restriction
   LoginForm: FormGroup;
   isLoading = false;
   infoMsg = {body: '', type: 'info'};
   /* tslint:disable-next-line:no-unused-variable */
-  title: string = 'Bitte anmelden';
+  title = 'Bitte anmelden';
   /* tslint:disable-next-line:no-unused-variable */
-  signup: boolean = true;
+  signup = true;
   /* tslint:disable-next-line:no-unused-variable */
-  getstarted: boolean = true;
+  getstarted = true;
 
   constructor(private authService: AuthentificationService,
               private router: Router,
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
             this.isLoading = true;
             // Check redirect for succesful login
             if (this.authService.isLoggedIn()) {
-              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/patient-card';
+              const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/patient-card';
               this.router.navigate([redirect]);
             } else {
               this.isLoading = false;

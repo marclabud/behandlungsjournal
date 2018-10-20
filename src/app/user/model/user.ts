@@ -3,5 +3,9 @@ export class User {
   name: string;
   email: string;
   password: string;
-  role: string = 'Guest';
+  role = 'Guest';
+}
+
+export interface LoginInterface {
+    id_token: string
 }

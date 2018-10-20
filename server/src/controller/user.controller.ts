@@ -81,7 +81,6 @@ module.exports.deleteUser = (request, response) => {
 module.exports.loginUser = (request, response) => {
   const email = request.body.email;
   const password = request.body.password;
-
   if (email === '' || password === '') {
     return response.status(400).send('You must send the username and the password');
   }
