@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ServiceBase} from '../../shared/service.base';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -31,7 +31,9 @@ export class IndikatorService extends ServiceBase<Indikator> {
   }
 
   editIndikator(indikator: Indikator) {
-    return this.http.put<Indikator>(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), this.httpOptions);
+    return this.http.put(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), {
+        headers: new HttpHeaders({'Content-Type': 'application/json'}),
+        responseType: 'text'});
   }
 
   deleteIndikator(indikator: Indikator) {

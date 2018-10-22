@@ -4,7 +4,7 @@ import {BhJournal} from '../model/bhjournal';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
 import {AuthHttp} from 'angular2-jwt';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class BhJournalService extends ServiceBase<BhJournal> {
@@ -33,7 +33,9 @@ export class BhJournalService extends ServiceBase<BhJournal> {
   }
 
   editJournal(journal: BhJournal) {
-    return this.http.put(`${paths.base_path}/journal/${journal._id}`, JSON.stringify(journal), this.httpOptions);
+    return this.http.put(`${paths.base_path}/journal/${journal._id}`, JSON.stringify(journal), {
+        headers: new HttpHeaders({'Content-Type': 'application/json'}),
+        responseType: 'text'});
   }
 
   deleteJournal(journal: BhJournal) {

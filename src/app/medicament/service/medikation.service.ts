@@ -5,7 +5,7 @@ import {Medikation} from '../model/medikation';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
 import {AuthHttp} from 'angular2-jwt';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class MedikationService extends ServiceBase<Medikation> {
@@ -33,7 +33,9 @@ export class MedikationService extends ServiceBase<Medikation> {
   }
 
   editMedikation(medikation: Medikation) {
-    return this.http.put<Medikation>(`${paths.base_path}/medication/${medikation._id}`, JSON.stringify(medikation), this.httpOptions);
+    return this.http.put(`${paths.base_path}/medication/${medikation._id}`, JSON.stringify(medikation), {
+        headers: new HttpHeaders({'Content-Type': 'application/json'}),
+        responseType: 'text'});
   }
 
   deleteMedikation(medikation: Medikation) {

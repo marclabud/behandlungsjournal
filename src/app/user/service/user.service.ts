@@ -26,7 +26,9 @@ export class UserService extends ServiceBase<User> {
   }
 
   editUser(user) {
-    return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.httpOptions);
+    return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), {
+        headers: new HttpHeaders({'Content-Type': 'application/json'}),
+        responseType: 'text'});
   }
 
     deleteUser(user) {
