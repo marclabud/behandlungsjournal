@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/map';
+
 import {ServiceBase} from '../../shared/service.base';
 import {LoginInterface, User} from '../model/user';
 import {paths} from '../../server.conf';
@@ -16,8 +16,8 @@ export class UserService extends ServiceBase<User> {
   }
 
   getUsers() {
-    console.log(this.http.get(paths.base_path + '/users').map((res: Response) => res.json()));
-    return this.http.get(paths.base_path + '/users').map((res: Response) => res.json());
+    console.log(this.http.get<User[]>(paths.base_path + '/users'));
+    return this.http.get<User[]>(paths.base_path + '/users')
   }
 
   addUser(user) {

@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Patient} from '../model/patient';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SearchService} from '../../shared/component/service/search.service';
@@ -16,7 +16,7 @@ export class PatientMenuComponent implements OnInit {
 
   searchForm: FormGroup;
   searchTerm: string;
-  PatientsearchIsVisible= false;
+  PatientsearchIsVisible = false;
   private messageServicePatient: MessageService<Patient>;
   private subscriptionPatient: Subscription;
   patient: Patient;

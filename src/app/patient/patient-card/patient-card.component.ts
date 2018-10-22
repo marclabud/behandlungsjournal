@@ -3,7 +3,7 @@ import {Patient} from '../model/patient';
 import {PatientService} from '../service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {SearchService} from '../../shared/component/service/search.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 
 @Component({

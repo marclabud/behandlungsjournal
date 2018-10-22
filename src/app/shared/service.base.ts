@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {Cache} from './cache';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export abstract class ServiceBase<TItem> {
@@ -43,43 +44,44 @@ export abstract class ServiceBase<TItem> {
     return this.cache.hasCache(isList);
   }
 
-  getItem(forceReload = false): Observable<TItem> {
-    console.log('Call ServiceBase.getItem');
-    if (this.cache.hasCache() && !forceReload) {
-      return Observable.create((observer) => {
-        this.log('Cache');
-        observer.next(this.cache.readCache());
-        observer.complete();
-      });
+    getItem(forceReload = false): Observable<TItem> {
+        console.log('Call ServiceBase.getItem');
+        if (this.cache.hasCache() && !forceReload) {
+            return Observable.create((observer) => {
+                this.log('Cache');
+                observer.next(this.cache.readCache());
+                observer.complete();
+            });
+        }
+
+        return this.http.get<TItem>(this.getServiceUrl(false), {withCredentials: true})
+            .pipe(map(res => {
+                this.log('DB');
+                const orderStatus = res;
+                this.cache.writeCache(orderStatus);
+                return (<TItem>orderStatus);
+            }));
     }
 
-    return this.http.get<TItem>(this.getServiceUrl(false), {withCredentials: true}).map(res => {
-      this.log('DB');
-      const orderStatus = res;
-      this.cache.writeCache(orderStatus);
-      return (<TItem>orderStatus);
-    });
-  }
+    getAllItems(forceReload = false): Observable<TItem[]> {
+        console.log('Call ServiceBase.getAllItems');
+        const isList = true;
 
-  getAllItems(forceReload = false): Observable<TItem[]> {
-    console.log('Call ServiceBase.getAllItems');
-    const isList = true;
+        if (this.cacheList.hasCache(isList) && !forceReload) {
+            return Observable.create((observer) => {
+                this.log('Cache', isList);
+                observer.next(this.cacheList.readCache(isList));
+                observer.complete();
+            });
+        }
 
-    if (this.cacheList.hasCache(isList) && !forceReload) {
-      return Observable.create((observer) => {
-        this.log('Cache', isList);
-        observer.next(this.cacheList.readCache(isList));
-        observer.complete();
-      });
+        return this.http.get<TItem[]>(this.getServiceUrl(isList), {withCredentials: true}).pipe(map(res => {
+            this.log('DB', isList);
+            const orderStatus = res;
+            this.cacheList.writeCache(orderStatus, isList);
+            return (<TItem[]>orderStatus);
+        }));
     }
-
-    return this.http.get<TItem[]>(this.getServiceUrl(isList), {withCredentials: true}).map(res => {
-      this.log('DB', isList);
-      const orderStatus = res;
-      this.cacheList.writeCache(orderStatus, isList);
-      return (<TItem[]>orderStatus);
-    });
-  }
 
   writeCacheList(items: TItem[]) {
     const isList = true;

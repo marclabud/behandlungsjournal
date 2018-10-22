@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {JwtHelper} from 'angular-jwt';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {paths} from '../../../server.conf';
 import {User} from '../../../user/model/user';
 import {ServiceBase} from '../../service.base';
@@ -31,9 +31,9 @@ export class AuthentificationService extends ServiceBase<User> {
                 console.log(resp.body);
                 this.validToken = resp.body.id_token;
                 this.setToken(this.validToken);
-                loggedin = Observable.of(true);
+                loggedin = of(true);
             } else {
-                loggedin = Observable.of(false)
+                loggedin = of(false)
             }
         });
         return loggedin

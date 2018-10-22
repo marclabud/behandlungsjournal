@@ -3,7 +3,7 @@ import {Indikator} from '../model/indikator';
 import {IndikatorService} from '../service/indikator.service';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import * as moment from 'moment';
 import {Haeufigkeit} from '../../shared/model/haeufigkeit';

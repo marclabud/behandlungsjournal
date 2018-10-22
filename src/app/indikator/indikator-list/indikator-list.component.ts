@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {Indikator} from '../model/indikator';
 import {IndikatorService} from '../service/indikator.service';
 

@@ -4,7 +4,7 @@ import {Patient} from '../../patient/model/patient';
 import {BhJournalService} from '../service/bhjournal.service';
 import {PatientService} from '../../patient/service/patient.service';
 import {MessageService} from '../../shared/service/message/message.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
 @Component({

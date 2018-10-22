@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {MessageService} from '../../service/message/message.service';
 import {Haeufigkeit} from '../../model/haeufigkeit';
 import {HaeufigkeitService} from './service/haeufigkeit.service';

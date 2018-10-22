@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {MedikationService} from '../service/medikation.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Medikation} from '../model/medikation';

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/map';
+
 import {ServiceBase} from '../../shared/service.base';
 import {Medikation} from '../model/medikation';
 import {paths} from '../../server.conf';
