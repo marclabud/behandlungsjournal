@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ServiceBase} from '../../shared/service.base';
 import {paths} from '../../server.conf';

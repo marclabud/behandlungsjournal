@@ -3,7 +3,6 @@ import {paths} from '../../../../server.conf';
 import {Haeufigkeit} from '../../../model/haeufigkeit';
 import {ServiceBase} from '../../../service.base';
 import {MessageService} from '../../../service/message/message.service';
-import {AuthHttp} from 'angular2-jwt';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()

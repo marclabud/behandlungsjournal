@@ -1,5 +1,4 @@
 import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angular/core';
-import {Http} from '@angular/http';
 import {PatientService} from '../service/patient.service';
 import {Patient} from '../model/patient';
 import {Subscription} from 'rxjs/Subscription';
@@ -23,7 +22,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   @Output() editingDone: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  constructor(http: Http, private patientService: PatientService) {
+  constructor(private patientService: PatientService) {
     this.messageService = patientService.messageService;
     this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {

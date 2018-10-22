@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {JwtHelper} from 'angular2-jwt';
+import {JwtHelper} from 'angular-jwt';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {paths} from '../../../server.conf';

@@ -4,7 +4,6 @@ import {ServiceBase} from '../../shared/service.base';
 import {Medikation} from '../model/medikation';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
-import {AuthHttp} from 'angular2-jwt';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()

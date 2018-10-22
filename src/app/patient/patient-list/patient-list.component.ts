@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from '@angular/http';
 import {PatientService} from '../service/patient.service';
 import {Patient} from '../model/patient';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -19,7 +18,7 @@ export class PatientListComponent implements OnInit {
   private messageService: MessageService<Patient>;
 
 // ToDo: @Output definieren: Output ist der ausgewählte Patient
-  constructor(http: Http, private patientService: PatientService) {
+  constructor(private patientService: PatientService) {
     this.messageService = patientService.messageService;
   }
 

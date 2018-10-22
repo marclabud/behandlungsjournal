@@ -1,28 +1,16 @@
-import { NgModule } from '@angular/core';
-import { Http, RequestOptions } from '@angular/http';
-import { AuthHttp, AuthConfig } from 'angular2-jwt';
-
- export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig({
-    headerName: 'Authorisation',
-    headerPrefix: 'Bearer',
-    tokenName:  'token',
-    tokenGetter: (() => sessionStorage.getItem('token')),
-    globalHeaders: [{'Content-Type':'application/json'}],
-    noJwtError: true,
-    noTokenScheme: true
-  }), http, options);
-}
-
-
+import {NgModule} from '@angular/core';
+import {JwtModule} from 'angular-jwt';
 
 @NgModule({
-  providers: [
-    {
-      provide: AuthHttp,
-      useFactory: authHttpServiceFactory,
-      deps: [Http, RequestOptions]
-    }
-  ]
+    providers: [
+        JwtModule.forRoot({
+            config: {
+                headerName: 'Authorisation',
+                headerPrefix: 'Bearer',
+                tokenName: 'token',
+                tokenGetter: (() => sessionStorage.getItem('token')),
+            }
+        }),
+    ]
 })
 export class AuthModule {}
