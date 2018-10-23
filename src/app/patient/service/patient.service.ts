@@ -27,13 +27,11 @@ export class PatientService extends ServiceBase<Patient> {
 
   // ToDo: options to parameter with responseType: 'text' for put options
   editPatient(patient: Patient) {
-    return this.http.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), {
-        headers: new HttpHeaders({'Content-Type': 'application/json'}),
-        responseType: 'text'});
+    return this.http.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), this.httpResponseTypeOptions)
   }
 
   deletePatient(patient: Patient) {
-    return this.http.delete(`${paths.base_path}/patient/${patient._id}`, this.httpOptions);
+    return this.http.delete(`${paths.base_path}/patient/${patient._id}`, this.httpResponseTypeOptions);
   }
 
   getServiceUrl(isList: boolean): string {

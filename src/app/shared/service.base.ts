@@ -1,28 +1,38 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cache} from './cache';
 import {map} from 'rxjs/operators';
+
+
 
 @Injectable()
 export abstract class ServiceBase<TItem> {
 
   protected headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
-  protected httpOptions = {
+    protected httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type':  'application/json',
+            'Content-Type': 'application/json',
             'charset': 'UTF-8'
         })
 
     };
-    protected httpFROptions = {
+    protected httpFullResponseOptions = {
         headers: new HttpHeaders({
-            'Content-Type':  'application/json',
+            'Content-Type': 'application/json',
             'charset': 'UTF-8'
         }),
-        observe: 'response'
+        observe: 'response' as 'response'
     };
-  protected serviceUrl: string;
+    protected httpResponseTypeOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'charset': 'UTF-8'
+        }),
+        responseType: 'text' as 'text'
+    };
+
+    protected serviceUrl: string;
 
   protected cacheList: Cache<Array<TItem>>;
   protected cache: Cache<TItem>;

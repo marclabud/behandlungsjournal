@@ -32,13 +32,11 @@ export class BhJournalService extends ServiceBase<BhJournal> {
   }
 
   editJournal(journal: BhJournal) {
-    return this.http.put(`${paths.base_path}/journal/${journal._id}`, JSON.stringify(journal), {
-        headers: new HttpHeaders({'Content-Type': 'application/json'}),
-        responseType: 'text'});
+    return this.http.put(`${paths.base_path}/journal/${journal._id}`, JSON.stringify(journal), this.httpResponseTypeOptions);
   }
 
   deleteJournal(journal: BhJournal) {
-    return this.http.delete(`${paths.base_path}/journal/${journal._id}`, this.httpOptions);
+    return this.http.delete(`${paths.base_path}/journal/${journal._id}`, this.httpResponseTypeOptions);
   }
 
   getServiceUrl(isList: boolean): string {

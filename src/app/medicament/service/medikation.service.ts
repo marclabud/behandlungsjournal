@@ -4,7 +4,7 @@ import {ServiceBase} from '../../shared/service.base';
 import {Medikation} from '../model/medikation';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class MedikationService extends ServiceBase<Medikation> {
@@ -31,14 +31,14 @@ export class MedikationService extends ServiceBase<Medikation> {
     return this.http.post<Medikation>(paths.base_path + '/medication', JSON.stringify(medikation), this.httpOptions);
   }
 
-  editMedikation(medikation: Medikation) {
-    return this.http.put(`${paths.base_path}/medication/${medikation._id}`, JSON.stringify(medikation), {
-        headers: new HttpHeaders({'Content-Type': 'application/json'}),
-        responseType: 'text'});
-  }
+    editMedikation(medikation: Medikation) {
+        return this.http.put(`${paths.base_path}/medication/${medikation._id}`, JSON.stringify(medikation),
+            this.httpResponseTypeOptions
+        );
+    }
 
   deleteMedikation(medikation: Medikation) {
-    return this.http.delete(`${paths.base_path}/medication/${medikation._id}`, this.httpOptions);
+    return this.http.delete(`${paths.base_path}/medication/${medikation._id}`, this.httpResponseTypeOptions);
   }
 
   getServiceUrl(isList: boolean): string {

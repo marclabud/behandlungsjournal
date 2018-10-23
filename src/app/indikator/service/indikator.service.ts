@@ -30,13 +30,11 @@ export class IndikatorService extends ServiceBase<Indikator> {
   }
 
   editIndikator(indikator: Indikator) {
-    return this.http.put(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), {
-        headers: new HttpHeaders({'Content-Type': 'application/json'}),
-        responseType: 'text'});
+    return this.http.put(`${paths.base_path}/indicator/${indikator._id}`, JSON.stringify(indikator), this.httpResponseTypeOptions);
   }
 
   deleteIndikator(indikator: Indikator) {
-    return this.http.delete(`${paths.base_path}/indicator/${indikator._id}`, this.httpOptions);
+    return this.http.delete(`${paths.base_path}/indicator/${indikator._id}`, this.httpResponseTypeOptions);
   }
 
   getServiceUrl(isList: boolean): string {
