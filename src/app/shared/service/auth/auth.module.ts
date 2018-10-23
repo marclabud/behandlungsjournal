@@ -1,14 +1,12 @@
 import {NgModule} from '@angular/core';
-import {JwtModule} from 'angular-jwt';
+import {JwtModule} from '@auth0/angular-jwt';
 
 @NgModule({
-    providers: [
+    imports: [
         JwtModule.forRoot({
             config: {
-                headerName: 'Authorisation',
-                headerPrefix: 'Bearer',
-                tokenName: 'token',
                 tokenGetter: (() => sessionStorage.getItem('token')),
+                whitelistedDomains: ['localhost:3000'],
             }
         }),
     ]

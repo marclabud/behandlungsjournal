@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {JwtHelper} from 'angular-jwt';
+import {JwtHelperService} from '@auth0/angular-jwt';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {paths} from '../../../server.conf';
@@ -13,7 +13,7 @@ const JWT_STORAGE_KEY = 'token';
 export class AuthentificationService extends ServiceBase<User> {
   private validToken: string;
   redirectUrl: string;
-  jwthelper: JwtHelper = new JwtHelper();
+  jwthelper = new JwtHelperService();
 
   constructor(http: HttpClient, private userService: UserService) {
     super(http, 'AuthentificationService:User');
@@ -21,14 +21,12 @@ export class AuthentificationService extends ServiceBase<User> {
   }
 
     public login(user: User): Observable<boolean> {
-        let loggedin: Observable<boolean>;
+        let loggedin: Observable<boolean> = of(true);
         this.deleteToken();
         this.userService.loginUser(user).subscribe(resp => {
-          console.log(resp);
             const status: number = resp.status;
             if (201 === status) {
                 // status 201: Token wurde erstellt.
-                console.log(resp.body);
                 this.validToken = resp.body.id_token;
                 this.setToken(this.validToken);
                 loggedin = of(true);
@@ -65,10 +63,11 @@ export class AuthentificationService extends ServiceBase<User> {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
   }
 
-  private isTokenValid() {
-    const token = this.getToken();
-    return ('' !== token && !this.jwthelper.isTokenExpired(token));
-  }
+    private isTokenValid() {
+        const token = this.getToken();
+        return ('' !== token && !this.jwthelper.isTokenExpired(token));
+
+    }
 
   whoIsLoggedIn(): User {
     const user: User = new User();

@@ -12,7 +12,7 @@ export class JwtUserService {
 
   public createJWT(user: User ) {
     const secret = this.keyProvider.getKey();
-    const createdToken = sign (user, secret);
+    const createdToken = sign (user, secret, { expiresIn: '3h' });
     console.log ('createJWT: ' , createdToken);
     return createdToken;
   }
