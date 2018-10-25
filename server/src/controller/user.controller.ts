@@ -8,6 +8,7 @@ const rbacService = new RbacService(new RbacPermissions());
 const authService = new AuthService();
 
 module.exports.getAllUsers = (request, response) => {
+  console.log ('request header authorisation', request.headers.authorization);
   const user: User = authService.whoIsUser(request);
   console.log('getAllUsers: user name from token', user);
   rbacService.setRoles(user.role);
@@ -81,7 +82,6 @@ module.exports.deleteUser = (request, response) => {
 module.exports.loginUser = (request, response) => {
   const email = request.body.email;
   const password = request.body.password;
-
   if (email === '' || password === '') {
     return response.status(400).send('You must send the username and the password');
   }

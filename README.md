@@ -23,7 +23,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 
 ## Prerequisites
 1. Install [**N**ode.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
-2. Install Angular CLI: `npm i -g @angular/cli@1.7.4` : Install latest cli for angular5 global and local.
+2. Install Angular CLI: `npm i -g @angular/cli@6.2.6` : Install global and local.
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
@@ -31,7 +31,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
  <br/>Windows: `mongod`: run MongoDB
  <br/>Mac OS X: `mongod --config /usr/local/etc/mongod.conf`: run MongoDB
  <br/>Mac OS X homebrew: `brew info mongo`: How to run mongoDB 
-2. Command window 2: `ng build -w`: build the project and keep watching the files for changes
+2. Command window 2: `ng build --watch`: build the project and keep watching the files for changes
 3. Command window 3: `npm start`: run Express server
 4. Go to [localhost:3000](http://localhost:3000)
 

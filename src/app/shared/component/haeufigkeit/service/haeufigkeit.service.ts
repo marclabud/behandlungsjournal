@@ -3,17 +3,17 @@ import {paths} from '../../../../server.conf';
 import {Haeufigkeit} from '../../../model/haeufigkeit';
 import {ServiceBase} from '../../../service.base';
 import {MessageService} from '../../../service/message/message.service';
-import {AuthHttp} from 'angular2-jwt';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class HaeufigkeitService extends ServiceBase<Haeufigkeit> {
 
   public messageService;
 
-  constructor(authHttp: AuthHttp) {
-    super(authHttp, HaeufigkeitService.name + ':' + Haeufigkeit.name);
+  constructor(http: HttpClient) {
+    super(http, HaeufigkeitService.name + ':' + Haeufigkeit.name);
     this.serviceUrl = '/haeufigkeit';
-    this.messageService = new MessageService<Haeufigkeit>(authHttp, this);
+    this.messageService = new MessageService<Haeufigkeit>(http, this);
   }
 
   getServiceUrl(isList: boolean): string {

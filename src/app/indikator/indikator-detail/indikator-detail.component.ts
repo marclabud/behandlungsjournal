@@ -3,7 +3,7 @@ import {Indikator} from '../model/indikator';
 import {IndikatorService} from '../service/indikator.service';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {MessageService} from '../../shared/service/message/message.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {BhJournal} from '../../bhjournal/model/bhjournal';
 import * as moment from 'moment';
 import {Haeufigkeit} from '../../shared/model/haeufigkeit';
@@ -74,8 +74,7 @@ export class IndikatorDetailComponent implements OnInit, OnDestroy {
     if (typeof(indikator._id) === 'undefined' || indikator._id === '') {
       this.indikatorService.addIndikator(indikator).subscribe(
         res => {
-          const newIndikator = res.json();
-          this.indikatoren.push(newIndikator);
+          const newIndikator = this.indikatoren.push(res);
           this.actualizeCache();
           this.sendInfoMsg('Neuer Indikator erfolgreich hinzugefügt.', 'success');
         },

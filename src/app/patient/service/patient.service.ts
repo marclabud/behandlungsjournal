@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
-import 'rxjs/add/operator/map';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 import {paths} from '../../server.conf';
 import {ServiceBase} from '../../shared/service.base';
 import {MessageService} from '../../shared/service/message/message.service';
@@ -11,26 +11,27 @@ export class PatientService extends ServiceBase<Patient> {
 
   public messageService;
 
-  constructor(authHttp: AuthHttp) {
-    super(authHttp, 'PatientService:Patient');
+  constructor(http: HttpClient) {
+    super(http, 'PatientService:Patient');
     this.serviceUrl = '/patient';
-    this.messageService = new MessageService<Patient>(authHttp, this);
+    this.messageService = new MessageService<Patient>(http, this);
   }
 
   getPatients() {
-    return this.authHttp.get(paths.base_path + '/patients').map(res => res.json());
+    return this.http.get<Patient[]>(paths.base_path + '/patients');
   }
 
   addPatient(patient: Patient) {
-    return this.authHttp.post(paths.base_path + '/patient', JSON.stringify(patient), this.options);
+    return this.http.post<Patient>(paths.base_path + '/patient', JSON.stringify(patient), this.httpOptions);
   }
 
+  // ToDo: options to parameter with responseType: 'text' for put options
   editPatient(patient: Patient) {
-    return this.authHttp.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), this.options);
+    return this.http.put(`${paths.base_path}/patient/${patient._id}`, JSON.stringify(patient), this.httpResponseTypeOptions)
   }
 
   deletePatient(patient: Patient) {
-    return this.authHttp.delete(`${paths.base_path}/patient/${patient._id}`, this.options);
+    return this.http.delete(`${paths.base_path}/patient/${patient._id}`, this.httpResponseTypeOptions);
   }
 
   getServiceUrl(isList: boolean): string {

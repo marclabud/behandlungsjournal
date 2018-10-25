@@ -1,42 +1,44 @@
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/map';
+
 import {ServiceBase} from '../../shared/service.base';
 import {Medikation} from '../model/medikation';
 import {paths} from '../../server.conf';
 import {MessageService} from '../../shared/service/message/message.service';
-import {AuthHttp} from 'angular2-jwt';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class MedikationService extends ServiceBase<Medikation> {
 
   public messageService;
 
-  constructor(authHTTP: AuthHttp) {
+  constructor(authHTTP: HttpClient) {
     super(authHTTP, 'MedikationService:Medikation');
     this.serviceUrl = '/medication';
-    this.messageService = new MessageService<Medikation>(this.authHttp, this);
+    this.messageService = new MessageService<Medikation>(this.http, this);
   }
 
   getMedikations() {
-    console.log(this.authHttp.get(paths.base_path + '/medications').map(res => res.json()));
-    return this.authHttp.get(paths.base_path + '/medications').map(res => res.json());
+    console.log(this.http.get<Medikation[]>(paths.base_path + '/medications'));
+    return this.http.get<Medikation[]>(paths.base_path + '/medications');
   }
 
   getMedicationsByJournalId(journal_id: string) {
-    console.log(this.authHttp.get(`${paths.base_path}/medications/${journal_id}`).map(res => res.json()));
-    return this.authHttp.get(`${paths.base_path}/medications/${journal_id}`).map(res => res.json());
+    console.log(this.http.get<Medikation[]>(`${paths.base_path}/medications/${journal_id}`));
+    return this.http.get<Medikation[]>(`${paths.base_path}/medications/${journal_id}`);
   }
 
   addMedikation(medikation: Medikation) {
-    return this.authHttp.post(paths.base_path + '/medication', JSON.stringify(medikation), this.options);
+    return this.http.post<Medikation>(paths.base_path + '/medication', JSON.stringify(medikation), this.httpOptions);
   }
 
-  editMedikation(medikation: Medikation) {
-    return this.authHttp.put(`${paths.base_path}/medication/${medikation._id}`, JSON.stringify(medikation), this.options);
-  }
+    editMedikation(medikation: Medikation) {
+        return this.http.put(`${paths.base_path}/medication/${medikation._id}`, JSON.stringify(medikation),
+            this.httpResponseTypeOptions
+        );
+    }
 
   deleteMedikation(medikation: Medikation) {
-    return this.authHttp.delete(`${paths.base_path}/medication/${medikation._id}`, this.options);
+    return this.http.delete(`${paths.base_path}/medication/${medikation._id}`, this.httpResponseTypeOptions);
   }
 
   getServiceUrl(isList: boolean): string {

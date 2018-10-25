@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
-import {JwtHelper, AuthHttp} from 'angular2-jwt';
-import {Observable} from 'rxjs';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {HttpClient} from '@angular/common/http';
 import {paths} from '../../../server.conf';
 import {User} from '../../../user/model/user';
 import {ServiceBase} from '../../service.base';
 import {UserService} from '../../../user/service/user.service';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 const JWT_STORAGE_KEY = 'token';
 
@@ -12,26 +14,23 @@ const JWT_STORAGE_KEY = 'token';
 export class AuthentificationService extends ServiceBase<User> {
   private validToken: string;
   redirectUrl: string;
-  jwthelper: JwtHelper = new JwtHelper();
+  jwthelper = new JwtHelperService();
 
-  constructor(authHTTP: AuthHttp, private userService: UserService) {
-    super(authHTTP, 'AuthentificationService:User');
+  constructor(http: HttpClient, private userService: UserService) {
+    super(http, 'AuthentificationService:User');
     this.serviceUrl = '/user';
   }
-
-  public login(user: User): Observable<boolean> {
-    this.deleteToken();
-    return this.userService.loginUser(user)
-      .map(result => {
-        let status: number = result[0].status;
-        if (201 === status) {
-          // status 201: Token wurde erstellt.
-          this.validToken = result[0].body.id_token;
-          this.setToken(this.validToken);
-        }
-        return (201 === status);
-      });
-  }
+    public login(user: User): Observable<boolean> {
+        return this.userService.loginUser(user).pipe(map(resp => {
+            const status: number = resp.status;
+            if (201 === status) {
+                // status 201: Token wurde erstellt.
+                this.validToken = resp.body.id_token;
+                this.setToken(this.validToken);
+            }
+            return resp.ok
+        }));
+    };
 
   public logout(): void {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
@@ -59,25 +58,23 @@ export class AuthentificationService extends ServiceBase<User> {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
   }
 
-  private isTokenValid() {
-    let token = this.getToken();
-    return ('' !== token && !this.jwthelper.isTokenExpired(token));
-  }
+   private isTokenValid() {
+        const token = this.getToken();
+        return (('' !== token) && !this.jwthelper.isTokenExpired(token));
+    }
 
   whoIsLoggedIn(): User {
-    let user: User = new User();
-    let token: string = this.getToken();
+    const user: User = new User();
+    const token: string = this.getToken();
     if ('' !== token) {
-      console.log(this.jwthelper.decodeToken(token));
-      user.name = this.jwthelper.decodeToken(token)._doc.name;
-      user.email = this.jwthelper.decodeToken(token)._doc.email;
+      console.log('decoded', this.jwthelper.decodeToken(token));
+      user.name = this.jwthelper.decodeToken(token).name;
+      user.email = this.jwthelper.decodeToken(token).email;
       return user;
     } else {
       return null;
     }
-
   }
-
   private isEmpty(str: string) {
     return (!str || 0 === str.length);
   }

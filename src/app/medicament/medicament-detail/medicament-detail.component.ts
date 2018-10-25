@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {MedikationService} from '../service/medikation.service';
 import {MessageService} from '../../shared/service/message/message.service';
 import {Medikation} from '../model/medikation';
@@ -72,8 +72,7 @@ export class MedicamentDetailComponent implements OnInit, OnDestroy {
     if (typeof(medikation._id) === 'undefined' || medikation._id === '') {
       this.medikationService.addMedikation(medikation).subscribe(
         res => {
-          const newMedication = res.json();
-          this.medications.push(newMedication);
+          const newMedication = this.medications.push(res);
           this.actualizeCache();
           // this.addMedicationForm.reset();
           this.sendInfoMsg('Medikation erfolgreich hinzugefügt.', 'success');

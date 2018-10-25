@@ -1,8 +1,7 @@
 import {Component, OnInit, Input, OnDestroy, Output, EventEmitter} from '@angular/core';
-import {Http} from '@angular/http';
 import {PatientService} from '../service/patient.service';
 import {Patient} from '../model/patient';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {MessageService} from '../../shared/service/message/message.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
   @Output() editingDone: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  constructor(http: Http, private patientService: PatientService) {
+  constructor(private patientService: PatientService) {
     this.messageService = patientService.messageService;
     this.subscription = this.messageService.Itemselected$.subscribe(
       patient => {
@@ -40,7 +39,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
       // Neuen Patienten anlegen
       this.patientService.addPatient(patient).subscribe(
         res => {
-          this.newPatient = res.json();
+          this.newPatient = res;
           this.actualizeCache();
           this.sendInfoMsg('Patient erfolgreich hinzugefügt.', 'success');
           this.patientNew.emit(this.newPatient);

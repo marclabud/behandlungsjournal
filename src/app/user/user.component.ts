@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Response} from '@angular/http';
+import {HttpResponse} from '@angular/common/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from './service/user.service';
 import {User} from './model/user';
@@ -47,7 +47,7 @@ export class UserComponent implements OnInit {
     this.userService.getAllItems(forceReload).subscribe(
       data => this.users = data,
       error => {
-        if (error instanceof Response) {
+        if (error instanceof HttpResponse) {
           if (401 === error.status) {
             this.sendInfoMsg('Benutzer ist nicht berechtigt' + '', 'danger', 0);
           } else {
@@ -66,8 +66,7 @@ export class UserComponent implements OnInit {
   addUser() {
     this.userService.addUser(this.addUserForm.value).subscribe(
       res => {
-        const newUser = res.json();
-        this.users.push(newUser);
+        const newUser = this.users.push(res);
         this.actualizeCache();
         this.addUserForm.reset();
         this.sendInfoMsg('Benutzer erfolgreich hinzugefügt.', 'success');

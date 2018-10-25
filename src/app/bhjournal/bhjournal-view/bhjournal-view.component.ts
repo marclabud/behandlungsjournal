@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {BhJournalService} from '../service/bhjournal.service';
 import {Patient} from '../../patient/model/patient';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {MessageService} from '../../shared/service/message/message.service';
 import {PatientService} from '../../patient/service/patient.service';
 import {BhJournal} from '../model/bhjournal';

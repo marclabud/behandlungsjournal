@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
-import {Subject} from 'rxjs/Subject';
+import {HttpClient} from '@angular/common/http';
+import {Subject} from 'rxjs';
 import {ServiceBase} from '../../service.base';
 
 @Injectable()
@@ -10,8 +10,8 @@ export class MessageService<TItem> extends ServiceBase<TItem> {
   // Observable string streams
   Itemselected$ = this.selectedItemSource.asObservable();
 
-  constructor(authHttp: AuthHttp, protected service: ServiceBase<TItem>) {
-    super(authHttp, service.getCacheKey(false));
+  constructor(Http: HttpClient, protected service: ServiceBase<TItem>) {
+    super(Http, service.getCacheKey(false));
   }
 
   // Service message commands

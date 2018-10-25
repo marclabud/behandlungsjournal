@@ -1,51 +1,43 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map';
+
 import {ServiceBase} from '../../shared/service.base';
-import {User} from '../model/user';
+import {LoginInterface, User} from '../model/user';
 import {paths} from '../../server.conf';
-import {AuthHttp} from 'angular2-jwt';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService extends ServiceBase<User> {
-  // secured routes use authHttp
+  // secured routes use http
   // unsecured routes use HTTP (Login, Sign-Up)
-  constructor(authHttp: AuthHttp, private http: Http) {
-    super(authHttp, 'UserService:User');
+  constructor(http: HttpClient) {
+    super(http, 'UserService:User');
     this.serviceUrl = '/user';
   }
 
   getUsers() {
-    console.log(this.authHttp.get(paths.base_path + '/users').map((res: Response) => res.json()));
-    return this.authHttp.get(paths.base_path + '/users').map((res: Response) => res.json());
+    console.log(this.http.get<User[]>(paths.base_path + '/users'));
+    return this.http.get<User[]>(paths.base_path + '/users')
   }
 
   addUser(user) {
-    return this.authHttp.post(paths.base_path + '/user', JSON.stringify(user), this.options);
+    return this.http.post<User>(paths.base_path + '/user', JSON.stringify(user), this.httpOptions);
   }
 
   editUser(user) {
-    return this.authHttp.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.options);
+    return this.http.put(`${paths.base_path}/user/${user._id}`, JSON.stringify(user), this.httpResponseTypeOptions);
   }
 
-  deleteUser(user) {
-    return this.authHttp.delete(`${paths.base_path}/user/${user._id}`, this.options);
-  }
+    deleteUser(user) {
+        return this.http.delete(`${paths.base_path}/user/${user._id}`, this.httpResponseTypeOptions);
+    }
 
-  loginUser(user) {
-    let creds = JSON.stringify({email: user.email, password: user.password});
-    return this.http.post(`${paths.base_path}/user/login`, creds, this.options)
-      .map((res: Response) => {
-          if (res) {
-            if (201 === res.status) {
-              return [{status: res.status, body: res.json()}];
-            } else if (200 === res.status) {
-              return [{status: res.status, body: res.json()}];
-            }
-          }
-        },
-      );
-  }
+    loginUser(user): Observable<HttpResponse<LoginInterface>> {
+        const creds = JSON.stringify({email: user.email, password: user.password});
+        // Todo: Options
+        return this.http.post<LoginInterface>(`${paths.base_path}/user/login`, creds, this.httpFullResponseOptions
+        );
+    }
 
   getServiceUrl(isList: boolean): string {
     return paths.base_path + (isList ? this.serviceUrl + 's' : this.serviceUrl);
