@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
 import {paths} from '../../../server.conf';
 import {User} from '../../../user/model/user';
 import {ServiceBase} from '../../service.base';
 import {UserService} from '../../../user/service/user.service';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 const JWT_STORAGE_KEY = 'token';
 
@@ -19,22 +20,16 @@ export class AuthentificationService extends ServiceBase<User> {
     super(http, 'AuthentificationService:User');
     this.serviceUrl = '/user';
   }
-
     public login(user: User): Observable<boolean> {
-        let loggedin: Observable<boolean> = of(true);
-        this.deleteToken();
-        this.userService.loginUser(user).subscribe(resp => {
+        return this.userService.loginUser(user).pipe(map(resp => {
             const status: number = resp.status;
             if (201 === status) {
                 // status 201: Token wurde erstellt.
                 this.validToken = resp.body.id_token;
                 this.setToken(this.validToken);
-                loggedin = of(true);
-            } else {
-                loggedin = of(false)
             }
-        });
-        return loggedin
+            return resp.ok
+        }));
     };
 
   public logout(): void {
@@ -63,26 +58,23 @@ export class AuthentificationService extends ServiceBase<User> {
     sessionStorage.removeItem(JWT_STORAGE_KEY);
   }
 
-    private isTokenValid() {
+   private isTokenValid() {
         const token = this.getToken();
-        return ('' !== token && !this.jwthelper.isTokenExpired(token));
-
+        return (('' !== token) && !this.jwthelper.isTokenExpired(token));
     }
 
   whoIsLoggedIn(): User {
     const user: User = new User();
     const token: string = this.getToken();
     if ('' !== token) {
-      console.log(this.jwthelper.decodeToken(token));
-      user.name = this.jwthelper.decodeToken(token)._doc.name;
-      user.email = this.jwthelper.decodeToken(token)._doc.email;
+      console.log('decoded', this.jwthelper.decodeToken(token));
+      user.name = this.jwthelper.decodeToken(token).name;
+      user.email = this.jwthelper.decodeToken(token).email;
       return user;
     } else {
       return null;
     }
-
   }
-
   private isEmpty(str: string) {
     return (!str || 0 === str.length);
   }

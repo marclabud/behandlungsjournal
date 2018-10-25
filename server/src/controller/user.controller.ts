@@ -8,6 +8,7 @@ const rbacService = new RbacService(new RbacPermissions());
 const authService = new AuthService();
 
 module.exports.getAllUsers = (request, response) => {
+  console.log ('request header authorisation', request.headers.authorization);
   const user: User = authService.whoIsUser(request);
   console.log('getAllUsers: user name from token', user);
   rbacService.setRoles(user.role);
