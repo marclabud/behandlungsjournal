@@ -13,7 +13,7 @@ export class BhjDatepickerComponent implements OnInit {
   @Output() private DateChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>();
 
   HTML5_inputtype_date_Supported = false;
-  HTML5Date: String;
+  HTML5Date: moment.MomentInput;
   NG2Date: Date;
   constructor() {
     // this.defaultDate = moment();
