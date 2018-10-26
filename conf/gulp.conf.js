@@ -16,6 +16,6 @@ exports.paths = {
 };
 
 exports.tsconfig = {
-  serverpath: "server/src/tsconfig.json",
+  serverpath: "server/tsconfig.json",
   clientpath: "tsconfig.json"
 };

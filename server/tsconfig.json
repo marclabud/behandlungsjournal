@@ -6,5 +6,8 @@
     "sourceMap": true,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
