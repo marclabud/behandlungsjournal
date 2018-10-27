@@ -1,9 +1,9 @@
 {
   "name": "behandlungsjournal",
-  "version": "0.8.3",
+  "version": "0.8.5",
   "license": "MIT",
   "author": "Marc Labud, Michel Rimbeaux",
-  "description": "Behandlungsjournal | Angular 2 (MEAN stack) project.",
+  "description": "Behandlungsjournal | Angular (MEAN stack) project.",
   "scripts": {
     "start": "node dist/server.js",
     "testserver": "node server/src/testserver.js",
@@ -19,7 +19,8 @@
     "loaddemodata": "node dist/demo/testdata.loader.js"
   },
   "engines": {
-    "npm": "~6.10"
+    "node": ">= 8.9.0",
+    "npm": ">= 5.5.1"
   },
   "private": true,
   "dependencies": {
