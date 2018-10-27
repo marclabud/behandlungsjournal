@@ -1,7 +1,7 @@
-FROM node:6.10.2
+FROM node:8.12.0
 
 # Globale Installation vom Angular Cli und gulp
-RUN npm install -g @angular/cli@1.7.4  && npm install -g gulp@3.9.1 && npm cache clean
+RUN npm install -g @angular/cli@6.2.6  && npm install -g gulp@3.9.1 && npm cache verify
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -11,6 +11,6 @@ COPY package.json /usr/src/app/
 RUN npm install
 
 COPY . /usr/src/app/
-RUN gulp sass && gulp build_server && ng build -prod
+RUN gulp sass && gulp build_server && ng build --prod  --optimization=false
 
 CMD npm run loaddemodata; node dist/server.js

@@ -1,12 +1,8 @@
-import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cache} from './cache';
 import {map} from 'rxjs/operators';
 
-
-
-@Injectable()
 export abstract class ServiceBase<TItem> {
 
   protected headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
