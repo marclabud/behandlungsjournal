@@ -23,7 +23,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 
 ## Prerequisites
 1. Install [**N**ode.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
-2. Install Angular CLI: `npm i -g @angular/cli@6.2.6` : Install global and local.
+2. Install Angular CLI: `npm i -g @angular/cli@7.0.3` : Install global and local.
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
