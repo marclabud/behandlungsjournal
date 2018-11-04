@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import {HttpClientModule} from '@angular/common/http';
 import {routing} from './app.routing';
 import {AppComponent} from './app.component';
@@ -50,6 +51,7 @@ import {SearchModule} from './shared/component/search/search.module';
         BrowserModule,
         HttpClientModule,
         FormsModule,
+        LoggerModule.forRoot({ level: NgxLoggerLevel.DEBUG }),
         AuthModule,
         ReactiveFormsModule,
         Ng2DatetimePickerModule,

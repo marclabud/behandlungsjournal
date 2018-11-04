@@ -1,14 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import {TestBed, inject} from '@angular/core/testing';
 import {BhJournalService} from './bhjournal.service';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('Service: Bhjournal', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BhJournalService, AUTH_PROVIDERS],
-      imports: [HttpModule]
+      providers: [BhJournalService],
+      imports: [HttpClientModule]
     });
   });
 

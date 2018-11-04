@@ -5,8 +5,7 @@ import {PatientCardComponent} from './patient-card.component';
 import {PatientDetailComponent} from '../patient-detail/patient-detail.component';
 import {FormsModule} from '@angular/forms';
 import {PatientService} from '../service/patient.service';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 import {SearchService} from '../../shared/component/service/search.service';
 
 describe('PatientCardComponent', () => {
@@ -16,8 +15,8 @@ describe('PatientCardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PatientCardComponent, PatientDetailComponent],
-      imports: [FormsModule, HttpModule],
-      providers: [PatientService, SearchService, AUTH_PROVIDERS]
+      imports: [FormsModule, HttpClientModule],
+      providers: [PatientService, SearchService]
     })
       .compileComponents();
   }));

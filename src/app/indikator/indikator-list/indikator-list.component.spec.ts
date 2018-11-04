@@ -1,8 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IndikatorListComponent} from './indikator-list.component';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {IndikatorService} from '../service/indikator.service';
@@ -20,8 +19,8 @@ describe('IndikatorListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [IndikatorListComponent, IndikatorDetailComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
-      imports: [HttpModule, FormsModule],
-      providers: [BhJournalService, IndikatorService, HaeufigkeitService, AUTH_PROVIDERS]
+      imports: [HttpClientModule, FormsModule],
+      providers: [BhJournalService, IndikatorService, HaeufigkeitService]
     })
       .compileComponents();
   }));

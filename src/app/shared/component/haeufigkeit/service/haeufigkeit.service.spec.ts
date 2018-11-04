@@ -1,15 +1,14 @@
 /* tslint:disable:no-unused-variable */
 import {TestBed, inject} from '@angular/core/testing';
 import {HaeufigkeitService} from './haeufigkeit.service';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 
 
 describe('Service: Haeufigkeit', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
-      providers: [HaeufigkeitService, AUTH_PROVIDERS],
+      imports: [HttpClientModule],
+      providers: [HaeufigkeitService],
     });
   });
 

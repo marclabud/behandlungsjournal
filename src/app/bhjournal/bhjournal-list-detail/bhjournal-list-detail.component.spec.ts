@@ -8,8 +8,7 @@ import {BhjournalListComponent} from '../bhjournal-list/bhjournal-list.component
 import {DauerModule} from '../../shared/component/dauer/dauer.module';
 import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../service/bhjournal.service';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {PatientService} from '../../patient/service/patient.service';
 import {RouterTestingModule} from '@angular/router/testing';
 
@@ -20,14 +19,14 @@ describe('BhjournalListDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BhjournalListDetailComponent, BhjournalDetailComponent, BhjournalListComponent],
-      imports: [FormsModule, DauerModule, HttpModule, RouterTestingModule],
-      providers: [BhJournalService, PatientService, AUTH_PROVIDERS]
+      imports: [FormsModule, DauerModule, HttpClientModule, RouterTestingModule],
+      providers: [BhJournalService, PatientService]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BhjournalListDetailComponent,);
+    fixture = TestBed.createComponent(BhjournalListDetailComponent);
     component = fixture.componentInstance;
     // fixture.detectChanges();
   });

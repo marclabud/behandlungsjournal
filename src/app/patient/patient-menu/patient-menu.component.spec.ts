@@ -2,9 +2,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PatientMenuComponent} from './patient-menu.component';
 import {PatientService} from '../service/patient.service';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+
 import {RouterTestingModule} from '@angular/router/testing';
 import {SearchService} from '../../shared/component/service/search.service';
 
@@ -15,8 +15,8 @@ describe('PatientMenuComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PatientMenuComponent],
-      imports: [HttpModule, FormsModule, ReactiveFormsModule, RouterTestingModule],
-      providers: [PatientService, SearchService, AUTH_PROVIDERS, ]
+      imports: [HttpClientModule, FormsModule, ReactiveFormsModule, RouterTestingModule],
+      providers: [PatientService, SearchService ]
 
     })
       .compileComponents();

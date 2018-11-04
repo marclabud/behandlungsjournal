@@ -1,9 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PatientDetailComponent} from './patient-detail.component';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {PatientService} from '../service/patient.service';
 import {FormsModule} from '@angular/forms';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 
 describe('Component: PatientDetail', () => {
@@ -13,8 +12,8 @@ describe('Component: PatientDetail', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PatientDetailComponent],
-      imports: [HttpModule, FormsModule],
-      providers: [PatientService, AUTH_PROVIDERS]
+      imports: [HttpClientModule, FormsModule],
+      providers: [PatientService]
     })
       .compileComponents();
   }));

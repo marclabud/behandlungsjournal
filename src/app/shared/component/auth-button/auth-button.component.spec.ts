@@ -3,8 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AuthButtonComponent} from './auth-button.component';
 import {AuthentificationService} from '../../service/auth/authentification.service';
 import {UserService} from '../../../user/service/user.service';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AuthButtonComponent', () => {
@@ -14,8 +13,8 @@ describe('AuthButtonComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AuthButtonComponent],
-      imports: [HttpModule, RouterTestingModule],
-      providers: [AuthentificationService, UserService, AUTH_PROVIDERS]
+      imports: [HttpClientModule, RouterTestingModule],
+      providers: [AuthentificationService, UserService]
     })
       .compileComponents();
   }));

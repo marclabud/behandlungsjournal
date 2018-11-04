@@ -1,8 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {BhjournalComponent} from './bhjournal-view.component';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 import {BhJournalService} from '../service/bhjournal.service';
 import {FormsModule} from '@angular/forms';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
@@ -30,8 +29,8 @@ describe('Component: Bhjournal', () => {
         BhjDatepickerComponent,
         DauerComponent,
         HaeufigkeitComponent],
-      imports: [HttpModule, FormsModule, RouterTestingModule],
-      providers: [BhJournalService, PatientService, AUTH_PROVIDERS]
+      imports: [HttpClientModule, FormsModule, RouterTestingModule],
+      providers: [BhJournalService, PatientService]
     })
       .compileComponents();
   }));

@@ -5,8 +5,7 @@ import {HaeufigkeitComponent} from '../../shared/component/haeufigkeit/haeufigke
 import {IndikatorListComponent} from '../indikator-list/indikator-list.component';
 import {DauerComponent} from '../../shared/component/dauer/dauer.component';
 import {BhjDatepickerComponent} from '../../shared/component/bhj-datepicker/bhj-datepicker.component';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../../bhjournal/service/bhjournal.service';
 import {IndikatorService} from '../service/indikator.service';
@@ -20,8 +19,8 @@ describe('IndikatorDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [IndikatorDetailComponent, IndikatorListComponent, HaeufigkeitComponent, DauerComponent, BhjDatepickerComponent],
-      imports: [HttpModule, FormsModule],
-      providers: [BhJournalService, IndikatorService, HaeufigkeitService, AUTH_PROVIDERS]
+      imports: [HttpClientModule, FormsModule],
+      providers: [BhJournalService, IndikatorService, HaeufigkeitService]
     })
       .compileComponents();
   }));

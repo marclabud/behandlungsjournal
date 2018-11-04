@@ -5,8 +5,7 @@ import {DauerModule} from '../../shared/component/dauer/dauer.module';
 import {BhjournalDetailComponent} from '../bhjournal-detail/bhjournal-detail.component';
 import {FormsModule} from '@angular/forms';
 import {BhJournalService} from '../service/bhjournal.service';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {PatientService} from '../../patient/service/patient.service';
 
 describe('BhjournalListComponent', () => {
@@ -16,8 +15,8 @@ describe('BhjournalListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BhjournalListComponent, BhjournalDetailComponent],
-      imports: [DauerModule, FormsModule, HttpModule],
-      providers: [PatientService, BhJournalService, AUTH_PROVIDERS]
+      imports: [DauerModule, FormsModule, HttpClientModule],
+      providers: [PatientService, BhJournalService]
     })
       .compileComponents();
   }));

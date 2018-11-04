@@ -3,8 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HaeufigkeitService} from './service/haeufigkeit.service';
 import {HaeufigkeitComponent} from './haeufigkeit.component';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('HaeufigkeitComponent', () => {
   let component: HaeufigkeitComponent;
@@ -13,8 +12,8 @@ describe('HaeufigkeitComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HaeufigkeitComponent],
-      imports: [HttpModule, FormsModule],
-      providers: [HaeufigkeitService, AUTH_PROVIDERS]
+      imports: [HttpClientModule, FormsModule],
+      providers: [HaeufigkeitService]
     })
       .compileComponents();
   }));
