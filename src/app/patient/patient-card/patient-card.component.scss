@@ -1,8 +1,9 @@
+// @import "../../../scss/_variables";
 
 .card.card-outline-primary
 {
   &:hover,
   &:active {
-    background-color: lightgray;
+    background-color: gainsboro;
   }
 }

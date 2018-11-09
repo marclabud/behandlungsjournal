@@ -1,17 +1,18 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- Toggle Button -->
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+  <a class="navbar-brand" href="#">{{brandName}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
           aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <!-- Nav Content -->
-  <a class="navbar-brand" href="#">{{brandName}}</a>
-  <div *ngIf="userIsLoggedIn()">
-    <app-patient-menu (patientSelectionWithSearch)="onSearchIsVisible($event)"></app-patient-menu>
-  </div>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <div *ngIf="userIsLoggedIn()">
+        <app-patient-menu (patientSelectionWithSearch)="onSearchIsVisible($event)"></app-patient-menu>
+      </div>
 
       <li class="nav-item dropdown pull-lg-right" *ngIf="userIsLoggedIn()">
         <a class="nav-link dropdown-toggle" routerLink="patient-card" id="journal"
