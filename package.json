@@ -50,7 +50,7 @@
     "ngx-logger": "^3.3.6",
     "node-sass": "^4.9.4",
     "popper": "^1.0.0",
-    "popper.js": "^1.12.4",
+    "popper.js": "^1.12.9",
     "rbac-a": "^0.2.5",
     "resolve-url-loader": "^2.1.0",
     "rxjs": "^6.2.0",

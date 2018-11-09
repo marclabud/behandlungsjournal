@@ -11,7 +11,7 @@
         <div *ngIf="isEditing">
           <h4 class="card-header">Medikation {{medikation.name}} ändern</h4>
         </div>
-        <div class="card-block">
+        <div class="card-body">
           <div class="row">Name des Medikamentes:</div>
           <form #form="ngForm" (ngSubmit)="isEditing? editMedication(medikation) : addMedication(medikation)">
             <div class="form-group row">
