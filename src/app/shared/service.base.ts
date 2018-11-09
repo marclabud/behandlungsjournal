@@ -1,7 +1,8 @@
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cache} from './cache';
 import {map} from 'rxjs/operators';
+import {NGXLogger} from 'ngx-logger';
 
 export abstract class ServiceBase<TItem> {
 
@@ -30,8 +31,8 @@ export abstract class ServiceBase<TItem> {
 
     protected serviceUrl: string;
 
-  protected cacheList: Cache<Array<TItem>>;
-  protected cache: Cache<TItem>;
+    protected cacheList: Cache<Array<TItem>>;
+    protected cache: Cache<TItem>;
 
   constructor(protected http: HttpClient, protected cacheKey: string) {
     this.cacheList = new Cache<Array<TItem>>(cacheKey);
@@ -51,7 +52,6 @@ export abstract class ServiceBase<TItem> {
   }
 
     getItem(forceReload = false): Observable<TItem> {
-        console.log('Call ServiceBase.getItem');
         if (this.cache.hasCache() && !forceReload) {
             return Observable.create((observer) => {
                 this.log('Cache');
@@ -70,7 +70,6 @@ export abstract class ServiceBase<TItem> {
     }
 
     getAllItems(forceReload = false): Observable<TItem[]> {
-        console.log('Call ServiceBase.getAllItems');
         const isList = true;
 
         if (this.cacheList.hasCache(isList) && !forceReload) {
@@ -97,7 +96,7 @@ export abstract class ServiceBase<TItem> {
 
   writeCache(item: TItem) {
     this.cache.writeCache(item);
-    console.log('Write Cache with ' + this.getKey(), JSON.stringify(item));
+    console.log('Write Cache with ' + this.getKey(), JSON.stringify(item))
   }
 
   removeFromCache() {

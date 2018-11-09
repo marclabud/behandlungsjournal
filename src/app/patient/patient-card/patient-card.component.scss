@@ -1,6 +1,9 @@
-@import "../../../scss/mixins/_cards";
-@import "../../../scss/_variables";
+// @import "../../../scss/_variables";
 
-.card.card-outline-primary:hover {
-  @include card-variant($gray-lightest, $brand-primary);
+.card.card-outline-primary
+{
+  &:hover,
+  &:active {
+    background-color: gainsboro;
+  }
 }

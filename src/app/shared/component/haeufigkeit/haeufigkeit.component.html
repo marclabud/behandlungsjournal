@@ -1,17 +1,17 @@
 <div *ngIf="!isLoading">
   <div class="row">Wie oft?</div>
   <div class="form-group row">
-    <label class="btn btn-secondary {{haeufigkeit.morgens ? 'active': ''}}">
+    <label class="btn btn-outline-secondary {{haeufigkeit.morgens ? 'active': ''}}">
       <input class="bhj-hidden" type="checkbox" data-toggle="toggle"
              [(ngModel)]="haeufigkeit.morgens"
              (click)="switchHaeufigkeit(haeufigkeit.MORGENS)"/>morgens
     </label>
-    <label class="btn btn-secondary {{haeufigkeit.mittags ? 'active': ''}}">
+    <label class="btn btn-outline-secondary {{haeufigkeit.mittags ? 'active': ''}}">
       <input class="bhj-hidden" type="checkbox" data-toggle="toggle"
              [(ngModel)]="haeufigkeit.mittags"
              (click)="switchHaeufigkeit(haeufigkeit.MITTAGS)"/>mittags
     </label>
-    <label class="btn btn-secondary {{haeufigkeit.abends ? 'active': ''}}">
+    <label class="btn btn-outline-secondary {{haeufigkeit.abends ? 'active': ''}}">
       <input class="bhj-hidden" type="checkbox" data-toggle="toggle"
              [(ngModel)]="haeufigkeit.abends"
              (click)="switchHaeufigkeit(haeufigkeit.ABENDS)"/>abends

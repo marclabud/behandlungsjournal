@@ -8,7 +8,7 @@ import {AuthentificationService} from '../shared/service/auth/authentification.s
 })
 export class MainNavComponent implements OnInit {
   /* tslint:disable-next-line:no-unused-variable */
-  //private removed due to angular aot-restriction
+  // private removed due to angular aot-restriction
   brandName = 'Behandlungsjournal';
   searchIsVisible = false;
 
